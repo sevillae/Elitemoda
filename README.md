@@ -1,0 +1,2 @@
+# misropass
+aprendizaje y finanzas
