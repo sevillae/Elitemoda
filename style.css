@@ -151,4 +151,31 @@ img:hover {
 }   
 
 
+/*Para todo tipo de pantalla*/
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}   
+
+/* Diseño para móviles (por defecto) */
+.container {
+  width: 100%;
+  padding: 10px;
+}
+
+/* Para pantallas de tablet o mayores */
+@media (min-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+  }
+  .container > div {
+    flex: 1;
+  }
+}   
+
+
+
 
