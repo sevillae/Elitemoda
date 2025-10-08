@@ -119,7 +119,7 @@ footer {
 .intima {
   height: 100vh; /* Fallback */
   height: 100dvh;
-  height: calc(var(--vh, 1vh) * 100); /* Solución con variable dinámica */
+  height: calc(var(--vh, 1vh) * 60); /* Solución con variable dinámica */
 }   
 
 
@@ -130,7 +130,7 @@ footer {
 
 .intima img{
     width: 95%;
-    height: 100dvh;
+    height: 100%;
     
 }
 
@@ -335,8 +335,8 @@ img:hover {
     width: 100vw;
     width: 100dvw;
     width: calc(var(--vw, 1vw) * 90);
-    height: 80vh; /* Fallback */
-    height: 80dvh;
+    height: 100vh; /* Fallback */
+    height: 100dvh;
     height: calc(var(--vh, 1vh) * 100); /* Solución con variable dinámica */
 
 }
