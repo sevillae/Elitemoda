@@ -1,0 +1,215 @@
+/* Estilo general */
+body {
+  font-family: Arial, sans-serif;
+  background-color: hwb(165 40% 5%);
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Contenedor principal */
+.contenido {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+
+/*IMAGENES*/
+img {
+    width: 30%;
+    height: 55dvh;
+    object-fit:fill;
+} 
+
+.fotos {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;     /* Centra verticalmente (si el contenedor tiene altura definida) */
+    flex-wrap: wrap;         /* Permite que las imágenes bajen a la siguiente línea */
+    gap: 10px;               /* Espacio entre imágenes */
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    margin-left: 30px;
+}
+
+
+/* Títulos */
+h1 {
+  color: #2c3e50;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 10px;
+}
+
+/* Párrafos */
+p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Listas */
+ul {
+  margin-left: 20px;
+  line-height: 1.6;
+}
+
+/* Enlaces */
+a {
+  color: #3498db;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Formulario */
+form {
+  margin-top: 20px;
+}
+input, textarea, button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+button {
+  background: #3498db;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+button:hover {
+  background: #2980b9;
+}   
+
+
+
+/*MENU*/
+
+/*SEGUNDO MENU*/
+.sidebar2 body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+    
+}
+
+
+.sidebar2 .container {
+    display: flex;
+    min-height: 100vh;
+    
+  }
+
+.sidebar2 {
+    width: 158px;
+    background: #2c3e50;
+    color: white;
+    transition: transform 0.3s ease;
+    position: fixed;
+    height: 34%;
+    z-index: 1000;
+    left: 0;
+    
+}
+
+.sidebar2 ul {
+    list-style: none;
+    list-style: disc; /* Muestra puntos redondos */
+    padding-left: 3px;
+    padding: 1px 0; /* Reduce el espacio arriba y abajo del listado */
+    
+} 
+
+.sidebar2 .main-content {
+    flex: 1;
+    padding: 200px;
+    margin-left: 250px;
+    transition: margin-left 0.3s ease;
+    
+}
+
+.sidebar2 h2 {
+    text-align: center;
+    padding: 8px;
+    margin: 0;
+    background: #1a252f;
+    
+}
+
+   
+
+.sidebar2 ul li a {
+    display: block;
+    padding: 10px 5px;
+    color: #bdc3c7;
+    text-decoration: none;
+    margin-left: -8px;
+    
+}
+
+.sidebar2 ul li {
+  margin-left: 10px;
+}
+
+.sidebar2 ul li a:hover {  
+  background: #e6344a;
+  margin: 2px 0; /* Ajusta este valor para acercar más o menos */
+  padding: 5px 5px;
+  width: 110px;
+  border-radius: 10px;  
+
+}
+
+.sidebar2 .submenu {
+    display: none;
+    background: #34495e;
+    margin-left: 10px;
+    
+}
+
+.sidebar2 .dropdown:hover .submenu {
+    display: block;
+    
+}
+
+.sidebar2 .toggle-btn {
+    display: none;
+    padding: 15px;
+    background: #e6344a;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    
+}
+
+@media (max-width: 768px) {
+    .sidebar2 .toggle-btn {
+        display: block;
+        
+    }
+    
+    .sidebar2 .main-content {
+        margin-left: 0;
+        
+    }
+
+    .sidebar2 .hide-sidebar .sidebar {
+        transform: translateX(-100%);
+        
+    }
+
+
+    .sidebar2 .hide-sidebar .main-content {
+        margin-left: 0;
+        
+    }
+    
+}
+    
+
+/*FIN DEL MENU*/
