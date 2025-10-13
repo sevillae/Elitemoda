@@ -127,3 +127,8 @@ footer {
 
 }   
 
+@media (max-width: 768px) {
+    .ventana { width: 100%;}
+}
+
+
