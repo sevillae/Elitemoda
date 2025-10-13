@@ -124,12 +124,13 @@ footer {
 
 /* Para pantallas más grandes */
 @media (min-width: 768px) {
-  .body { width: 50%; }
+  .body { width: 100%; }
 } 
 
 @media (max-width: 768px) {
     .body { width: 100%;}
 }
+
 
 
 
