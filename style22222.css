@@ -121,14 +121,15 @@ footer {
 }   
 
 
+
 /* Para pantallas más grandes */
 @media (min-width: 768px) {
-  .ventana { width: 50%; }
-
-}   
+  .body { width: 50%; }
+} 
 
 @media (max-width: 768px) {
-    .ventana { width: 100%;}
+    .body { width: 100%;}
 }
+
 
 
