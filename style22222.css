@@ -1,0 +1,127 @@
+body {
+  
+
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: lab(64.91% -1.38 -50.17); 
+    
+}
+
+
+header {
+    background-color: #10e6e6;
+    color: #fff;
+    padding: 8px;
+    text-align: center;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        
+  }
+
+
+main {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: hwb(199 23% 27%);
+    border-radius: 8px;
+    box-shadow: 0 0 10px hwb(184 4% 7% / 0.1);
+    display: grid;
+    margin: auto;
+    font-size: 20px;
+}
+
+p {
+  text-align: center;
+}
+
+p {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+}   
+
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 10px;
+    background-color: hsl(173, 9%, 60%);
+    color: lab(11.76% -6.26 -8.92);
+    font-size: 20px;
+} 
+
+
+.ventana .container { display: flex; flex-wrap: wrap; }   
+
+.ventana {
+    width: 95%;
+    height: auto;
+}
+
+.ventana {
+    padding: 20px;
+    background-color: hsl(160, 60%, 74%);
+    border: 1px solid hsl(207, 91%, 44%);
+    border-radius: 10px;
+    animation: mover 4s infinite alternate;
+    /*overflow: hidden*/
+
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;  
+    align-content: center;
+    
+}
+
+.intima{
+    width: 96%;
+    display: block;
+    flex-wrap: wrap;
+
+    
+        
+}
+
+.intima img{
+    width: 300px;
+    height: 300px;
+    object-fit:fill;
+    gap: 10px;
+
+}
+
+.intima .texto {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background: rgba(0,0,0,0.7);
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/*TEXTOS*/
+@media (max-width: 768px) {
+  body {
+    font-size: 1.1rem;
+  }
+}   
+
+
+/* Para móviles, asegura que las imágenes no se salgan */
+@media (max-width: 768px) {
+    img {
+        width: 100%;
+    }
+}   
+
+
+/* Para pantallas más grandes */
+@media (min-width: 768px) {
+  .elemento { width: 50%; }
+}   
