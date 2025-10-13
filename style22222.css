@@ -116,7 +116,7 @@ footer {
 /* Para móviles, asegura que las imágenes no se salgan */
 @media (max-width: 768px) {
     img {
-        width: 100%;
+        width: 50%;
     }
 }   
 
@@ -124,4 +124,5 @@ footer {
 /* Para pantallas más grandes */
 @media (min-width: 768px) {
   .elemento { width: 50%; }
+
 }   
