@@ -7,6 +7,13 @@ body {
   padding: 20px;
 }
 
+
+header {
+  display: flex;
+  min-height: 100vh;
+  
+}
+
 /* Contenedor principal */
 .contenido {
   max-width: 900px;
@@ -41,6 +48,7 @@ h1 {
   color: #2c3e50;
   border-bottom: 3px solid #3498db;
   padding-bottom: 10px;
+  
 }
 
 /* Párrafos */
@@ -187,29 +195,31 @@ button:hover {
     
 }
 
+/*ESTILOS PARA MÓVILES*/
+/* Estilo para móviles */
 @media (max-width: 768px) {
-    .sidebar2 .toggle-btn {
+    .sidebar2 {
+        position: fixed;
+        left: -250px;
+        transition: left 0.3s ease;
+    }
+    .sidebar2.open {
+        left: 0;
+    }
+    #hamburger-btn {
         display: block;
-        
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1701;
+        background: #e6344a;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        touch-action: manipulation;
     }
-    
-    .sidebar2 .main-content {
-        margin-left: 0;
-        
-    }
-
-    .sidebar2 .hide-sidebar .sidebar {
-        transform: translateX(-100%);
-        
-    }
-
-
-    .sidebar2 .hide-sidebar .main-content {
-        margin-left: 0;
-        
-    }
-    
-}
+}   
     
 
 /*FIN DEL MENU*/
