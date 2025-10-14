@@ -611,7 +611,7 @@ nav ul li a:hover {
     cursor: pointer;
     border-radius: 5px;
 
-
+}
 
 
 /*Actualiza la variable CSS según el alto real del viewport*/
@@ -684,3 +684,4 @@ setViewportHeight();*/
         touch-action: manipulation;
     }
 }   
+
