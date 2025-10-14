@@ -1,0 +1,312 @@
+/* Estilo general */
+body {
+  font-family: Arial, sans-serif;
+  background-color: hwb(165 40% 5%);
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+
+header {
+  display: flex;
+  min-height: 100vh;
+  
+}
+
+/* Contenedor principal */
+.contenido {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+
+/*IMAGENES*/
+img {
+    width: 30%;
+    height: 55dvh;
+    object-fit:fill;
+} 
+
+.fotos {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;     /* Centra verticalmente (si el contenedor tiene altura definida) */
+    flex-wrap: wrap;         /* Permite que las imágenes bajen a la siguiente línea */
+    gap: 10px;               /* Espacio entre imágenes */
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    margin-left: 30px;
+}
+
+
+/* Títulos */
+h1 {
+  color: #2c3e50;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 10px;
+    
+}
+
+h2 {
+  text-align: center;
+  
+}
+
+/* Párrafos */
+p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Listas */
+ul {
+  margin-left: 20px;
+  line-height: 1.6;
+}
+
+/* Enlaces */
+a {
+  color: #3498db;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Formulario */
+form {
+  margin-top: 20px;
+}
+input, textarea, button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+button {
+  background: #3498db;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+button:hover {
+  background: #2980b9;
+}   
+
+
+/*PRIMERA PÁGINA*/
+
+
+
+.sidebar-container:hover ~ .sidebar,
+.sidebar:hover {
+    transform: translateX(0);
+}  
+
+
+
+/*<style>*/
+        .sidebar body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 14px;
+        }
+        .container {
+            display: flex;
+            min-height: calc(100vh - 120px);
+        }
+        .sidebar {
+            margin-top: 10px;
+            width: 165px;
+            background: #2c3e50;
+            color: white;
+            position: fixed;
+            height: 40%;
+            transition: transform 0.6s ease;
+            z-index: 1000;
+            left: 0;
+            border: solid 1px;
+            border-color: aqua;
+        }
+
+        .sidebar ul li{
+          padding: 10px;
+        }
+
+        .sidebar ul li a{
+          margin-left: -5px;
+          opacity: 1;
+          
+          
+        }
+
+        .sidebar ul li:hover{
+          background-color: #e6344a;
+          width: 90px;
+
+        }
+
+        .sidebar ul li a:hover{         
+          color: #ddd;
+          text-decoration: none;
+                   
+        }
+
+        .sidebar ul{
+          list-style: disc; /* Muestra puntos redondos */
+          padding-left: 20px;
+          margin-left: 10px;
+        }
+
+        .sidebar:hover {
+            transform: translateX(0);
+        }
+        .sidebar:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -10px;
+            width: 10px;
+            height: 100%;
+            background: transparent;
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            margin-left: 250px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        .gallery img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+
+
+
+
+
+/*MENU*/
+/*Para todo tipo de pantalla*/
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+        width: 100vw;
+        width: 100dvw;
+        width: calc(var(--vw, 1vw) * 100);
+                
+    }
+
+ }
+
+ @media (max-height: 768px){
+    body {
+        height: 100vh; /* Fallback */
+        height: 100dvh;
+        height: calc(var(--vh, 1vh) * 100); /* Solución con variable dinámica */
+    }
+    
+  }
+ 
+
+/* Diseño para móviles (por defecto) */
+.fotos {
+    /*width: 90dvw;*/
+    padding: 10px;
+    width: 100vw;
+    width: 100dvw;
+    width: calc(var(--vw, 1vw) * 90);
+    height: 100vh; /* Fallback */
+    height: 100dvh;
+    height: calc(var(--vh, 1vh) * 80); /* Solución con variable dinámica */
+
+}
+
+
+/* Para pantallas de tablet o mayores */
+@media (min-width: 768px) {
+    .fotos {
+        display: flex;
+        flex-direction: row;
+  }
+    
+  .fotos > div {
+      flex: 1;
+  }
+}   
+
+
+
+
+/*TEXTOS*/
+@media (max-width: 768px) {
+  body {
+    font-size: 1.1rem;
+  }
+}   
+
+
+/* Para móviles, asegura que las imágenes no se salgan */
+@media (max-width: 768px) {
+    img {
+        width: 100%;
+    }
+}   
+
+
+
+
+/*ESTILOS PARA MÓVILES*/
+/* Estilo para móviles */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        left: -250px;
+        transition: left 0.3s ease;
+    }
+    .sidebar.open {
+        left: 0;
+    }
+    #hamburger-btn {
+        display: block;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1701;
+        background: #e6344a;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        touch-action: manipulation;
+    }
+}   
