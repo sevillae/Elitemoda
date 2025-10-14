@@ -247,19 +247,15 @@ button:hover {
 @media (max-width: 768px) {
     body {
         font-size: 14px;
-        width: 100vw;
-        width: 100dvw;
-        width: calc(var(--vw, 1vw) * 100);
-                
+        width: 100%;
+                       
     }
 
  }
 
  @media (max-height: 768px){
     body {
-        height: 100vh; /* Fallback */
-        height: 100dvh;
-        height: calc(var(--vh, 1vh) * 100); /* Solución con variable dinámica */
+        height: auto;
     }
     
   }
@@ -269,13 +265,9 @@ button:hover {
 .fotos {
     /*width: 90dvw;*/
     padding: 10px;
-    width: 100vw;
-    width: 100dvw;
-    width: calc(var(--vw, 1vw) * 90);
-    height: 100vh; /* Fallback */
-    height: 100dvh;
-    height: calc(var(--vh, 1vh) * 80); /* Solución con variable dinámica */
-
+    width: 100%;
+    height: auto;
+    
 }
 
 
@@ -337,3 +329,4 @@ button:hover {
         touch-action: manipulation;
     }
 }   
+
