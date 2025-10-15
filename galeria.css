@@ -1,0 +1,81 @@
+/* styles/galeria.css */
+/* ===== ESTILOS DE LA GALERÍA MOBILE FIRST ===== */
+.fotos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    padding: 70px 15px 15px 15px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.imagen-item {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.imagen-item:hover {
+    transform: scale(1.05);
+}
+
+/* ===== RESPONSIVE - TABLETS ===== */
+@media (min-width: 481px) and (max-width: 768px) {
+    .fotos {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 15px;
+        padding: 80px 20px 20px 20px;
+    }
+    
+    .imagen-item {
+        height: 140px;
+    }
+}
+
+/* ===== RESPONSIVE - DESKTOP ===== */
+@media (min-width: 769px) {
+    .fotos {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 30px;
+        margin-left: 280px;
+        max-width: calc(100% - 280px);
+    }
+    
+    .imagen-item {
+        height: 180px;
+    }
+}
+
+/* ===== RESPONSIVE - DESKTOP GRANDE ===== */
+@media (min-width: 1024px) {
+    .fotos {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+        padding: 40px;
+        max-width: 1200px;
+        margin-left: 280px;
+    }
+    
+    .imagen-item {
+        height: 200px;
+    }
+}
+
+/* ===== MÓVILES MUY PEQUEÑOS ===== */
+@media (max-width: 360px) {
+    .fotos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 60px 10px 10px 10px;
+    }
+    
+    .imagen-item {
+        height: 100px;
+    }
+}
