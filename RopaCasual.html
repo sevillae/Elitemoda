@@ -171,6 +171,32 @@
             gap: 8px;
         }
 
+        /* ===== BOTÓN DE INICIO CORREGIDO PARA MÓVILES ===== */
+        .btn-home-fixed {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 14px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid transparent;
+            backdrop-filter: blur(10px);
+            letter-spacing: 0.5px;
+            /* Importante para móviles */
+            -webkit-backface-visibility: hidden;
+            -webkit-transform: translateZ(0);
+        }
+
         /* Collection Tabs */
         .collection-tabs {
             display: flex;
