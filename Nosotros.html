@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="Iconos/conexion.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Dedicatoria | ÉLITE MODA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #c19a6b;
+            --accent-color: #8b4513;
+            --light-color: #f8f9fa;
+            --dark-color: #1a1a1a;
+            --text-color: #333;
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 1.5rem 0;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* BOTÓN DE INICIO MEJORADO - COMPORTAMIENTO INTELIGENTE */
+        .btn-home-universal {
+            position: fixed;
+            top: 120px;
+            right: 30px;
+            z-index: 1000;
+            /*background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);*/
+            /*background: linear-gradient(135deg, var(--dark-color) 35%, var(--accent-color) 60%);*/
+            background: linear-gradient(135deg, oklab(51.495999999999995% -0.07358 -0.05236) 33%, lab(24.37% -4.6 -18.07) 90%);
+            color: white;
+            padding: 14px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 6px 20px rgba(44, 62, 80, 0.4);
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid transparent;
+            backdrop-filter: blur(10px);
+            letter-spacing: 0.5px;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .btn-home-universal.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        .btn-home-universal:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(44, 62, 80, 0.6);
+            background: linear-gradient(135deg, var(--dark-color) 0%, var(--primary-color) 100%);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-home-universal i {
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-home-universal:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Efecto de pulso sutil */
+        @keyframes pulse-gentle {
+            /*0% { box-shadow: 0 6px 20px rgba(44, 62, 80, 0.4); }*/
+            0% { box-shadow: 0 6px 20px #047bf1fd; }
+            50% { box-shadow: 0 6px 25px rgba(44, 62, 80, 0.6); }
+            /*100% { box-shadow: 0 6px 20px rgba(44, 62, 80, 0.4); }*/
+            100% { box-shadow: 0 6px 20px #0e70d366; }
+        }
+
+        .btn-home-universal:not(.hidden) {
+            animation: pulse-gentle 3s infinite;
+        }
+
+        /* Hero Section */
+        .dedication-hero {
+            height: 60vh;
+            /*background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1558769132-cb25c5d11e85?ixlib=rb-4.0.3') no-repeat center center/cover;*/
+            background: linear-gradient(rgba(3, 3, 51, 0.863),rgb(0, 0, 0.153), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1558769132-cb25c5d11e85?ixlib=rb-4.0.3') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 4rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Dedication Content */
+        .dedication-content {
+            padding: 5rem 0;
+        }
+
+        .dedication-intro {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 5rem;
+        }
+
+        .dedication-intro h2 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .dedication-intro h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .dedication-intro p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .dedication-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 5rem;
+        }
+
+        .dedication-card {
+            background: white;
+            border-radius: 10px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dedication-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .dedication-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .dedication-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .dedication-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Mission Section */
+        .mission-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 5rem 0;
+            border-radius: 15px;
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .mission-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .mission-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+        .mission-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .mission-highlight {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--secondary-color);
+            margin: 2rem 0;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .mission-highlight:before, .mission-highlight:after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--secondary-color);
+            position: absolute;
+            opacity: 0.5;
+        }
+
+        .mission-highlight:before {
+            top: -10px;
+            left: 0;
+        }
+
+        .mission-highlight:after {
+            bottom: -30px;
+            right: 0;
+        }
+
+        /* Team Section */
+        .team-section {
+            margin-bottom: 5rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        .team-member h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .team-member .role {
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .team-member p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3') no-repeat center center/cover;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 5rem;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .btn-light {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+
+        .btn-light:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* ===== CORRECCIONES RESPONSIVE PARA EL BOTÓN ===== */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .dedication-sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0 10px 10px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .dedication-intro h2 {
+                font-size: 2.2rem;
+            }
+            
+            /* CORRECCIÓN DEL BOTÓN PARA TABLETS */
+            .btn-home-universal {
+                position: fixed !important;
+                top: 100px !important;
+                right: 25px !important;
+                z-index: 1001 !important;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .dedication-hero {
+                height: 50vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .dedication-intro h2 {
+                font-size: 1.8rem;
+            }
+            
+            .mission-content h2 {
+                font-size: 2rem;
+                
+            }
+
+            .mission-highlight{
+                width: 95%;
+                
+            }
+            
+            /* CORRECCIÓN DEL BOTÓN PARA MÓVILES */
+            .btn-home-universal {
+                position: fixed !important;
+                top: 90px !important;
+                right: 20px !important;
+                z-index: 1001 !important;
+                padding: 10px 16px;
+                font-size: 0.85rem;
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .btn-home-universal {
+                top: 80px !important;
+                right: 15px !important;
+                padding: 8px 14px;
+                font-size: 0.8rem;
+            }
+            
+            .btn-home-universal span {
+                display: none;
+            }
+            
+            .btn-home-universal i {
+                margin-right: 0;
+            }
+        }
+
+        /* Soporte específico para Safari iOS */
+        @supports (-webkit-touch-callout: none) {
+            .btn-home-universal {
+                position: -webkit-sticky;
+                position: sticky;
+                top: 15px;
+                right: 15px;
+                -webkit-transform: translateZ(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-crown"></i>
+                    ÉLITE MODA
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="colecciones.html">Colecciones</a></li>
+                    <li><a href="dedicatoria.html" class="active">Nuestra Dedicatoria</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Botón de Inicio Universal MEJORADO -->
+    <a href="index.html" class="btn-home-universal" id="homeButton">
+        <i class="fas fa-home"></i> <span>Inicio</span>
+    </a>
+
+    <!-- Hero Section -->
+    <section class="dedication-hero">
+        <div class="hero-content">
+            <h1>Nuestra Dedicatoria</h1>
+            <p>Un compromiso con la excelencia, la autenticidad y la satisfacción de nuestros clientes</p>
+            <a href="#dedication" class="btn">Conoce Nuestra Historia</a>
+        </div>
+    </section>
+
+    <!-- Dedication Content -->
+    <section id="dedication" class="dedication-content">
+        <div class="container">
+            <div class="dedication-intro">
+                <h2>Más Allá de la Moda</h2>
+                <p>En ÉLITE MODA, no solo creamos prendas de vestir; forjamos experiencias, construimos confianza y cultivamos relaciones duraderas. Cada hilo, cada diseño y cada detalle refleja nuestro compromiso inquebrantable con la calidad y la satisfacción de quienes confían en nosotros.</p>
+            </div>
+
+            <div class="dedication-sections">
+                <div class="dedication-card">
+                    <div class="card-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Pasión por la Calidad</h3>
+                    <p>Seleccionamos meticulosamente cada material, priorizando no solo la estética sino también la durabilidad y el confort. Nuestros estándares de calidad son innegociables, porque creemos que nuestros clientes merecen solo lo mejor.</p>
+                </div>
+
+                <div class="dedication-card">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Compromiso con Nuestros Clientes</h3>
+                    <p>Más allá de transacciones comerciales, construimos relaciones. Escuchamos, aprendemos y evolucionamos con cada interacción, adaptando nuestros productos y servicios para superar continuamente las expectativas.</p>
+                </div>
+
+                <div class="dedication-card">
+                    <div class="card-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Responsabilidad con el Planeta</h3>
+                    <p>Implementamos prácticas sostenibles en nuestra cadena de producción, reduciendo nuestro impacto ambiental y promoviendo el consumo consciente. Creemos en un futuro donde la moda y la sostenibilidad coexistan en armonía.</p>
+                </div>
+            </div>
+
+            <div class="mission-section">
+                <div class="mission-content">
+                    <h2>Nuestra Promesa</h2>
+                    <p>Nos dedicamos a crear no solo prendas excepcionales, sino experiencias memorables. Cada decisión que tomamos, desde el diseño hasta la entrega final, está guiada por nuestro compromiso con la excelencia y la integridad.</p>
+                    
+                    <div class="mission-highlight">
+                        Creemos que la verdadera elegancia trasciende las tendencias pasajeras y se encuentra en la autenticidad, la calidad y el propósito.
+                    </div>
+                    
+                    <p>Esta dedicación es nuestro legado y nuestra promesa para con cada persona que elige ser parte de la familia ÉLITE MODE.</p>
+                </div>
+            </div>
+
+            <div class="team-section">
+                <div class="section-header">
+                    <h2>Nuestro Equipo</h2>
+                    <p>El talento y la dedicación detrás de cada creación</p>
+                </div>
+
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>Alejandro Martínez</h3>
+                        <div class="role">Fundador & CEO</div>
+                        <p>Con más de 15 años en la industria de la moda, Alejandro lidera nuestra visión de combinar elegancia atemporal con innovación constante.</p>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Isabella Rodríguez</h3>
+                        <div class="role">Directora Creativa</div>
+                        <p>Su ojo para el detalle y pasión por el diseño aseguran que cada colección cuente una historia única y memorable.</p>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>Carlos Herrera</h3>
+                        <div class="role">Director de Experiencia del Cliente</div>
+                        <p>Carlos garantiza que cada interacción con ÉLITE MODE sea excepcional, construyendo relaciones basadas en confianza y satisfacción.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <div class="cta-content">
+                    <h2>Únete a Nuestra Historia</h2>
+                    <p>Te invitamos a ser parte de esta dedicación a la excelencia. Descubre cómo nuestra pasión por la calidad y el servicio puede transformar tu experiencia con la moda.</p>
+                    <a href="colecciones.html" class="btn btn-light">Explorar Colecciones</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ÉLITE MODA</h3>
+                    <p>Moda exclusiva para clientes distinguidos. Calidad, estilo y sofisticación en cada prenda.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="colecciones.html">Colecciones</a></li>
+                        <li><a href="dedicatoria.html">Nuestra Dedicatoria</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Servicio al Cliente</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Preguntas Frecuentes</a></li>
+                        <li><a href="#">Envíos y Entregas</a></li>
+                        <li><a href="#">Devoluciones</a></li>
+                        <li><a href="#">Guía de Tallas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Carrera 15 #88-64, Bogotá</li>
+                        <li><i class="fas fa-phone"></i> +57 1 744 8000</li>
+                        <li><i class="fas fa-envelope"></i> info@elitemode.com</li>
+                        <li><i class="fas fa-clock"></i> Lun - Vie: 9:00 - 19:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 ÉLITE MODA. Todos los derechos reservados. | Diseñado con <i class="fas fa-heart" style="color: #c19a6b;"></i> para clientes excepcionales</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript para el comportamiento del botón de inicio -->
+    <script>
+        // Control del botón de inicio - VERSIÓN MEJORADA PARA TODOS LOS DISPOSITIVOS
+        document.addEventListener('DOMContentLoaded', function() {
+            const homeButton = document.getElementById('homeButton');
+            let scrollTimeout;
+            let isMobile = window.innerWidth <= 768;
+            
+            console.log('Dispositivo detectado:', isMobile ? 'Móvil' : 'Desktop');
+            
+            // Función para ocultar el botón
+            function hideButton() {
+                homeButton.classList.add('hidden');
+            }
+            
+            // Función para mostrar el botón
+            function showButton() {
+                homeButton.classList.remove('hidden');
+            }
+            
+            // Detectar scroll - COMPATIBLE CON TODOS LOS DISPOSITIVOS
+            window.addEventListener('scroll', function() {
+                // Solo ocultar si estamos en desktop o si hay suficiente scroll en móviles
+                if (!isMobile || window.scrollY > 100) {
+                    if (!homeButton.classList.contains('hidden')) {
+                        hideButton();
+                    }
+                }
+                
+                // Limpiar timeout anterior
+                window.clearTimeout(scrollTimeout);
+                
+                // Mostrar el botón después de que el scroll se detenga
+                scrollTimeout = setTimeout(function() {
+                    showButton();
+                }, 600);
+            }, false);
+            
+            // Mostrar el botón cuando el mouse está sobre él
+            homeButton.addEventListener('mouseenter', function() {
+                clearTimeout(scrollTimeout);
+                showButton();
+            });
+            
+            // Ocultar después de que el mouse salga (con delay)
+            homeButton.addEventListener('mouseleave', function() {
+                scrollTimeout = setTimeout(function() {
+                    if (!isMobile || window.scrollY > 100) {
+                        hideButton();
+                    }
+                }, 1000);
+            });
+            
+            // Para móviles - mostrar el botón cuando se toca cerca del borde
+            document.addEventListener('touchstart', function(e) {
+                if (isMobile) {
+                    const touchX = e.touches[0].clientX;
+                    const touchY = e.touches[0].clientY;
+                    const screenWidth = window.innerWidth;
+                    const screenHeight = window.innerHeight;
+                    
+                    // Si el toque está en el área del botón (esquina superior derecha)
+                    if (touchX > screenWidth - 100 && touchY < 100) {
+                        clearTimeout(scrollTimeout);
+                        showButton();
+                        
+                        // Ocultar después de 2 segundos
+                        setTimeout(function() {
+                            if (window.scrollY > 100) {
+                                hideButton();
+                            }
+                        }, 2000);
+                    }
+                }
+            });
+            
+            // Mostrar el botón inicialmente
+            showButton();
+
+            // Actualizar detección de dispositivo cuando cambia el tamaño
+            window.addEventListener('resize', function() {
+                isMobile = window.innerWidth <= 768;
+                console.log('Nuevo tamaño detectado:', isMobile ? 'Móvil' : 'Desktop');
+            });
+        });
+    </script>
+</body>
+</html>
