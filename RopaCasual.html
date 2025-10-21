@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="Iconos/conexion.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colecciones Elegantes | Moda Exclusiva</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #c19a6b;
+            --accent-color: #8b4513;
+            --light-color: #f8f9fa;
+            --dark-color: #1a1a1a;
+            --text-color: #333;
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 1.5rem 0;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1558769132-cb25c5d11e85?ixlib=rb-4.0.3') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 4rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* BOTÓN DE INICIO MEJORADO - FUNCIONAL PARA TODOS LOS DISPOSITIVOS */
+        .btn-home {
+            position: fixed;
+            z-index: 1000;
+            background: linear-gradient(135deg, hsl(180, 71%, 57%) 0%, hsl(197, 71%, 40%) 100%);
+            color: white;
+            padding: 14px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 6px 20px rgba(44, 62, 80, 0.4);
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid transparent;
+            backdrop-filter: blur(10px);
+            letter-spacing: 0.5px;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+            /* Posición para desktop */
+            top: 120px;
+            right: 30px;
+        }
+
+        .btn-home.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(44, 62, 80, 0.6);
+            background: linear-gradient(135deg, oklab(76.986% -0.1565 0.15352) 0%, #667eea 100%);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-home i {
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-home:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Efecto de pulso sutil */
+        @keyframes pulse-gentle {
+            0% { box-shadow: 0 6px 20px rgba(255, 107, 136, 0.4); }
+            50% { box-shadow: 0 6px 25px rgba(255, 107, 136, 0.6); }
+            100% { box-shadow: 0 6px 20px rgba(255, 107, 136, 0.4); }
+        }
+
+        .btn-home:not(.hidden) {
+            animation: pulse-gentle 3s infinite;
+        }
+
+        /* Collection Tabs */
+        .collection-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tab {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            position: relative;
+        }
+
+        .tab.active {
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .tab:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Collection Content */
+        .collection-content {
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .collection-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .collection-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .collection-header h2 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .collection-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 4rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            height: 350px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .add-to-cart {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .wishlist {
+            background: none;
+            border: 1px solid #ddd;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .wishlist:hover {
+            background-color: #f8f8f8;
+            color: #e74c3c;
+        }
+
+        /* Features Section */
+        .features {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5rem 0;
+            margin-top: 4rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* ===== CORRECCIONES ESPECÍFICAS PARA MÓVILES ===== */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0 10px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .collection-tabs {
+                flex-wrap: wrap;
+            }
+            
+            /* POSICIÓN DEL BOTÓN PARA MÓVILES */
+            .btn-home {
+                top: 20px !important;
+                right: 20px !important;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                height: 60vh;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .collection-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            /* POSICIÓN DEL BOTÓN PARA MÓVILES PEQUEÑOS */
+            .btn-home {
+                top: 15px !important;
+                right: 15px !important;
+                padding: 10px 16px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .btn-home {
+                padding: 8px 14px;
+                font-size: 0.8rem;
+            }
+            
+            .btn-home span {
+                display: none;
+            }
+            
+            .btn-home i {
+                margin-right: 0;
+            }
+        }
+
+        /* Soporte específico para Safari iOS */
+        @supports (-webkit-touch-callout: none) {
+            .btn-home {
+                position: -webkit-sticky;
+                position: sticky;
+                top: 15px;
+                right: 15px;
+                -webkit-transform: translateZ(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-crown"></i>
+                    ÉLITE MODA
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="Colecciones.html">Colecciones</a></li>
+                    <li><a href="RopaInt.html">Ropa Íntima</a></li>
+                    <li><a href="RopaCasual.html">Ropa Casual</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="https://wa.me/5804163034250" target="_blank"> Contacto WhatsApp</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Colecciones Exclusivas</h1>
+            <p>Descubre nuestra selección de prendas cuidadosamente curadas para el cliente distinguido</p>
+            <a href="#collections" class="btn">Explorar Colecciones</a>
+        </div>
+    </section>
+
+    <!-- Home Button MEJORADO -->
+    <a href="index.html" class="btn-home" id="homeButton">
+        <i class="fas fa-home"></i> <span>Inicio</span>
+    </a>
+
+    <!-- Collections Section -->
+    <section id="collections" class="container">
+        <div class="collection-tabs">
+            <div class="tab active" data-target="intima">Ropa Íntima Damas</div>
+            <div class="tab" data-target="casual">Ropa Casual Unisex</div>
+        </div>
+
+        <!-- Intimate Collection -->
+        <div id="intima" class="collection-content active">
+            <div class="collection-header">
+                <h2>Ropa Íntima para Damas</h2>
+                <p>Elegancia, confort y sofisticación en cada detalle. Nuestra colección de lencería combina los mejores materiales con diseños exclusivos.</p>
+            </div>
+
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1583496661160-fb5886a13d77?ixlib=rb-4.0.3" alt="Conjunto de encaje">
+                        <div class="product-badge">Nuevo</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Conjunto de Encaje Negro</h3>
+                        <p class="product-price">$89.000</p>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Añadir al Carrito</button>
+                            <button class="wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3" alt="Sujetador seda">
+                        <div class="product-badge">Más Vendido</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Sujetador de Seda Natural</h3>
+                        <p class="product-price">$75.000</p>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Añadir al Carrito</button>
+                            <button class="wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3" alt="Pijama elegante">
+                        <div class="product-badge">Exclusivo</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Pijama Elegante de Saten</h3>
+                        <p class="product-price">$120.000</p>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Añadir al Carrito</button>
+                            <button class="wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Casual Collection -->
+        <div id="casual" class="collection-content">
+            <div class="collection-header">
+                <h2>Ropa Casual Unisex</h2>
+                <p>Estilo relajado sin sacrificar la elegancia. Nuestra colección casual ofrece prendas versátiles para el día a día con un toque de distinción.</p>
+            </div>
+
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1520006403909-838d6b92c22e?ixlib=rb-4.0.3" alt="Jeans premium">
+                        <div class="product-badge">Nuevo</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Jeans Premium Slim Fit</h3>
+                        <p class="product-price">$145.000</p>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Añadir al Carrito</button>
+                            <button class="wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-4.0.3" alt="Camiseta algodón">
+                        <div class="product-badge">Oferta</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Camiseta de Algodón Orgánico</h3>
+                        <p class="product-price">$55.000</p>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Añadir al Carrito</button>
+                            <button class="wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-4.0.3" alt="Sudadera premium">
+                        <div class="product-badge">Exclusivo</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Sudadera Premium con Capucha</h3>
+                        <p class="product-price">$180.000</p>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Añadir al Carrito</button>
+                            <button class="wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fas fa-truck"></i>
+                    <h3>Envío Gratis</h3>
+                    <p>En compras superiores a $300.000</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Pago Seguro</h3>
+                    <p>Transacciones 100% protegidas</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-undo-alt"></i>
+                    <h3>Devoluciones</h3>
+                    <p>Hasta 30 días para cambiar tu producto</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-headset"></i>
+                    <h3>Atención Premium</h3>
+                    <p>Asesoramiento personalizado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ÉLITE MODA</h3>
+                    <p>Moda exclusiva para clientes distinguidos. Calidad, estilo y sofisticación en cada prenda.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.pinterest.com"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.twiter.com"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Nueva Colección</a></li>
+                        <li><a href="#">Ofertas Especiales</a></li>
+                        <li><a href="#">Lookbook</a></li>
+                        <li><a href="#">Blog de Moda</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Servicio al Cliente</h3>
+                    <ul class="footer-links">
+                        <!--<li><a href="https://wa.me/5804163034250?" target="_blank" onclick="closeMenu()">⭐ Contacto WhatsApp</a></li>-->
+                        <li><a href="https://wa.me/5804163034250?" target="_blank" onclick="closeMenu()">Contactarnos</a></li>
+                        <li><a href="#">Preguntas Frecuentes</a></li>
+                        <li><a href="#">Envíos y Entregas</a></li>
+                        <li><a href="#">Devoluciones</a></li>
+                        <li><a href="#">Guía de Tallas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Carrera 15 #88-64, Bogotá</li>
+                        <li><i class="fas fa-phone"></i> +57 1 744 8000</li>
+                        <li><i class="fas fa-envelope"></i> info@elitemoda.com</li>
+                        <li><i class="fas fa-clock"></i> Lun - Vie: 9:00 - 19:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 ÉLITE MODA. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Control del botón de inicio - VERSIÓN MEJORADA PARA TODOS LOS DISPOSITIVOS
+        document.addEventListener('DOMContentLoaded', function() {
+            const homeButton = document.getElementById('homeButton');
+            let scrollTimeout;
+            let isMobile = window.innerWidth <= 768;
+            
+            console.log('Dispositivo detectado:', isMobile ? 'Móvil' : 'Desktop');
+            
+            // Función para ocultar el botón
+            function hideButton() {
+                homeButton.classList.add('hidden');
+            }
+            
+            // Función para mostrar el botón
+            function showButton() {
+                homeButton.classList.remove('hidden');
+            }
+            
+            // Detectar scroll - COMPATIBLE CON TODOS LOS DISPOSITIVOS
+            window.addEventListener('scroll', function() {
+                // Solo ocultar si estamos en desktop o si hay suficiente scroll en móviles
+                if (!isMobile || window.scrollY > 100) {
+                    if (!homeButton.classList.contains('hidden')) {
+                        hideButton();
+                    }
+                }
+                
+                // Limpiar timeout anterior
+                window.clearTimeout(scrollTimeout);
+                
+                // Mostrar el botón después de que el scroll se detenga
+                scrollTimeout = setTimeout(function() {
+                    showButton();
+                }, 600);
+            }, false);
+            
+            // Mostrar el botón cuando el mouse está sobre él
+            homeButton.addEventListener('mouseenter', function() {
+                clearTimeout(scrollTimeout);
+                showButton();
+            });
+            
+            // Ocultar después de que el mouse salga (con delay)
+            homeButton.addEventListener('mouseleave', function() {
+                scrollTimeout = setTimeout(function() {
+                    if (!isMobile || window.scrollY > 100) {
+                        hideButton();
+                    }
+                }, 1000);
+            });
+            
+            // Para móviles - mostrar el botón cuando se toca cerca del borde
+            document.addEventListener('touchstart', function(e) {
+                if (isMobile) {
+                    const touchX = e.touches[0].clientX;
+                    const touchY = e.touches[0].clientY;
+                    const screenWidth = window.innerWidth;
+                    const screenHeight = window.innerHeight;
+                    
+                    // Si el toque está en el área del botón (esquina superior derecha)
+                    if (touchX > screenWidth - 100 && touchY < 100) {
+                        clearTimeout(scrollTimeout);
+                        showButton();
+                        
+                        // Ocultar después de 2 segundos
+                        setTimeout(function() {
+                            if (window.scrollY > 100) {
+                                hideButton();
+                            }
+                        }, 2000);
+                    }
+                }
+            });
+            
+            // Mostrar el botón inicialmente
+            showButton();
+
+            // Actualizar detección de dispositivo cuando cambia el tamaño
+            window.addEventListener('resize', function() {
+                isMobile = window.innerWidth <= 768;
+                console.log('Nuevo tamaño detectado:', isMobile ? 'Móvil' : 'Desktop');
+            });
+
+            // Tab functionality
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.collection-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding content
+                    tab.classList.add('active');
+                    const target = tab.getAttribute('data-target');
+                    document.getElementById(target).classList.add('active');
+                });
+            });
+            
+            // Add to cart functionality
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productTitle = this.closest('.product-card').querySelector('.product-title').textContent;
+                    alert(`¡${productTitle} ha sido añadido al carrito!`);
+                });
+            });
+            
+            // Wishlist functionality
+            const wishlistButtons = document.querySelectorAll('.wishlist');
+            wishlistButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const icon = this.querySelector('i');
+                    if (icon.classList.contains('far')) {
+                        icon.classList.remove('far');
+                        icon.classList.add('fas');
+                        this.style.color = '#e74c3c';
+                    } else {
+                        icon.classList.remove('fas');
+                        icon.classList.add('far');
+                        this.style.color = '';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
