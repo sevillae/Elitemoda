@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes - Moda Casual e Íntima</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👕</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: #ffdd59;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 50px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 50px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        /* Botones flotantes */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 99;
+        }
+        
+        .floating-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .floating-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(0);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+        
+        .floating-button:hover::before {
+            transform: scale(1);
+        }
+        
+        .floating-button i {
+            font-size: 1.5rem;
+            color: white;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+        
+        .floating-button:hover i {
+            transform: scale(1.2);
+        }
+        
+        .floating-button span {
+            position: absolute;
+            right: 70px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .floating-button:hover span {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Botón de inicio mejorado */
+        .back-to-top {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border: 2px solid white;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-8px) rotate(5deg);
+            box-shadow: 0 12px 25px rgba(106, 17, 203, 0.4);
+        }
+        
+        /* Botón de WhatsApp con efecto intermitente */
+        .whatsapp-button {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            animation: pulse-whatsapp 2s infinite;
+            position: relative;
+        }
+        
+        @keyframes pulse-whatsapp {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 6px 25px rgba(37, 211, 102, 0.7), 0 0 0 10px rgba(37, 211, 102, 0.2);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            }
+        }
+        
+        .whatsapp-button:hover {
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 12px 25px rgba(37, 211, 102, 0.6), 0 0 0 15px rgba(37, 211, 102, 0.1);
+            animation: none;
+        }
+        
+        /* Botón de llamadas */
+        .call-button {
+            background: linear-gradient(135deg, #FF416C 0%, #FF4B2B 100%);
+        }
+        
+        .call-button:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(255, 65, 108, 0.4);
+        }
+        
+        /* Estados de visibilidad */
+        .floating-button.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        
+        .floating-button.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: #6a11cb;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #bbb;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: #6a11cb;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            margin-top: 30px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .faq-question {
+                font-size: 1rem;
+                padding: 15px;
+            }
+            
+            .floating-buttons {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .floating-button {
+                width: 55px;
+                height: 55px;
+            }
+            
+            .floating-button span {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+            
+            @keyframes pulse-whatsapp {
+                0% {
+                    transform: scale(1);
+                    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+                }
+                50% {
+                    transform: scale(1.08);
+                    box-shadow: 0 4px 18px rgba(37, 211, 102, 0.7), 0 0 0 8px rgba(37, 211, 102, 0.2);
+                }
+                100% {
+                    transform: scale(1);
+                    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-tshirt"></i>
+                    <span>ModaElegante</span>
+                </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="#">Productos</a></li>
+                        <li><a href="#">Novedades</a></li>
+                        <li><a href="#">Ofertas</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Preguntas Frecuentes</h1>
+            <p>Encuentra respuestas a las dudas más comunes sobre nuestra ropa casual e íntima</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Preguntas Frecuentes</h2>
+            <div class="faq-container">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Cómo puedo saber mi talla correcta?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>En cada página de producto encontrarás una guía de tallas detallada. Te recomendamos medir tu cuerpo y comparar con nuestras tablas de medidas. Si tienes dudas, nuestro servicio de atención al cliente puede asesorarte para elegir la talla perfecta.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Qué materiales utilizan en su ropa íntima?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Utilizamos materiales de alta calidad como algodón orgánico, microfibra, seda y encajes de primera calidad. Todos nuestros productos son hipoalergénicos y respetuosos con la piel, garantizando comodidad y durabilidad.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Cuál es el tiempo de entrega?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>El tiempo de entrega varía según tu ubicación. Para envíos nacionales, el tiempo estimado es de 3 a 5 días hábiles. Para envíos internacionales, puede tomar de 7 a 14 días hábiles. Ofrecemos seguimiento en tiempo real para todos los pedidos.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Aceptan devoluciones o cambios?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, aceptamos devoluciones y cambios dentro de los 30 días posteriores a la recepción del pedido. Los productos deben estar en su estado original, con etiquetas y sin haber sido usados. La ropa íntima por razones de higiene solo puede ser devuelta si el embalaje original está intacto.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Cómo debo cuidar mi ropa para que dure más?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Te recomendamos seguir las instrucciones de cuidado en la etiqueta de cada prenda. En general, para ropa íntima sugerimos lavado a mano con agua fría y secado al aire. Para la ropa casual, lavado a máquina en ciclo suave y evitar el secador para mantener los colores y formas.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 6 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Ofrecen envío gratuito?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, ofrecemos envío gratuito para todos los pedidos superiores a $50. Para pedidos inferiores a esta cantidad, el costo de envío se calcula según la ubicación y el peso del paquete.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 7 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Tienen colecciones sostenibles?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, estamos comprometidos con la sostenibilidad. Contamos con una línea ecológica que utiliza materiales orgánicos, tintes naturales y procesos de producción responsables. Puedes identificar estos productos por el sello "Eco-Friendly" en nuestras descripciones.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botones flotantes -->
+    <div class="floating-buttons">
+        <!-- Botón de inicio mejorado -->
+        <a href="index.html" class="floating-button back-to-top visible" id="backToTop">
+            <i class="fas fa-home"></i>
+            <span>Ir al Inicio</span>
+        </a>
+        
+        <!-- Botón de WhatsApp con efecto intermitente -->
+        <a href="https://wa.me/1234567890" class="floating-button whatsapp-button visible" target="_blank" id="whatsappButton">
+            <i class="fab fa-whatsapp"></i>
+            <span>Chatear por WhatsApp</span>
+        </a>
+        
+        <!-- Botón de llamadas -->
+        <a href="tel:+1234567890" class="floating-button call-button visible">
+            <i class="fas fa-phone"></i>
+            <span>Llamar ahora</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ModaElegante</h3>
+                    <p>Tu destino para ropa casual e íntima de la más alta calidad. Combinamos estilo, comodidad y sostenibilidad en cada prenda.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <a href="index.html">Inicio</a>
+                    <a href="#">Productos</a>
+                    <a href="#">Novedades</a>
+                    <a href="#">Ofertas</a>
+                    <a href="#">Contacto</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Información</h3>
+                    <a href="#">Sobre Nosotros</a>
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Términos y Condiciones</a>
+                    <a href="#">Política de Devoluciones</a>
+                    <a href="#">Preguntas Frecuentes</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Calle Moda 123, Ciudad</p>
+                    <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+                    <p><i class="fas fa-envelope"></i> info@modaelegante.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ModaElegante. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Funcionalidad para las preguntas frecuentes
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Funcionalidad para los botones flotantes
+        const floatingButtons = document.querySelectorAll('.floating-button');
+        const whatsappButton = document.getElementById('whatsappButton');
+        let scrollTimeout;
+        let isHovering = false;
+        let isScrolling = false;
+
+        // Los botones están visibles por defecto
+        floatingButtons.forEach(button => {
+            button.classList.add('visible');
+        });
+
+        // Función para ocultar los botones cuando se detecta scroll
+        window.addEventListener('scroll', () => {
+            isScrolling = true;
+            
+            // Ocultar los botones cuando se detecta scroll (excepto si el mouse está sobre ellos)
+            floatingButtons.forEach(button => {
+                if (!button.matches(':hover')) {
+                    button.classList.remove('visible');
+                    button.classList.add('hidden');
+                }
+            });
+            
+            // Limpiar el temporizador anterior
+            clearTimeout(scrollTimeout);
+            
+            // Mostrar los botones después de detener el scroll
+            scrollTimeout = setTimeout(() => {
+                isScrolling = false;
+                floatingButtons.forEach(button => {
+                    if (!button.matches(':hover')) {
+                        button.classList.remove('hidden');
+                        button.classList.add('visible');
+                    }
+                });
+            }, 800);
+        });
+
+        // Evitar que los botones se oculten cuando el mouse está sobre ellos
+        floatingButtons.forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                isHovering = true;
+                button.classList.remove('hidden');
+                button.classList.add('visible');
+                
+                // Pausar la animación del botón de WhatsApp al hacer hover
+                if (button.id === 'whatsappButton') {
+                    button.style.animationPlayState = 'paused';
+                }
+            });
+
+            button.addEventListener('mouseleave', () => {
+                isHovering = false;
+                // Solo ocultar si estamos haciendo scroll
+                if (isScrolling) {
+                    button.classList.remove('visible');
+                    button.classList.add('hidden');
+                }
+                
+                // Reanudar la animación del botón de WhatsApp al quitar el hover
+                if (button.id === 'whatsappButton') {
+                    button.style.animationPlayState = 'running';
+                }
+            });
+        });
+
+        // Menú móvil
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
