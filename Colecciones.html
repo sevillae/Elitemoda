@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería Completa | ÉLITE MODA</title>
+    
+    <!-- Font Awesome 6.5.1 que incluye el ícono de Threads -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+ 
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
+        /* BOTÓN DE INICIO ELEGANTE */
+        .btn-home {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            z-index: 10000;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            color: white;
+            padding: 16px 17px;
+            border-radius: 35px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            transition: all 0.4s ease;
+            opacity: 1;
+            transform: translateY(0);
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+            animation: pulse-gold 3s infinite;
+        }
+
+        .btn-home.hidden {
+            opacity: 0;
+            transform: translateY(-50px);
+            pointer-events: none;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-5px) scale(1.08);
+            box-shadow: 0 15px 30px rgba(139, 69, 19, 0.7);
+            border-color: #ffd700;
+            animation: none;
+        }
+
+        /* BOTÓN DE LLAMADAS ELEGANTE */
+        .btn-call {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 10000;
+            background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+            color: white;
+            padding: 16px 17px;
+            border-radius: 35px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            box-shadow: 0 8px 25px rgba(0, 100, 0, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 2px solid rgba(144, 238, 144, 0.5);
+            transition: all 0.4s ease;
+            opacity: 1;
+            transform: translateY(0);
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+            animation: pulse-green 3s infinite;
+            visibility:hidden;
+        }
+
+        .btn-call.hidden {
+            opacity: 0;
+            transform: translateY(50px);
+            pointer-events: none;
+        }
+
+        .btn-call:hover {
+            transform: translateY(-5px) scale(1.08);
+            box-shadow: 0 15px 30px rgba(0, 100, 0, 0.7);
+            border-color: #90ee90;
+            animation: none;
+        }
+
+        /* ANIMACIONES DE PULSO INTERMITENTE */
+        @keyframes pulse-gold {
+            0%, 100% {
+                box-shadow: 0 8px 25px rgba(139, 69, 19, 0.5);
+                border-color: rgba(255, 215, 0, 0.5);
+            }
+            50% {
+                box-shadow: 0 8px 35px rgba(139, 69, 19, 0.8), 0 0 20px rgba(255, 215, 0, 0.4);
+                border-color: rgba(255, 215, 0, 0.8);
+            }
+        }
+
+        @keyframes pulse-green {
+            0%, 100% {
+                box-shadow: 0 8px 25px rgba(0, 100, 0, 0.5);
+                border-color: rgba(144, 238, 144, 0.5);
+            }
+            50% {
+                box-shadow: 0 8px 35px rgba(0, 100, 0, 0.8), 0 0 20px rgba(144, 238, 144, 0.4);
+                border-color: rgba(144, 238, 144, 0.8);
+            }
+        }
+
+        /* HEADER ELEGANTE Y DE LUJO - MENOS ALTURA */
+        .page-header {
+            text-align: center;
+            padding: 70px 20px 60px;
+            background: linear-gradient(135deg, 
+                #1a1a1a 0%, 
+                #2d1b0e 25%, 
+                #5d4037 50%, 
+                #8d6e63 75%, 
+                #bcaaa4 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(184, 134, 11, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 69, 19, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 81, 45, 0.2) 0%, transparent 50%);
+            animation: shimmer 8s ease-in-out infinite;
+        }
+
+        .page-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.03)"/></svg>');
+            background-size: cover;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 0.8; }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-header h1 {
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #d4af37, #ffd700, #f0e68c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .luxury-divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, #ffd700, #d4af37, transparent);
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .luxury-divider::before,
+        .luxury-divider::after {
+            content: '✦';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #d4af37;
+            font-size: 0.8rem;
+        }
+
+        .luxury-divider::before {
+            left: -20px;
+        }
+
+        .luxury-divider::after {
+            right: -20px;
+        }
+
+        /* GALERÍA MEJORADA */
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            border: 1px solid #f0f0f0;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+            
+        }
+
+        /* OVERLAY DE PRECIO MÁS CLARO */
+        .price-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(184, 134, 11, 0.7), rgba(218, 165, 32, 0.6));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.49s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .gallery-item:hover .price-overlay {
+            opacity: 1;
+        }
+
+        .price-tag {
+            background: linear-gradient(135deg, #fff, #f8f9fa);
+            color: #8B4513;
+            padding: 20px 35px;
+            border-radius: 50px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            transform: translateY(30px);
+            transition: transform 0.4s ease;
+            border: 2px solid #d4af37;
+        }
+
+        .gallery-item:hover .price-tag {
+            transform: translateY(0);
+        }
+
+        /* INFORMACIÓN DEL PRODUCTO */
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #2c3e50;
+        }
+
+        .product-description {
+            color: #666;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .product-details {
+            margin-top: 15px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 10px;
+            border-left: 4px solid #d4af37;
+        }
+
+        .product-details p {
+            margin: 5px 0;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        /* FOOTER ELEGANTE */
+        .page-footer {
+            background: linear-gradient(135deg, #1a1a1a, #2d1b0e);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-content h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #d4af37, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.3rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .social-link:hover {
+            background: #d4af37;
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
+            }
+            
+            .image-container {
+                height: 300px;
+            }
+            
+            .price-tag {
+                font-size: 1.5rem;
+                padding: 15px 25px;
+            }
+            
+            .btn-home, .btn-call {
+                padding: 12px 22px;
+                font-size: 0.95rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .page-header {
+                padding: 60px 20px 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .page-header p {
+                font-size: 1.1rem;
+            }
+            
+            .btn-home, .btn-call {
+                padding: 12px 17px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Botón de Inicio Elegante -->
+    <a href="index.html" class="btn-home">
+        <i class="fas fa-home"></i></a>
+
+    <!-- Botón de Llamadas Elegante -->
+    <a href="tel:+584163034250" class="btn-call">
+        <i class="fas fa-phone"></i></a>
+
+    <!-- Header Elegante -->
+    <header class="page-header">
+        <div class="header-content">
+            <h1>ÉLITE MODA</h1>
+            <div class="luxury-divider"></div>
+            <p>Colección Exclusiva | Pasa el mouse sobre cada imagen para descubrir el precio</p>
+        </div>
+    </header>
+
+    <!-- Galería Completa -->
+    <div class="gallery-container">
+        <div class="gallery-grid">
+            
+            <!-- Producto 1 -->
+            <div class="gallery-item">
+                <div class="image-container">
+                    <img src="Imagenes2/Imagen1.jpg" alt="Conjunto deportivo Kirios" class="gallery-image" onerror="this.src='https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=500&fit=crop'">
+                    <div class="price-overlay">
+                        <div class="price-tag">$40.000</div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Conjunto deportivo Kirios</h3>
+                    <p class="product-description">Conjunto completo deportivo de alta calidad</p>
+                    <div class="product-details">
+                        <p>• Franela tela atlética: $15</p>
+                        <p>• Top deportivo: $12</p>
+                        <p>• Leggins: $18</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="gallery-item">
+                <div class="image-container">
+                    <img src="Imagenes2/Imagen2.jpg" alt="Conjunto deportivo Kirios" class="gallery-image" onerror="this.src='https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=400&h=500&fit=crop'">
+                    <div class="price-overlay">
+                        <div class="price-tag">$40.000</div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Conjunto deportivo Kirios</h3>
+                    <p class="product-description">Set deportivo premium para entrenamiento</p>
+                    <div class="product-details">
+                        <p>• Franela tela atlética: $15</p>
+                        <p>• Top deportivo: $9</p>
+                        <p>• Leggins: $18</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="gallery-item">
+                <div class="image-container">
+                    <img src="Imagenes2/Imagen3.jpg" alt="Conjunto deportivo Kirios" class="gallery-image" onerror="this.src='https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=500&fit=crop'">
+                    <div class="price-overlay">
+                        <div class="price-tag">$40.000</div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Conjunto deportivo Kirios</h3>
+                    <p class="product-description">Excelente calidad en tela atlética</p>
+                    <div class="product-details">
+                        <p>• Franela tela atlética: $15</p>
+                        <p>• Top deportivo: $12</p>
+                        <p>• Leggins: $18</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 4 -->
+            <div class="gallery-item">
+                <div class="image-container">
+                    <img src="Imagenes2/Imagen4.jpg" alt="Conjunto deportivo Kirios" class="gallery-image" onerror="this.src='https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=400&h=500&fit=crop'">
+                    <div class="price-overlay">
+                        <div class="price-tag">$40.000</div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Conjunto deportivo Kirios</h3>
+                    <p class="product-description">Combinación perfecta para el deporte</p>
+                    <div class="product-details">
+                        <p>• Franela tela atlética: $15</p>
+                        <p>• Top deportivo: $12</p>
+                        <p>• Leggins: $18</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 5 -->
+            <div class="gallery-item">
+                <div class="image-container">
+                    <img src="Imagenes2/Imagen5.jpg" alt="Conjunto Individual" class="gallery-image" onerror="this.src='https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?w=400&h=500&fit=crop'">
+                    <div class="price-overlay">
+                        <div class="price-tag">$40.000</div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Conjunto Individual</h3>
+                    <p class="product-description">Set deportivo individual premium</p>
+                    <div class="product-details">
+                        <p>• Franela tela atlética: $15</p>
+                        <p>• Top deportivo: $9</p>
+                        <p>• Leggins: $18</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 6 -->
+            <div class="gallery-item">
+                <div class="image-container">
+                    <img src="Imagenes2/Imagen6.jpg" alt="Traje Ejecutivo Premium" class="gallery-image" onerror="this.src='https://images.unsplash.com/photo-1475180098004-ca77a66827be?w=400&h=500&fit=crop'">
+                    <div class="price-overlay">
+                        <div class="price-tag">$150.000</div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Traje Ejecutivo Premium</h3>
+                    <p class="product-description">Elegancia y sofisticación en sastrería italiana</p>
+                    <div class="product-details">
+                        <p>• Lana super 120s</p>
+                        <p>• Corte italiano premium</p>
+                        <p>• Acabados de lujo</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 7 -->
+            <div class="gallery-item">
+                <div class="image-container">
+                    <img src="Imagenes3/Imagen7.jpg" alt="Vestido de Verano Floral" class="gallery-image" onerror="this.src='https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=500&fit=crop'">
+                    <div class="price-overlay">
+                        <div class="price-tag">$72.000</div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Vestido de Verano Floral</h3>
+                    <p class="product-description">Frescura y estilo con estampado exclusivo</p>
+                    <div class="product-details">
+                        <p>• Lino natural premium</p>
+                        <p>• Estampado floral exclusivo</p>
+                        <p>• Corte veraniego elegante</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 8 -->
+            <div class="gallery-item">
+                <div class="image-container">
+                    <img src="Imagenes3/Imagen8.jpg" alt="Chaqueta de Cuero Legítimo" class="gallery-image" onerror="this.src='https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=500&fit=crop'">
+                    <div class="price-overlay">
+                        <div class="price-tag">$180.000</div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Chaqueta de Cuero Legítimo</h3>
+                    <p class="product-description">Autenticidad y estilo en cuero italiano</p>
+                    <div class="product-details">
+                        <p>• Cuero italiano genuino</p>
+                        <p>• Curtido vegetalmente</p>
+                        <p>• Acabados artesanales</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 9 -->
+            <div class="gallery-item">
+                <div class="image-container">
+                    <img src="Imagenes4/Imagen9.jpg" alt="Jeans para Damas" class="gallery-image" onerror="this.src='https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&h=500&fit=crop'">
+                    <div class="price-overlay">
+                        <div class="price-tag">$24.000</div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Jeans para Damas - Stretch</h3>
+                    <p class="product-description">Comodidad y estilo en denim elastizado</p>
+                    <div class="product-details">
+                        <p>• Talla M disponible</p>
+                        <p>• Corte alto moderno</p>
+                        <p>• Material stretch premium</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 10 -->
+            <div class="gallery-item">
+                <div class="image-container">
+                    <img src="Imagenes4/Imagen10.jpg" alt="Jean para Damas" class="gallery-image" onerror="this.src='https://images.unsplash.com/photo-1582418702059-97ebafb35d09?w=400&h=500&fit=crop'">
+                    <div class="price-overlay">
+                        <div class="price-tag">$24.000</div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Jean para Damas - Stretch</h3>
+                    <p class="product-description">Ajuste perfecto y comodidad excepcional</p>
+                    <div class="product-details">
+                        <p>• Talla S disponible</p>
+                        <p>• Material elastizado</p>
+                        <p>• Diseño versátil</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 11 -->
+            <div class="gallery-item">
+                <div class="image-container">
+                    <img src="Imagenes4/Imagen11.jpg" alt="Jean Bota Campana" class="gallery-image" onerror="this.src='https://images.unsplash.com/photo-1582552938357-32b906df40cb?w=400&h=500&fit=crop'">
+                    <div class="price-overlay">
+                        <div class="price-tag">$24.000</div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Jean Bota Campana - Talla L</h3>
+                    <p class="product-description">Tendencia en corte campana con stretch</p>
+                    <div class="product-details">
+                        <p>• Talla L disponible</p>
+                        <p>• Corte bota campana</p>
+                        <p>• Material stretch: $24</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 12 -->
+            <div class="gallery-item">
+                <div class="image-container">
+                    <img src="Imagenes5/Imagen12.jpg" alt="Camisa para Damas" class="gallery-image" onerror="this.src='https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&h=500&fit=crop'">
+                    <div class="price-overlay">
+                        <div class="price-tag">$17.000</div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Camisa para Damas</h3>
+                    <p class="product-description">Elegancia casual en manga corta</p>
+                    <div class="product-details">
+                        <p>• Manga corta</p>
+                        <p>• Material stretch</p>
+                        <p>• Diseño femenino</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 13 -->
+            <div class="gallery-item">
+                <div class="image-container">
+                    <img src="Imagenes5/Imagen13.jpg" alt="Blusa Manga Corta" class="gallery-image" onerror="this.src='https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=500&fit=crop'">
+                    <div class="price-overlay">
+                        <div class="price-tag">$17.000</div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Blusa Manga Corta Exclusiva</h3>
+                    <p class="product-description">Exclusivo diseño para damas modernas</p>
+                    <div class="product-details">
+                        <p>• Manga corta elegante</p>
+                        <p>• Diseño exclusivo</p>
+                        <p>• Calidad premium</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer Elegante -->
+    <footer class="page-footer">
+        <div class="footer-content">
+            <h3>ÉLITE MODA</h3>
+            <p>Moda exclusiva para clientes distinguidos</p>
+            <div class="social-links">
+                <!-- En el <head> de tu HTML -->
+                <a href="https://www.instagram.com/yencava/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.threads.net/tu_usuario" class="social-link threads-btn" target="_blank"><i class="fa-brands fa-threads"></i><span class="tooltip"></span></a>
+                <a href="https://www.facebook.com/@yennibel.camino" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.pinterest.com/tu_usuario" class="social-link" target="_blank"><i class="fab fa-pinterest-p"></i></a>
+                <a href="https://wa.me/5804163034250" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="tel:+584163034250" class="social-link"><i class="fas fa-phone"></i></a></a>                        
+            </div>
+            <p>&copy; 2024 ÉLITE MODA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // SCRIPT FUNCIONAL PARA LOS BOTONES
+        window.addEventListener('load', function() {
+            const btnHome = document.querySelector('.btn-home');
+            const btnCall = document.querySelector('.btn-call');
+            
+            if (!btnHome || !btnCall) return;
+            
+            let scrollTimer;
+            
+            window.addEventListener('scroll', function() {
+                btnHome.classList.add('hidden');
+                btnCall.classList.add('hidden');
+                clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(function() {
+                    btnHome.classList.remove('hidden');
+                    btnCall.classList.remove('hidden');
+                }, 700);
+            });
+        });
+    </script>
+
+    
+</body>
+</html>
