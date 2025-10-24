@@ -109,7 +109,7 @@
             color: var(--secondary-color);
         }
 
-        /* Home Button - COMPORTAMIENTO MEJORADO */
+        /* Home Button - FUNCIÓN DUAL COMPLETA */
         .btn-home {
             position: fixed;
             bottom: 30px;
@@ -132,6 +132,7 @@
             opacity: 1;
             transform: translateY(0);
             pointer-events: all;
+            cursor: pointer;
         }
 
         .btn-home.hidden {
@@ -156,6 +157,32 @@
             transform: scale(1.2);
         }
 
+        /* Indicador de función dual */
+        .btn-home::after {
+            content: '2x';
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 20px;
+            height: 20px;
+            background: #ff6b88;
+            color: white;
+            border-radius: 50%;
+            border: 2px solid white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .btn-home:hover::after {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+
         /* Efecto de pulso sutil */
         @keyframes pulse-gentle {
             0% { box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4); }
@@ -165,6 +192,30 @@
 
         .btn-home:not(.hidden) {
             animation: pulse-gentle 3s infinite;
+        }
+
+        /* Tooltip para función dual */
+        .btn-home .tooltip {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            margin-bottom: 10px;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .btn-home:hover .tooltip {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Luxury Theme Styles */
@@ -577,14 +628,12 @@
             position: absolute;
             bottom: 30px;
             left: 50%;
-            transform: translateX(-50%)
-            
+            transform: translateX(-50%);
         }
 
         .mouse {
             width: 25px;
             height: 40px;
-            /*border: 2px solid white;*/
             border: 2px solid hwb(221 40% 17%);
             border-radius: 15px;
             position: relative;
@@ -745,11 +794,17 @@
             }
             
             .btn-home span {
-                display: none; /* Ocultar texto en móviles pequeños */
+                display: none;
             }
             
             .btn-home i {
                 margin-right: 0;
+            }
+            
+            .btn-home::after {
+                width: 18px;
+                height: 18px;
+                font-size: 0.6rem;
             }
         }
 
@@ -784,7 +839,21 @@
                 margin: 0;
                 font-size: 1.2rem;
             }
+            
+            .btn-home::after {
+                width: 16px;
+                height: 16px;
+                font-size: 0.5rem;
+                top: -3px;
+                right: -3px;
+            }
         }
+
+
+        .btn-home .tooltip {
+    /* Mantén el CSS anterior */
+    transition: all 0.3s ease;
+}
     </style>
 </head>
 <body>
@@ -806,11 +875,19 @@
         </div>
     </header>
 
-    <!-- Home Button MEJORADO -->
-    <a href="index.html" class="btn-home" id="homeButton" aria-label="Volver al inicio">
+    <!--PRUEBA-->
+    <!-- Botón de Inicio Elegante - COMPORTAMIENTO DUAL -->
+    <button href="index.html" class="btn-home" id="homeButton">
+        <i class="fas fa-home"></i>
+    </button>
+
+    
+    <!-- Home Button MEJORADO CON FUNCIÓN DUAL COMPLETA 
+    <button class="btn-home" id="homeButton" aria-label="Botón de función dual - Clic: Scroll arriba, Doble clic: Ir a inicio">
         <i class="fas fa-home"></i>
         <span>Inicio</span>
-    </a>
+        <div class="tooltip">Clic: Ir arriba • Doble clic: Página principal</div>
+    </button>-->
 
     <!-- Ropa Íntima Damas - Diseño Elegante -->
     <section class="intimate-collection luxury-theme">
@@ -867,6 +944,7 @@
             </div>
             
             <div class="products-masonry">
+                <!-- Producto Destacado -->
                 <div class="product-card featured">
                     <div class="product-badge">Más Vendido</div>
                     <div class="product-image">
@@ -878,7 +956,7 @@
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Bra de Encaje Delicado</h3>
-                        <p class="product-description">Encaje francés con ajuste perfecto</p>
+                        <p class="product-description">Encaje francés con ajuste perfecto y tiras ajustables para máximo confort</p>
                         <div class="product-price">
                             <span class="current-price">$45.000</span>
                             <span class="original-price">$60.000</span>
@@ -887,12 +965,87 @@
                             <span class="color-dot" style="background: #ff6b88;"></span>
                             <span class="color-dot" style="background: #000;"></span>
                             <span class="color-dot" style="background: #fff;"></span>
+                            <span class="color-dot" style="background: #8b4513;"></span>
                         </div>
                         <button class="add-to-cart-btn shimmer">Añadir al Carrito</button>
                     </div>
                 </div>
 
-                <!-- Más productos... -->
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <div class="product-badge">Nuevo</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1583496661160-fb5886a13d77?ixlib=rb-4.0.3" alt="Conjunto de lencería">
+                        <div class="product-overlay">
+                            <button class="quick-view">Vista Rápida</button>
+                            <button class="wishlist-btn">❤</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Conjunto Seductor</h3>
+                        <p class="product-description">Set completo con bra y panty de seda natural</p>
+                        <div class="product-price">
+                            <span class="current-price">$75.000</span>
+                            <span class="original-price">$95.000</span>
+                        </div>
+                        <div class="product-colors">
+                            <span class="color-dot" style="background: #8b4513;"></span>
+                            <span class="color-dot" style="background: #c19a6b;"></span>
+                            <span class="color-dot" style="background: #2c3e50;"></span>
+                        </div>
+                        <button class="add-to-cart-btn shimmer">Añadir al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1583496661160-fb5886a13d77?ixlib=rb-4.0.3" alt="Panty de encaje">
+                        <div class="product-overlay">
+                            <button class="quick-view">Vista Rápida</button>
+                            <button class="wishlist-btn">❤</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Panty High Waist</h3>
+                        <p class="product-description">Encaje italiano con diseño high waist moldeador</p>
+                        <div class="product-price">
+                            <span class="current-price">$28.000</span>
+                        </div>
+                        <div class="product-colors">
+                            <span class="color-dot" style="background: #000;"></span>
+                            <span class="color-dot" style="background: #ff6b88;"></span>
+                            <span class="color-dot" style="background: #fff;"></span>
+                        </div>
+                        <button class="add-to-cart-btn shimmer">Añadir al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="product-card">
+                    <div class="product-badge">Oferta</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1583496661160-fb5886a13d77?ixlib=rb-4.0.3" alt="Body elegante">
+                        <div class="product-overlay">
+                            <button class="quick-view">Vista Rápida</button>
+                            <button class="wishlist-btn">❤</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Body Ajustable</h3>
+                        <p class="product-description">Body de encaje con apertura en la entrepierna</p>
+                        <div class="product-price">
+                            <span class="current-price">$52.000</span>
+                            <span class="original-price">$68.000</span>
+                        </div>
+                        <div class="product-colors">
+                            <span class="color-dot" style="background: #2c3e50;"></span>
+                            <span class="color-dot" style="background: #8b4513;"></span>
+                            <span class="color-dot" style="background: #ff6b88;"></span>
+                        </div>
+                        <button class="add-to-cart-btn shimmer">Añadir al Carrito</button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -901,7 +1054,7 @@
             <div class="promo-content">
                 <span class="promo-tag">Oferta Especial</span>
                 <h2>3x2 en Toda la Lencería</h2>
-                <p>Solo por tiempo limitado</p>
+                <p>Solo por tiempo limitado - No te quedes sin tu colección</p>
                 <button class="promo-btn">Aprovechar Oferta</button>
             </div>
             <div class="promo-timer">
@@ -916,6 +1069,34 @@
                 <div class="timer-item">
                     <span class="timer-number">45</span>
                     <span class="timer-label">Minutos</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Beneficios -->
+        <div class="luxury-products-grid">
+            <div class="section-header">
+                <h2>¿Por Qué Elegir Nuestra Colección?</h2>
+                <p>Calidad y diseño en cada detalle</p>
+            </div>
+            <div class="featured-categories">
+                <div class="category-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="category-content">
+                        <h3><i class="fas fa-gem"></i> Calidad Premium</h3>
+                        <p>Telas de primera calidad importadas de Europa</p>
+                    </div>
+                </div>
+                <div class="category-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <div class="category-content">
+                        <h3><i class="fas fa-heart"></i> Diseño Exclusivo</h3>
+                        <p>Diseños únicos creados por expertos en moda íntima</p>
+                    </div>
+                </div>
+                <div class="category-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <div class="category-content">
+                        <h3><i class="fas fa-shield-alt"></i> Garantía</h3>
+                        <p>30 días de garantía en todos nuestros productos</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -938,10 +1119,10 @@
                 <div class="footer-column">
                     <h3>Enlaces Rápidos</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Inicio</a></li>
+                        <li><a href="index.html">Inicio</a></li>
                         <li><a href="Colecciones.html">Colecciones</a></li>
-                        <li><a href="Nosotros.html">Nuestra Dedicatoria</a></li>
-                        <li><a href="https://wa.me/5804163034250?" target="_blank" onclick="closeMenu()">Contacto</a></li>
+                        <li><a href="dedicatoria.html">Nuestra Dedicatoria</a></li>
+                        <li><a href="https://wa.me/5804163034250" target="_blank">Contacto WhatsApp</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -958,89 +1139,196 @@
                     <ul class="footer-links">
                         <li><i class="fas fa-map-marker-alt"></i> Carrera 15 #88-64, Bogotá</li>
                         <li><i class="fas fa-phone"></i> +57 1 744 8000</li>
-                        <li><i class="fas fa-envelope"></i> info@elitemode.com</li>
+                        <li><i class="fas fa-envelope"></i> info@elitemoda.com</li>
                         <li><i class="fas fa-clock"></i> Lun - Vie: 9:00 - 19:00</li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 ÉLITE MODA. Todos los derechos reservados.</p>
+                <p>&copy; 2024 ÉLITE MODA. Todos los derechos reservados. | Diseñado con <i class="fas fa-heart" style="color: #ff6b88;"></i> para clientes exigentes</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Efecto Parallax
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('.parallax-bg');
-            if (parallax) {
-                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
+       // Control del botón de inicio - COMPORTAMIENTO MEJORADO
+    document.addEventListener('DOMContentLoaded', function() {
+    const homeButton = document.getElementById('homeButton');
+    let scrollTimeout;
+    let isRedirecting = false;
+    
+    // Verificar si estamos en la parte superior
+    function checkIfAtTop() {
+        return window.pageYOffset === 0;
+    }
+    
+    // Función para hacer scroll al top
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
-
-        // Control del botón de inicio - VERSIÓN FUNCIONAL
-        document.addEventListener('DOMContentLoaded', function() {
-            const homeButton = document.getElementById('homeButton');
-            let scrollTimeout;
-            
-            // Función para ocultar el botón
-            function hideButton() {
-                homeButton.classList.add('hidden');
-            }
-            
-            // Función para mostrar el botón
-            function showButton() {
-                homeButton.classList.remove('hidden');
-            }
-            
-            // Detectar scroll
-            window.addEventListener('scroll', function() {
-                // Ocultar el botón inmediatamente al detectar scroll
-                if (!homeButton.classList.contains('hidden')) {
-                    hideButton();
-                }
-                
-                // Limpiar timeout anterior
-                window.clearTimeout(scrollTimeout);
-                
-                // Mostrar el botón después de que el scroll se detenga
-                scrollTimeout = setTimeout(function() {
-                    showButton();
-                }, 600); // 300ms después de que el scroll se detenga
-            }, false);
-            
-            // Mostrar el botón cuando el mouse está sobre él
-            homeButton.addEventListener('mouseenter', function() {
-                clearTimeout(scrollTimeout);
+    }
+    
+    // Función para redirigir al index
+    function goToIndex() {
+        isRedirecting = true;
+        // Pequeño delay para asegurar que el botón se vea clickeado
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 100);
+    }
+    
+    // Manejar el clic del botón
+    homeButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        console.log('Botón clickeado, isRedirecting:', isRedirecting); // Debug
+        
+        // Si ya estamos redirigiendo, no hacer nada
+        if (isRedirecting) {
+            console.log('Redirección en proceso, ignorando clic');
+            return;
+        }
+        
+        // Verificar si estamos en la parte superior
+        const atTop = checkIfAtTop();
+        console.log('Estamos en top:', atTop);
+        
+        if (atTop) {
+            // Si YA estamos en top, redirigir a index.html
+            console.log('Redirigiendo a index.html');
+            goToIndex();
+        } else {
+            // Si NO estamos en top, hacer scroll al top
+            console.log('Haciendo scroll al top');
+            scrollToTop();
+        }
+    });
+    
+    // Función para ocultar el botón
+    function hideButton() {
+        // No ocultar si estamos en proceso de redirección
+        if (!isRedirecting) {
+            homeButton.classList.add('hidden');
+        }
+    }
+    
+    // Función para mostrar el botón
+    function showButton() {
+        homeButton.classList.remove('hidden');
+    }
+    
+    // Detectar scroll
+    window.addEventListener('scroll', function() {
+        // No ocultar si estamos en proceso de redirección
+        if (isRedirecting) return;
+        
+        // Ocultar el botón inmediatamente al detectar scroll
+        if (!homeButton.classList.contains('hidden')) {
+            hideButton();
+        }
+        
+        // Limpiar timeout anterior
+        window.clearTimeout(scrollTimeout);
+        
+        // Mostrar el botón después de que el scroll se detenga
+        scrollTimeout = setTimeout(function() {
+            // No mostrar si estamos en proceso de redirección
+            if (!isRedirecting) {
                 showButton();
-            });
-            
-            // Ocultar después de que el mouse salga (con delay)
-            homeButton.addEventListener('mouseleave', function() {
-                scrollTimeout = setTimeout(function() {
-                    hideButton();
-                }, 1000);
-            });
-            
-            // Mostrar el botón inicialmente
-            showButton();
-        });
+            }
+        }, 600);
+    }, false);
+    
+    // Mostrar el botón cuando el mouse está sobre él
+    homeButton.addEventListener('mouseenter', function() {
+        clearTimeout(scrollTimeout);
+        showButton();
+    });
+    
+    // Ocultar después de que el mouse salga (con delay)
+    homeButton.addEventListener('mouseleave', function() {
+        // No ocultar si estamos en proceso de redirección
+        if (!isRedirecting) {
+            scrollTimeout = setTimeout(function() {
+                showButton();
+            }, 1000);
+        }
+    });
+    
+    // Resetear el estado cuando la página se carga completamente
+    window.addEventListener('load', function() {
+        console.log('Página cargada, reseteando isRedirecting');
+        isRedirecting = false;
+    });
+    
+    // También resetear cuando la página se vuelve visible (por si acaso)
+    document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) {
+            console.log('Página visible, reseteando isRedirecting');
+            isRedirecting = false;
+        }
+    });
+    
+    // Resetear inmediatamente al cargar el DOM
+    console.log('DOM cargado, reseteando isRedirecting');
+    isRedirecting = false;
+    
+    // Mostrar el botón inicialmente
+    showButton();
+    
+    // Actualizar tooltip dinámicamente
+    function updateTooltip() {
+        const tooltip = homeButton.querySelector('.tooltip');
+        if (tooltip) {
+            if (checkIfAtTop()) {
+                tooltip.textContent = 'Clic: Ir a página principal';
+            } else {
+                tooltip.textContent = 'Clic: Ir arriba';
+            }
+        }
+    }
+    
+    // Actualizar tooltip cuando cambie el scroll
+    window.addEventListener('scroll', updateTooltip);
+    updateTooltip(); // Actualizar inicialmente
+});
 
-        // Efecto de aparición escalonada para productos
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeUp 0.6s ease forwards';
-                }
-            });
-        });
+// Efecto de aparición escalonada para productos
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.animation = 'fadeUp 0.6s ease forwards';
+            entry.target.style.animationDelay = (Math.random() * 0.5) + 's';
+        }
+    });
+});
 
-        document.querySelectorAll('.product-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            observer.observe(card);
-        });
+document.querySelectorAll('.product-card').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    observer.observe(card);
+});
+
+// Animación para los botones de llamada a la acción
+document.querySelectorAll('.cta-btn, .promo-btn, .add-to-cart-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            this.style.transform = '';
+        }, 150);
+    });
+});
+
+// Efecto Parallax
+window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const parallax = document.querySelector('.parallax-bg');
+    if (parallax) {
+        parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+    }
+});
     </script>
 </body>
 </html>
