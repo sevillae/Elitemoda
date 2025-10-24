@@ -137,7 +137,7 @@
             cursor: pointer;
         }
         
-        /* Botón de inicio elegante */
+        /* Botón de inicio elegante - COMPORTAMIENTO DUAL */
         .scroll-to-top {
             position: fixed;
             bottom: 40px;
@@ -156,17 +156,15 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
             transition: var(--transition);
             z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px) scale(0.9);
-            border: 2px solid var(--gold-color);
-            text-decoration: none;
-        }
-        
-        .scroll-to-top.visible {
             opacity: 1;
             visibility: visible;
-            transform: translateY(0) scale(1);
+            border: 2px solid var(--gold-color);
+        }
+        
+        .scroll-to-top.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.8);
         }
         
         .scroll-to-top:hover {
@@ -174,6 +172,48 @@
             color: var(--text-dark);
             transform: translateY(-5px) scale(1.05);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Tooltip para el botón */
+        .scroll-to-top::after {
+            content: 'Inicio / Volver al inicio';
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        .scroll-to-top:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Efecto de pulso */
+        @keyframes pulse-gold {
+            0%, 100% {
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            }
+            50% {
+                box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+            }
+        }
+        
+        .scroll-to-top {
+            animation: pulse-gold 3s infinite;
+        }
+        
+        .scroll-to-top:hover {
+            animation: none;
         }
         
         /* Hero Section con efecto parallax */
@@ -562,8 +602,15 @@
             .scroll-to-top {
                 bottom: 25px;
                 right: 25px;
-                width: 50px;
-                height: 50px;
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+            }
+            
+            .scroll-to-top::after {
+                font-size: 0.7rem;
+                bottom: 60px;
+                right: -10px;
             }
             
             .btn-container {
@@ -593,8 +640,8 @@
             .scroll-to-top {
                 bottom: 20px;
                 right: 20px;
-                width: 45px;
-                height: 45px;
+                width: 50px;
+                height: 50px;
                 font-size: 1.2rem;
             }
             
@@ -637,10 +684,10 @@
         </nav>
     </header>
 
-    <!-- Botón de inicio que lleva al index.html -->
-    <a href="index.html" class="scroll-to-top" id="scrollToTop">
+    <!-- Botón de inicio con COMPORTAMIENTO DUAL -->
+    <button class="scroll-to-top" id="scrollToTop">
         <i class="fas fa-home"></i>
-    </a>
+    </button>
 
     <!-- Sección Hero -->
     <section class="hero" id="home">
@@ -812,38 +859,46 @@
     </footer>
 
     <script>
-        // Navegación que se oculta al hacer scroll y aparece al detenerse
+        // Botón que se oculta al detectar scroll y se muestra cuando termina
         let lastScrollTop = 0;
-        const header = document.getElementById('main-header');
         const scrollToTopBtn = document.getElementById('scrollToTop');
         let scrollTimeout;
+        let isScrolling = false;
         
         window.addEventListener('scroll', function() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
-            // Controlar la visibilidad del header
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                // Scrolling down
-                header.classList.add('hidden');
-            } else {
-                // Scrolling up
-                header.classList.remove('hidden');
-            }
+            // Detectar si el usuario está haciendo scroll
+            isScrolling = true;
             
-            // Controlar la visibilidad del botón de inicio
-            if (scrollTop > 300) {
-                scrollToTopBtn.classList.add('visible');
-            } else {
-                scrollToTopBtn.classList.remove('visible');
-            }
+            // Ocultar el botón mientras se hace scroll
+            scrollToTopBtn.classList.add('hidden');
             
-            // Detectar cuando el scroll se detiene
+            // Detectar cuando el scroll se detiene completamente
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(function() {
-                header.classList.remove('hidden');
-            }, 150);
+                isScrolling = false;
+                // Mostrar el botón cuando el scroll se detiene
+                scrollToTopBtn.classList.remove('hidden');
+            }, 350);
             
             lastScrollTop = scrollTop;
+        });
+        
+        // Botón con doble función
+        scrollToTopBtn.addEventListener('click', function() {
+            const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (currentScrollPosition === 0) {
+                // Si estamos en la parte superior, ir al index.html
+                window.location.href = 'index.html';
+            } else {
+                // Si no, hacer scroll to top
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
         });
         
         // Menú móvil toggle
