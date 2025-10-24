@@ -129,14 +129,14 @@
             cursor: pointer;
         }
         
-        /* Botón de inicio (scroll to top) */
+        /* Botón de inicio - diseño mejorado */
         .scroll-to-top {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary-color);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #6d451d 100%);
             color: var(--text-light);
             border: none;
             border-radius: 50%;
@@ -144,25 +144,75 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-size: 1.4rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
             transition: var(--transition);
             z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-        }
-        
-        .scroll-to-top.visible {
             opacity: 1;
             visibility: visible;
-            transform: translateY(0);
+            border: 2px solid var(--secondary-color);
+        }
+        
+        .scroll-to-top.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.8);
         }
         
         .scroll-to-top:hover {
-            background-color: var(--secondary-color);
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #c19b2c 100%);
             color: var(--text-dark);
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+        }
+        
+        .scroll-to-top:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+        
+        /* Efecto de pulso en el botón */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            }
+            50% {
+                box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+            }
+            100% {
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            }
+        }
+        
+        .scroll-to-top {
+            animation: pulse 3s infinite;
+        }
+        
+        .scroll-to-top:hover {
+            animation: none;
+        }
+        
+        /* Tooltip para el botón */
+        .scroll-to-top::after {
+            content: 'Inicio / Volver al inicio';
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        .scroll-to-top:hover::after {
+            opacity: 1;
+            visibility: visible;
         }
         
         /* Hero Section */
@@ -340,6 +390,65 @@
             margin-left: auto;
         }
         
+        /* Sección de nuevos productos */
+        .new-products {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .product-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .product-content {
+            padding: 1.5rem;
+        }
+        
+        .product-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .product-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
         /* Footer */
         footer {
             background-color: var(--text-dark);
@@ -443,8 +552,15 @@
             .scroll-to-top {
                 bottom: 20px;
                 right: 20px;
-                width: 45px;
-                height: 45px;
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+            }
+            
+            .scroll-to-top::after {
+                font-size: 0.7rem;
+                bottom: 60px;
+                right: -10px;
             }
         }
         
@@ -457,16 +573,16 @@
                 font-size: 2rem;
             }
             
-            .category-grid, .offer-grid {
+            .category-grid, .offer-grid, .products-grid {
                 grid-template-columns: 1fr;
             }
             
             .scroll-to-top {
                 bottom: 15px;
                 right: 15px;
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -484,9 +600,9 @@
                 <li><a href="#home">Inicio</a></li>
                 <li><a href="#categories">Categorías</a></li>
                 <li><a href="#offers">Ofertas</a></li>
+                <li><a href="#new-products">Nuevos Productos</a></li>
                 <li><a href="Nosotros.html">Nosotros</a></li>
                 <li><a href="https://wa.me/+584163034250" target="_blank">Contacto</a></li>
-                <li><a href="index.html">Ir a la tienda</a></li>
             </ul>
             
             <div class="nav-icons">
@@ -501,9 +617,9 @@
         </nav>
     </header>
 
-    <!-- Botón de inicio -->
+    <!-- Botón de inicio con doble función -->
     <button class="scroll-to-top" id="scrollToTop">
-        <i class="fas fa-chevron-up"></i>
+        <i class="fas fa-home"></i>
     </button>
 
     <!-- Sección Hero -->
@@ -611,6 +727,58 @@
         </div>
     </section>
 
+    <!-- Sección de Nuevos Productos -->
+    <section class="new-products" id="new-products">
+        <div class="section-title">
+            <h2>Nuevos Productos</h2>
+            <p>Descubre las últimas incorporaciones a nuestra colección</p>
+        </div>
+        
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');">
+                    <div class="product-badge">Nuevo</div>
+                </div>
+                <div class="product-content">
+                    <h3>Vestido Elegante Negro</h3>
+                    <p>Vestido de noche con detalles en encaje y corte perfecto para ocasiones especiales.</p>
+                    <div class="price">
+                        <span class="current-price">$89.99</span>
+                    </div>
+                    <a href="#" class="btn">Ver Detalles</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');">
+                    <div class="product-badge">Nuevo</div>
+                </div>
+                <div class="product-content">
+                    <h3>Blazer de Lujo</h3>
+                    <p>Blazer elegante en tono azul marino, perfecto para looks formales y casuales.</p>
+                    <div class="price">
+                        <span class="current-price">$119.99</span>
+                    </div>
+                    <a href="#" class="btn">Ver Detalles</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');">
+                    <div class="product-badge">Nuevo</div>
+                </div>
+                <div class="product-content">
+                    <h3>Falda Plisada</h3>
+                    <p>Falda midi plisada en tono beige, ideal para crear looks sofisticados y modernos.</p>
+                    <div class="price">
+                        <span class="current-price">$65.99</span>
+                    </div>
+                    <a href="#" class="btn">Ver Detalles</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -631,16 +799,16 @@
                     <li><a href="#home">Inicio</a></li>
                     <li><a href="#categories">Categorías</a></li>
                     <li><a href="#offers">Ofertas</a></li>
-                    <li><a href="#">Nuevos Productos</a></li>
-                    <li><a href="#">Colecciones</a></li>
+                    <li><a href="#new-products">Nuevos Productos</a></li>
+                    <li><a href="Colecciones.html">Colecciones</a></li>
                 </ul>
             </div>
             
             <div class="footer-column">
                 <h3>Servicio al Cliente</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Contacto</a></li>
-                    <li><a href="#">Preguntas Frecuentes</a></li>
+                    <li><a href="https://wa.me/+584163034250" target="_blank">Contacto</a></li>
+                    <li><a href="PregunFrec.html">Preguntas Frecuentes</a></li>
                     <li><a href="#">Envíos y Devoluciones</a></li>
                     <li><a href="#">Guía de Tallas</a></li>
                     <li><a href="#">Términos y Condiciones</a></li>
@@ -652,7 +820,7 @@
                 <ul class="footer-links">
                     <li><i class="fas fa-map-marker-alt"></i> Av. Principal 123, Ciudad</li>
                     <li><i class="fas fa-phone"></i> +1 234 567 890</li>
-                    <li><i class="fas fa-envelope"></i> info@elegantemoda.com</li>
+                    <li><i class="fas fa-envelope"></i> info@elitemoda.com</li>
                     <li><i class="fas fa-clock"></i> Lunes a Viernes: 9am - 8pm</li>
                 </ul>
             </div>
@@ -664,39 +832,46 @@
     </footer>
 
     <script>
-        // Navegación que se oculta al hacer scroll y aparece al detenerse
+        // Botón que se oculta al detectar scroll y se muestra cuando termina
         let lastScrollTop = 0;
-        const header = document.getElementById('main-header');
         const scrollToTopBtn = document.getElementById('scrollToTop');
+        let scrollTimeout;
+        let isScrolling = false;
         
         window.addEventListener('scroll', function() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
-            // Controlar la visibilidad del header
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                // Scrolling down
-                header.classList.add('hidden');
-            } else {
-                // Scrolling up
-                header.classList.remove('hidden');
-            }
+            // Detectar si el usuario está haciendo scroll
+            isScrolling = true;
             
-            // Controlar la visibilidad del botón de inicio
-            if (scrollTop > 300) {
-                scrollToTopBtn.classList.add('visible');
-            } else {
-                scrollToTopBtn.classList.remove('visible');
-            }
+            // Ocultar el botón mientras se hace scroll
+            scrollToTopBtn.classList.add('hidden');
+            
+            // Detectar cuando el scroll se detiene completamente
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(function() {
+                isScrolling = false;
+                // Mostrar el botón cuando el scroll se detiene
+                scrollToTopBtn.classList.remove('hidden');
+            }, 150);
             
             lastScrollTop = scrollTop;
         });
         
-        // Botón de inicio - scroll to top
+        // Botón con doble función
         scrollToTopBtn.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (currentScrollPosition === 0) {
+                // Si estamos en la parte superior, ir al index.html
+                window.location.href = 'index.html';
+            } else {
+                // Si no, hacer scroll to top
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
         });
         
         // Menú móvil toggle
