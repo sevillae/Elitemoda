@@ -23,106 +23,152 @@
             min-height: 100vh;
         }
 
-        /* BOTÓN DE INICIO ELEGANTE */
+        /* BOTÓN DE INICIO ELEGANTE - COMPORTAMIENTO DUAL */
         .btn-home {
             position: fixed;
-            top: 25px;
-            right: 25px;
-            z-index: 10000;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
             color: white;
-            padding: 16px 17px;
-            border-radius: 35px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.05rem;
-            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.5);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 12px;
-            border: 2px solid rgba(255, 215, 0, 0.5);
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
             transition: all 0.4s ease;
+            z-index: 999;
             opacity: 1;
-            transform: translateY(0);
-            letter-spacing: 0.5px;
-            backdrop-filter: blur(10px);
-            animation: pulse-gold 3s infinite;
+            visibility: visible;
+            border: 2px solid rgba(255, 215, 0, 0.5);
         }
 
         .btn-home.hidden {
             opacity: 0;
-            transform: translateY(-50px);
-            pointer-events: none;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.8);
         }
 
         .btn-home:hover {
-            transform: translateY(-5px) scale(1.08);
-            box-shadow: 0 15px 30px rgba(139, 69, 19, 0.7);
-            border-color: #ffd700;
-            animation: none;
+            background: linear-gradient(135deg, #D2691E 0%, #FF8C00 100%);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.6);
+            border-color: rgba(255, 215, 0, 0.8);
         }
 
         /* BOTÓN DE LLAMADAS ELEGANTE */
         .btn-call {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 10000;
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, #006400 0%, #228B22 100%);
             color: white;
-            padding: 16px 17px;
-            border-radius: 35px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.05rem;
-            box-shadow: 0 8px 25px rgba(0, 100, 0, 0.5);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 12px;
-            border: 2px solid rgba(144, 238, 144, 0.5);
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 6px 20px rgba(0, 100, 0, 0.4);
             transition: all 0.4s ease;
+            z-index: 999;
             opacity: 1;
-            transform: translateY(0);
-            letter-spacing: 0.5px;
-            backdrop-filter: blur(10px);
-            animation: pulse-green 3s infinite;
-            visibility:hidden;
+            visibility: visible;
+            border: 2px solid rgba(144, 238, 144, 0.5);
+            text-decoration: none;
         }
 
         .btn-call.hidden {
             opacity: 0;
-            transform: translateY(50px);
-            pointer-events: none;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.8);
         }
 
         .btn-call:hover {
-            transform: translateY(-5px) scale(1.08);
-            box-shadow: 0 15px 30px rgba(0, 100, 0, 0.7);
-            border-color: #90ee90;
-            animation: none;
+            background: linear-gradient(135deg, #228B22 0%, #32CD32 100%);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 100, 0, 0.6);
+            border-color: rgba(144, 238, 144, 0.8);
         }
 
         /* ANIMACIONES DE PULSO INTERMITENTE */
         @keyframes pulse-gold {
             0%, 100% {
-                box-shadow: 0 8px 25px rgba(139, 69, 19, 0.5);
-                border-color: rgba(255, 215, 0, 0.5);
+                box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
             }
             50% {
-                box-shadow: 0 8px 35px rgba(139, 69, 19, 0.8), 0 0 20px rgba(255, 215, 0, 0.4);
-                border-color: rgba(255, 215, 0, 0.8);
+                box-shadow: 0 6px 25px rgba(139, 69, 19, 0.6);
             }
         }
 
         @keyframes pulse-green {
             0%, 100% {
-                box-shadow: 0 8px 25px rgba(0, 100, 0, 0.5);
-                border-color: rgba(144, 238, 144, 0.5);
+                box-shadow: 0 6px 20px rgba(0, 100, 0, 0.4);
             }
             50% {
-                box-shadow: 0 8px 35px rgba(0, 100, 0, 0.8), 0 0 20px rgba(144, 238, 144, 0.4);
-                border-color: rgba(144, 238, 144, 0.8);
+                box-shadow: 0 6px 25px rgba(0, 100, 0, 0.6);
             }
+        }
+
+        .btn-home {
+            animation: pulse-gold 3s infinite;
+        }
+
+        .btn-call {
+            animation: pulse-green 3s infinite;
+        }
+
+        .btn-home:hover, .btn-call:hover {
+            animation: none;
+        }
+
+        /* Tooltip para los botones */
+        .btn-home::after {
+            content: 'Inicio / Volver al inicio';
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background: #8B4513;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .btn-call::after {
+            content: 'Llamar ahora';
+            position: absolute;
+            bottom: 70px;
+            left: 0;
+            background: #006400;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .btn-home:hover::after, .btn-call:hover::after {
+            opacity: 1;
+            visibility: visible;
         }
 
         /* HEADER ELEGANTE Y DE LUJO - MENOS ALTURA */
@@ -423,8 +469,23 @@
             }
             
             .btn-home, .btn-call {
-                padding: 12px 22px;
-                font-size: 0.95rem;
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+                bottom: 25px;
+            }
+
+            .btn-home {
+                right: 25px;
+            }
+
+            .btn-call {
+                left: 25px;
+            }
+
+            .btn-home::after, .btn-call::after {
+                font-size: 0.7rem;
+                bottom: 60px;
             }
             
             .page-header h1 {
@@ -450,21 +511,50 @@
             }
             
             .btn-home, .btn-call {
-                padding: 12px 17px;
-                font-size: 0.9rem;
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                bottom: 20px;
+            }
+
+            .btn-home {
+                right: 20px;
+            }
+
+            .btn-call {
+                left: 20px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .btn-home, .btn-call {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+                bottom: 15px;
+            }
+
+            .btn-home {
+                right: 15px;
+            }
+
+            .btn-call {
+                left: 15px;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Botón de Inicio Elegante -->
-    <a href="index.html" class="btn-home">
-        <i class="fas fa-home"></i></a>
+    <!-- Botón de Inicio Elegante - COMPORTAMIENTO DUAL -->
+    <button class="btn-home" id="homeButton">
+        <i class="fas fa-home"></i>
+    </button>
 
     <!-- Botón de Llamadas Elegante -->
-    <a href="tel:+584163034250" class="btn-call">
-        <i class="fas fa-phone"></i></a>
+    <a href="tel:+584163034250" class="btn-call" id="callButton">
+        <i class="fas fa-phone"></i>
+    </a>
 
     <!-- Header Elegante -->
     <header class="page-header">
@@ -748,24 +838,49 @@
     </footer>
 
     <script>
-        // SCRIPT FUNCIONAL PARA LOS BOTONES
-        window.addEventListener('load', function() {
-            const btnHome = document.querySelector('.btn-home');
-            const btnCall = document.querySelector('.btn-call');
+        // JavaScript para el comportamiento dual del botón de inicio
+        let lastScrollTop = 0;
+        const homeButton = document.getElementById('homeButton');
+        const callButton = document.getElementById('callButton');
+        let scrollTimeout;
+        let isScrolling = false;
+        
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
-            if (!btnHome || !btnCall) return;
+            // Detectar si el usuario está haciendo scroll
+            isScrolling = true;
             
-            let scrollTimer;
+            // Ocultar los botones mientras se hace scroll
+            homeButton.classList.add('hidden');
+            callButton.classList.add('hidden');
             
-            window.addEventListener('scroll', function() {
-                btnHome.classList.add('hidden');
-                btnCall.classList.add('hidden');
-                clearTimeout(scrollTimer);
-                scrollTimer = setTimeout(function() {
-                    btnHome.classList.remove('hidden');
-                    btnCall.classList.remove('hidden');
-                }, 700);
-            });
+            // Detectar cuando el scroll se detiene completamente
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(function() {
+                isScrolling = false;
+                // Mostrar los botones cuando el scroll se detiene
+                homeButton.classList.remove('hidden');
+                callButton.classList.remove('hidden');
+            }, 350);
+            
+            lastScrollTop = scrollTop;
+        });
+        
+        // Botón con doble función
+        homeButton.addEventListener('click', function() {
+            const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (currentScrollPosition === 0) {
+                // Si estamos en la parte superior, ir al index.html
+                window.location.href = 'index.html';
+            } else {
+                // Si no, hacer scroll to top
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
         });
     </script>
 
