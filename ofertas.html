@@ -706,7 +706,7 @@
                 display: block;
             }
             
-            /* Animación hamburguesa a X */
+            /* Animación hamburguesa a X - CORREGIDA */
             .hamburger.active span:nth-child(1) {
                 transform: rotate(45deg) translate(6px, 6px);
             }
@@ -779,6 +779,42 @@
             }
         }
 
+        /* Asegurar que el menú se cierre correctamente en desktop */
+        @media (min-width: 769px) {
+            .nav-menu {
+                display: flex !important;
+                position: static !important;
+                width: auto !important;
+                height: auto !important;
+                background: transparent !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+                transform: none !important;
+            }
+            
+            .nav-item {
+                border-bottom: none !important;
+            }
+            
+            .nav-link {
+                padding: 0.5rem 0 !important;
+                font-size: clamp(0.9rem, 1.5vw, 1rem) !important;
+            }
+            
+            .nav-link:hover {
+                background: transparent !important;
+                padding-left: 0 !important;
+            }
+            
+            .close-menu {
+                display: none !important;
+            }
+            
+            .overlay {
+                display: none !important;
+            }
+        }
+
         /* Mejoras de accesibilidad */
         @media (prefers-reduced-motion: reduce) {
             * {
@@ -793,6 +829,11 @@
         .scroll-to-top:focus {
             outline: 2px solid var(--secondary-color);
             outline-offset: 2px;
+        }
+
+        /* Transiciones suaves para el menú */
+        .hamburger, .close-menu {
+            transition: all 0.3s ease;
         }
     </style>
 </head>
@@ -1074,7 +1115,7 @@
     </footer>
 
     <script>
-        // Control del menú responsive
+        // Control del menú responsive - VERSIÓN CORREGIDA
         document.addEventListener('DOMContentLoaded', function() {
             const hamburger = document.querySelector('.hamburger');
             const navMenu = document.querySelector('.nav-menu');
@@ -1083,22 +1124,18 @@
             const navLinks = document.querySelectorAll('.nav-link');
             const body = document.body;
 
-            // Función para abrir/cerrar el menú
-            function toggleMenu() {
-                const isActive = navMenu.classList.contains('active');
-                
-                if (!isActive) {
-                    // Abrir menú
-                    navMenu.classList.add('active');
-                    hamburger.classList.add('active');
-                    overlay.classList.add('active');
-                    body.style.overflow = 'hidden';
-                    hamburger.setAttribute('aria-expanded', 'true');
-                    closeMenu.style.display = 'block';
-                } else {
-                    // Cerrar menú
-                    closeMenuFunction();
-                }
+            // Estado del menú
+            let isMenuOpen = false;
+
+            // Función para abrir el menú
+            function openMenu() {
+                navMenu.classList.add('active');
+                hamburger.classList.add('active');
+                overlay.classList.add('active');
+                body.style.overflow = 'hidden';
+                hamburger.setAttribute('aria-expanded', 'true');
+                closeMenu.style.display = 'block';
+                isMenuOpen = true;
             }
 
             // Función para cerrar el menú
@@ -1109,85 +1146,108 @@
                 body.style.overflow = '';
                 hamburger.setAttribute('aria-expanded', 'false');
                 closeMenu.style.display = 'none';
+                isMenuOpen = false;
             }
 
-            // Event listeners
-            hamburger.addEventListener('click', toggleMenu);
-            closeMenu.addEventListener('click', closeMenuFunction);
-            overlay.addEventListener('click', closeMenuFunction);
+            // Función para alternar el menú
+            function toggleMenu() {
+                if (isMenuOpen) {
+                    closeMenuFunction();
+                } else {
+                    openMenu();
+                }
+            }
+
+            // Event listeners principales
+            hamburger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+
+            closeMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+                closeMenuFunction();
+            });
+
+            overlay.addEventListener('click', function(e) {
+                e.stopPropagation();
+                closeMenuFunction();
+            });
 
             // Cerrar menú al hacer clic en un enlace (solo en móviles)
             navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    if (window.innerWidth <= 768) {
+                link.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768 && isMenuOpen) {
                         closeMenuFunction();
                     }
                 });
             });
 
-            // Control del botón de inicio universal
-            const scrollToTopBtn = document.getElementById('scrollToTop');
-            let lastScrollTop = 0;
-            let scrollTimeout;
-            let isScrolling = false;
-            
-            window.addEventListener('scroll', function() {
-                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
-                // Detectar si el usuario está haciendo scroll
-                isScrolling = true;
-                
-                // Ocultar el botón mientras se hace scroll
-                scrollToTopBtn.classList.add('hidden');
-                
-                // Detectar cuando el scroll se detiene completamente
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(function() {
-                    isScrolling = false;
-                    // Mostrar el botón cuando el scroll se detiene
-                    scrollToTopBtn.classList.remove('hidden');
-                }, 550);
-                
-                lastScrollTop = scrollTop;
-            });
-            
-            // Botón con doble función
-            scrollToTopBtn.addEventListener('click', function() {
-                const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-                
-                if (currentScrollPosition === 0) {
-                    // Si estamos en la parte superior, ir al index.html
-                    window.location.href = 'index.html';
-                } else {
-                    // Si no, hacer scroll to top
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-
             // Cerrar menú con tecla Escape
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
+                if (e.key === 'Escape' && isMenuOpen) {
                     closeMenuFunction();
                 }
             });
 
+            // Cerrar menú al hacer clic fuera del menú
+            document.addEventListener('click', function(e) {
+                if (isMenuOpen && !navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                    closeMenuFunction();
+                }
+            });
+
+            // Control del botón de inicio universal
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            let scrollTimeout;
+            
+            if (scrollToTopBtn) {
+                window.addEventListener('scroll', function() {
+                    // Ocultar el botón mientras se hace scroll
+                    scrollToTopBtn.classList.add('hidden');
+                    
+                    // Detectar cuando el scroll se detiene
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(function() {
+                        // Mostrar el botón cuando el scroll se detiene
+                        scrollToTopBtn.classList.remove('hidden');
+                    }, 550);
+                });
+                
+                // Botón con doble función
+                scrollToTopBtn.addEventListener('click', function() {
+                    const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    if (currentScrollPosition === 0) {
+                        // Si estamos en la parte superior, ir al index.html
+                        window.location.href = 'index.html';
+                    } else {
+                        // Si no, hacer scroll to top
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+
             // Detectar cambios de orientación y redimensionado
             window.addEventListener('orientationchange', function() {
                 setTimeout(() => {
-                    if (window.innerWidth > 768) {
+                    if (window.innerWidth > 768 && isMenuOpen) {
                         closeMenuFunction();
                     }
                 }, 300);
             });
 
             window.addEventListener('resize', function() {
-                if (window.innerWidth > 768) {
+                if (window.innerWidth > 768 && isMenuOpen) {
                     closeMenuFunction();
                 }
             });
+
+            // Inicializar estado del menú
+            closeMenuFunction();
         });
     </script>
 </body>
