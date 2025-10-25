@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="Iconos/conexion.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad | ÉLITE MODA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #c19a6b;
+            --accent-color: #8b4513;
+            --light-color: #f8f9fa;
+            --dark-color: #1a1a1a;
+            --text-color: #333;
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 1.5rem 0;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 50vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 4rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        /* BOTÓN DE INICIO MEJORADO */
+        .btn-home {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4);
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid transparent;
+            backdrop-filter: blur(10px);
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+            cursor: pointer;
+        }
+
+        .btn-home.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(193, 154, 107, 0.6);
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-home i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-home:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Efecto de pulso sutil */
+        @keyframes pulse-gentle {
+            0% { box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4); }
+            50% { box-shadow: 0 5px 25px rgba(193, 154, 107, 0.6); }
+            100% { box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4); }
+        }
+
+        .btn-home:not(.hidden) {
+            animation: pulse-gentle 3s infinite;
+        }
+
+        /* Tabs Navigation */
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #e0e0e0;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            position: relative;
+            background: none;
+            border: none;
+            color: var(--text-color);
+        }
+
+        .tab-btn.active {
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .tab-btn:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Privacy Section */
+        .privacy-section {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 3rem;
+        }
+
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .privacy-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .privacy-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* Privacy Cards */
+        .privacy-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .privacy-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .privacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .privacy-card i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .privacy-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .content-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .content-section ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .content-section li:before {
+            content: '•';
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* Privacy Tables */
+        .privacy-tables {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        .privacy-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .privacy-table caption {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .privacy-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .privacy-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .privacy-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .privacy-table tr:hover {
+            background-color: #e9ecef;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-section .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-section .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Update Section */
+        .update-section {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .update-section h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0 10px 10px;
+            }
+            
+            .hero {
+                height: 40vh;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .tabs-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 5px;
+            }
+            
+            .privacy-section {
+                padding: 2rem 1rem;
+            }
+            
+            .btn-home {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .privacy-header h2 {
+                font-size: 2rem;
+            }
+            
+            .btn-home {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .btn-home span {
+                display: none;
+            }
+            
+            .btn-home i {
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .btn-home {
+                padding: 12px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-crown"></i>
+                    ÉLITE MODA
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="Colecciones.html">Colecciones</a></li>
+                    <li><a href="RopaInt.html">Ropa Íntima</a></li>
+                    <li><a href="RopaCasual.html">Ropa Casual</a></li>
+                    <li><a href="guiadetallas.html">Guía de Tallas</a></li>
+                    <li><a href="cuidadoprendas.html">Cuidados</a></li>
+                    <li><a href="EnviosyDevoluc.html">Envíos</a></li>
+                    <li><a href="PoliticadePrivacidad.html">Privacidad</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Política de Privacidad</h1>
+            <p>Tu privacidad es nuestra prioridad. Conoce cómo protegemos y utilizamos tu información.</p>
+        </div>
+    </section>
+
+    <!-- Home Button MEJORADO -->
+    <button class="btn-home" id="homeButton">
+        <i class="fas fa-home"></i>
+        <span>Inicio</span>
+    </button>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Tabs Navigation -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" data-tab="informacion">Información General</button>
+            <button class="tab-btn" data-tab="datos">Datos que Recopilamos</button>
+            <button class="tab-btn" data-tab="derechos">Tus Derechos</button>
+            <button class="tab-btn" data-tab="cookies">Política de Cookies</button>
+        </div>
+
+        <!-- Información General Tab -->
+        <div id="informacion" class="tab-content active">
+            <div class="privacy-section">
+                <div class="privacy-header">
+                    <h2>Política de Privacidad</h2>
+                    <p>Comprometidos con la protección y transparencia en el manejo de tus datos personales</p>
+                </div>
+                
+                <div class="privacy-cards">
+                    <div class="privacy-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Protección</h3>
+                        <p>Implementamos medidas de seguridad avanzadas para proteger tu información</p>
+                    </div>
+                    <div class="privacy-card">
+                        <i class="fas fa-eye"></i>
+                        <h3>Transparencia</h3>
+                        <p>Te informamos claramente cómo utilizamos tus datos personales</p>
+                    </div>
+                    <div class="privacy-card">
+                        <i class="fas fa-user-check"></i>
+                        <h3>Control</h3>
+                        <p>Tú decides cómo y para qué utilizamos tu información</p>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Introducción</h3>
+                    <p>En <strong>ÉLITE MODA</strong>, valoramos y respetamos tu privacidad. Esta Política de Privacidad describe cómo recopilamos, utilizamos, almacenamos y protegemos tu información personal cuando visitas nuestro sitio web o utilizas nuestros servicios.</p>
+                    
+                    <p>Al utilizar nuestro sitio web, aceptas las prácticas descritas en esta política. Te recomendamos leer detenidamente esta información para comprender nuestras prácticas de privacidad.</p>
+
+                    <div class="highlight-box">
+                        <h4>📝 Última Actualización</h4>
+                        <p>Esta política fue actualizada por última vez el 15 de Enero de 2024. Nos reservamos el derecho de modificar esta política en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación en el sitio.</p>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Alcance y Aplicación</h3>
+                    <p>Esta política aplica a toda la información recopilada a través de:</p>
+                    <ul>
+                        <li>Nuestro sitio web oficial www.elitemoda.com</li>
+                        <li>Comunicaciones por correo electrónico y WhatsApp</li>
+                        <li>Transacciones de compra en línea</li>
+                        <li>Registro en nuestro programa de fidelidad</li>
+                        <li>Interacciones en redes sociales</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Datos que Recopilamos Tab -->
+        <div id="datos" class="tab-content">
+            <div class="privacy-section">
+                <div class="privacy-header">
+                    <h2>Datos que Recopilamos</h2>
+                    <p>Información que recopilamos para mejorar tu experiencia y proporcionar nuestros servicios</p>
+                </div>
+
+                <div class="privacy-tables">
+                    <table class="privacy-table">
+                        <caption>Tipos de Datos Recopilados</caption>
+                        <thead>
+                            <tr>
+                                <th>Categoría</th>
+                                <th>Ejemplos</th>
+                                <th>Propósito</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Información Personal</strong></td>
+                                <td>Nombre, email, teléfono, dirección</td>
+                                <td>Procesar pedidos y comunicarnos contigo</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Información de Pago</strong></td>
+                                <td>Datos de tarjeta (encriptados), historial de compras</td>
+                                <td>Procesar transacciones y prevenir fraudes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Información Técnica</strong></td>
+                                <td>Dirección IP, tipo de navegador, dispositivo</td>
+                                <td>Mejorar seguridad y experiencia de usuario</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Preferencias</strong></td>
+                                <td>Tallas, colores favoritos, historial de navegación</td>
+                                <td>Personalizar recomendaciones y ofertas</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content-section">
+                    <h3>¿Cómo Recopilamos tus Datos?</h3>
+                    <p><strong>Información que nos proporcionas directamente:</strong></p>
+                    <ul>
+                        <li>Al crear una cuenta en nuestro sitio web</li>
+                        <li>Al realizar una compra en línea</li>
+                        <li>Al suscribirte a nuestro newsletter</li>
+                        <li>Al contactar a nuestro servicio al cliente</li>
+                        <li>Al participar en encuestas o promociones</li>
+                    </ul>
+
+                    <p><strong>Información recopilada automáticamente:</strong></p>
+                    <ul>
+                        <li>Datos de uso y navegación en nuestro sitio web</li>
+                        <li>Información de cookies y tecnologías similares</li>
+                        <li>Datos de dispositivos y conexión a internet</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h3>Uso de la Información</h3>
+                    <p>Utilizamos tu información personal para los siguientes propósitos:</p>
+                    <ul>
+                        <li><strong>Procesar y gestionar tus pedidos</strong></li>
+                        <li><strong>Proporcionar servicio al cliente y soporte</strong></li>
+                        <li><strong>Personalizar tu experiencia de compra</strong></li>
+                        <li><strong>Enviar comunicaciones de marketing (con tu consentimiento)</strong></li>
+                        <li><strong>Mejorar nuestros productos y servicios</strong></li>
+                        <li><strong>Cumplir con obligaciones legales</strong></li>
+                    </ul>
+                </div>
+
+                <div class="update-section">
+                    <h4>🔒 Compartir Información</h4>
+                    <p><strong>No vendemos ni alquilamos tu información personal a terceros.</strong> Solo compartimos datos con proveedores de servicios esenciales (transporte, procesamiento de pagos) bajo estrictos acuerdos de confidencialidad.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tus Derechos Tab -->
+        <div id="derechos" class="tab-content">
+            <div class="privacy-section">
+                <div class="privacy-header">
+                    <h2>Tus Derechos de Privacidad</h2>
+                    <p>Conoce y ejerce tus derechos sobre tus datos personales</p>
+                </div>
+
+                <div class="privacy-cards">
+                    <div class="privacy-card">
+                        <i class="fas fa-search"></i>
+                        <h3>Derecho de Acceso</h3>
+                        <p>Puedes solicitar una copia de la información personal que tenemos sobre ti</p>
+                    </div>
+                    <div class="privacy-card">
+                        <i class="fas fa-edit"></i>
+                        <h3>Derecho de Rectificación</h3>
+                        <p>Puedes corregir información personal inexacta o incompleta</p>
+                    </div>
+                    <div class="privacy-card">
+                        <i class="fas fa-trash-alt"></i>
+                        <h3>Derecho de Eliminación</h3>
+                        <p>Puedes solicitar la eliminación de tu información personal en ciertas circunstancias</p>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Derechos del Titular de Datos</h3>
+                    <p>De acuerdo con la legislación colombiana (Ley 1581 de 2012) y estándares internacionales, tienes los siguientes derechos:</p>
+                    
+                    <ul>
+                        <li><strong>Acceso:</strong> Conocer, actualizar y rectificar tus datos personales.</li>
+                        <li><strong>Revocatoria:</strong> Revocar el consentimiento para el tratamiento de datos.</li>
+                        <li><strong>Consulta:</strong> Solicitar información sobre el uso que se ha dado a tus datos.</li>
+                        <li><strong>Reclamo:</strong> Presentar quejas ante la autoridad competente.</li>
+                        <li><strong>Supresión:</strong> Solicitar la eliminación de datos cuando no se respeten principios.</li>
+                        <li><strong>Confidencialidad:</strong> Solicitar la confidencialidad de cierta información.</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h3>¿Cómo Ejercer tus Derechos?</h3>
+                    <p>Para ejercer cualquiera de estos derechos, puedes contactarnos a través de:</p>
+                    
+                    <div class="privacy-tables">
+                        <table class="privacy-table">
+                            <caption>Canales de Ejercicio de Derechos</caption>
+                            <thead>
+                                <tr>
+                                    <th>Método</th>
+                                    <th>Contacto</th>
+                                    <th>Tiempo de Respuesta</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>WhatsApp</strong></td>
+                                    <td>+57 1 744 8000</td>
+                                    <td>24-48 horas</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Email</strong></td>
+                                    <td>privacidad@elitemoda.com</td>
+                                    <td>3-5 días hábiles</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Oficina Principal</strong></td>
+                                    <td>Carrera 15 #88-64, Bogotá</td>
+                                    <td>5-7 días hábiles</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="contact-section">
+                    <h2>¿Necesitas Ejercer tus Derechos?</h2>
+                    <p>Estamos aquí para ayudarte a proteger tu privacidad y ejercer tus derechos sobre tus datos personales.</p>
+                    <a href="https://wa.me/5804163034250" class="btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Contactar al Oficial de Privacidad
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Política de Cookies Tab -->
+        <div id="cookies" class="tab-content">
+            <div class="privacy-section">
+                <div class="privacy-header">
+                    <h2>Política de Cookies</h2>
+                    <p>Uso de cookies y tecnologías similares para mejorar tu experiencia</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>¿Qué son las Cookies?</h3>
+                    <p>Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas nuestro sitio web. Nos ayudan a recordar tus preferencias, entender cómo interactúas con nuestro sitio y mejorar tu experiencia de navegación.</p>
+                </div>
+
+                <div class="privacy-tables">
+                    <table class="privacy-table">
+                        <caption>Tipos de Cookies que Utilizamos</caption>
+                        <thead>
+                            <tr>
+                                <th>Tipo de Cookie</th>
+                                <th>Propósito</th>
+                                <th>Duración</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Esenciales</strong></td>
+                                <td>Funcionalidades básicas del sitio (carrito de compras, inicio de sesión)</td>
+                                <td>Sesión/Persistentes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Analíticas</strong></td>
+                                <td>Comprender cómo los visitantes usan nuestro sitio</td>
+                                <td>Hasta 2 años</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Funcionales</strong></td>
+                                <td>Recordar preferencias (idioma, región, tamaño de texto)</td>
+                                <td>Hasta 1 año</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Publicitarias</strong></td>
+                                <td>Mostrar anuncios relevantes basados en tus intereses</td>
+                                <td>Hasta 90 días</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content-section">
+                    <h3>Gestión de Cookies</h3>
+                    <p>Puedes controlar y/o eliminar las cookies según desees. Puedes eliminar todas las cookies que ya están en tu equipo y configurar la mayoría de los navegadores para prevenir que se coloquen.</p>
+                    
+                    <p><strong>Para gestionar cookies en navegadores populares:</strong></p>
+                    <ul>
+                        <li><strong>Google Chrome:</strong> Configuración → Privacidad y seguridad → Cookies</li>
+                        <li><strong>Mozilla Firefox:</strong> Opciones → Privacidad y Seguridad → Cookies</li>
+                        <li><strong>Safari:</strong> Preferencias → Privacidad → Cookies y datos del sitio</li>
+                        <li><strong>Microsoft Edge:</strong> Configuración → Privacidad y servicios → Cookies</li>
+                    </ul>
+                </div>
+
+                <div class="update-section">
+                    <h4>⚠️ Importante</h4>
+                    <p>Si desactivas las cookies, algunas funcionalidades de nuestro sitio web pueden no estar disponibles o no funcionar correctamente. Las cookies esenciales son necesarias para el funcionamiento básico del sitio.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Consentimiento de Cookies</h3>
+                    <p>Al utilizar nuestro sitio web, aceptas el uso de cookies de acuerdo con esta política. Puedes retirar tu consentimiento en cualquier momento eliminando las cookies almacenadas y ajustando la configuración de tu navegador.</p>
+                    
+                    <p>Utilizamos un banner de consentimiento de cookies que te permite:</p>
+                    <ul>
+                        <li>Aceptar todas las cookies</li>
+                        <li>Rechazar cookies no esenciales</li>
+                        <li>Personalizar tus preferencias de cookies</li>
+                        <li>Acceder a esta política de cookies en cualquier momento</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ÉLITE MODA</h3>
+                    <p>Moda exclusiva para clientes distinguidos. Calidad, estilo y sofisticación en cada prenda.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/@yennibel.camino"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/yencava"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.pinterest.com"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.twiter.com"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="Colecciones.html">Colecciones</a></li>
+                        <li><a href="RopaInt.html">Ropa Íntima</a></li>
+                        <li><a href="RopaCasual.html">Ropa Casual</a></li>
+                        <li><a href="guiadetallas.html">Guía de Tallas</a></li>
+                        <li><a href="cuidadoprendas.html">Cuidados</a></li>
+                        <li><a href="EnviosyDevoluc.html">Envíos y Devoluciones</a></li>
+                        <li><a href="PoliticadePrivacidad.html">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Servicio al Cliente</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://wa.me/5804163034250?" target="_blank">Contactarnos</a></li>
+                        <li><a href="PregunFrec.html">Preguntas Frecuentes</a></li>
+                        <li><a href="EnviosyDevoluc.html">Envíos y Entregas</a></li>
+                        <li><a href="EnviosyDevoluc.html">Devoluciones</a></li>
+                        <li><a href="guiadetallas.html">Guía de Tallas</a></li>
+                        <li><a href="PoliticadePrivacidad.html">Privacidad y Cookies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Carrera 15 #88-64, Bogotá</li>
+                        <li><i class="fas fa-phone"></i> +57 1 744 8000</li>
+                        <li><i class="fas fa-envelope"></i> info@elitemoda.com</li>
+                        <li><i class="fas fa-envelope"></i> privacidad@elitemoda.com</li>
+                        <li><i class="fas fa-clock"></i> Lun - Vie: 9:00 - 19:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 ÉLITE MODA. Todos los derechos reservados. | <a href="PoliticaPrivacidad.html" style="color: var(--secondary-color);">Política de Privacidad</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Control del botón de inicio - FUNCIÓN DUAL
+        document.addEventListener('DOMContentLoaded', function() {
+            const homeButton = document.getElementById('homeButton');
+            let scrollTimeout;
+            
+            // Función para verificar si estamos en la parte superior
+            function checkIfAtTop() {
+                return window.pageYOffset === 0;
+            }
+            
+            // Función para hacer scroll al top
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+            
+            // Manejar el clic del botón
+            homeButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (checkIfAtTop()) {
+                    // Si YA estamos en top, redirigir a index.html
+                    window.location.href = 'index.html';
+                } else {
+                    // Si NO estamos en top, hacer scroll al top
+                    scrollToTop();
+                }
+            });
+            
+            // Función para ocultar el botón
+            function hideButton() {
+                homeButton.classList.add('hidden');
+            }
+            
+            // Función para mostrar el botón
+            function showButton() {
+                homeButton.classList.remove('hidden');
+            }
+            
+            // Detectar scroll
+            window.addEventListener('scroll', function() {
+                // Ocultar el botón inmediatamente al detectar scroll
+                if (!homeButton.classList.contains('hidden')) {
+                    hideButton();
+                }
+                
+                // Limpiar timeout anterior
+                window.clearTimeout(scrollTimeout);
+                
+                // Mostrar el botón después de que el scroll se detenga
+                scrollTimeout = setTimeout(function() {
+                    showButton();
+                }, 600);
+            }, false);
+            
+            // Mostrar el botón cuando el mouse está sobre él
+            homeButton.addEventListener('mouseenter', function() {
+                clearTimeout(scrollTimeout);
+                showButton();
+            });
+            
+            // Ocultar después de que el mouse salga (con delay)
+            homeButton.addEventListener('mouseleave', function() {
+                scrollTimeout = setTimeout(function() {
+                    showButton();
+                }, 1000);
+            });
+            
+            // Mostrar el botón inicialmente
+            showButton();
+        });
+
+        // JavaScript para las pestañas
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remover clase active de todos los botones y contenidos
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Agregar clase active al botón y contenido seleccionados
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

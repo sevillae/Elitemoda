@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="Iconos/conexion.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Términos y Condiciones | ÉLITE MODA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #c19a6b;
+            --accent-color: #8b4513;
+            --light-color: #f8f9fa;
+            --dark-color: #1a1a1a;
+            --text-color: #333;
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 1.5rem 0;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 50vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 4rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        /* BOTÓN DE INICIO MEJORADO */
+        .btn-home {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4);
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid transparent;
+            backdrop-filter: blur(10px);
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+            cursor: pointer;
+        }
+
+        .btn-home.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(193, 154, 107, 0.6);
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-home i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-home:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Efecto de pulso sutil */
+        @keyframes pulse-gentle {
+            0% { box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4); }
+            50% { box-shadow: 0 5px 25px rgba(193, 154, 107, 0.6); }
+            100% { box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4); }
+        }
+
+        .btn-home:not(.hidden) {
+            animation: pulse-gentle 3s infinite;
+        }
+
+        /* Tabs Navigation */
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #e0e0e0;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            position: relative;
+            background: none;
+            border: none;
+            color: var(--text-color);
+        }
+
+        .tab-btn.active {
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .tab-btn:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Terms Section */
+        .terms-section {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 3rem;
+        }
+
+        .terms-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .terms-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .terms-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* Terms Cards */
+        .terms-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .terms-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .terms-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .terms-card i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .terms-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .content-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .content-section ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .content-section li:before {
+            content: '•';
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* Terms Tables */
+        .terms-tables {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        .terms-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .terms-table caption {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .terms-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .terms-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .terms-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .terms-table tr:hover {
+            background-color: #e9ecef;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-section .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-section .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Update Section */
+        .update-section {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .update-section h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0 10px 10px;
+            }
+            
+            .hero {
+                height: 40vh;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .tabs-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 5px;
+            }
+            
+            .terms-section {
+                padding: 2rem 1rem;
+            }
+            
+            .btn-home {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .terms-header h2 {
+                font-size: 2rem;
+            }
+            
+            .btn-home {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .btn-home span {
+                display: none;
+            }
+            
+            .btn-home i {
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .btn-home {
+                padding: 12px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-crown"></i>
+                    ÉLITE MODA
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="Colecciones.html">Colecciones</a></li>
+                    <li><a href="RopaInt.html">Ropa Íntima</a></li>
+                    <li><a href="RopaCasual.html">Ropa Casual</a></li>
+                    <li><a href="guiadetallas.html">Guía de Tallas</a></li>
+                    <li><a href="cuidadoprendas.html">Cuidados</a></li>
+                    <li><a href="EnviosyDevoluc.html">Envíos</a></li>
+                    <li><a href="PoliticadePrivacidad.html">Privacidad</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Términos y Condiciones</h1>
+            <p>Conoce las reglas y condiciones que rigen el uso de nuestros servicios y productos.</p>
+        </div>
+    </section>
+
+    <!-- Home Button MEJORADO -->
+    <button class="btn-home" id="homeButton">
+        <i class="fas fa-home"></i>
+        <span>Inicio</span>
+    </button>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Tabs Navigation -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" data-tab="general">Información General</button>
+            <button class="tab-btn" data-tab="compras">Compras y Pagos</button>
+            <button class="tab-btn" data-tab="envios">Envíos y Devoluciones</button>
+            <button class="tab-btn" data-tab="propiedad">Propiedad Intelectual</button>
+        </div>
+
+        <!-- Información General Tab -->
+        <div id="general" class="tab-content active">
+            <div class="terms-section">
+                <div class="terms-header">
+                    <h2>Términos y Condiciones</h2>
+                    <p>Condiciones que rigen la relación entre ÉLITE MODA y nuestros clientes</p>
+                </div>
+                
+                <div class="terms-cards">
+                    <div class="terms-card">
+                        <i class="fas fa-file-contract"></i>
+                        <h3>Aceptación</h3>
+                        <p>Al utilizar nuestros servicios, aceptas estos términos y condiciones</p>
+                    </div>
+                    <div class="terms-card">
+                        <i class="fas fa-user-shield"></i>
+                        <h3>Responsabilidad</h3>
+                        <p>Información clara sobre nuestras responsabilidades y las del cliente</p>
+                    </div>
+                    <div class="terms-card">
+                        <i class="fas fa-balance-scale"></i>
+                        <h3>Jurisdicción</h3>
+                        <p>Estos términos se rigen por las leyes de la República de Colombia</p>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Introducción</h3>
+                    <p>Bienvenido a <strong>ÉLITE MODA</strong>. Estos Términos y Condiciones regulan el uso de nuestro sitio web y los servicios que ofrecemos. Al acceder y utilizar nuestro sitio web, aceptas estar legalmente vinculado por estos términos.</p>
+                    
+                    <p>Te recomendamos leer detenidamente estos términos antes de realizar cualquier compra o utilizar nuestros servicios. Si no estás de acuerdo con alguno de estos términos, por favor no utilices nuestro sitio web.</p>
+
+                    <div class="highlight-box">
+                        <h4>📝 Última Actualización</h4>
+                        <p>Estos términos fueron actualizados por última vez el 15 de Enero de 2024. Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación en el sitio.</p>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Definiciones</h3>
+                    <p>Para efectos de estos términos, se entenderá por:</p>
+                    <ul>
+                        <li><strong>"Sitio Web":</strong> www.elitemoda.com y todas sus subpáginas</li>
+                        <li><strong>"Cliente":</strong> Persona natural o jurídica que realiza compras en nuestro sitio</li>
+                        <li><strong>"Productos":</strong> Artículos de moda ofrecidos para la venta</li>
+                        <li><strong>"Servicios":</strong> Todos los servicios ofrecidos a través del sitio web</li>
+                        <li><strong>"Usuario":</strong> Cualquier persona que acceda y utilice el sitio web</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h3>Capacidad Legal</h3>
+                    <p>Para utilizar nuestros servicios y realizar compras, debes tener al menos 18 años de edad y tener capacidad legal para contratar. Al realizar una compra, declaras que cumples con estos requisitos.</p>
+                    
+                    <p>Los menores de 18 años solo pueden utilizar el sitio web bajo la supervisión de un padre o tutor legal que acepte estos términos en su nombre.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Compras y Pagos Tab -->
+        <div id="compras" class="tab-content">
+            <div class="terms-section">
+                <div class="terms-header">
+                    <h2>Compras y Pagos</h2>
+                    <p>Condiciones relacionadas con el proceso de compra y métodos de pago</p>
+                </div>
+
+                <div class="terms-tables">
+                    <table class="terms-table">
+                        <caption>Métodos de Pago Aceptados</caption>
+                        <thead>
+                            <tr>
+                                <th>Método</th>
+                                <th>Descripción</th>
+                                <th>Procesamiento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Tarjetas de Crédito</strong></td>
+                                <td>Visa, MasterCard, American Express</td>
+                                <td>Inmediato</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tarjetas Débito</strong></td>
+                                <td>Visa, MasterCard Débito</td>
+                                <td>Inmediato</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PSE</strong></td>
+                                <td>Pagos Seguros en Línea</td>
+                                <td>Inmediato</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Transferencias</strong></td>
+                                <td>Bancolombia, Davivienda, BBVA</td>
+                                <td>24-48 horas</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content-section">
+                    <h3>Proceso de Compra</h3>
+                    <p>El proceso de compra en nuestro sitio web incluye los siguientes pasos:</p>
+                    <ul>
+                        <li>Selección de productos y agregado al carrito de compras</li>
+                        <li>Revisión y confirmación del pedido</li>
+                        <li>Proporcionar información de envío y facturación</li>
+                        <li>Selección del método de pago</li>
+                        <li>Confirmación y procesamiento del pago</li>
+                        <li>Confirmación del pedido vía email</li>
+                    </ul>
+
+                    <p>Al completar una compra, recibirás un correo electrónico de confirmación con los detalles de tu pedido. Este correo constituye la aceptación de tu pedido por parte de ÉLITE MODA.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Precios y Facturación</h3>
+                    <p>Todos los precios mostrados en nuestro sitio web están en Pesos Colombianos (COP) e incluyen IVA cuando aplica. Nos reservamos el derecho de modificar los precios en cualquier momento, pero los cambios no afectarán los pedidos ya confirmados.</p>
+                    
+                    <p>Al realizar una compra, aceptas que:</p>
+                    <ul>
+                        <li>Proporcionas información de facturación completa y precisa</li>
+                        <li>Eres el titular autorizado del método de pago utilizado</li>
+                        <li>Autorizas el cargo correspondiente a tu método de pago</li>
+                        <li>Aceptas nuestras políticas de precios y facturación</li>
+                    </ul>
+                </div>
+
+                <div class="update-section">
+                    <h4>⚠️ Importante</h4>
+                    <p><strong>No procesaremos tu pedido hasta que recibamos la confirmación del pago.</strong> En caso de problemas con el pago, nos contactaremos contigo para resolver la situación. Si no podemos contactarte dentro de 3 días hábiles, cancelaremos el pedido.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Envíos y Devoluciones Tab -->
+        <div id="envios" class="tab-content">
+            <div class="terms-section">
+                <div class="terms-header">
+                    <h2>Envíos y Devoluciones</h2>
+                    <p>Políticas de entrega, cambios y devoluciones de productos</p>
+                </div>
+
+                <div class="terms-cards">
+                    <div class="terms-card">
+                        <i class="fas fa-shipping-fast"></i>
+                        <h3>Envíos</h3>
+                        <p>Entregamos en todo Colombia con diferentes opciones de envío</p>
+                    </div>
+                    <div class="terms-card">
+                        <i class="fas fa-undo-alt"></i>
+                        <h3>Devoluciones</h3>
+                        <p>Política de 30 días para cambios y devoluciones</p>
+                    </div>
+                    <div class="terms-card">
+                        <i class="fas fa-exchange-alt"></i>
+                        <h3>Cambios</h3>
+                        <p>Cambios gratuitos por defectos de fabricación o tallas incorrectas</p>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Política de Envíos</h3>
+                    <p>Realizamos envíos a todo el territorio colombiano. Los tiempos de entrega varían según la ubicación:</p>
+                    
+                    <div class="terms-tables">
+                        <table class="terms-table">
+                            <caption>Tiempos de Entrega Estimados</caption>
+                            <thead>
+                                <tr>
+                                    <th>Ubicación</th>
+                                    <th>Tiempo Estándar</th>
+                                    <th>Tiempo Express</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Bogotá</strong></td>
+                                    <td>2-3 días hábiles</td>
+                                    <td>24 horas</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Otras Ciudades Principales</strong></td>
+                                    <td>3-5 días hábiles</td>
+                                    <td>2-3 días hábiles</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Municipios</strong></td>
+                                    <td>5-7 días hábiles</td>
+                                    <td>3-5 días hábiles</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p>Los costos de envío se calculan al momento de la compra según el peso, dimensiones y destino del paquete. Ofrecemos envío gratuito para compras superiores a $200,000 COP.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Política de Devoluciones y Cambios</h3>
+                    <p>Aceptamos devoluciones y cambios dentro de los 30 días siguientes a la recepción del producto, siempre que:</p>
+                    
+                    <ul>
+                        <li>El producto esté en su estado original, sin usar y con etiquetas</li>
+                        <li>Se presente la factura de compra original</li>
+                        <li>El producto no sea de la categoría de ropa íntima por higiene</li>
+                        <li>No hayan transcurrido más de 30 días desde la recepción</li>
+                    </ul>
+
+                    <p><strong>Proceso de devolución:</strong></p>
+                    <ol>
+                        <li>Contacta a nuestro servicio al cliente para solicitar la devolución</li>
+                        <li>Recibirás instrucciones para el envío del producto</li>
+                        <li>Una vez recibido y verificado el producto, procesaremos el reembolso</li>
+                        <li>El reembolso se realizará dentro de 5-10 días hábiles</li>
+                    </ol>
+                </div>
+
+                <div class="contact-section">
+                    <h2>¿Necesitas Ayuda con un Pedido?</h2>
+                    <p>Nuestro equipo de servicio al cliente está disponible para ayudarte con cualquier consulta sobre envíos, devoluciones o cambios.</p>
+                    <a href="https://wa.me/5804163034250" class="btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Contactar Servicio al Cliente
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Propiedad Intelectual Tab -->
+        <div id="propiedad" class="tab-content">
+            <div class="terms-section">
+                <div class="terms-header">
+                    <h2>Propiedad Intelectual</h2>
+                    <p>Derechos de propiedad intelectual y uso del contenido del sitio</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Derechos de Autor</h3>
+                    <p>Todos los contenidos del sitio web de ÉLITE MODA, incluyendo pero no limitado a textos, gráficos, logotipos, iconos, imágenes, clips de audio, descargas digitales, compilaciones de datos y software, son propiedad de ÉLITE MODA o de sus proveedores de contenido y están protegidos por las leyes de derechos de autor internacionales.</p>
+                    
+                    <p>El compilado de todo el contenido del sitio web es propiedad exclusiva de ÉLITE MODA y está protegido por las leyes de derechos de autor internacionales.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Marcas Registradas</h3>
+                    <p>ÉLITE MODA y los logotipos relacionados, productos y nombres de servicios, diseños y eslóganes son marcas registradas de ÉLITE MODA. No puedes usar estas marcas sin el permiso previo por escrito de ÉLITE MODA.</p>
+                    
+                    <p>Todas las demás marcas comerciales que aparecen en el sitio web son propiedad de sus respectivos dueños.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Licencia y Acceso</h3>
+                    <p>ÉLITE MODA te otorga una licencia limitada para acceder y hacer uso personal del sitio web. Esta licencia no incluye:</p>
+                    <ul>
+                        <li>La reventa comercial o uso comercial de nuestro sitio web o su contenido</li>
+                        <li>La recopilación y uso de listados de productos, descripciones o precios</li>
+                        <li>La derivación de trabajos de nuestro sitio web o su contenido</li>
+                        <li>La descarga o copia de información de la cuenta para el beneficio de otro comerciante</li>
+                        <li>El uso de robots, spiders o herramientas de recopilación de datos similares</li>
+                    </ul>
+                </div>
+
+                <div class="update-section">
+                    <h4>⚠️ Uso Prohibido</h4>
+                    <p>Queda estrictamente prohibido cualquier uso no autorizado del sitio web o de cualquier contenido, que pueda violar derechos de autor, marcas registradas, leyes de privacidad, comunicaciones u otras leyes y regulaciones. Nos reservamos el derecho de suspender tu acceso al sitio web si violas estos términos.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Contenido del Usuario</h3>
+                    <p>Si envías contenido al sitio web (como comentarios, reseñas o imágenes), nos otorgas una licencia no exclusiva, libre de regalías, perpetua, irrevocable y totalmente sublicenciable para usar, reproducir, modificar, adaptar, publicar, traducir, crear trabajos derivados, distribuir y mostrar dicho contenido en todo el mundo en cualquier medio.</p>
+                    
+                    <p>Declaras y garantizas que eres el propietario o tienes los derechos necesarios sobre el contenido que envías y que dicho contenido no viola estos términos ni los derechos de terceros.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ÉLITE MODA</h3>
+                    <p>Moda exclusiva para clientes distinguidos. Calidad, estilo y sofisticación en cada prenda.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/@yennibel.camino"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/yencava"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.pinterest.com"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.twiter.com"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="Colecciones.html">Colecciones</a></li>
+                        <li><a href="RopaInt.html">Ropa Íntima</a></li>
+                        <li><a href="RopaCasual.html">Ropa Casual</a></li>
+                        <li><a href="guiadetallas.html">Guía de Tallas</a></li>
+                        <li><a href="cuidadoprendas.html">Cuidados</a></li>
+                        <li><a href="EnviosyDevoluc.html">Envíos y Devoluciones</a></li>
+                        <li><a href="PoliticadePrivacidad.html">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Servicio al Cliente</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://wa.me/5804163034250?" target="_blank">Contactarnos</a></li>
+                        <li><a href="PregunFrec.html">Preguntas Frecuentes</a></li>
+                        <li><a href="EnviosyDevoluc.html">Envíos y Entregas</a></li>
+                        <li><a href="EnviosyDevoluc.html">Devoluciones</a></li>
+                        <li><a href="guiadetallas.html">Guía de Tallas</a></li>
+                        <li><a href="PoliticadePrivacidad.html">Privacidad y Cookies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Carrera 15 #88-64, Bogotá</li>
+                        <li><i class="fas fa-phone"></i> +57 1 744 8000</li>
+                        <li><i class="fas fa-envelope"></i> info@elitemoda.com</li>
+                        <li><i class="fas fa-envelope"></i> privacidad@elitemoda.com</li>
+                        <li><i class="fas fa-clock"></i> Lun - Vie: 9:00 - 19:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 ÉLITE MODA. Todos los derechos reservados. | <a href="PoliticaPrivacidad.html" style="color: var(--secondary-color);">Política de Privacidad</a> | <a href="TerminosCondiciones.html" style="color: var(--secondary-color);">Términos y Condiciones</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Control del botón de inicio - FUNCIÓN DUAL
+        document.addEventListener('DOMContentLoaded', function() {
+            const homeButton = document.getElementById('homeButton');
+            let scrollTimeout;
+            
+            // Función para verificar si estamos en la parte superior
+            function checkIfAtTop() {
+                return window.pageYOffset === 0;
+            }
+            
+            // Función para hacer scroll al top
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+            
+            // Manejar el clic del botón
+            homeButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (checkIfAtTop()) {
+                    // Si YA estamos en top, redirigir a index.html
+                    window.location.href = 'index.html';
+                } else {
+                    // Si NO estamos en top, hacer scroll al top
+                    scrollToTop();
+                }
+            });
+            
+            // Función para ocultar el botón
+            function hideButton() {
+                homeButton.classList.add('hidden');
+            }
+            
+            // Función para mostrar el botón
+            function showButton() {
+                homeButton.classList.remove('hidden');
+            }
+            
+            // Detectar scroll
+            window.addEventListener('scroll', function() {
+                // Ocultar el botón inmediatamente al detectar scroll
+                if (!homeButton.classList.contains('hidden')) {
+                    hideButton();
+                }
+                
+                // Limpiar timeout anterior
+                window.clearTimeout(scrollTimeout);
+                
+                // Mostrar el botón después de que el scroll se detenga
+                scrollTimeout = setTimeout(function() {
+                    showButton();
+                }, 600);
+            }, false);
+            
+            // Mostrar el botón cuando el mouse está sobre él
+            homeButton.addEventListener('mouseenter', function() {
+                clearTimeout(scrollTimeout);
+                showButton();
+            });
+            
+            // Ocultar después de que el mouse salga (con delay)
+            homeButton.addEventListener('mouseleave', function() {
+                scrollTimeout = setTimeout(function() {
+                    showButton();
+                }, 1000);
+            });
+            
+            // Mostrar el botón inicialmente
+            showButton();
+        });
+
+        // JavaScript para las pestañas
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remover clase active de todos los botones y contenidos
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Agregar clase active al botón y contenido seleccionados
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
