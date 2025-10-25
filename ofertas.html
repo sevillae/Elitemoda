@@ -585,6 +585,19 @@
                 font-size: 1.2rem;
             }
         }
+
+
+        .legal-links a {
+            color: var(--secondary-color) !important; /* Color dorado */
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .legal-links a:hover {
+            color: white !important;
+            text-decoration: underline;
+        }
+        
     </style>
 </head>
 <body>
@@ -827,8 +840,13 @@
         </div>
         
         <div class="copyright">
-            <p>&copy; 2025 ÉLITE MODA. Todos los derechos reservados.</p>
+            <p>&copy; 2023 ÉLITE MODA. Todos los derechos reservados.</p>
+            <div class="legal-links">
+            <a href="PoliticadePrivacidad.html">Política de Privacidad</a>
+            <span class="separator">|</span>
+            <a href="TerminosyCondiciones.html">Términos y Condiciones</a>
         </div>
+
     </footer>
 
     <script>
@@ -853,7 +871,7 @@
                 isScrolling = false;
                 // Mostrar el botón cuando el scroll se detiene
                 scrollToTopBtn.classList.remove('hidden');
-            }, 350);
+            }, 550);
             
             lastScrollTop = scrollTop;
         });
