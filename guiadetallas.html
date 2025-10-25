@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="Iconos/conexion.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Tallas | ÉLITE MODA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #c19a6b;
+            --accent-color: #8b4513;
+            --light-color: #f8f9fa;
+            --dark-color: #1a1a1a;
+            --text-color: #333;
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 1.5rem 0;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 4rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        /* BOTÓN DE INICIO MEJORADO */
+        .btn-home {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4);
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid transparent;
+            backdrop-filter: blur(10px);
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+            cursor: pointer;
+        }
+
+        .btn-home.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(193, 154, 107, 0.6);
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-home i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-home:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Efecto de pulso sutil */
+        @keyframes pulse-gentle {
+            0% { box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4); }
+            50% { box-shadow: 0 5px 25px rgba(193, 154, 107, 0.6); }
+            100% { box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4); }
+        }
+
+        .btn-home:not(.hidden) {
+            animation: pulse-gentle 3s infinite;
+        }
+
+        /* Tabs Navigation */
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #e0e0e0;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            position: relative;
+            background: none;
+            border: none;
+            color: var(--text-color);
+        }
+
+        .tab-btn.active {
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .tab-btn:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Size Guide Section */
+        .size-guide {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 3rem;
+        }
+
+        .size-guide-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .size-guide-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .size-guide-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* Measurement Guide */
+        .measurement-guide {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .measurement-guide h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .measurement-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .measurement-step {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .measurement-step i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .measurement-step h4 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Size Tables */
+        .size-tables {
+            overflow-x: auto;
+        }
+
+        .size-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .size-table caption {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .size-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .size-table td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .size-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .size-table tr:hover {
+            background-color: #e9ecef;
+        }
+
+        .highlight {
+            background-color: rgba(193, 154, 107, 0.1) !important;
+            font-weight: 600;
+        }
+
+        /* Tips Section */
+        .tips-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .tips-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .tips-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tip-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .tip-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0 10px 10px;
+            }
+            
+            .hero {
+                height: 50vh;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .tabs-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 5px;
+            }
+            
+            .size-guide {
+                padding: 2rem 1rem;
+            }
+            
+            .btn-home {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .size-guide-header h2 {
+                font-size: 2rem;
+            }
+            
+            .btn-home {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .btn-home span {
+                display: none;
+            }
+            
+            .btn-home i {
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .btn-home {
+                padding: 12px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-crown"></i>
+                    ÉLITE MODA
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="Colecciones.html">Colecciones</a></li>
+                    <li><a href="RopaInt.html">Ropa Íntima</a></li>
+                    <li><a href="RopaCasual.html">Ropa Casual</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="https://wa.me/5804163034250" target="_blank"> Contacto WhatsApp</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Guía de Tallas</h1>
+            <p>Encuentra tu talla perfecta con nuestra guía completa y detallada</p>
+        </div>
+    </section>
+
+    <!-- Home Button MEJORADO -->
+    <button class="btn-home" id="homeButton">
+        <i class="fas fa-home"></i>
+        <span>Inicio</span>
+    </button>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Tabs Navigation -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" data-tab="intima">Ropa Íntima</button>
+            <button class="tab-btn" data-tab="jeans">Jeans</button>
+            <button class="tab-btn" data-tab="blusas">Blusas</button>
+            <button class="tab-btn" data-tab="franelas">Franelas</button>
+            <button class="tab-btn" data-tab="vestidos">Vestidos</button>
+            <button class="tab-btn" data-tab="otros">Otros</button>
+        </div>
+
+        <!-- Measurement Guide -->
+        <div class="measurement-guide">
+            <h3>¿Cómo tomar tus medidas correctamente?</h3>
+            <div class="measurement-steps">
+                <div class="measurement-step">
+                    <i class="fas fa-ruler-combined"></i>
+                    <h4>Busto</h4>
+                    <p>Mide alrededor de la parte más llena del busto, manteniendo la cinta métrica paralela al suelo.</p>
+                </div>
+                <div class="measurement-step">
+                    <i class="fas fa-ruler-vertical"></i>
+                    <h4>Cintura</h4>
+                    <p>Mide alrededor de la parte más estrecha de tu cintura, generalmente justo por encima del ombligo.</p>
+                </div>
+                <div class="measurement-step">
+                    <i class="fas fa-arrows-alt-h"></i>
+                    <h4>Cadera</h4>
+                    <p>Mide alrededor de la parte más ancha de tus caderas, manteniendo la cinta métrica paralela al suelo.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ropa Íntima Tab -->
+        <div id="intima" class="tab-content active">
+            <div class="size-guide">
+                <div class="size-guide-header">
+                    <h2>Guía de Tallas - Ropa Íntima</h2>
+                    <p>Encuentra la talla perfecta para tu comodidad y elegancia</p>
+                </div>
+                
+                <div class="size-tables">
+                    <table class="size-table">
+                        <caption>Sujetadores</caption>
+                        <thead>
+                            <tr>
+                                <th>Talla</th>
+                                <th>Contorno de Busto (cm)</th>
+                                <th>Contorno de Bajo Busto (cm)</th>
+                                <th>Copa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>XS</td>
+                                <td>78-82</td>
+                                <td>63-67</td>
+                                <td>A</td>
+                            </tr>
+                            <tr class="highlight">
+                                <td>S</td>
+                                <td>83-87</td>
+                                <td>68-72</td>
+                                <td>B</td>
+                            </tr>
+                            <tr>
+                                <td>M</td>
+                                <td>88-92</td>
+                                <td>73-77</td>
+                                <td>C</td>
+                            </tr>
+                            <tr>
+                                <td>L</td>
+                                <td>93-97</td>
+                                <td>78-82</td>
+                                <td>D</td>
+                            </tr>
+                            <tr>
+                                <td>XL</td>
+                                <td>98-102</td>
+                                <td>83-87</td>
+                                <td>DD</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="size-table">
+                        <caption>Panties y Bragas</caption>
+                        <thead>
+                            <tr>
+                                <th>Talla</th>
+                                <th>Cadera (cm)</th>
+                                <th>Cintura (cm)</th>
+                                <th>Talla Internacional</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>XS</td>
+                                <td>86-89</td>
+                                <td>60-64</td>
+                                <td>32</td>
+                            </tr>
+                            <tr class="highlight">
+                                <td>S</td>
+                                <td>90-93</td>
+                                <td>65-69</td>
+                                <td>34</td>
+                            </tr>
+                            <tr>
+                                <td>M</td>
+                                <td>94-97</td>
+                                <td>70-74</td>
+                                <td>36</td>
+                            </tr>
+                            <tr>
+                                <td>L</td>
+                                <td>98-101</td>
+                                <td>75-79</td>
+                                <td>38</td>
+                            </tr>
+                            <tr>
+                                <td>XL</td>
+                                <td>102-105</td>
+                                <td>80-84</td>
+                                <td>40</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jeans Tab -->
+        <div id="jeans" class="tab-content">
+            <div class="size-guide">
+                <div class="size-guide-header">
+                    <h2>Guía de Tallas - Jeans</h2>
+                    <p>Encuentra el ajuste perfecto para tus jeans</p>
+                </div>
+                
+                <div class="size-tables">
+                    <table class="size-table">
+                        <caption>Tabla de Tallas Jeans Mujer</caption>
+                        <thead>
+                            <tr>
+                                <th>Talla</th>
+                                <th>Cintura (cm)</th>
+                                <th>Cadera (cm)</th>
+                                <th>Largo Interno (cm)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>26</td>
+                                <td>66-68</td>
+                                <td>88-90</td>
+                                <td>76</td>
+                            </tr>
+                            <tr class="highlight">
+                                <td>28</td>
+                                <td>70-72</td>
+                                <td>92-94</td>
+                                <td>78</td>
+                            </tr>
+                            <tr>
+                                <td>30</td>
+                                <td>74-76</td>
+                                <td>96-98</td>
+                                <td>80</td>
+                            </tr>
+                            <tr>
+                                <td>32</td>
+                                <td>78-80</td>
+                                <td>100-102</td>
+                                <td>82</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blusas Tab -->
+        <div id="blusas" class="tab-content">
+            <div class="size-guide">
+                <div class="size-guide-header">
+                    <h2>Guía de Tallas - Blusas</h2>
+                    <p>Selecciona la talla perfecta para tus blusas</p>
+                </div>
+                
+                <div class="size-tables">
+                    <table class="size-table">
+                        <caption>Tabla de Tallas Blusas</caption>
+                        <thead>
+                            <tr>
+                                <th>Talla</th>
+                                <th>Busto (cm)</th>
+                                <th>Cintura (cm)</th>
+                                <th>Cadera (cm)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>XS</td>
+                                <td>82-85</td>
+                                <td>64-67</td>
+                                <td>88-91</td>
+                            </tr>
+                            <tr class="highlight">
+                                <td>S</td>
+                                <td>86-89</td>
+                                <td>68-71</td>
+                                <td>92-95</td>
+                            </tr>
+                            <tr>
+                                <td>M</td>
+                                <td>90-93</td>
+                                <td>72-75</td>
+                                <td>96-99</td>
+                            </tr>
+                            <tr>
+                                <td>L</td>
+                                <td>94-97</td>
+                                <td>76-79</td>
+                                <td>100-103</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Franelas Tab -->
+        <div id="franelas" class="tab-content">
+            <div class="size-guide">
+                <div class="size-guide-header">
+                    <h2>Guía de Tallas - Franelas</h2>
+                    <p>Encuentra la talla ideal para tus franelas</p>
+                </div>
+                
+                <div class="size-tables">
+                    <table class="size-table">
+                        <caption>Tabla de Tallas Franelas Unisex</caption>
+                        <thead>
+                            <tr>
+                                <th>Talla</th>
+                                <th>Pecho (cm)</th>
+                                <th>Largo (cm)</th>
+                                <th>Manga (cm)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>S</td>
+                                <td>96-101</td>
+                                <td>66-68</td>
+                                <td>59-61</td>
+                            </tr>
+                            <tr class="highlight">
+                                <td>M</td>
+                                <td>102-107</td>
+                                <td>69-71</td>
+                                <td>62-64</td>
+                            </tr>
+                            <tr>
+                                <td>L</td>
+                                <td>108-113</td>
+                                <td>72-74</td>
+                                <td>65-67</td>
+                            </tr>
+                            <tr>
+                                <td>XL</td>
+                                <td>114-119</td>
+                                <td>75-77</td>
+                                <td>68-70</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vestidos Tab -->
+        <div id="vestidos" class="tab-content">
+            <div class="size-guide">
+                <div class="size-guide-header">
+                    <h2>Guía de Tallas - Vestidos</h2>
+                    <p>Descubre tu talla perfecta para vestidos</p>
+                </div>
+                
+                <div class="size-tables">
+                    <table class="size-table">
+                        <caption>Tabla de Tallas Vestidos</caption>
+                        <thead>
+                            <tr>
+                                <th>Talla</th>
+                                <th>Busto (cm)</th>
+                                <th>Cintura (cm)</th>
+                                <th>Cadera (cm)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>XS</td>
+                                <td>80-84</td>
+                                <td>62-66</td>
+                                <td>86-90</td>
+                            </tr>
+                            <tr class="highlight">
+                                <td>S</td>
+                                <td>85-89</td>
+                                <td>67-71</td>
+                                <td>91-95</td>
+                            </tr>
+                            <tr>
+                                <td>M</td>
+                                <td>90-94</td>
+                                <td>72-76</td>
+                                <td>96-100</td>
+                            </tr>
+                            <tr>
+                                <td>L</td>
+                                <td>95-99</td>
+                                <td>77-81</td>
+                                <td>101-105</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Otros Tab -->
+        <div id="otros" class="tab-content">
+            <div class="size-guide">
+                <div class="size-guide-header">
+                    <h2>Guía de Tallas - Otras Prendas</h2>
+                    <p>Tallas para chaquetas, abrigos y más</p>
+                </div>
+                
+                <div class="size-tables">
+                    <table class="size-table">
+                        <caption>Tabla de Tallas Chaquetas y Abrigos</caption>
+                        <thead>
+                            <tr>
+                                <th>Talla</th>
+                                <th>Pecho (cm)</th>
+                                <th>Cintura (cm)</th>
+                                <th>Cadera (cm)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>XS</td>
+                                <td>84-87</td>
+                                <td>68-71</td>
+                                <td>88-91</td>
+                            </tr>
+                            <tr class="highlight">
+                                <td>S</td>
+                                <td>88-91</td>
+                                <td>72-75</td>
+                                <td>92-95</td>
+                            </tr>
+                            <tr>
+                                <td>M</td>
+                                <td>92-95</td>
+                                <td>76-79</td>
+                                <td>96-99</td>
+                            </tr>
+                            <tr>
+                                <td>L</td>
+                                <td>96-99</td>
+                                <td>80-83</td>
+                                <td>100-103</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tips Section -->
+        <div class="tips-section">
+            <div class="tips-content">
+                <h2>Consejos para Elegir tu Talla Perfecta</h2>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <i class="fas fa-ruler"></i>
+                        <h4>Toma tus medidas</h4>
+                        <p>Usa una cinta métrica flexible y toma tus medidas sobre la ropa interior.</p>
+                    </div>
+                    <div class="tip-card">
+                        <i class="fas fa-tshirt"></i>
+                        <h4>Considera el estilo</h4>
+                        <p>Diferentes estilos pueden requerir tallas diferentes para el mismo ajuste.</p>
+                    </div>
+                    <div class="tip-card">
+                        <i class="fas fa-hands-helping"></i>
+                        <h4>Consulta siempre</h4>
+                        <p>Si tienes dudas, contáctanos para asesoramiento personalizado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ÉLITE MODA</h3>
+                    <p>Moda exclusiva para clientes distinguidos. Calidad, estilo y sofisticación en cada prenda.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.pinterest.com"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.twiter.com"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="Colecciones.html">Colecciones</a></li>
+                        <li><a href="RopaInt.html">Ropa Íntima</a></li>
+                        <li><a href="RopaCasual.html">Ropa Casual</a></li>
+                        <li><a href="#">Guía de Tallas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Servicio al Cliente</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://wa.me/5804163034250?" target="_blank">Contactarnos</a></li>
+                        <li><a href="#">Preguntas Frecuentes</a></li>
+                        <li><a href="#">Envíos y Entregas</a></li>
+                        <li><a href="#">Devoluciones</a></li>
+                        <li><a href="#">Guía de Tallas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Carrera 15 #88-64, Bogotá</li>
+                        <li><i class="fas fa-phone"></i> +57 1 744 8000</li>
+                        <li><i class="fas fa-envelope"></i> info@elitemoda.com</li>
+                        <li><i class="fas fa-clock"></i> Lun - Vie: 9:00 - 19:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 ÉLITE MODA. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Control del botón de inicio - FUNCIÓN DUAL
+        document.addEventListener('DOMContentLoaded', function() {
+            const homeButton = document.getElementById('homeButton');
+            let scrollTimeout;
+            
+            // Función para verificar si estamos en la parte superior
+            function checkIfAtTop() {
+                return window.pageYOffset === 0;
+            }
+            
+            // Función para hacer scroll al top
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+            
+            // Manejar el clic del botón
+            homeButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (checkIfAtTop()) {
+                    // Si YA estamos en top, redirigir a index.html
+                    window.location.href = 'index.html';
+                } else {
+                    // Si NO estamos en top, hacer scroll al top
+                    scrollToTop();
+                }
+            });
+            
+            // Función para ocultar el botón
+            function hideButton() {
+                homeButton.classList.add('hidden');
+            }
+            
+            // Función para mostrar el botón
+            function showButton() {
+                homeButton.classList.remove('hidden');
+            }
+            
+            // Detectar scroll
+            window.addEventListener('scroll', function() {
+                // Ocultar el botón inmediatamente al detectar scroll
+                if (!homeButton.classList.contains('hidden')) {
+                    hideButton();
+                }
+                
+                // Limpiar timeout anterior
+                window.clearTimeout(scrollTimeout);
+                
+                // Mostrar el botón después de que el scroll se detenga
+                scrollTimeout = setTimeout(function() {
+                    showButton();
+                }, 600);
+            }, false);
+            
+            // Mostrar el botón cuando el mouse está sobre él
+            homeButton.addEventListener('mouseenter', function() {
+                clearTimeout(scrollTimeout);
+                showButton();
+            });
+            
+            // Ocultar después de que el mouse salga (con delay)
+            homeButton.addEventListener('mouseleave', function() {
+                scrollTimeout = setTimeout(function() {
+                    showButton();
+                }, 1000);
+            });
+            
+            // Mostrar el botón inicialmente
+            showButton();
+        });
+
+        // JavaScript para las pestañas
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remover clase active de todos los botones y contenidos
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Agregar clase active al botón y contenido seleccionados
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
