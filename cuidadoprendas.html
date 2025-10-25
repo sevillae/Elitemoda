@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="Iconos/conexion.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuidados de Prendas | ÉLITE MODA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #c19a6b;
+            --accent-color: #8b4513;
+            --light-color: #f8f9fa;
+            --dark-color: #1a1a1a;
+            --text-color: #333;
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 1.5rem 0;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?ixlib=rb-4.0.3') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 4rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        /* BOTÓN DE INICIO MEJORADO */
+        .btn-home {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4);
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid transparent;
+            backdrop-filter: blur(10px);
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+            cursor: pointer;
+        }
+
+        .btn-home.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(193, 154, 107, 0.6);
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-home i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-home:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Efecto de pulso sutil */
+        @keyframes pulse-gentle {
+            0% { box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4); }
+            50% { box-shadow: 0 5px 25px rgba(193, 154, 107, 0.6); }
+            100% { box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4); }
+        }
+
+        .btn-home:not(.hidden) {
+            animation: pulse-gentle 3s infinite;
+        }
+
+        /* Tabs Navigation */
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #e0e0e0;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            position: relative;
+            background: none;
+            border: none;
+            color: var(--text-color);
+        }
+
+        .tab-btn.active {
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .tab-btn:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Care Guide Section */
+        .care-guide {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 3rem;
+        }
+
+        .care-guide-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .care-guide-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .care-guide-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* Care Cards */
+        .care-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .care-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .care-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .care-card i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .care-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Symbol Guide */
+        .symbol-guide {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .symbol-guide-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .symbol-guide-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .symbol-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .symbol-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .symbol-item i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        /* Care Tables */
+        .care-tables {
+            overflow-x: auto;
+        }
+
+        .care-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .care-table caption {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .care-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .care-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .care-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .care-table tr:hover {
+            background-color: #e9ecef;
+        }
+
+        .do {
+            color: #28a745;
+            font-weight: 600;
+        }
+
+        .dont {
+            color: #dc3545;
+            font-weight: 600;
+        }
+
+        /* Tips Section */
+        .tips-section {
+            background: var(--primary-color);
+            color: white;
+            padding: 4rem 0;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .tips-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .tips-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tip-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .tip-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        /* Emergency Section */
+        .emergency-section {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .emergency-content {
+            text-align: center;
+        }
+
+        .emergency-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .emergency-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .emergency-step {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .emergency-step i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0 10px 10px;
+            }
+            
+            .hero {
+                height: 50vh;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .tabs-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 5px;
+            }
+            
+            .care-guide {
+                padding: 2rem 1rem;
+            }
+            
+            .btn-home {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .care-guide-header h2 {
+                font-size: 2rem;
+            }
+            
+            .btn-home {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .btn-home span {
+                display: none;
+            }
+            
+            .btn-home i {
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .btn-home {
+                padding: 12px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-crown"></i>
+                    ÉLITE MODA
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="Colecciones.html">Colecciones</a></li>
+                    <li><a href="RopaInt.html">Ropa Íntima</a></li>
+                    <li><a href="RopaCasual.html">Ropa Casual</a></li>
+                    <li><a href="guiadetallas.html">Guía de Tallas</a></li>
+                    <li><a href="#care-guide">Cuidados</a></li>
+                    <li><a href="https://wa.me/5804163034250" target="_blank"> Contacto WhatsApp</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Cuidados de Prendas</h1>
+            <p>Mantén tu ropa como nueva con nuestros consejos expertos de cuidado y mantenimiento</p>
+        </div>
+    </section>
+
+    <!-- Home Button MEJORADO -->
+    <button class="btn-home" id="homeButton">
+        <i class="fas fa-home"></i>
+        <span>Inicio</span>
+    </button>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Tabs Navigation -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" data-tab="general">Cuidados Generales</button>
+            <button class="tab-btn" data-tab="lavado">Lavado</button>
+            <button class="tab-btn" data-tab="secado">Secado</button>
+            <button class="tab-btn" data-tab="planchado">Planchado</button>
+            <button class="tab-btn" data-tab="almacenamiento">Almacenamiento</button>
+        </div>
+
+        <!-- General Care Tab -->
+        <div id="general" class="tab-content active">
+            <div class="care-guide">
+                <div class="care-guide-header">
+                    <h2>Cuidados Generales de Prendas</h2>
+                    <p>Consejos esenciales para mantener todas tus prendas en perfecto estado</p>
+                </div>
+                
+                <div class="care-cards">
+                    <div class="care-card">
+                        <i class="fas fa-tags"></i>
+                        <h3>Lee las Etiquetas</h3>
+                        <p>Siempre revisa las etiquetas de cuidado antes de lavar cualquier prenda.</p>
+                    </div>
+                    <div class="care-card">
+                        <i class="fas fa-sort"></i>
+                        <h3>Separa por Colores</h3>
+                        <p>Separa la ropa blanca, de color y oscura para evitar transferencia de color.</p>
+                    </div>
+                    <div class="care-card">
+                        <i class="fas fa-temperature-low"></i>
+                        <h3>Agua Fría</h3>
+                        <p>Usa agua fría para preservar colores y prevenir el encogimiento.</p>
+                    </div>
+                    <div class="care-card">
+                        <i class="fas fa-pump-soap"></i>
+                        <h3>Detergente Suave</h3>
+                        <p>Utiliza detergentes suaves para prendas delicadas y de color.</p>
+                    </div>
+                </div>
+
+                <div class="symbol-guide">
+                    <div class="symbol-guide-header">
+                        <h2>Guía de Símbolos de Cuidado</h2>
+                        <p>Entiende los símbolos en las etiquetas de tus prendas</p>
+                    </div>
+                    <div class="symbol-grid">
+                        <div class="symbol-item">
+                            <i class="fas fa-tint"></i>
+                            <h4>Lavado</h4>
+                            <p>Número indica temperatura máxima</p>
+                        </div>
+                        <div class="symbol-item">
+                            <i class="fas fa-square"></i>
+                            <h4>Secado</h4>
+                            <p>Círculo dentro de cuadrado</p>
+                        </div>
+                        <div class="symbol-item">
+                            <i class="fas fa-tshirt"></i>
+                            <h4>Planchado</h4>
+                            <p>Puntos indican temperatura</p>
+                        </div>
+                        <div class="symbol-item">
+                            <i class="fas fa-wind"></i>
+                            <h4>Limpieza en Seco</h4>
+                            <p>Círculo con letras específicas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lavado Tab -->
+        <div id="lavado" class="tab-content">
+            <div class="care-guide">
+                <div class="care-guide-header">
+                    <h2>Guía de Lavado</h2>
+                    <p>Técnicas adecuadas de lavado para diferentes tipos de telas</p>
+                </div>
+                
+                <div class="care-tables">
+                    <table class="care-table">
+                        <caption>Lavado por Tipo de Tela</caption>
+                        <thead>
+                            <tr>
+                                <th>Tela</th>
+                                <th>Temperatura</th>
+                                <th>Ciclo</th>
+                                <th>Detergente</th>
+                                <th>Recomendaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Algodón</strong></td>
+                                <td>Caliente (40-60°C)</td>
+                                <td>Normal</td>
+                                <td>Estándar</td>
+                                <td>Puede encoger en altas temperaturas</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Seda</strong></td>
+                                <td>Fría (30°C)</td>
+                                <td>Delicado</td>
+                                <td>Especial para seda</td>
+                                <td>Lavar a mano recomendado</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lana</strong></td>
+                                <td>Fría (30°C)</td>
+                                <td>Lana/Delicado</td>
+                                <td>Para lana</td>
+                                <td>No centrifugar fuerte</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Poliéster</strong></td>
+                                <td>Tibia (40°C)</td>
+                                <td>Normal</td>
+                                <td>Estándar</td>
+                                <td>Secar a baja temperatura</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Encaje</strong></td>
+                                <td>Fría (30°C)</td>
+                                <td>Delicado</td>
+                                <td>Suave</td>
+                                <td>Bolsa de malla para lavar</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="care-table">
+                        <caption>Qué Hacer y Qué No Hacer al Lavar</caption>
+                        <thead>
+                            <tr>
+                                <th>Aspecto</th>
+                                <th>✅ Recomendado</th>
+                                <th>❌ No Recomendado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Detergente</strong></td>
+                                <td class="do">Usar la cantidad recomendada</td>
+                                <td class="dont">Exceder la cantidad</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Manchas</strong></td>
+                                <td class="do">Tratar antes del lavado</td>
+                                <td class="dont">Frotar vigorosamente</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cierres</strong></td>
+                                <td class="do">Cerrar cremalleras</td>
+                                <td class="dont">Dejar abiertas</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prendas Delicadas</strong></td>
+                                <td class="do">Usar bolsas de malla</td>
+                                <td class="dont">Lavar con jeans</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Secado Tab -->
+        <div id="secado" class="tab-content">
+            <div class="care-guide">
+                <div class="care-guide-header">
+                    <h2>Técnicas de Secado</h2>
+                    <p>Métodos adecuados para secar diferentes tipos de prendas</p>
+                </div>
+                
+                <div class="care-cards">
+                    <div class="care-card">
+                        <i class="fas fa-wind"></i>
+                        <h3>Secado al Aire</h3>
+                        <p>Ideal para prendas delicadas como seda y lana. Evita la luz solar directa.</p>
+                    </div>
+                    <div class="care-card">
+                        <i class="fas fa-tshirt"></i>
+                        <h3>Secadora</h3>
+                        <p>Usa temperatura baja para algodón y mezclas. Evita para prendas delicadas.</p>
+                    </div>
+                    <div class="care-card">
+                        <i class="fas fa-hanger"></i>
+                        <h3>Colgado</h3>
+                        <p>Cuélgalas en perchas adecuadas para mantener la forma de las prendas.</p>
+                    </div>
+                    <div class="care-card">
+                        <i class="fas fa-layer-group"></i>
+                        <h3>Tendido Plano</h3>
+                        <p>Perfecto para suéteres y prendas de punto para evitar que se deformen.</p>
+                    </div>
+                </div>
+
+                <div class="tips-section">
+                    <div class="tips-content">
+                        <h2>Consejos de Secado</h2>
+                        <div class="tips-grid">
+                            <div class="tip-card">
+                                <i class="fas fa-sun"></i>
+                                <h4>Evita el Sol Directo</h4>
+                                <p>El sol directo puede decolorar las prendas y dañar las fibras.</p>
+                            </div>
+                            <div class="tip-card">
+                                <i class="fas fa-fan"></i>
+                                <h4>Buen Flujo de Aire</h4>
+                                <p>Asegura buena ventilación para prevenir olores a humedad.</p>
+                            </div>
+                            <div class="tip-card">
+                                <i class="fas fa-compress-arrows-alt"></i>
+                                <h4>No Retorcer</h4>
+                                <p>Exprime suavemente el exceso de agua, nunca retuerzas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Planchado Tab -->
+        <div id="planchado" class="tab-content">
+            <div class="care-guide">
+                <div class="care-guide-header">
+                    <h2>Técnicas de Planchado</h2>
+                    <p>Cómo planchar diferentes tipos de telas sin dañarlas</p>
+                </div>
+                
+                <div class="care-tables">
+                    <table class="care-table">
+                        <caption>Guía de Temperaturas de Planchado</caption>
+                        <thead>
+                            <tr>
+                                <th>Tela</th>
+                                <th>Temperatura</th>
+                                <th>Vapor</th>
+                                <th>Recomendaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Algodón</strong></td>
+                                <td>Alta (200°C)</td>
+                                <td>✅ Recomendado</td>
+                                <td>Planchar ligeramente húmedo</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lino</strong></td>
+                                <td>Alta (230°C)</td>
+                                <td>✅ Recomendado</td>
+                                <td>Planchar del revés</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Seda</strong></td>
+                                <td>Baja (110°C)</td>
+                                <td>❌ No usar</td>
+                                <td>Planchar del revés con tela</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lana</strong></td>
+                                <td>Media (150°C)</td>
+                                <td>✅ Con precaución</td>
+                                <td>Usar paño húmedo</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Poliéster</strong></td>
+                                <td>Baja (110°C)</td>
+                                <td>✅ Recomendado</td>
+                                <td>Evitar contacto directo</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="emergency-section">
+                    <div class="emergency-content">
+                        <h2>¡Emergencia! Quemé mi Prenda</h2>
+                        <p>Qué hacer si accidentalmente quemas una prenda al planchar</p>
+                        <div class="emergency-steps">
+                            <div class="emergency-step">
+                                <i class="fas fa-snowflake"></i>
+                                <h4>Enfría Inmediatamente</h4>
+                                <p>Aplica hielo o agua fría en la zona afectada.</p>
+                            </div>
+                            <div class="emergency-step">
+                                <i class="fas fa-cut"></i>
+                                <h4>Retira Fibras Quemadas</h4>
+                                <p>Limpia suavemente las fibras carbonizadas.</p>
+                            </div>
+                            <div class="emergency-step">
+                                <i class="fas fa-magic"></i>
+                                <h4>Tratamiento Especial</h4>
+                                <p>Aplica una solución de vinagre y agua.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Almacenamiento Tab -->
+        <div id="almacenamiento" class="tab-content">
+            <div class="care-guide">
+                <div class="care-guide-header">
+                    <h2>Almacenamiento de Prendas</h2>
+                    <p>Cómo guardar tu ropa correctamente para mantenerla en perfecto estado</p>
+                </div>
+                
+                <div class="care-cards">
+                    <div class="care-card">
+                        <i class="fas fa-box"></i>
+                        <h3>Almacenaje Estacional</h3>
+                        <p>Guarda la ropa de temporada en cajas limpias y herméticas.</p>
+                    </div>
+                    <div class="care-card">
+                        <i class="fas fa-mountain"></i>
+                        <h3>Evita la Humedad</h3>
+                        <p>Usa deshumidificadores o silica gel en áreas húmedas.</p>
+                    </div>
+                    <div class="care-card">
+                        <i class="fas fa-bug"></i>
+                        <h3>Protección contra Polillas</h3>
+                        <p>Usa bolas de cedro o lavanda natural para repeler insectos.</p>
+                    </div>
+                    <div class="care-card">
+                        <i class="fas fa-tshirt"></i>
+                        <h3>Prendas Colgadas</h3>
+                        <p>Usa perchas acolchadas para hombros delicados.</p>
+                    </div>
+                </div>
+
+                <div class="tips-section">
+                    <div class="tips-content">
+                        <h2>Consejos de Almacenamiento</h2>
+                        <div class="tips-grid">
+                            <div class="tip-card">
+                                <i class="fas fa-fan"></i>
+                                <h4>Ventilación</h4>
+                                <p>Airea el armario regularmente para prevenir olores.</p>
+                            </div>
+                            <div class="tip-card">
+                                <i class="fas fa-sun"></i>
+                                <h4>Protección Solar</h4>
+                                <p>Mantén la ropa alejada de la luz solar directa.</p>
+                            </div>
+                            <div class="tip-card">
+                                <i class="fas fa-layer-group"></i>
+                                <h4>Doblado Correcto</h4>
+                                <p>Aprende técnicas de doblado para ahorrar espacio.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ÉLITE MODA</h3>
+                    <p>Moda exclusiva para clientes distinguidos. Calidad, estilo y sofisticación en cada prenda.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/@yennibel.camino"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/yencava><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.pinterest.com"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.twiter.com"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="Colecciones.html">Colecciones</a></li>
+                        <li><a href="RopaInt.html">Ropa Íntima</a></li>
+                        <li><a href="RopaCasual.html">Ropa Casual</a></li>
+                        <li><a href="GuiaTallas.html">Guía de Tallas</a></li>
+                        <li><a href="CuidadosPrendas.html">Cuidados</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Servicio al Cliente</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://wa.me/5804163034250?" target="_blank">Contactarnos</a></li>
+                        <li><a href="PregunFrec.html">Preguntas Frecuentes</a></li>
+                        <li><a href="#">Envíos y Entregas</a></li>
+                        <li><a href="#">Devoluciones</a></li>
+                        <li><a href="GuiaTallas.html">Guía de Tallas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Carrera 15 #88-64, Bogotá</li>
+                        <li><i class="fas fa-phone"></i> +57 1 744 8000</li>
+                        <li><i class="fas fa-envelope"></i> info@elitemoda.com</li>
+                        <li><i class="fas fa-clock"></i> Lun - Vie: 9:00 - 19:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 ÉLITE MODA. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Control del botón de inicio - FUNCIÓN DUAL
+        document.addEventListener('DOMContentLoaded', function() {
+            const homeButton = document.getElementById('homeButton');
+            let scrollTimeout;
+            
+            // Función para verificar si estamos en la parte superior
+            function checkIfAtTop() {
+                return window.pageYOffset === 0;
+            }
+            
+            // Función para hacer scroll al top
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+            
+            // Manejar el clic del botón
+            homeButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (checkIfAtTop()) {
+                    // Si YA estamos en top, redirigir a index.html
+                    window.location.href = 'index.html';
+                } else {
+                    // Si NO estamos en top, hacer scroll al top
+                    scrollToTop();
+                }
+            });
+            
+            // Función para ocultar el botón
+            function hideButton() {
+                homeButton.classList.add('hidden');
+            }
+            
+            // Función para mostrar el botón
+            function showButton() {
+                homeButton.classList.remove('hidden');
+            }
+            
+            // Detectar scroll
+            window.addEventListener('scroll', function() {
+                // Ocultar el botón inmediatamente al detectar scroll
+                if (!homeButton.classList.contains('hidden')) {
+                    hideButton();
+                }
+                
+                // Limpiar timeout anterior
+                window.clearTimeout(scrollTimeout);
+                
+                // Mostrar el botón después de que el scroll se detenga
+                scrollTimeout = setTimeout(function() {
+                    showButton();
+                }, 600);
+            }, false);
+            
+            // Mostrar el botón cuando el mouse está sobre él
+            homeButton.addEventListener('mouseenter', function() {
+                clearTimeout(scrollTimeout);
+                showButton();
+            });
+            
+            // Ocultar después de que el mouse salga (con delay)
+            homeButton.addEventListener('mouseleave', function() {
+                scrollTimeout = setTimeout(function() {
+                    showButton();
+                }, 1000);
+            });
+            
+            // Mostrar el botón inicialmente
+            showButton();
+        });
+
+        // JavaScript para las pestañas
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remover clase active de todos los botones y contenidos
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Agregar clase active al botón y contenido seleccionados
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
