@@ -182,8 +182,9 @@
             opacity: 1;
             transform: translateY(0);
             pointer-events: all;
+            cursor: pointer;
             /* Posición para desktop */
-            top: 120px;
+            bottom: 30px;
             right: 30px;
         }
 
@@ -196,7 +197,7 @@
         .btn-home:hover {
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 10px 25px rgba(44, 62, 80, 0.6);
-            background: linear-gradient(135deg, oklab(76.986% -0.1565 0.15352) 0%, #667eea 100%);
+            background: linear-gradient(135deg, hsl(180, 71%, 67%) 0%, hsl(197, 71%, 50%) 100%);
             border-color: rgba(255, 255, 255, 0.3);
         }
 
@@ -211,9 +212,9 @@
 
         /* Efecto de pulso sutil */
         @keyframes pulse-gentle {
-            0% { box-shadow: 0 6px 20px rgba(255, 107, 136, 0.4); }
-            50% { box-shadow: 0 6px 25px rgba(255, 107, 136, 0.6); }
-            100% { box-shadow: 0 6px 20px rgba(255, 107, 136, 0.4); }
+            0% { box-shadow: 0 6px 20px rgba(44, 62, 80, 0.4); }
+            50% { box-shadow: 0 6px 25px rgba(44, 62, 80, 0.6); }
+            100% { box-shadow: 0 6px 20px rgba(44, 62, 80, 0.4); }
         }
 
         .btn-home:not(.hidden) {
@@ -538,14 +539,10 @@
             
             /* POSICIÓN DEL BOTÓN PARA MÓVILES */
             .btn-home {
-                top: 20px !important;
+                bottom: 20px !important;
                 right: 20px !important;
                 padding: 12px 20px;
                 font-size: 0.9rem;
-                -webkit-transform: translateZ(0);
-                transform: translateZ(0);
-                -webkit-backface-visibility: hidden;
-                backface-visibility: hidden;
             }
         }
 
@@ -568,7 +565,7 @@
             
             /* POSICIÓN DEL BOTÓN PARA MÓVILES PEQUEÑOS */
             .btn-home {
-                top: 15px !important;
+                bottom: 15px !important;
                 right: 15px !important;
                 padding: 10px 16px;
                 font-size: 0.85rem;
@@ -587,17 +584,6 @@
             
             .btn-home i {
                 margin-right: 0;
-            }
-        }
-
-        /* Soporte específico para Safari iOS */
-        @supports (-webkit-touch-callout: none) {
-            .btn-home {
-                position: -webkit-sticky;
-                position: sticky;
-                top: 15px;
-                right: 15px;
-                -webkit-transform: translateZ(0);
             }
         }
     </style>
@@ -633,9 +619,9 @@
     </section>
 
     <!-- Home Button MEJORADO -->
-    <a href="index.html" class="btn-home" id="homeButton">
+    <button class="btn-home" id="homeButton">
         <i class="fas fa-home"></i> <span>Inicio</span>
-    </a>
+    </button>
 
     <!-- Collections Section -->
     <section id="collections" class="container">
@@ -816,8 +802,7 @@
                 <div class="footer-column">
                     <h3>Servicio al Cliente</h3>
                     <ul class="footer-links">
-                        <!--<li><a href="https://wa.me/5804163034250?" target="_blank" onclick="closeMenu()">⭐ Contacto WhatsApp</a></li>-->
-                        <li><a href="https://wa.me/5804163034250?" target="_blank" onclick="closeMenu()">Contactarnos</a></li>
+                        <li><a href="https://wa.me/5804163034250?" target="_blank">Contactarnos</a></li>
                         <li><a href="#">Preguntas Frecuentes</a></li>
                         <li><a href="#">Envíos y Entregas</a></li>
                         <li><a href="#">Devoluciones</a></li>
@@ -841,13 +826,36 @@
     </footer>
 
     <script>
-        // Control del botón de inicio - VERSIÓN MEJORADA PARA TODOS LOS DISPOSITIVOS
+        // Control del botón de inicio - FUNCIÓN CORREGIDA
         document.addEventListener('DOMContentLoaded', function() {
             const homeButton = document.getElementById('homeButton');
             let scrollTimeout;
-            let isMobile = window.innerWidth <= 768;
             
-            console.log('Dispositivo detectado:', isMobile ? 'Móvil' : 'Desktop');
+            // Función para verificar si estamos en la parte superior
+            function checkIfAtTop() {
+                return window.pageYOffset === 0;
+            }
+            
+            // Función para hacer scroll al top
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+            
+            // Manejar el clic del botón
+            homeButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (checkIfAtTop()) {
+                    // Si YA estamos en top, redirigir a index.html
+                    window.location.href = 'index.html';
+                } else {
+                    // Si NO estamos en top, hacer scroll al top
+                    scrollToTop();
+                }
+            });
             
             // Función para ocultar el botón
             function hideButton() {
@@ -859,13 +867,11 @@
                 homeButton.classList.remove('hidden');
             }
             
-            // Detectar scroll - COMPATIBLE CON TODOS LOS DISPOSITIVOS
+            // Detectar scroll
             window.addEventListener('scroll', function() {
-                // Solo ocultar si estamos en desktop o si hay suficiente scroll en móviles
-                if (!isMobile || window.scrollY > 100) {
-                    if (!homeButton.classList.contains('hidden')) {
-                        hideButton();
-                    }
+                // Ocultar el botón inmediatamente al detectar scroll
+                if (!homeButton.classList.contains('hidden')) {
+                    hideButton();
                 }
                 
                 // Limpiar timeout anterior
@@ -886,72 +892,38 @@
             // Ocultar después de que el mouse salga (con delay)
             homeButton.addEventListener('mouseleave', function() {
                 scrollTimeout = setTimeout(function() {
-                    if (!isMobile || window.scrollY > 100) {
-                        hideButton();
-                    }
+                    showButton();
                 }, 1000);
-            });
-            
-            // Para móviles - mostrar el botón cuando se toca cerca del borde
-            document.addEventListener('touchstart', function(e) {
-                if (isMobile) {
-                    const touchX = e.touches[0].clientX;
-                    const touchY = e.touches[0].clientY;
-                    const screenWidth = window.innerWidth;
-                    const screenHeight = window.innerHeight;
-                    
-                    // Si el toque está en el área del botón (esquina superior derecha)
-                    if (touchX > screenWidth - 100 && touchY < 100) {
-                        clearTimeout(scrollTimeout);
-                        showButton();
-                        
-                        // Ocultar después de 2 segundos
-                        setTimeout(function() {
-                            if (window.scrollY > 100) {
-                                hideButton();
-                            }
-                        }, 2000);
-                    }
-                }
             });
             
             // Mostrar el botón inicialmente
             showButton();
+        });
 
-            // Actualizar detección de dispositivo cuando cambia el tamaño
-            window.addEventListener('resize', function() {
-                isMobile = window.innerWidth <= 768;
-                console.log('Nuevo tamaño detectado:', isMobile ? 'Móvil' : 'Desktop');
-            });
-
-            // Tab functionality
+        // JavaScript para las pestañas de colecciones
+        document.addEventListener('DOMContentLoaded', function() {
             const tabs = document.querySelectorAll('.tab');
             const contents = document.querySelectorAll('.collection-content');
             
             tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    // Remove active class from all tabs and contents
+                tab.addEventListener('click', function() {
+                    const target = this.getAttribute('data-target');
+                    
+                    // Remover clase active de todas las pestañas y contenidos
                     tabs.forEach(t => t.classList.remove('active'));
                     contents.forEach(c => c.classList.remove('active'));
                     
-                    // Add active class to clicked tab and corresponding content
-                    tab.classList.add('active');
-                    const target = tab.getAttribute('data-target');
+                    // Agregar clase active a la pestaña y contenido seleccionados
+                    this.classList.add('active');
                     document.getElementById(target).classList.add('active');
                 });
             });
-            
-            // Add to cart functionality
-            const addToCartButtons = document.querySelectorAll('.add-to-cart');
-            addToCartButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const productTitle = this.closest('.product-card').querySelector('.product-title').textContent;
-                    alert(`¡${productTitle} ha sido añadido al carrito!`);
-                });
-            });
-            
-            // Wishlist functionality
+        });
+
+        // JavaScript para los botones de wishlist
+        document.addEventListener('DOMContentLoaded', function() {
             const wishlistButtons = document.querySelectorAll('.wishlist');
+            
             wishlistButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const icon = this.querySelector('i');
