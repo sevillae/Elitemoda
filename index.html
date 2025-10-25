@@ -59,6 +59,46 @@
             transform: rotate(180deg);
         }
 
+        /* BOTÓN IR AL INICIO - MEJORADO Y RESPONSIVE */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 996;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.8);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: linear-gradient(135deg, #764ba2, #667eea);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        .back-to-top:active {
+            transform: translateY(-2px) scale(1.05);
+        }
+
         /* OVERLAY */
         .sidebar-overlay {
             display: none;
@@ -650,10 +690,15 @@
             font-size: 1.1rem;
         }
 
-        /* RESPONSIVE */
+        /* RESPONSIVE MEJORADO */
         @media (max-width: 768px) {
             .menu-float {
                 display: flex;
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+                top: 15px;
+                left: 15px;
             }
             
             .sidebar {
@@ -731,6 +776,81 @@
             .about-subtitle {
                 font-size: 1.1rem;
             }
+
+            /* BOTÓN IR AL INICIO RESPONSIVE */
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Para tablets pequeñas */
+        @media (max-width: 480px) {
+            .back-to-top {
+                bottom: 15px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .menu-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                top: 10px;
+                left: 10px;
+            }
+
+            .socials-main-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 1.4rem;
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .main-content {
+                padding: 70px 15px 15px 15px;
+            }
+        }
+
+        /* Para dispositivos muy pequeños */
+        @media (max-width: 360px) {
+            .back-to-top {
+                bottom: 10px;
+                right: 10px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+
+            .menu-float {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Para dispositivos en orientación horizontal */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .back-to-top {
+                bottom: 15px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .menu-float {
+                top: 10px;
+                left: 10px;
+                width: 50px;
+                height: 50px;
+            }
         }
 
         @media (min-width: 769px) {
@@ -750,6 +870,11 @@
     <!-- BOTÓN DEL MENÚ PRINCIPAL -->
     <button class="menu-float" id="menuToggle">
         <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- BOTÓN IR AL INICIO MEJORADO -->
+    <button class="back-to-top" id="backToTop" aria-label="Volver al inicio">
+        <i class="fas fa-arrow-up"></i>
     </button>
     
     <!-- OVERLAY PARA CERRAR MENÚ PRINCIPAL -->
@@ -836,7 +961,7 @@
             <span class="social-tooltip">TikTok</span>
         </a>
     </div>
-
+   
     <!-- CONTENIDO PRINCIPAL -->
     <main class="main-content">
         <!-- SECCIÓN PROMOCIONAL -->
@@ -952,7 +1077,7 @@
             </div>
         </section>
     </main>
-
+    
     <script>
         // FUNCIONALIDAD DEL MENÚ PRINCIPAL
         const menuToggle = document.getElementById('menuToggle');
@@ -1005,19 +1130,44 @@
             btn.addEventListener('click', closeSocialsMenu);
         });
 
-        // COMPORTAMIENTO DE SCROLL PARA LOS BOTONES
+        // FUNCIONALIDAD DEL BOTÓN "IR AL INICIO" MEJORADA
+        const backToTop = document.getElementById('backToTop');
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        backToTop.addEventListener('click', scrollToTop);
+
+        // COMPORTAMIENTO DE SCROLL MEJORADO PARA TODOS LOS DISPOSITIVOS
         let scrollTimeout;
-        let isScrolling = false;
+        let lastScrollTop = 0;
 
         function handleScroll() {
-            // Ocultar botones cuando se detecta scroll
-            menuToggle.classList.add('hidden');
-            socialsMainBtn.classList.add('hidden');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
-            // Si el submenú de redes está abierto, cerrarlo al hacer scroll
-            if (socialsSubmenu.classList.contains('active')) {
-                closeSocialsMenu();
+            // Mostrar/ocultar botón "Ir al inicio" basado en la posición del scroll
+            if (scrollTop > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
             }
+
+            // Ocultar botones cuando se detecta scroll rápido
+            if (Math.abs(scrollTop - lastScrollTop) > 10) {
+                menuToggle.classList.add('hidden');
+                socialsMainBtn.classList.add('hidden');
+                
+                // Si el submenú de redes está abierto, cerrarlo al hacer scroll
+                if (socialsSubmenu.classList.contains('active')) {
+                    closeSocialsMenu();
+                }
+            }
+            
+            lastScrollTop = scrollTop;
             
             // Limpiar timeout anterior
             clearTimeout(scrollTimeout);
@@ -1029,18 +1179,48 @@
             }, 800);
         }
 
-        // Event listener para el scroll
-        window.addEventListener('scroll', handleScroll);
+        // Event listener para el scroll con throttling para mejor rendimiento
+        let scrollThrottleTimeout;
+        window.addEventListener('scroll', () => {
+            if (!scrollThrottleTimeout) {
+                scrollThrottleTimeout = setTimeout(() => {
+                    handleScroll();
+                    scrollThrottleTimeout = null;
+                }, 50);
+            }
+        });
 
-        // Inicialización
+        // Inicialización mejorada
         console.log('🚀 Página ÉLITE MODA completamente cargada');
         console.log('📱 Menú principal y submenú de redes listos');
-        console.log('🎯 Comportamiento de scroll activado');
+        console.log('🎯 Comportamiento de scroll optimizado para todos los dispositivos');
+        console.log('⬆️ Botón "Ir al inicio" configurado y responsive');
 
         // Asegurar que los botones estén visibles al cargar la página
         window.addEventListener('load', () => {
             menuToggle.classList.remove('hidden');
             //socialsMainBtn.classList.remove('hidden');
+            
+            // Verificar posición inicial del scroll para el botón "Ir al inicio"
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            }
+
+            // Detectar tipo de dispositivo
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            console.log(`📱 Dispositivo detectado: ${isMobile ? 'Móvil' : 'Escritorio'}`);
+        });
+
+        // Manejar cambios de orientación en dispositivos móviles
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                // Recalcular posición después del cambio de orientación
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            }, 300);
         });
     </script>
 </body>
