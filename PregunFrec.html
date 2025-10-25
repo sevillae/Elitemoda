@@ -27,61 +27,119 @@
             padding: 0 20px;
         }
         
-        /* Header */
+        /* Header Mejorado */
         header {
             background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
             color: white;
-            padding: 20px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
         }
         
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
         
         .logo {
             font-size: 1.8rem;
-            font-weight: bold;
+            font-weight: 700;
             display: flex;
             align-items: center;
+            z-index: 1001;
         }
         
         .logo i {
-            margin-right: 10px;
+            margin-right: 12px;
+            color: #ffdd59;
+            font-size: 2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover i {
+            transform: rotate(-15deg);
+        }
+        
+        /* Navegación Mejorada */
+        nav {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
         nav ul {
             display: flex;
             list-style: none;
+            gap: 5px;
         }
         
         nav ul li {
-            margin-left: 25px;
+            position: relative;
         }
         
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: 500;
+            padding: 12px 20px;
+            border-radius: 25px;
             transition: all 0.3s ease;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        nav ul li a:hover::before {
+            left: 100%;
         }
         
         nav ul li a:hover {
-            color: #ffdd59;
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
+        nav ul li a:active {
+            transform: translateY(0);
+        }
+        
+        /* Menú Mobile Mejorado */
         .mobile-menu-btn {
             display: none;
-            background: none;
-            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             cursor: pointer;
+            padding: 10px 12px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+        }
+        
+        .mobile-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .mobile-menu-btn.active {
+            background: rgba(255, 255, 255, 0.25);
+            transform: rotate(90deg);
         }
         
         /* Hero Section */
@@ -381,37 +439,116 @@
             transform: translateY(-3px);
         }
         
-        .footer-bottom {
+        /* Copyright centrado */
+        .copyright {
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #444;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
             margin-top: 30px;
         }
-        
-        /* Responsive */
+
+        .legal-links {
+            margin-top: 0.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .legal-links a {
+            color: #c19a6b !important; /* Color dorado */
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .legal-links a:hover {
+            color: white !important;
+            text-decoration: underline;
+        }
+
+        .separator {
+            color: #666;
+        }
+
+        /* RESPONSIVE MEJORADO */
+        @media (max-width: 1024px) {
+            nav ul {
+                gap: 2px;
+            }
+            
+            nav ul li a {
+                padding: 10px 16px;
+                font-size: 0.95rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .logo {
-                margin-bottom: 15px;
-            }
-            
-            nav ul {
-                flex-direction: column;
-            }
-            
-            nav ul li {
-                margin: 10px 0;
+                flex-wrap: wrap;
             }
             
             .mobile-menu-btn {
                 display: block;
                 position: absolute;
-                top: 20px;
+                top: 50%;
                 right: 20px;
+                transform: translateY(-50%);
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-20px);
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+            
+            nav.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+                gap: 0;
+            }
+            
+            nav ul li {
+                margin: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+            
+            nav ul li a {
+                padding: 15px 20px;
+                border-radius: 10px;
+                margin: 2px 0;
+                display: flex;
+                align-items: center;
+                transition: all 0.3s ease;
+            }
+            
+            nav ul li a:hover {
+                background: rgba(255, 255, 255, 0.2);
+                transform: translateX(10px);
+            }
+            
+            nav ul li a::before {
+                display: none;
             }
             
             .hero h1 {
@@ -457,27 +594,73 @@
                 }
             }
         }
+
+        @media (max-width: 576px) {
+            .copyright p {
+                margin-bottom: 0.5rem;
+            }
+            
+            .legal-links {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .separator {
+                display: none;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .logo i {
+                font-size: 1.7rem;
+            }
+            
+            .mobile-menu-btn {
+                padding: 8px 10px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .hero {
+                padding: 80px 15px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header Mejorado -->
     <header>
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-tshirt"></i>
+                    <i class="fas fa-crown"></i>
                     <span>ÉLITE MODA</span>
                 </div>
-                <button class="mobile-menu-btn">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
                     <i class="fas fa-bars"></i>
                 </button>
-                <nav>
+                <nav id="mainNav">
                     <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="#">Productos</a></li>
-                        <li><a href="#">Novedades</a></li>
-                        <li><a href="#">Ofertas</a></li>
-                        <li><a href="https://wa.me/5804163034250?" target="_blank">Contacto</a></li>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                        <li><a href="#"><i class="fas fa-shopping-bag"></i> Productos</a></li>
+                        <li><a href="#"><i class="fas fa-star"></i> Novedades</a></li>
+                        <li><a href="#"><i class="fas fa-tag"></i> Ofertas</a></li>
+                        <li><a href="https://wa.me/5804163034250?" target="_blank"><i class="fas fa-phone"></i> Contacto</a></li>
                     </ul>
                 </nav>
             </div>
@@ -497,7 +680,7 @@
         <div class="container">
             <h2 class="section-title">Preguntas Frecuentes</h2>
             <div class="faq-container">
-                <!-- FAQ Item 1 -->
+                <!-- FAQ Items (se mantienen igual) -->
                 <div class="faq-item">
                     <div class="faq-question">
                         <span>¿Cómo puedo saber mi talla correcta?</span>
@@ -508,7 +691,6 @@
                     </div>
                 </div>
                 
-                <!-- FAQ Item 2 -->
                 <div class="faq-item">
                     <div class="faq-question">
                         <span>¿Qué materiales utilizan en su ropa íntima?</span>
@@ -519,7 +701,6 @@
                     </div>
                 </div>
                 
-                <!-- FAQ Item 3 -->
                 <div class="faq-item">
                     <div class="faq-question">
                         <span>¿Cuál es el tiempo de entrega?</span>
@@ -530,7 +711,6 @@
                     </div>
                 </div>
                 
-                <!-- FAQ Item 4 -->
                 <div class="faq-item">
                     <div class="faq-question">
                         <span>¿Aceptan devoluciones o cambios?</span>
@@ -541,7 +721,6 @@
                     </div>
                 </div>
                 
-                <!-- FAQ Item 5 -->
                 <div class="faq-item">
                     <div class="faq-question">
                         <span>¿Cómo debo cuidar mi ropa para que dure más?</span>
@@ -552,7 +731,6 @@
                     </div>
                 </div>
                 
-                <!-- FAQ Item 6 -->
                 <div class="faq-item">
                     <div class="faq-question">
                         <span>¿Ofrecen envío gratuito?</span>
@@ -563,7 +741,6 @@
                     </div>
                 </div>
                 
-                <!-- FAQ Item 7 -->
                 <div class="faq-item">
                     <div class="faq-question">
                         <span>¿Tienen colecciones sostenibles?</span>
@@ -579,19 +756,16 @@
 
     <!-- Botones flotantes -->
     <div class="floating-buttons">
-        <!-- Botón de inicio mejorado -->
         <a href="index.html" class="floating-button back-to-top visible" id="backToTop">
             <i class="fas fa-home"></i>
             <span>Ir al Inicio</span>
         </a>
         
-        <!-- Botón de WhatsApp con efecto intermitente -->
         <a href="https://wa.me/584163034250" class="floating-button whatsapp-button visible" target="_blank" id="whatsappButton">
             <i class="fab fa-whatsapp"></i>
             <span>Chatear por WhatsApp</span>
         </a>
         
-        <!-- Botón de llamadas -->
         <a href="tel:+584163034250" class="floating-button call-button visible">
             <i class="fas fa-phone"></i>
             <span>Llamar ahora</span>
@@ -614,7 +788,7 @@
                 </div>
                 <div class="footer-section">
                     <h3>Enlaces Rápidos</h3>
-                    <a href="#">Inicio</a>
+                    <a href="index.html">Inicio</a>
                     <a href="#">Productos</a>
                     <a href="#">Novedades</a>
                     <a href="#">Ofertas</a>
@@ -623,8 +797,8 @@
                 <div class="footer-section">
                     <h3>Información</h3>
                     <a href="#">Sobre Nosotros</a>
-                    <a href="#">Política de Privacidad</a>
-                    <a href="#">Términos y Condiciones</a>
+                    <a href="PoliticaPrivacidad.html">Política de Privacidad</a>
+                    <a href="TerminosCondiciones.html">Términos y Condiciones</a>
                     <a href="#">Política de Devoluciones</a>
                     <a href="#">Preguntas Frecuentes</a>
                 </div>
@@ -632,16 +806,54 @@
                     <h3>Contacto</h3>
                     <p><i class="fas fa-map-marker-alt"></i> Calle Moda 123, Ciudad</p>
                     <p><i class="fas fa-phone"></i> +1 234 567 890</p>
-                    <p><i class="fas fa-envelope"></i> info@modaelegante.com</p>
+                    <p><i class="fas fa-envelope"></i> info@elitemoda.com</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 ÉLITE MODA. Todos los derechos reservados.</p>
+
+            <div class="copyright">
+                <p>&copy; 2023 ÉLITE MODA. Todos los derechos reservados.</p>
+                <div class="legal-links">
+                    <a href="PoliticaPrivacidad.html">Política de Privacidad</a>
+                    <span class="separator">|</span>
+                    <a href="TerminosCondiciones.html">Términos y Condiciones</a>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
+        // Menú móvil mejorado
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+            
+            // Cambiar ícono
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mainNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Cerrar menú al hacer clic en un enlace (en móvil)
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+
         // Funcionalidad para las preguntas frecuentes
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
@@ -652,21 +864,16 @@
 
         // Funcionalidad para los botones flotantes
         const floatingButtons = document.querySelectorAll('.floating-button');
-        const whatsappButton = document.getElementById('whatsappButton');
         let scrollTimeout;
-        let isHovering = false;
         let isScrolling = false;
 
-        // Los botones están visibles por defecto
         floatingButtons.forEach(button => {
             button.classList.add('visible');
         });
 
-        // Función para ocultar los botones cuando se detecta scroll
         window.addEventListener('scroll', () => {
             isScrolling = true;
             
-            // Ocultar los botones cuando se detecta scroll (excepto si el mouse está sobre ellos)
             floatingButtons.forEach(button => {
                 if (!button.matches(':hover')) {
                     button.classList.remove('visible');
@@ -674,10 +881,8 @@
                 }
             });
             
-            // Limpiar el temporizador anterior
             clearTimeout(scrollTimeout);
             
-            // Mostrar los botones después de detener el scroll
             scrollTimeout = setTimeout(() => {
                 isScrolling = false;
                 floatingButtons.forEach(button => {
@@ -689,40 +894,26 @@
             }, 800);
         });
 
-        // Evitar que los botones se oculten cuando el mouse está sobre ellos
         floatingButtons.forEach(button => {
             button.addEventListener('mouseenter', () => {
-                isHovering = true;
                 button.classList.remove('hidden');
                 button.classList.add('visible');
                 
-                // Pausar la animación del botón de WhatsApp al hacer hover
                 if (button.id === 'whatsappButton') {
                     button.style.animationPlayState = 'paused';
                 }
             });
 
             button.addEventListener('mouseleave', () => {
-                isHovering = false;
-                // Solo ocultar si estamos haciendo scroll
                 if (isScrolling) {
                     button.classList.remove('visible');
                     button.classList.add('hidden');
                 }
                 
-                // Reanudar la animación del botón de WhatsApp al quitar el hover
                 if (button.id === 'whatsappButton') {
                     button.style.animationPlayState = 'running';
                 }
             });
-        });
-
-        // Menú móvil
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const nav = document.querySelector('nav');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            nav.classList.toggle('active');
         });
     </script>
 </body>
