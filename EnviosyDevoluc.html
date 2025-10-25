@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="Iconos/conexion.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envíos y Devoluciones | ÉLITE MODA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #c19a6b;
+            --accent-color: #8b4513;
+            --light-color: #f8f9fa;
+            --dark-color: #1a1a1a;
+            --text-color: #333;
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 1.5rem 0;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 4rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        /* BOTÓN DE INICIO MEJORADO */
+        .btn-home {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4);
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid transparent;
+            backdrop-filter: blur(10px);
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+            cursor: pointer;
+        }
+
+        .btn-home.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(193, 154, 107, 0.6);
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-home i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-home:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Efecto de pulso sutil */
+        @keyframes pulse-gentle {
+            0% { box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4); }
+            50% { box-shadow: 0 5px 25px rgba(193, 154, 107, 0.6); }
+            100% { box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4); }
+        }
+
+        .btn-home:not(.hidden) {
+            animation: pulse-gentle 3s infinite;
+        }
+
+        /* Tabs Navigation */
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #e0e0e0;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            position: relative;
+            background: none;
+            border: none;
+            color: var(--text-color);
+        }
+
+        .tab-btn.active {
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .tab-btn:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Info Section */
+        .info-section {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 3rem;
+        }
+
+        .info-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .info-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .info-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* Feature Cards */
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--secondary-color);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 50%;
+            padding: 0 40px;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -50px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -50px;
+        }
+
+        .timeline-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Info Tables */
+        .info-tables {
+            overflow-x: auto;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .info-table caption {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .info-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .info-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .info-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .info-table tr:hover {
+            background-color: #e9ecef;
+        }
+
+        .highlight {
+            background-color: rgba(193, 154, 107, 0.1) !important;
+            font-weight: 600;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .faq-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.1);
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* Contact Banner */
+        .contact-banner {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .contact-banner h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-banner .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-banner .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0 10px 10px;
+            }
+            
+            .hero {
+                height: 50vh;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .tabs-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 5px;
+            }
+            
+            .info-section {
+                padding: 2rem 1rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 80px;
+                padding-right: 0;
+            }
+            
+            .timeline-content::before {
+                left: -40px !important;
+            }
+            
+            .btn-home {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .info-header h2 {
+                font-size: 2rem;
+            }
+            
+            .btn-home {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .btn-home span {
+                display: none;
+            }
+            
+            .btn-home i {
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .btn-home {
+                padding: 12px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-crown"></i>
+                    ÉLITE MODA
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="Colecciones.html">Colecciones</a></li>
+                    <li><a href="RopaInt.html">Ropa Íntima</a></li>
+                    <li><a href="RopaCasual.html">Ropa Casual</a></li>
+                    <li><a href="GuiaTallas.html">Guía de Tallas</a></li>
+                    <li><a href="CuidadosPrendas.html">Cuidados</a></li>
+                    <li><a href="EnviosDevoluciones.html">Envíos</a></li>
+                    <li><a href="https://wa.me/5804163034250" target="_blank"> Contacto WhatsApp</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Envíos y Devoluciones</h1>
+            <p>Políticas claras y procesos sencillos para tu comodidad</p>
+        </div>
+    </section>
+
+    <!-- Home Button MEJORADO -->
+    <button class="btn-home" id="homeButton">
+        <i class="fas fa-home"></i>
+        <span>Inicio</span>
+    </button>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Tabs Navigation -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" data-tab="envios">Política de Envíos</button>
+            <button class="tab-btn" data-tab="devoluciones">Política de Devoluciones</button>
+            <button class="tab-btn" data-tab="preguntas">Preguntas Frecuentes</button>
+        </div>
+
+        <!-- Envíos Tab -->
+        <div id="envios" class="tab-content active">
+            <div class="info-section">
+                <div class="info-header">
+                    <h2>Política de Envíos</h2>
+                    <p>Entregamos tu elegancia hasta la puerta de tu casa con los más altos estándares de calidad</p>
+                </div>
+                
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <i class="fas fa-shipping-fast"></i>
+                        <h3>Envío Express</h3>
+                        <p>Entrega en 24-48 horas en áreas metropolitanas</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-truck"></i>
+                        <h3>Envío Estándar</h3>
+                        <p>Entrega en 3-5 días hábiles a nivel nacional</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-box-open"></i>
+                        <h3>Embalaje Premium</h3>
+                        <p>Tus prendas llegan impecables en empaques exclusivos</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Seguimiento en Tiempo Real</h3>
+                        <p>Monitorea tu pedido desde nuestro almacén hasta tu hogar</p>
+                    </div>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Procesamiento del Pedido</h3>
+                            <p>Tu pedido es procesado en un máximo de 24 horas hábiles después de la confirmación de pago.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Preparación</h3>
+                            <p>Cada prenda es revisada minuciosamente y empacada con cuidado en nuestros empaques premium.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Despacho</h3>
+                            <p>Recibirás un correo con el número de seguimiento una vez tu pedido sea despachado.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Entrega</h3>
+                            <p>Nuestro equipo de mensajería te contactará para coordinar la entrega perfecta.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-tables">
+                    <table class="info-table">
+                        <caption>Tarifas y Tiempos de Entrega</caption>
+                        <thead>
+                            <tr>
+                                <th>Tipo de Envío</th>
+                                <th>Cobertura</th>
+                                <th>Tiempo de Entrega</th>
+                                <th>Costo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Express</strong></td>
+                                <td>Bogotá, Medellín, Cali</td>
+                                <td>24-48 horas</td>
+                                <td>$15.000</td>
+                            </tr>
+                            <tr class="highlight">
+                                <td><strong>Estándar</strong></td>
+                                <td>Principales ciudades</td>
+                                <td>3-5 días hábiles</td>
+                                <td>$10.000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Económico</strong></td>
+                                <td>Nacional</td>
+                                <td>5-8 días hábiles</td>
+                                <td>$8.000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>GRATIS</strong></td>
+                                <td>Nacional</td>
+                                <td>5-8 días hábiles</td>
+                                <td>$0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Devoluciones Tab -->
+        <div id="devoluciones" class="tab-content">
+            <div class="info-section">
+                <div class="info-header">
+                    <h2>Política de Devoluciones</h2>
+                    <p>Tu satisfacción es nuestra prioridad. Proceso simple y transparente</p>
+                </div>
+                
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <i class="fas fa-undo-alt"></i>
+                        <h3>30 Días para Devolver</h3>
+                        <p>Plazo amplio para que decidas con tranquilidad</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-tags"></i>
+                        <h3>Reembolso Total</h3>
+                        <p>Devuelve el 100% de tu dinero en la forma de pago original</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-exchange-alt"></i>
+                        <h3>Cambio Directo</h3>
+                        <p>Cambia por talla, color o modelo diferente sin complicaciones</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-shipping-fast"></i>
+                        <h3>Recogida a Domicilio</h3>
+                        <p>Recogemos tu devolución sin costo adicional</p>
+                    </div>
+                </div>
+
+                <div class="info-tables">
+                    <table class="info-table">
+                        <caption>Condiciones para Devolución</caption>
+                        <thead>
+                            <tr>
+                                <th>Condición</th>
+                                <th>Requisito</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Etiquetas</strong></td>
+                                <td>Deben estar intactas y adheridas</td>
+                                <td>✅ Obligatorio</td>
+                            </tr>
+                            <tr class="highlight">
+                                <td><strong>Embalaje</strong></td>
+                                <td>Caja y empaques originales</td>
+                                <td>✅ Obligatorio</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Factura</strong></td>
+                                <td>Comprobante de compra original</td>
+                                <td>✅ Obligatorio</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tiempo</strong></td>
+                                <td>Máximo 30 días desde la recepción</td>
+                                <td>✅ Obligatorio</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Uso</strong></td>
+                                <td>Prenda sin usar, lavar o dañar</td>
+                                <td>✅ Obligatorio</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="info-table">
+                        <caption>Proceso de Devolución</caption>
+                        <thead>
+                            <tr>
+                                <th>Paso</th>
+                                <th>Acción</th>
+                                <th>Tiempo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1. Solicitud</strong></td>
+                                <td>Comunícate por WhatsApp o email</td>
+                                <td>24 horas</td>
+                            </tr>
+                            <tr class="highlight">
+                                <td><strong>2. Aprobación</strong></td>
+                                <td>Validamos tu solicitud</td>
+                                <td>24-48 horas</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3. Recogida</strong></td>
+                                <td>Recogemos en tu domicilio</td>
+                                <td>1-2 días</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4. Procesamiento</strong></td>
+                                <td>Revisión y autorización</td>
+                                <td>3-5 días</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5. Reembolso</strong></td>
+                                <td>Transferencia o cambio</td>
+                                <td>3-5 días hábiles</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="contact-banner">
+                    <h2>¿Necesitas hacer una devolución?</h2>
+                    <p>Estamos aquí para ayudarte. Contáctanos y te guiaremos en el proceso.</p>
+                    <a href="https://wa.me/5804163034250" class="btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preguntas Frecuentes Tab -->
+        <div id="preguntas" class="tab-content">
+            <div class="info-section">
+                <div class="info-header">
+                    <h2>Preguntas Frecuentes</h2>
+                    <p>Resolvemos tus dudas sobre envíos y devoluciones</p>
+                </div>
+
+                <div class="faq-section">
+                    <div class="faq-content">
+                        <h2>Envíos</h2>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>¿Cuál es el costo de envío?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>El costo de envío varía según la ubicación y tipo de servicio. Ofrecemos envío gratis en compras superiores a $300.000. Consulta nuestra tabla de tarifas para más detalles.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>¿Hacen envíos internacionales?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Actualmente realizamos envíos solo dentro de Colombia. Estamos trabajando para expandir nuestro servicio a nivel internacional próximamente.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>¿Puedo cambiar la dirección de entrega?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Sí, puedes cambiar la dirección de entrega contactándonos dentro de las primeras 12 horas después de realizar tu pedido. Después de este tiempo, el pedido ya estará en proceso de despacho.</p>
+                            </div>
+                        </div>
+
+                        <h2 style="margin-top: 3rem;">Devoluciones</h2>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>¿Cuánto tiempo tengo para devolver un producto?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Tienes 30 días calendario desde la fecha de recepción de tu pedido para solicitar una devolución o cambio.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>¿Qué productos no son elegibles para devolución?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>No aceptamos devoluciones de: prendas íntimas sin empaque sellado, productos personalizados, prendas con etiquetas removidas o que muestren signos de uso.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>¿Cuánto tarda el reembolso?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Una vez recibida y aprobada tu devolución, el reembolso se procesa en un plazo de 3-5 días hábiles. El tiempo de acreditación en tu cuenta depende de tu entidad bancaria.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-banner">
+                    <h2>¿No encontraste tu respuesta?</h2>
+                    <p>Nuestro equipo de servicio al cliente está listo para ayudarte personalmente.</p>
+                    <a href="https://wa.me/5804163034250" class="btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Chatear con Nosotros
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ÉLITE MODA</h3>
+                    <p>Moda exclusiva para clientes distinguidos. Calidad, estilo y sofisticación en cada prenda.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.pinterest.com"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.twiter.com"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="Colecciones.html">Colecciones</a></li>
+                        <li><a href="RopaInt.html">Ropa Íntima</a></li>
+                        <li><a href="RopaCasual.html">Ropa Casual</a></li>
+                        <li><a href="GuiaTallas.html">Guía de Tallas</a></li>
+                        <li><a href="CuidadosPrendas.html">Cuidados</a></li>
+                        <li><a href="EnviosDevoluciones.html">Envíos y Devoluciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Servicio al Cliente</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://wa.me/5804163034250?" target="_blank">Contactarnos</a></li>
+                        <li><a href="EnviosDevoluciones.html">Preguntas Frecuentes</a></li>
+                        <li><a href="EnviosDevoluciones.html">Envíos y Entregas</a></li>
+                        <li><a href="EnviosDevoluciones.html">Devoluciones</a></li>
+                        <li><a href="GuiaTallas.html">Guía de Tallas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Carrera 15 #88-64, Bogotá</li>
+                        <li><i class="fas fa-phone"></i> +57 1 744 8000</li>
+                        <li><i class="fas fa-envelope"></i> info@elitemoda.com</li>
+                        <li><i class="fas fa-clock"></i> Lun - Vie: 9:00 - 19:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 ÉLITE MODA. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Control del botón de inicio - FUNCIÓN DUAL
+        document.addEventListener('DOMContentLoaded', function() {
+            const homeButton = document.getElementById('homeButton');
+            let scrollTimeout;
+            
+            // Función para verificar si estamos en la parte superior
+            function checkIfAtTop() {
+                return window.pageYOffset === 0;
+            }
+            
+            // Función para hacer scroll al top
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+            
+            // Manejar el clic del botón
+            homeButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (checkIfAtTop()) {
+                    // Si YA estamos en top, redirigir a index.html
+                    window.location.href = 'index.html';
+                } else {
+                    // Si NO estamos en top, hacer scroll al top
+                    scrollToTop();
+                }
+            });
+            
+            // Función para ocultar el botón
+            function hideButton() {
+                homeButton.classList.add('hidden');
+            }
+            
+            // Función para mostrar el botón
+            function showButton() {
+                homeButton.classList.remove('hidden');
+            }
+            
+            // Detectar scroll
+            window.addEventListener('scroll', function() {
+                // Ocultar el botón inmediatamente al detectar scroll
+                if (!homeButton.classList.contains('hidden')) {
+                    hideButton();
+                }
+                
+                // Limpiar timeout anterior
+                window.clearTimeout(scrollTimeout);
+                
+                // Mostrar el botón después de que el scroll se detenga
+                scrollTimeout = setTimeout(function() {
+                    showButton();
+                }, 600);
+            }, false);
+            
+            // Mostrar el botón cuando el mouse está sobre él
+            homeButton.addEventListener('mouseenter', function() {
+                clearTimeout(scrollTimeout);
+                showButton();
+            });
+            
+            // Ocultar después de que el mouse salga (con delay)
+            homeButton.addEventListener('mouseleave', function() {
+                scrollTimeout = setTimeout(function() {
+                    showButton();
+                }, 1000);
+            });
+            
+            // Mostrar el botón inicialmente
+            showButton();
+        });
+
+        // JavaScript para las pestañas
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remover clase active de todos los botones y contenidos
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Agregar clase active al botón y contenido seleccionados
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+
+        // JavaScript para FAQ
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', function() {
+                    // Cerrar otros items abiertos
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Alternar el item actual
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
