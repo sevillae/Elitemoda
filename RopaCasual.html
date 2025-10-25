@@ -7,6 +7,10 @@
     <title>Colecciones Elegantes | Moda Exclusiva</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS Responsive -->
+    <link rel="stylesheet" href="js/Todo tipo de pantalla/Potentesinconfict.css">
+
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -40,14 +44,14 @@
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 clamp(1rem, 3vw, 2rem);
         }
 
-        /* Header Styles */
+        /* Header Styles MEJORADO */
         header {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
             color: white;
-            padding: 1.5rem 0;
+            padding: clamp(1rem, 3vw, 1.5rem) 0;
             position: relative;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
@@ -56,11 +60,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
             font-weight: 700;
             letter-spacing: 1px;
             display: flex;
@@ -75,10 +81,12 @@
         .nav-links {
             display: flex;
             list-style: none;
+            flex-wrap: wrap;
+            gap: clamp(0.5rem, 2vw, 1rem);
         }
 
         .nav-links li {
-            margin-left: 2rem;
+            margin-left: 0;
         }
 
         .nav-links a {
@@ -88,6 +96,7 @@
             transition: var(--transition);
             position: relative;
             padding: 5px 0;
+            font-size: clamp(0.875rem, 2vw, 1rem);
         }
 
         .nav-links a:after {
@@ -109,38 +118,39 @@
             color: var(--secondary-color);
         }
 
-        /* Hero Section */
+        /* Hero Section RESPONSIVE */
         .hero {
-            height: 70vh;
+            height: clamp(400px, 70vh, 600px);
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1558769132-cb25c5d11e85?ixlib=rb-4.0.3') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
-            margin-bottom: 4rem;
+            margin-bottom: clamp(2rem, 5vw, 4rem);
         }
 
         .hero-content {
             max-width: 800px;
-            padding: 0 20px;
+            padding: 0 clamp(1rem, 3vw, 2rem);
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: clamp(2rem, 6vw, 4rem);
             margin-bottom: 1.5rem;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
             font-weight: 300;
         }
 
         .btn {
             display: inline-block;
-            padding: 12px 30px;
+            padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
             background-color: var(--secondary-color);
             color: white;
             text-decoration: none;
@@ -149,9 +159,11 @@
             transition: var(--transition);
             border: none;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: clamp(0.875rem, 2vw, 1rem);
             letter-spacing: 0.5px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            min-height: 44px;
+            min-width: 120px;
         }
 
         .btn:hover {
@@ -160,22 +172,22 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
 
-        /* BOTÓN DE INICIO MEJORADO - FUNCIONAL PARA TODOS LOS DISPOSITIVOS */
+        /* BOTÓN DE INICIO MEJORADO - COMPLETAMENTE RESPONSIVE */
         .btn-home {
             position: fixed;
             z-index: 1000;
             background: linear-gradient(135deg, hsl(180, 71%, 57%) 0%, hsl(197, 71%, 40%) 100%);
             color: white;
-            padding: 14px 25px;
-            border-radius: 30px;
+            padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 2.5vw, 1.25rem);
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: clamp(0.875rem, 2vw, 1rem);
             box-shadow: 0 6px 20px rgba(44, 62, 80, 0.4);
             transition: all 0.4s ease;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 0.5rem;
             border: 2px solid transparent;
             backdrop-filter: blur(10px);
             letter-spacing: 0.5px;
@@ -183,9 +195,11 @@
             transform: translateY(0);
             pointer-events: all;
             cursor: pointer;
-            /* Posición para desktop */
-            bottom: 30px;
-            right: 30px;
+            min-height: 44px;
+            min-width: 44px;
+            /* Posición responsive */
+            bottom: clamp(1rem, 3vw, 2rem);
+            right: clamp(1rem, 3vw, 2rem);
         }
 
         .btn-home.hidden {
@@ -202,7 +216,7 @@
         }
 
         .btn-home i {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
             transition: transform 0.3s ease;
         }
 
@@ -221,22 +235,26 @@
             animation: pulse-gentle 3s infinite;
         }
 
-        /* Collection Tabs */
+        /* Collection Tabs RESPONSIVE */
         .collection-tabs {
             display: flex;
             justify-content: center;
-            margin-bottom: 3rem;
+            margin-bottom: clamp(2rem, 5vw, 3rem);
             border-bottom: 1px solid #e0e0e0;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .tab {
-            padding: 15px 30px;
-            font-size: 1.1rem;
+            padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 2rem);
+            font-size: clamp(0.875rem, 2vw, 1.1rem);
             font-weight: 500;
             cursor: pointer;
             transition: var(--transition);
             border-bottom: 3px solid transparent;
             position: relative;
+            text-align: center;
+            min-width: 120px;
         }
 
         .tab.active {
@@ -248,7 +266,7 @@
             color: var(--secondary-color);
         }
 
-        /* Collection Content */
+        /* Collection Content RESPONSIVE */
         .collection-content {
             display: none;
             animation: fadeIn 0.8s ease;
@@ -265,33 +283,35 @@
 
         .collection-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: clamp(2rem, 5vw, 3rem);
         }
 
         .collection-header h2 {
-            font-size: 2.8rem;
+            font-size: clamp(2rem, 5vw, 2.8rem);
             color: var(--primary-color);
             margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
         .collection-header p {
             max-width: 700px;
             margin: 0 auto;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
             color: #666;
+            padding: 0 1rem;
         }
 
-        /* Products Grid */
+        /* Products Grid RESPONSIVE */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: clamp(2rem, 5vw, 4rem);
         }
 
         .product-card {
             background: white;
-            border-radius: 10px;
+            border-radius: clamp(0.5rem, 2vw, 0.75rem);
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             transition: var(--transition);
@@ -299,12 +319,12 @@
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
         .product-image {
-            height: 350px;
+            height: clamp(250px, 35vw, 350px);
             overflow: hidden;
             position: relative;
         }
@@ -328,41 +348,46 @@
             color: white;
             padding: 5px 12px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: clamp(0.7rem, 2vw, 0.8rem);
             font-weight: 500;
         }
 
         .product-info {
-            padding: 20px;
+            padding: clamp(1rem, 3vw, 1.5rem);
         }
 
         .product-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-bottom: 0.5rem;
             color: var(--primary-color);
+            line-height: 1.3;
         }
 
         .product-price {
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
             font-weight: 600;
             color: var(--accent-color);
-            margin-bottom: 15px;
+            margin-bottom: 1rem;
         }
 
         .product-actions {
             display: flex;
             justify-content: space-between;
+            gap: 0.5rem;
         }
 
         .add-to-cart {
             background-color: var(--primary-color);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(1rem, 2vw, 1.25rem);
             border-radius: 5px;
             cursor: pointer;
             transition: var(--transition);
             font-weight: 500;
+            font-size: clamp(0.8rem, 2vw, 0.875rem);
+            min-height: 44px;
+            flex: 1;
         }
 
         .add-to-cart:hover {
@@ -372,14 +397,15 @@
         .wishlist {
             background: none;
             border: 1px solid #ddd;
-            width: 40px;
-            height: 40px;
+            width: clamp(35px, 8vw, 40px);
+            height: clamp(35px, 8vw, 40px);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: var(--transition);
+            min-width: 40px;
         }
 
         .wishlist:hover {
@@ -387,53 +413,57 @@
             color: #e74c3c;
         }
 
-        /* Features Section */
+        /* Features Section RESPONSIVE */
         .features {
             background-color: var(--primary-color);
             color: white;
-            padding: 5rem 0;
-            margin-top: 4rem;
+            padding: clamp(3rem, 8vw, 5rem) 0;
+            margin-top: clamp(2rem, 5vw, 4rem);
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: clamp(1.5rem, 4vw, 2.5rem);
         }
 
         .feature {
             text-align: center;
-            padding: 20px;
+            padding: clamp(1rem, 3vw, 1.5rem);
         }
 
         .feature i {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 5vw, 2.5rem);
             color: var(--secondary-color);
             margin-bottom: 1.5rem;
         }
 
         .feature h3 {
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
             margin-bottom: 1rem;
         }
 
-        /* Footer */
+        .feature p {
+            font-size: clamp(0.875rem, 2vw, 1rem);
+        }
+
+        /* Footer RESPONSIVE */
         footer {
             background-color: var(--dark-color);
             color: white;
-            padding: 4rem 0 2rem;
+            padding: clamp(2rem, 5vw, 4rem) 0 clamp(1rem, 3vw, 2rem);
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: clamp(1.5rem, 4vw, 3rem);
         }
 
         .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            margin-bottom: 1rem;
             position: relative;
             padding-bottom: 10px;
         }
@@ -453,13 +483,14 @@
         }
 
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 0.5rem;
         }
 
         .footer-links a {
             color: #bbb;
             text-decoration: none;
             transition: var(--transition);
+            font-size: clamp(0.875rem, 2vw, 1rem);
         }
 
         .footer-links a:hover {
@@ -469,20 +500,22 @@
 
         .social-links {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
         }
 
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: clamp(35px, 8vw, 40px);
+            height: clamp(35px, 8vw, 40px);
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
             transition: var(--transition);
+            text-decoration: none;
         }
 
         .social-links a:hover {
@@ -492,23 +525,13 @@
 
         .copyright {
             text-align: center;
-            padding-top: 2rem;
+            padding-top: clamp(1rem, 3vw, 2rem);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #aaa;
-            font-size: 0.9rem;
+            font-size: clamp(0.75rem, 2vw, 0.9rem);
         }
 
-        /* ===== CORRECCIONES ESPECÍFICAS PARA MÓVILES ===== */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-            
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            }
-        }
-
+        /* ===== MEJORAS ESPECÍFICAS PARA DISPOSITIVOS MÓVILES ===== */
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -516,66 +539,7 @@
             }
             
             .nav-links {
-                margin-top: 1.5rem;
-                flex-wrap: wrap;
                 justify-content: center;
-            }
-            
-            .nav-links li {
-                margin: 0 10px 10px;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .collection-tabs {
-                flex-wrap: wrap;
-            }
-            
-            /* POSICIÓN DEL BOTÓN PARA MÓVILES */
-            .btn-home {
-                bottom: 20px !important;
-                right: 20px !important;
-                padding: 12px 20px;
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero {
-                height: 60vh;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .collection-header h2 {
-                font-size: 2.2rem;
-            }
-            
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            /* POSICIÓN DEL BOTÓN PARA MÓVILES PEQUEÑOS */
-            .btn-home {
-                bottom: 15px !important;
-                right: 15px !important;
-                padding: 10px 16px;
-                font-size: 0.85rem;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .btn-home {
-                padding: 8px 14px;
-                font-size: 0.8rem;
             }
             
             .btn-home span {
@@ -585,13 +549,74 @@
             .btn-home i {
                 margin-right: 0;
             }
+            
+            .collection-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab {
+                width: 100%;
+                max-width: 300px;
+            }
         }
 
+        @media (max-width: 576px) {
+            .hero {
+                height: clamp(350px, 60vh, 500px);
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+            
+            .wishlist {
+                align-self: center;
+                margin-top: 0.5rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .btn-home {
+                padding: 10px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                justify-content: center;
+            }
+            
+            .btn-home span {
+                display: none;
+            }
+            
+            .btn-home i {
+                margin: 0;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Orientación horizontal en móviles */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero {
+                height: auto;
+                min-height: 100vh;
+                padding: 2rem 0;
+            }
+            
+            .hero h1 {
+                font-size: clamp(1.5rem, 4vw, 2.5rem);
+            }
+        }
 
         .legal-links a {
-            color: var(--secondary-color) !important; /* Color dorado */
+            color: var(--secondary-color) !important;
             text-decoration: none;
             transition: var(--transition);
+            font-size: clamp(0.75rem, 2vw, 0.9rem);
         }
         
         .legal-links a:hover {
@@ -599,19 +624,151 @@
             text-decoration: underline;
         }
 
+        .separator {
+            margin: 0 0.5rem;
+            color: #666;
+        }
+
+        /* Mejoras para tablets */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Mejoras para desktop grande */
+        @media (min-width: 1200px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+            padding: 0 1rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+            
+            .product-card {
+                transition: all 0.3s ease;
+                border: 1px solid #f0f0f0;
+            }
+            
+            .product-card:hover {
+                transform: translateY(-8px) scale(1.02);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            }
+            
+            .product-image {
+                height: 320px;
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .product-image img {
+                transition: transform 0.5s ease;
+            }
+            
+            .product-info {
+                padding: 1.5rem;
+                background: white;
+            }
+            
+            .product-title {
+                font-size: 1.3rem;
+                margin-bottom: 0.75rem;
+                color: #2c3e50;
+                font-weight: 600;
+            }
+            
+            .product-price {
+                font-size: 1.4rem;
+                color: #c19a6b;
+                font-weight: 700;
+                margin-bottom: 1.25rem;
+            }
+            
+            .product-actions {
+                display: flex;
+                gap: 0.75rem;
+                align-items: center;
+            }
+            
+            .add-to-cart {
+                flex: 1;
+                background: linear-gradient(135deg, #2c3e50, #34495e);
+                border: none;
+                padding: 0.875rem 1.5rem;
+                border-radius: 8px;
+                color: white;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                min-height: 48px;
+            }
+            
+            .add-to-cart:hover {
+                background: linear-gradient(135deg, #c19a6b, #d4b48c);
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(193, 154, 107, 0.4);
+            }
+            
+            .wishlist {
+                width: 48px;
+                height: 48px;
+                border: 2px solid #e0e0e0;
+                background: white;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            
+            .wishlist:hover {
+                border-color: #c19a6b;
+                background: #fffaf5;
+                transform: scale(1.1);
+            }
+            
+            .wishlist i {
+                font-size: 1.1rem;
+                color: #666;
+                transition: all 0.3s ease;
+            }
+            
+            .wishlist:hover i {
+                color: #e74c3c;
+            }
+            
+            .product-badge {
+                position: absolute;
+                top: 1rem;
+                left: 1rem;
+                background: linear-gradient(135deg, #c19a6b, #d4b48c);
+                color: white;
+                padding: 0.5rem 1rem;
+                border-radius: 25px;
+                font-size: 0.8rem;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+                z-index: 2;
+                box-shadow: 0 2px 10px rgba(193, 154, 107, 0.3);
+            }
+        }
     </style>
 </head>
-<body>
+<body class="rps-reset">
     <!-- Header -->
-    <header>
+    <header class="rps-header-responsive">
         <div class="container">
-            <div class="header-content">
-                <div class="logo">
+            <div class="header-content rps-header-content">
+                <div class="logo rps-logo-responsive">
                     <i class="fas fa-crown"></i>
                     ÉLITE MODA
                 </div>
-                <ul class="nav-links">
-                    <li><a href="#">Inicio</a></li>
+                <ul class="nav-links rps-nav-responsive">
+                    <li><a href="index.html">Inicio</a></li>
                     <li><a href="Colecciones.html">Colecciones</a></li>
                     <li><a href="RopaInt.html">Ropa Íntima</a></li>
                     <li><a href="RopaCasual.html">Ropa Casual</a></li>
@@ -623,17 +780,17 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero rps-hero-responsive">
         <div class="hero-content">
-            <h1>Colecciones Exclusivas</h1>
-            <p>Descubre nuestra selección de prendas cuidadosamente curadas para el cliente distinguido</p>
+            <h1 class="rps-hero-title-responsive">Colecciones Exclusivas</h1>
+            <p class="rps-hero-subtitle-responsive">Descubre nuestra selección de prendas cuidadosamente curadas para el cliente distinguido</p>
             <a href="#collections" class="btn">Explorar Colecciones</a>
         </div>
     </section>
 
     <!-- Home Button MEJORADO -->
-    <button class="btn-home" id="homeButton">
-        <i class="fas fa-home"></i> <span>Inicio</span>
+    <button class="btn-home rps-btn-home-responsive" id="homeButton">
+        <i class="fas fa-home"></i> <span class="rps-d-mobile-none">Inicio</span>
     </button>
 
     <!-- Collections Section -->
@@ -646,20 +803,20 @@
         <!-- Intimate Collection -->
         <div id="intima" class="collection-content active">
             <div class="collection-header">
-                <h2>Ropa Íntima para Damas</h2>
-                <p>Elegancia, confort y sofisticación en cada detalle. Nuestra colección de lencería combina los mejores materiales con diseños exclusivos.</p>
+                <h2 class="rps-text-responsive-2xl">Ropa Íntima para Damas</h2>
+                <p class="rps-text-responsive-base">Elegancia, confort y sofisticación en cada detalle. Nuestra colección de lencería combina los mejores materiales con diseños exclusivos.</p>
             </div>
 
-            <div class="products-grid">
+            <div class="products-grid rps-products-grid-responsive">
                 <!-- Product 1 -->
-                <div class="product-card">
+                <div class="product-card rps-animate-fadeInUp">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1583496661160-fb5886a13d77?ixlib=rb-4.0.3" alt="Conjunto de encaje">
+                        <img src="https://images.unsplash.com/photo-1583496661160-fb5886a13d77?ixlib=rb-4.0.3" alt="Conjunto de encaje" class="rps-img-cover">
                         <div class="product-badge">Nuevo</div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Conjunto de Encaje Negro</h3>
-                        <p class="product-price">$89.000</p>
+                        <h3 class="product-title rps-text-responsive-lg">Conjunto de Encaje Negro</h3>
+                        <p class="product-price rps-text-responsive-lg">$89.000</p>
                         <div class="product-actions">
                             <button class="add-to-cart">Añadir al Carrito</button>
                             <button class="wishlist"><i class="far fa-heart"></i></button>
@@ -668,14 +825,14 @@
                 </div>
 
                 <!-- Product 2 -->
-                <div class="product-card">
+                <div class="product-card rps-animate-fadeInUp">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3" alt="Sujetador seda">
+                        <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3" alt="Sujetador seda" class="rps-img-cover">
                         <div class="product-badge">Más Vendido</div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Sujetador de Seda Natural</h3>
-                        <p class="product-price">$75.000</p>
+                        <h3 class="product-title rps-text-responsive-lg">Sujetador de Seda Natural</h3>
+                        <p class="product-price rps-text-responsive-lg">$75.000</p>
                         <div class="product-actions">
                             <button class="add-to-cart">Añadir al Carrito</button>
                             <button class="wishlist"><i class="far fa-heart"></i></button>
@@ -684,14 +841,14 @@
                 </div>
 
                 <!-- Product 3 -->
-                <div class="product-card">
+                <div class="product-card rps-animate-fadeInUp">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3" alt="Pijama elegante">
+                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3" alt="Pijama elegante" class="rps-img-cover">
                         <div class="product-badge">Exclusivo</div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Pijama Elegante de Saten</h3>
-                        <p class="product-price">$120.000</p>
+                        <h3 class="product-title rps-text-responsive-lg">Pijama Elegante de Saten</h3>
+                        <p class="product-price rps-text-responsive-lg">$120.000</p>
                         <div class="product-actions">
                             <button class="add-to-cart">Añadir al Carrito</button>
                             <button class="wishlist"><i class="far fa-heart"></i></button>
@@ -704,20 +861,20 @@
         <!-- Casual Collection -->
         <div id="casual" class="collection-content">
             <div class="collection-header">
-                <h2>Ropa Casual Unisex</h2>
-                <p>Estilo relajado sin sacrificar la elegancia. Nuestra colección casual ofrece prendas versátiles para el día a día con un toque de distinción.</p>
+                <h2 class="rps-text-responsive-2xl">Ropa Casual Unisex</h2>
+                <p class="rps-text-responsive-base">Estilo relajado sin sacrificar la elegancia. Nuestra colección casual ofrece prendas versátiles para el día a día con un toque de distinción.</p>
             </div>
 
-            <div class="products-grid">
+            <div class="products-grid rps-products-grid-responsive">
                 <!-- Product 1 -->
-                <div class="product-card">
+                <div class="product-card rps-animate-fadeInUp">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1520006403909-838d6b92c22e?ixlib=rb-4.0.3" alt="Jeans premium">
+                        <img src="https://images.unsplash.com/photo-1520006403909-838d6b92c22e?ixlib=rb-4.0.3" alt="Jeans premium" class="rps-img-cover">
                         <div class="product-badge">Nuevo</div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Jeans Premium Slim Fit</h3>
-                        <p class="product-price">$145.000</p>
+                        <h3 class="product-title rps-text-responsive-lg">Jeans Premium Slim Fit</h3>
+                        <p class="product-price rps-text-responsive-lg">$145.000</p>
                         <div class="product-actions">
                             <button class="add-to-cart">Añadir al Carrito</button>
                             <button class="wishlist"><i class="far fa-heart"></i></button>
@@ -726,14 +883,14 @@
                 </div>
 
                 <!-- Product 2 -->
-                <div class="product-card">
+                <div class="product-card rps-animate-fadeInUp">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-4.0.3" alt="Camiseta algodón">
+                        <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-4.0.3" alt="Camiseta algodón" class="rps-img-cover">
                         <div class="product-badge">Oferta</div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Camiseta de Algodón Orgánico</h3>
-                        <p class="product-price">$55.000</p>
+                        <h3 class="product-title rps-text-responsive-lg">Camiseta de Algodón Orgánico</h3>
+                        <p class="product-price rps-text-responsive-lg">$55.000</p>
                         <div class="product-actions">
                             <button class="add-to-cart">Añadir al Carrito</button>
                             <button class="wishlist"><i class="far fa-heart"></i></button>
@@ -742,14 +899,14 @@
                 </div>
 
                 <!-- Product 3 -->
-                <div class="product-card">
+                <div class="product-card rps-animate-fadeInUp">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-4.0.3" alt="Sudadera premium">
+                        <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-4.0.3" alt="Sudadera premium" class="rps-img-cover">
                         <div class="product-badge">Exclusivo</div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Sudadera Premium con Capucha</h3>
-                        <p class="product-price">$180.000</p>
+                        <h3 class="product-title rps-text-responsive-lg">Sudadera Premium con Capucha</h3>
+                        <p class="product-price rps-text-responsive-lg">$180.000</p>
                         <div class="product-actions">
                             <button class="add-to-cart">Añadir al Carrito</button>
                             <button class="wishlist"><i class="far fa-heart"></i></button>
@@ -763,38 +920,38 @@
     <!-- Features Section -->
     <section class="features">
         <div class="container">
-            <div class="features-grid">
+            <div class="features-grid rps-grid-auto-fit">
                 <div class="feature">
                     <i class="fas fa-truck"></i>
-                    <h3>Envío Gratis</h3>
-                    <p>En compras superiores a $300.000</p>
+                    <h3 class="rps-text-responsive-lg">Envío Gratis</h3>
+                    <p class="rps-text-responsive-sm">En compras superiores a $300.000</p>
                 </div>
                 <div class="feature">
                     <i class="fas fa-shield-alt"></i>
-                    <h3>Pago Seguro</h3>
-                    <p>Transacciones 100% protegidas</p>
+                    <h3 class="rps-text-responsive-lg">Pago Seguro</h3>
+                    <p class="rps-text-responsive-sm">Transacciones 100% protegidas</p>
                 </div>
                 <div class="feature">
                     <i class="fas fa-undo-alt"></i>
-                    <h3>Devoluciones</h3>
-                    <p>Hasta 30 días para cambiar tu producto</p>
+                    <h3 class="rps-text-responsive-lg">Devoluciones</h3>
+                    <p class="rps-text-responsive-sm">Hasta 30 días para cambiar tu producto</p>
                 </div>
                 <div class="feature">
                     <i class="fas fa-headset"></i>
-                    <h3>Atención Premium</h3>
-                    <p>Asesoramiento personalizado</p>
+                    <h3 class="rps-text-responsive-lg">Atención Premium</h3>
+                    <p class="rps-text-responsive-sm">Asesoramiento personalizado</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="rps-footer-responsive">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-content rps-footer-grid-responsive">
                 <div class="footer-column">
-                    <h3>ÉLITE MODA</h3>
-                    <p>Moda exclusiva para clientes distinguidos. Calidad, estilo y sofisticación en cada prenda.</p>
+                    <h3 class="rps-text-responsive-lg">ÉLITE MODA</h3>
+                    <p class="rps-text-responsive-sm">Moda exclusiva para clientes distinguidos. Calidad, estilo y sofisticación en cada prenda.</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
@@ -803,17 +960,17 @@
                     </div>
                 </div>
                 <div class="footer-column">
-                    <h3>Enlaces Rápidos</h3>
+                    <h3 class="rps-text-responsive-lg">Enlaces Rápidos</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Nueva Colección</a></li>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="Colecciones.html">Nueva Colección</a></li>
                         <li><a href="#">Ofertas Especiales</a></li>
                         <li><a href="#">Lookbook</a></li>
                         <li><a href="#">Blog de Moda</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Servicio al Cliente</h3>
+                    <h3 class="rps-text-responsive-lg">Servicio al Cliente</h3>
                     <ul class="footer-links">
                         <li><a href="https://wa.me/5804163034250?" target="_blank">Contactarnos</a></li>
                         <li><a href="#">Preguntas Frecuentes</a></li>
@@ -823,7 +980,7 @@
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Contacto</h3>
+                    <h3 class="rps-text-responsive-lg">Contacto</h3>
                     <ul class="footer-links">
                         <li><i class="fas fa-map-marker-alt"></i> Carrera 15 #88-64, Bogotá</li>
                         <li><i class="fas fa-phone"></i> +57 1 744 8000</li>
@@ -834,7 +991,7 @@
              </div>
              
         <div class="copyright">
-            <p>&copy; 2023 ÉLITE MODA. Todos los derechos reservados.</p>
+            <p class="rps-text-responsive-sm">&copy; 2023 ÉLITE MODA. Todos los derechos reservados.</p>
             <div class="legal-links">
             <a href="PoliticadePrivacidad.html">Política de Privacidad</a>
             <span class="separator">|</span>
