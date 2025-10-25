@@ -854,6 +854,19 @@
     /* Mantén el CSS anterior */
     transition: all 0.3s ease;
 }
+
+        .legal-links a {
+            color: var(--secondary-color) !important; /* Color dorado */
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .legal-links a:hover {
+            color: white !important;
+            text-decoration: underline;
+        }
+
+
     </style>
 </head>
 <body>
@@ -868,7 +881,7 @@
                 <ul class="nav-links">
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="Colecciones.html">Colecciones</a></li>
-                    <li><a href="Nosotros.html">Nuestra Dedicatoria</a></li>
+                    <li><a href="dedicatoria.html">Nuestra Dedicatoria</a></li>
                     <li><a href="https://wa.me/5804163034250" target="_blank" onclick="closeMenu()"> Contacto WhatsApp</a></li>                
                 </ul>
             </div>
@@ -1144,9 +1157,15 @@
                     </ul>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2024 ÉLITE MODA. Todos los derechos reservados. | Diseñado con <i class="fas fa-heart" style="color: #ff6b88;"></i> para clientes exigentes</p>
-            </div>
+
+        <div class="copyright">
+            <p>&copy; 2023 ÉLITE MODA. Todos los derechos reservados.</p>
+            <div class="legal-links">
+            <a href="PoliticadePrivacidad.html">Política de Privacidad</a>
+            <span class="separator">|</span>
+            <a href="TerminosyCondiciones.html">Términos y Condiciones</a>
+        </div>
+
         </div>
     </footer>
 
