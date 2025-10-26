@@ -2,11 +2,17 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="Iconos/conexion.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guía completa de tallas para ropa íntima, jeans, blusas, franelas y vestidos. Encuentra tu talla perfecta en ÉLITE MODA">
+    <meta name="keywords" content="guía de tallas, ropa íntima, jeans, blusas, vestidos, moda, ÉLITE MODA">
+    <meta name="author" content="ÉLITE MODA">
+    
+    <link rel="icon" type="image/x-icon" href="Iconos/conexion.ico">
     <title>Guía de Tallas | ÉLITE MODA</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -24,11 +30,16 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
             color: var(--text-color);
             background-color: var(--light-color);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4, h5 {
@@ -43,11 +54,11 @@
             padding: 0 20px;
         }
 
-        /* Header Styles */
+        /* Header Styles MEJORADO Y RESPONSIVE */
         header {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
             color: white;
-            padding: 1.5rem 0;
+            padding: 1rem 0;
             position: relative;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
@@ -56,15 +67,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             letter-spacing: 1px;
             display: flex;
             align-items: center;
+            z-index: 1001;
         }
 
         .logo i {
@@ -72,13 +85,52 @@
             color: var(--secondary-color);
         }
 
+        /* MENÚ HAMBURGUESA */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* NAVEGACIÓN RESPONSIVE */
         .nav-links {
             display: flex;
             list-style: none;
+            align-items: center;
+            transition: var(--transition);
         }
 
         .nav-links li {
-            margin-left: 2rem;
+            margin-left: 1.5rem;
+            position: relative;
         }
 
         .nav-links a {
@@ -87,7 +139,9 @@
             font-weight: 500;
             transition: var(--transition);
             position: relative;
-            padding: 5px 0;
+            padding: 8px 0;
+            display: block;
+            white-space: nowrap;
         }
 
         .nav-links a:after {
@@ -162,6 +216,7 @@
             transform: translateY(0);
             pointer-events: all;
             cursor: pointer;
+            border: none;
         }
 
         .btn-home.hidden {
@@ -477,31 +532,128 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive Styles */
+        .legal-links {
+            margin-top: 1rem;
+        }
+
+        .legal-links a {
+            color: var(--secondary-color) !important;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .legal-links a:hover {
+            color: white !important;
+            text-decoration: underline;
+        }
+
+        .separator {
+            margin: 0 10px;
+            color: #666;
+        }
+        
+        /* ============================
+           RESPONSIVE DESIGN MEJORADO
+           ============================ */
+
+        /* Tablets y pantallas medianas */
         @media (max-width: 1200px) {
             .hero h1 {
                 font-size: 3rem;
             }
-        }
-
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
+            
+            .nav-links li {
+                margin-left: 1.2rem;
             }
             
-            .nav-links {
-                margin-top: 1.5rem;
-                flex-wrap: wrap;
-                justify-content: center;
+            .nav-links a {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Tablets pequeñas y móviles grandes */
+        @media (max-width: 992px) {
+            .logo {
+                font-size: 1.6rem;
             }
             
             .nav-links li {
-                margin: 0 10px 10px;
+                margin-left: 1rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.9rem;
+                padding: 6px 0;
+            }
+        }
+
+        /* Móviles y tablets pequeñas */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 400px;
+                height: 100vh;
+                background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 100px 2rem 2rem;
+                transition: right 0.4s ease;
+                z-index: 1000;
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+                overflow-y: auto;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 0 0 1.5rem 0;
+                width: 100%;
+                opacity: 0;
+                transform: translateX(50px);
+                transition: all 0.4s ease;
+            }
+            
+            .nav-links.active li {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            
+            .nav-links li:nth-child(1) { transition-delay: 0.1s; }
+            .nav-links li:nth-child(2) { transition-delay: 0.15s; }
+            .nav-links li:nth-child(3) { transition-delay: 0.2s; }
+            .nav-links li:nth-child(4) { transition-delay: 0.25s; }
+            .nav-links li:nth-child(5) { transition-delay: 0.3s; }
+            .nav-links li:nth-child(6) { transition-delay: 0.35s; }
+            
+            .nav-links a {
+                font-size: 1.1rem;
+                padding: 12px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                width: 100%;
+            }
+            
+            .nav-links a:after {
+                display: none;
+            }
+            
+            .nav-links a:hover {
+                padding-left: 15px;
+                border-bottom-color: var(--secondary-color);
             }
             
             .hero {
                 height: 50vh;
+                margin-bottom: 3rem;
             }
             
             .hero h1 {
@@ -514,13 +666,15 @@
             
             .tabs-nav {
                 flex-direction: column;
-                align-items: center;
+                align-items: stretch;
+                gap: 5px;
             }
             
             .tab-btn {
                 width: 100%;
                 text-align: center;
-                margin-bottom: 5px;
+                margin-bottom: 0;
+                padding: 12px 20px;
             }
             
             .size-guide {
@@ -533,15 +687,41 @@
                 bottom: 20px;
                 right: 20px;
             }
+            
+            .footer-content {
+                gap: 30px;
+            }
         }
 
+        /* Móviles pequeños */
         @media (max-width: 576px) {
+            .logo {
+                font-size: 1.4rem;
+            }
+            
             .hero h1 {
                 font-size: 2rem;
             }
             
+            .hero p {
+                font-size: 1rem;
+            }
+            
             .size-guide-header h2 {
                 font-size: 2rem;
+            }
+            
+            .size-guide {
+                padding: 1.5rem 1rem;
+            }
+            
+            .tabs-nav {
+                margin-bottom: 2rem;
+            }
+            
+            .tab-btn {
+                padding: 10px 15px;
+                font-size: 1rem;
             }
             
             .btn-home {
@@ -558,15 +738,103 @@
             .btn-home i {
                 margin-right: 0;
             }
+            
+            .nav-links {
+                width: 85%;
+                padding: 90px 1.5rem 2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
         }
 
+        /* Móviles muy pequeños */
         @media (max-width: 400px) {
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .logo i {
+                margin-right: 5px;
+            }
+            
             .btn-home {
                 padding: 12px;
                 width: 50px;
                 height: 50px;
                 border-radius: 50%;
                 justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .nav-links {
+                width: 90%;
+                padding: 80px 1rem 2rem;
+            }
+            
+            .nav-links a {
+                font-size: 1rem;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        /* Modo landscape en móviles */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .nav-links {
+                padding-top: 70px;
+                overflow-y: auto;
+            }
+            
+            .nav-links li {
+                margin-bottom: 0.8rem;
+            }
+            
+            .nav-links a {
+                padding: 8px 0;
+                font-size: 0.9rem;
+            }
+            
+            .hero {
+                height: 80vh;
+            }
+        }
+
+        /* Pantallas muy grandes */
+        @media (min-width: 1600px) {
+            .container {
+                max-width: 1500px;
+            }
+            
+            .nav-links li {
+                margin-left: 2.5rem;
+            }
+            
+            .nav-links a {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Prevenir zoom en inputs en iOS */
+        @media screen and (max-width: 768px) {
+            input, select, textarea {
+                font-size: 16px;
+            }
+        }
+
+        /* Mejoras de rendimiento para animaciones */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
@@ -580,13 +848,21 @@
                     <i class="fas fa-crown"></i>
                     ÉLITE MODA
                 </div>
-                <ul class="nav-links">
+                
+                <!-- Menú Hamburguesa -->
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-links" id="navLinks">
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="Colecciones.html">Colecciones</a></li>
                     <li><a href="RopaInt.html">Ropa Íntima</a></li>
                     <li><a href="RopaCasual.html">Ropa Casual</a></li>
                     <li><a href="Nosotros.html">Sobre Nosotros</a></li>
-                    <li><a href="https://wa.me/5804163034250" target="_blank"> Contacto WhatsApp</a></li>
+                    <li><a href="https://wa.me/5804163034250" target="_blank">Contacto WhatsApp</a></li>
                 </ul>
             </div>
         </div>
@@ -607,19 +883,19 @@
     </button>
 
     <!-- Main Content -->
-    <div class="container">
+    <main class="container">
         <!-- Tabs Navigation -->
-        <div class="tabs-nav">
+        <nav class="tabs-nav" aria-label="Categorías de tallas">
             <button class="tab-btn active" data-tab="intima">Ropa Íntima</button>
             <button class="tab-btn" data-tab="jeans">Jeans</button>
             <button class="tab-btn" data-tab="blusas">Blusas</button>
             <button class="tab-btn" data-tab="franelas">Franelas</button>
             <button class="tab-btn" data-tab="vestidos">Vestidos</button>
             <button class="tab-btn" data-tab="otros">Otros</button>
-        </div>
+        </nav>
 
         <!-- Measurement Guide -->
-        <div class="measurement-guide">
+        <section class="measurement-guide">
             <h3>¿Cómo tomar tus medidas correctamente?</h3>
             <div class="measurement-steps">
                 <div class="measurement-step">
@@ -638,10 +914,11 @@
                     <p>Mide alrededor de la parte más ancha de tus caderas, manteniendo la cinta métrica paralela al suelo.</p>
                 </div>
             </div>
-        </div>
+        </section>
 
+        <!-- Resto del contenido se mantiene igual -->
         <!-- Ropa Íntima Tab -->
-        <div id="intima" class="tab-content active">
+        <section id="intima" class="tab-content active">
             <div class="size-guide">
                 <div class="size-guide-header">
                     <h2>Guía de Tallas - Ropa Íntima</h2>
@@ -653,10 +930,10 @@
                         <caption>Sujetadores</caption>
                         <thead>
                             <tr>
-                                <th>Talla</th>
-                                <th>Contorno de Busto (cm)</th>
-                                <th>Contorno de Bajo Busto (cm)</th>
-                                <th>Copa</th>
+                                <th scope="col">Talla</th>
+                                <th scope="col">Contorno de Busto (cm)</th>
+                                <th scope="col">Contorno de Bajo Busto (cm)</th>
+                                <th scope="col">Copa</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -697,10 +974,10 @@
                         <caption>Panties y Bragas</caption>
                         <thead>
                             <tr>
-                                <th>Talla</th>
-                                <th>Cadera (cm)</th>
-                                <th>Cintura (cm)</th>
-                                <th>Talla Internacional</th>
+                                <th scope="col">Talla</th>
+                                <th scope="col">Cadera (cm)</th>
+                                <th scope="col">Cintura (cm)</th>
+                                <th scope="col">Talla Internacional</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -738,10 +1015,10 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Jeans Tab -->
-        <div id="jeans" class="tab-content">
+        <section id="jeans" class="tab-content">
             <div class="size-guide">
                 <div class="size-guide-header">
                     <h2>Guía de Tallas - Jeans</h2>
@@ -753,10 +1030,10 @@
                         <caption>Tabla de Tallas Jeans Mujer</caption>
                         <thead>
                             <tr>
-                                <th>Talla</th>
-                                <th>Cintura (cm)</th>
-                                <th>Cadera (cm)</th>
-                                <th>Largo Interno (cm)</th>
+                                <th scope="col">Talla</th>
+                                <th scope="col">Cintura (cm)</th>
+                                <th scope="col">Cadera (cm)</th>
+                                <th scope="col">Largo Interno (cm)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -788,10 +1065,10 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Blusas Tab -->
-        <div id="blusas" class="tab-content">
+        <section id="blusas" class="tab-content">
             <div class="size-guide">
                 <div class="size-guide-header">
                     <h2>Guía de Tallas - Blusas</h2>
@@ -803,10 +1080,10 @@
                         <caption>Tabla de Tallas Blusas</caption>
                         <thead>
                             <tr>
-                                <th>Talla</th>
-                                <th>Busto (cm)</th>
-                                <th>Cintura (cm)</th>
-                                <th>Cadera (cm)</th>
+                                <th scope="col">Talla</th>
+                                <th scope="col">Busto (cm)</th>
+                                <th scope="col">Cintura (cm)</th>
+                                <th scope="col">Cadera (cm)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -838,10 +1115,10 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Franelas Tab -->
-        <div id="franelas" class="tab-content">
+        <section id="franelas" class="tab-content">
             <div class="size-guide">
                 <div class="size-guide-header">
                     <h2>Guía de Tallas - Franelas</h2>
@@ -853,10 +1130,10 @@
                         <caption>Tabla de Tallas Franelas Unisex</caption>
                         <thead>
                             <tr>
-                                <th>Talla</th>
-                                <th>Pecho (cm)</th>
-                                <th>Largo (cm)</th>
-                                <th>Manga (cm)</th>
+                                <th scope="col">Talla</th>
+                                <th scope="col">Pecho (cm)</th>
+                                <th scope="col">Largo (cm)</th>
+                                <th scope="col">Manga (cm)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -888,10 +1165,10 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Vestidos Tab -->
-        <div id="vestidos" class="tab-content">
+        <section id="vestidos" class="tab-content">
             <div class="size-guide">
                 <div class="size-guide-header">
                     <h2>Guía de Tallas - Vestidos</h2>
@@ -903,10 +1180,10 @@
                         <caption>Tabla de Tallas Vestidos</caption>
                         <thead>
                             <tr>
-                                <th>Talla</th>
-                                <th>Busto (cm)</th>
-                                <th>Cintura (cm)</th>
-                                <th>Cadera (cm)</th>
+                                <th scope="col">Talla</th>
+                                <th scope="col">Busto (cm)</th>
+                                <th scope="col">Cintura (cm)</th>
+                                <th scope="col">Cadera (cm)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -938,10 +1215,10 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Otros Tab -->
-        <div id="otros" class="tab-content">
+        <section id="otros" class="tab-content">
             <div class="size-guide">
                 <div class="size-guide-header">
                     <h2>Guía de Tallas - Otras Prendas</h2>
@@ -953,10 +1230,10 @@
                         <caption>Tabla de Tallas Chaquetas y Abrigos</caption>
                         <thead>
                             <tr>
-                                <th>Talla</th>
-                                <th>Pecho (cm)</th>
-                                <th>Cintura (cm)</th>
-                                <th>Cadera (cm)</th>
+                                <th scope="col">Talla</th>
+                                <th scope="col">Pecho (cm)</th>
+                                <th scope="col">Cintura (cm)</th>
+                                <th scope="col">Cadera (cm)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -988,10 +1265,10 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Tips Section -->
-        <div class="tips-section">
+        <section class="tips-section">
             <div class="tips-content">
                 <h2>Consejos para Elegir tu Talla Perfecta</h2>
                 <div class="tips-grid">
@@ -1012,8 +1289,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
@@ -1023,10 +1300,10 @@
                     <h3>ÉLITE MODA</h3>
                     <p>Moda exclusiva para clientes distinguidos. Calidad, estilo y sofisticación en cada prenda.</p>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/@yennible.camino"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/@yencava"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.pinterest.com"><i class="fab fa-pinterest-p"></i></a>
-                        <a href="https://www.twiter.com"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/@yennible.camino" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/@yencava" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.pinterest.com" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.twiter.com" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
@@ -1042,7 +1319,7 @@
                 <div class="footer-column">
                     <h3>Servicio al Cliente</h3>
                     <ul class="footer-links">
-                        <li><a href="https://wa.me/5804163034250?" target="_blank">Contactarnos</a></li>
+                        <li><a href="https://wa.me/5804163034250" target="_blank">Contactarnos</a></li>
                         <li><a href="PregunFrec.html">Preguntas Frecuentes</a></li>
                         <li><a href="#">Envíos y Entregas</a></li>
                         <li><a href="#">Devoluciones</a></li>
@@ -1059,15 +1336,60 @@
                     </ul>
                 </div>
             </div>
+            
             <div class="copyright">
-                <p>&copy; 2025 ÉLITE MODA. Todos los derechos reservados.</p>
+                <p>&copy; 2024 ÉLITE MODA. Todos los derechos reservados.</p>
+                <div class="legal-links">
+                    <a href="PoliticaPrivacidad.html">Política de Privacidad</a>
+                    <span class="separator">|</span>
+                    <a href="TerminosCondiciones.html">Términos y Condiciones</a>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Control del botón de inicio - FUNCIÓN DUAL
+        // Control del menú hamburguesa
         document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            const body = document.body;
+
+            // Alternar menú
+            menuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+            });
+
+            // Cerrar menú al hacer clic en un enlace
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    menuToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    body.style.overflow = '';
+                });
+            });
+
+            // Cerrar menú al hacer clic fuera
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.header-content') && navLinks.classList.contains('active')) {
+                    menuToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    body.style.overflow = '';
+                }
+            });
+
+            // Cerrar menú con tecla Escape
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && navLinks.classList.contains('active')) {
+                    menuToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    body.style.overflow = '';
+                }
+            });
+
+            // Control del botón de inicio - FUNCIÓN DUAL
             const homeButton = document.getElementById('homeButton');
             let scrollTimeout;
             
@@ -1138,10 +1460,8 @@
             
             // Mostrar el botón inicialmente
             showButton();
-        });
 
-        // JavaScript para las pestañas
-        document.addEventListener('DOMContentLoaded', function() {
+            // JavaScript para las pestañas
             const tabBtns = document.querySelectorAll('.tab-btn');
             const tabContents = document.querySelectorAll('.tab-content');
             
