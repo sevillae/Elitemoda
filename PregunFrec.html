@@ -27,121 +27,233 @@
             padding: 0 20px;
         }
         
-        /* Header Mejorado */
-        header {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            color: white;
-            padding: 15px 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            position: sticky;
+        /* NAVEGACIÓN RESPONSIVE - MENÚ HAMBURGUESA */
+        .main-nav {
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
             z-index: 1000;
-            backdrop-filter: blur(10px);
+            padding: 0 20px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
         }
-        
-        .header-content {
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
+            height: 70px;
         }
-        
+
         .logo {
+            color: #ffdd59;
             font-size: 1.8rem;
             font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 2px;
+            z-index: 1002;
             display: flex;
             align-items: center;
-            z-index: 1001;
         }
-        
+
         .logo i {
             margin-right: 12px;
-            color: #ffdd59;
             font-size: 2rem;
             transition: transform 0.3s ease;
         }
-        
+
         .logo:hover i {
             transform: rotate(-15deg);
         }
-        
-        /* Navegación Mejorada */
-        nav {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        
-        nav ul {
+
+        .nav-menu {
             display: flex;
             list-style: none;
-            gap: 5px;
+            gap: 30px;
+            align-items: center;
         }
-        
-        nav ul li {
-            position: relative;
-        }
-        
-        nav ul li a {
+
+        .nav-link {
             color: white;
             text-decoration: none;
             font-weight: 500;
-            padding: 12px 20px;
-            border-radius: 25px;
             transition: all 0.3s ease;
-            display: block;
+            padding: 10px 15px;
+            border-radius: 5px;
             position: relative;
-            overflow: hidden;
         }
-        
-        nav ul li a::before {
+
+        .nav-link:hover {
+            color: #ffdd59;
+            background: rgba(255, 221, 89, 0.1);
+        }
+
+        .nav-link::after {
             content: '';
             position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #ffdd59;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+
+        /* MENÚ HAMBURGUESA */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            width: 30px;
+            height: 25px;
+            position: relative;
+            z-index: 1002;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background: #ffdd59;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+            transform-origin: center;
+        }
+
+        /* Animación del hamburguesa cuando está activo */
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Overlay para cerrar el menú */
+        .nav-overlay {
+            position: fixed;
             top: 0;
-            left: -100%;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        nav ul li a:hover::before {
-            left: 100%;
-        }
-        
-        nav ul li a:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        nav ul li a:active {
-            transform: translateY(0);
-        }
-        
-        /* Menú Mobile Mejorado */
-        .mobile-menu-btn {
-            display: none;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            color: white;
-            font-size: 1.3rem;
-            cursor: pointer;
-            padding: 10px 12px;
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            z-index: 1001;
         }
-        
-        .mobile-menu-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.05);
+
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
-        
-        .mobile-menu-btn.active {
-            background: rgba(255, 255, 255, 0.25);
-            transform: rotate(90deg);
+
+        /* RESPONSIVE PARA EL MENÚ */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 100px 30px 30px;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 25px rgba(0,0,0,0.3);
+                gap: 0;
+                z-index: 1001;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-item {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .nav-link {
+                display: block;
+                padding: 15px 20px;
+                width: 100%;
+                font-size: 1.1rem;
+                border-radius: 8px;
+                border-left: 3px solid transparent;
+                transition: all 0.3s ease;
+            }
+
+            .nav-link:hover {
+                background: rgba(255, 221, 89, 0.15);
+                border-left-color: #ffdd59;
+                transform: translateX(5px);
+            }
         }
-        
+
+        /* Para pantallas muy pequeñas */
+        @media (max-width: 480px) {
+            .nav-menu {
+                width: 100%;
+                right: -100%;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .nav-container {
+                padding: 0 15px;
+            }
+        }
+
+        /* Para orientación horizontal en móviles */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .nav-menu {
+                padding-top: 80px;
+                overflow-y: auto;
+            }
+
+            .nav-item {
+                margin: 5px 0;
+            }
+
+            .nav-link {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Ajustar el header principal para que no quede detrás del nav */
+        .page-header {
+            margin-top: 70px;
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
@@ -151,6 +263,7 @@
             text-align: center;
             padding: 100px 20px;
             margin-bottom: 50px;
+            margin-top: 70px;
         }
         
         .hero h1 {
@@ -475,82 +588,17 @@
 
         /* RESPONSIVE MEJORADO */
         @media (max-width: 1024px) {
-            nav ul {
-                gap: 2px;
+            .nav-menu {
+                gap: 20px;
             }
             
-            nav ul li a {
+            .nav-link {
                 padding: 10px 16px;
                 font-size: 0.95rem;
             }
         }
 
         @media (max-width: 768px) {
-            .header-content {
-                flex-wrap: wrap;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-                position: absolute;
-                top: 50%;
-                right: 20px;
-                transform: translateY(-50%);
-            }
-            
-            nav {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
-                opacity: 0;
-                visibility: hidden;
-                transform: translateY(-20px);
-                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            }
-            
-            nav.active {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
-            }
-            
-            nav ul {
-                flex-direction: column;
-                padding: 20px;
-                gap: 0;
-            }
-            
-            nav ul li {
-                margin: 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
-            
-            nav ul li:last-child {
-                border-bottom: none;
-            }
-            
-            nav ul li a {
-                padding: 15px 20px;
-                border-radius: 10px;
-                margin: 2px 0;
-                display: flex;
-                align-items: center;
-                transition: all 0.3s ease;
-            }
-            
-            nav ul li a:hover {
-                background: rgba(255, 255, 255, 0.2);
-                transform: translateX(10px);
-            }
-            
-            nav ul li a::before {
-                display: none;
-            }
-            
             .hero h1 {
                 font-size: 2rem;
             }
@@ -616,11 +664,6 @@
             .logo i {
                 font-size: 1.7rem;
             }
-            
-            .mobile-menu-btn {
-                padding: 8px 10px;
-                font-size: 1.1rem;
-            }
         }
 
         @media (max-width: 400px) {
@@ -643,29 +686,42 @@
     </style>
 </head>
 <body>
-    <!-- Header Mejorado -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-crown"></i>
-                    <span>ÉLITE MODA</span>
-                </div>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <nav id="mainNav">
-                    <ul>
-                        <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
-                        <li><a href="Colecciones.html"><i class="fas fa-shopping-bag"></i> Productos</a></li>
-                        <li><a href="nuevosprod.html"><i class="fas fa-star"></i> Novedades</a></li>
-                        <li><a href="ofertas.html"><i class="fas fa-tag"></i> Ofertas</a></li>
-                        <li><a href="https://wa.me/5804163034250?" target="_blank"><i class="fas fa-phone"></i> Contacto</a></li>
-                    </ul>
-                </nav>
-            </div>
+    <!-- Menú de Navegación Responsive -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-crown"></i>
+                <span>ÉLITE MODA</span>
+            </a>
+            
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="Colecciones.html" class="nav-link"><i class="fas fa-shopping-bag"></i> Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="nuevosprod.html" class="nav-link"><i class="fas fa-star"></i> Novedades</a>
+                </li>
+                <li class="nav-item">
+                    <a href="ofertas.html" class="nav-link"><i class="fas fa-tag"></i> Ofertas</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://wa.me/5804163034250?" target="_blank" class="nav-link"><i class="fas fa-phone"></i> Contacto</a>
+                </li>
+            </ul>
         </div>
-    </header>
+    </nav>
+
+    <!-- Overlay para cerrar el menú en móviles -->
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -822,36 +878,40 @@
     </footer>
 
     <script>
-        // Menú móvil mejorado
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mainNav = document.getElementById('mainNav');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-            mobileMenuBtn.classList.toggle('active');
-            
-            // Cambiar ícono
-            const icon = mobileMenuBtn.querySelector('i');
-            if (mainNav.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
+        // Menú Hamburguesa
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        navOverlay.addEventListener('click', toggleMenu);
+
+        // Cerrar menú al hacer clic en un enlace
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                navOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
         });
 
-        // Cerrar menú al hacer clic en un enlace (en móvil)
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    mainNav.classList.remove('active');
-                    mobileMenuBtn.classList.remove('active');
-                    const icon = mobileMenuBtn.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
+        // Cerrar menú al redimensionar la ventana (si se cambia a desktop)
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                navOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
 
         // Funcionalidad para las preguntas frecuentes
