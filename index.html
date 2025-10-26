@@ -21,280 +21,199 @@
             scroll-behavior: smooth;
         }
 
-        /* NAVEGACIÓN RESPONSIVE - MENÚ HAMBURGUESA */
-        .main-nav {
+        /* BOTÓN DEL MENÚ HAMBURGUESA PARA MÓVILES */
+        .menu-float {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
             background: linear-gradient(135deg, #1a1a1a 0%, #2d1b0e 100%);
-            z-index: 1000;
-            padding: 0 20px;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
-
-        .logo {
             color: #d4af37;
-            font-size: 1.8rem;
-            font-weight: 700;
-            text-decoration: none;
-            letter-spacing: 2px;
-            z-index: 1002;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 10px 15px;
-            border-radius: 5px;
-            position: relative;
-        }
-
-        .nav-link:hover {
-            color: #d4af37;
-            background: rgba(212, 175, 55, 0.1);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: #d4af37;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .nav-link:hover::after {
-            width: 80%;
-        }
-
-        /* MENÚ HAMBURGUESA */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            background: transparent;
             border: none;
-            width: 30px;
-            height: 25px;
-            position: relative;
-            z-index: 1002;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            opacity: 1;
+            visibility: visible;
+            border: 2px solid #d4af37;
         }
 
-        .hamburger span {
-            width: 100%;
-            height: 3px;
-            background: #d4af37;
-            margin: 3px 0;
-            transition: all 0.3s ease;
-            border-radius: 2px;
-            transform-origin: center;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
-        }
-
-        .hamburger.active span:nth-child(2) {
+        .menu-float.hidden {
             opacity: 0;
-            transform: translateX(-10px);
+            visibility: hidden;
+            transform: translateY(-20px);
         }
 
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
+        .menu-float:hover {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, #2d1b0e 0%, #1a1a1a 100%);
         }
 
-        /* Overlay para cerrar el menú */
-        .nav-overlay {
+        .menu-float.active {
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            transform: rotate(180deg);
+        }
+
+        /* OVERLAY PARA CERRAR MENÚ HAMBURGUESA */
+        .sidebar-overlay {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.5);
-            z-index: 998;
-            opacity: 0;
-            visibility: hidden;
+            z-index: 999;
+            backdrop-filter: blur(5px);
+        }
+
+        .sidebar-overlay.active {
+            display: block;
+        }
+
+        /* MENÚ LATERAL ELEGANTE (ORIGINAL - ESCRITORIO) */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 320px;
+            height: 100vh;
+            background: linear-gradient(165deg, #1a1a2e, #16213e, #0f3460);
+            color: white;
+            padding: 0;
+            transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 1000;
+            box-shadow: 5px 0 25px rgba(0,0,0,0.4);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Versión móvil del sidebar */
+        .sidebar.mobile {
+            left: -320px;
+        }
+
+        .sidebar.mobile.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            padding: 40px 25px 25px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        .sidebar-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #ffd700, #ffed4e);
+            border-radius: 2px;
+        }
+
+        .sidebar h2 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            font-weight: 300;
+        }
+
+        .sidebar-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 25px;
+        }
+
+        .sidebar-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar-content::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+        }
+
+        .sidebar-content::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+            border-radius: 10px;
+        }
+
+        .sidebar-content::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #764ba2, #667eea);
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 12px;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.05);
             transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            position: relative;
+            overflow: hidden;
         }
 
-        .nav-overlay.active {
-            opacity: 1;
-            visibility: visible;
+        .sidebar a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s ease;
         }
 
-        /* RESPONSIVE PARA EL MENÚ */
-        @media (max-width: 1024px) {
-            .nav-menu {
-                gap: 20px;
-            }
-            
-            .nav-link {
-                padding: 10px 16px;
-                font-size: 0.95rem;
-            }
+        .sidebar a:hover::before {
+            left: 100%;
         }
 
-        @media (max-width: 1024px) and (max-height: 600px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 320px;
-                height: 100vh;
-                background: linear-gradient(135deg, #1a1a1a 0%, #2d1b0e 100%);
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: flex-start;
-                padding: 100px 30px 30px;
-                transition: right 0.4s ease;
-                box-shadow: -5px 0 25px rgba(0,0,0,0.3);
-                gap: 0;
-                z-index: 1001;
-                overflow-y: auto;
-            }
-
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .nav-item {
-                width: 100%;
-                margin: 8px 0;
-            }
-
-            .nav-link {
-                display: block;
-                padding: 12px 20px;
-                width: 100%;
-                font-size: 1rem;
-                border-radius: 8px;
-                border-left: 3px solid transparent;
-                transition: all 0.3s ease;
-            }
-
-            .nav-link:hover {
-                background: rgba(212, 175, 55, 0.15);
-                border-left-color: #d4af37;
-                transform: translateX(5px);
-            }
+        .sidebar a:hover {
+            background: rgba(255,255,255,0.1);
+            border-left: 4px solid #ffd700;
+            transform: translateX(8px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 300px;
-                height: 100vh;
-                background: linear-gradient(135deg, #1a1a1a 0%, #2d1b0e 100%);
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: flex-start;
-                padding: 100px 30px 30px;
-                transition: right 0.4s ease;
-                box-shadow: -5px 0 25px rgba(0,0,0,0.3);
-                gap: 0;
-                z-index: 1001;
-                overflow-y: auto;
-            }
-
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .nav-item {
-                width: 100%;
-                margin: 10px 0;
-            }
-
-            .nav-link {
-                display: block;
-                padding: 15px 20px;
-                width: 100%;
-                font-size: 1.1rem;
-                border-radius: 8px;
-                border-left: 3px solid transparent;
-                transition: all 0.3s ease;
-            }
-
-            .nav-link:hover {
-                background: rgba(212, 175, 55, 0.15);
-                border-left-color: #d4af37;
-                transform: translateX(5px);
-            }
+        .sidebar a i {
+            margin-right: 12px;
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
         }
 
-        @media (max-width: 480px) {
-            .nav-menu {
-                width: 100%;
-                right: -100%;
-            }
-
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .logo {
-                font-size: 1.5rem;
-            }
-
-            .nav-container {
-                padding: 0 15px;
-            }
-        }
-
-        @media (max-height: 500px) and (orientation: landscape) {
-            .nav-menu {
-                padding-top: 70px;
-                overflow-y: auto;
-                max-height: 90vh;
-            }
-
-            .nav-item {
-                margin: 4px 0;
-            }
-
-            .nav-link {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-        }
-
-        /* BOTÓN IR AL INICIO - MEJORADO Y RESPONSIVE */
+        /* BOTÓN IR AL INICIO */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -343,7 +262,7 @@
             }
         }
 
-        /* BOTÓN DE LLAMADAS ELEGANTE */
+        /* BOTÓN DE LLAMADAS */
         .btn-call {
             position: fixed;
             bottom: 30px;
@@ -418,13 +337,14 @@
 
         /* CONTENIDO PRINCIPAL */
         .main-content {
-            padding: 100px 20px 20px 20px;
+            padding: 40px 20px 20px 340px; /* Espacio para el sidebar */
             min-height: 100vh;
             max-width: 1400px;
             margin: 0 auto;
+            transition: padding-left 0.4s ease;
         }
 
-        /* SECCIÓN DE PROMOCIÓN MEJORADA */
+        /* SECCIÓN DE PROMOCIÓN */
         .promo-section {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d1b0e 25%, #5d4037 50%, #8d6e63 75%, #bcaaa4 100%);
             color: white;
@@ -531,7 +451,7 @@
             50% { opacity: 0.8; }
         }
 
-        /* SECCIÓN ELEGANTE SOBRE NOSOTROS MEJORADA */
+        /* SECCIÓN ELEGANTE SOBRE NOSOTROS */
         .about-section {
             background: white;
             padding: 60px 40px;
@@ -638,23 +558,6 @@
             transition: all 0.4s ease;
             border-top: 5px solid #d4af37;
             box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .value-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .value-card:hover::before {
-            left: 100%;
         }
 
         .value-card:hover {
@@ -692,7 +595,25 @@
         }
 
         /* RESPONSIVE MEJORADO */
+        @media (max-width: 1024px) {
+            .main-content {
+                padding-left: 340px;
+            }
+        }
+
         @media (max-width: 768px) {
+            .menu-float {
+                display: flex;
+            }
+
+            .sidebar {
+                left: -320px;
+            }
+
+            .sidebar.active {
+                left: 0;
+            }
+
             .main-content {
                 padding: 90px 15px 15px 15px;
             }
@@ -775,6 +696,14 @@
             .btn-call {
                 left: 20px;
             }
+
+            .menu-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                top: 15px;
+                left: 15px;
+            }
         }
 
         @media (max-width: 400px) {
@@ -788,115 +717,87 @@
             .btn-call {
                 left: 15px;
             }
+
+            .menu-float {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
         }
 
-        @media (max-width: 900px) and (max-height: 500px) {
-            .hamburger {
-                display: flex;
+        /* Para orientación horizontal en móviles */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .sidebar-content {
+                max-height: 80vh;
+                overflow-y: auto;
             }
             
-            .nav-menu {
-                display: none;
+            .sidebar li {
+                margin-bottom: 8px;
             }
             
-            .nav-menu.active {
-                display: flex;
+            .sidebar a {
+                padding: 10px 15px;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Menú de Navegación Responsive -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="#" class="logo">ÉLITE MODA</a>
-            
-            <button class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+    <!-- BOTÓN DEL MENÚ HAMBURGUESA (SOLO MÓVILES) -->
+    <button class="menu-float" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
 
-            <ul class="nav-menu" id="navMenu">
-                <!-- Páginas principales -->
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a href="Colecciones.html" class="nav-link"><i class="fas fa-shopping-bag"></i> Colección</a>
-                </li>
-                <li class="nav-item">
-                    <a href="RopaInt.html" class="nav-link"><i class="fas fa-tshirt"></i> Ropa Íntima</a>
-                </li>
-                <li class="nav-item">
-                    <a href="RopaCasual.html" class="nav-link"><i class="fas fa-user"></i> Ropa Casual</a>
-                </li>
-                <li class="nav-item">
-                    <a href="nuevosprod.html" class="nav-link"><i class="fas fa-star"></i> Novedades</a>
-                </li>
-                <li class="nav-item">
-                    <a href="ofertas.html" class="nav-link"><i class="fas fa-tag"></i> Ofertas</a>
-                </li>
-                
-                <!-- Páginas informativas -->
-                <li class="nav-item">
-                    <a href="Nosotros.html" class="nav-link"><i class="fas fa-heart"></i> Nuestra Dedicatoria</a>
-                </li>
-                <li class="nav-item">
-                    <a href="PregunFrec.html" class="nav-link"><i class="fas fa-question-circle"></i> Preguntas Frecuentes</a>
-                </li>
-                <li class="nav-item">
-                    <a href="guiadetallas.html" class="nav-link"><i class="fas fa-ruler"></i> Guía de Tallas</a>
-                </li>
-                <li class="nav-item">
-                    <a href="cuidadoprendas.html" class="nav-link"><i class="fas fa-hands"></i> Cuidado de Prendas</a>
-                </li>
-                <li class="nav-item">
-                    <a href="EnviosyDevoluc.html" class="nav-link"><i class="fas fa-shipping-fast"></i> Envíos y Devoluciones</a>
-                </li>
-                
-                <!-- Contacto y redes -->
-                <li class="nav-item">
-                    <a href="https://wa.me/5804163034250?" target="_blank" class="nav-link"><i class="fab fa-whatsapp"></i> Contacto WhatsApp</a>
-                </li>
-                <li class="nav-item">
-                    <a href="tel:+584163034250" class="nav-link"><i class="fas fa-phone"></i> Llamadas</a>
-                </li>
-                
-                <!-- Legal -->
-                <li class="nav-item">
-                    <a href="PoliticadePrivacidad.html" class="nav-link"><i class="fas fa-shield-alt"></i> Política de Privacidad</a>
-                </li>
-                <li class="nav-item">
-                    <a href="TerminosyCondiciones.html" class="nav-link"><i class="fas fa-file-contract"></i> Términos y Condiciones</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Overlay para cerrar el menú en móviles -->
-    <div class="nav-overlay" id="navOverlay"></div>
-
-    <!-- Botón de Llamadas Elegante -->
-    <a href="tel:+584163034250" class="btn-call" id="callButton">
-        <i class="fas fa-phone"></i>
-    </a>
-
-    <!-- BOTÓN IR AL INICIO MEJORADO -->
+    <!-- BOTÓN IR AL INICIO -->
     <button class="back-to-top" id="backToTop" aria-label="Volver al inicio">
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- BOTÓN DE LLAMADAS -->
+    <a href="tel:+584163034250" class="btn-call" id="callButton">
+        <i class="fas fa-phone"></i>
+    </a>
+
+    <!-- OVERLAY PARA CERRAR MENÚ HAMBURGUESA -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- MENÚ LATERAL ELEGANTE (ORIGINAL) -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>ÉLITE MODA</h2>
+            <p class="sidebar-subtitle">Estilo que define tu esencia</p>
+        </div>
+        <div class="sidebar-content">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="Colecciones.html"><i class="fas fa-shopping-bag"></i> Colección</a></li>
+                <li><a href="RopaInt.html"><i class="fas fa-tshirt"></i> Ropa Íntima</a></li>
+                <li><a href="RopaCasual.html"><i class="fas fa-user"></i> Ropa Casual</a></li>
+                <li><a href="nuevosprod.html"><i class="fas fa-star"></i> Novedades</a></li>
+                <li><a href="ofertas.html"><i class="fas fa-tag"></i> Ofertas</a></li>
+                <li><a href="Nosotros.html"><i class="fas fa-heart"></i> Nuestra Dedicatoria</a></li>
+                <li><a href="https://wa.me/5804163034250?" target="_blank"><i class="fab fa-whatsapp"></i> Contacto WhatsApp</a></li>
+                <li><a href="tel:+584163034250"><i class="fas fa-phone"></i> Llamadas</a></li>
+                <li><a href="PregunFrec.html"><i class="fas fa-question-circle"></i> Preguntas frecuentes</a></li>
+                <li><a href="guiadetallas.html"><i class="fas fa-ruler"></i> Guía de Tallas</a></li>
+                <li><a href="cuidadoprendas.html"><i class="fas fa-hands"></i> Cuidado de Prendas</a></li>
+                <li><a href="EnviosyDevoluc.html"><i class="fas fa-shipping-fast"></i> Envíos y Devoluciones</a></li>
+                <li><a href="PoliticadePrivacidad.html"><i class="fas fa-shield-alt"></i> Política de Privacidad</a></li>
+                <li><a href="TerminosyCondiciones.html"><i class="fas fa-file-contract"></i> Términos y Condiciones</a></li>
+            </ul>
+        </div>
+    </aside>
+
     <!-- CONTENIDO PRINCIPAL -->
     <main class="main-content">
-        <!-- SECCIÓN PROMOCIONAL MEJORADA -->
+        <!-- SECCIÓN PROMOCIONAL -->
         <section class="promo-section">
             <div class="promo-content">
                 <h1 class="promo-title">ESTILO QUE DEFINE TU ESENCIA</h1>
                 <h2 class="promo-subtitle">Descubre tu mejor versión con nuestra colección exclusiva</h2>
                 
-                <!-- Imagen promocional -->
                 <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
                      alt="Colección de moda exclusiva" class="promo-image">
                 
@@ -914,7 +815,7 @@
             </div>
         </section>
 
-        <!-- SECCIÓN ELEGANTE SOBRE NOSOTROS MEJORADA -->
+        <!-- SECCIÓN ELEGANTE SOBRE NOSOTROS -->
         <section class="about-section">
             <h2 class="about-title">ELEVANDO EL ESTILO, DEFINIDO POR TÍ</h2>
             <p class="about-subtitle">Donde la elegancia se encuentra con la expresión personal</p>
@@ -976,106 +877,41 @@
             
             <p class="signature">Con dedicación y pasión por la moda,<br>El equipo de <strong>ÉLITE MODA</strong></p>
         </section>
-
-        <!-- SECCIÓN ADICIONAL DE COLECCIONES -->
-        <section class="about-section">
-            <h2 class="about-title">EXPLORA NUESTRAS COLECCIONES</h2>
-            <p class="about-subtitle">Encuentra el estilo que mejor se adapte a tu personalidad</p>
-            
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">👗</div>
-                    <h3 class="value-title">Colección Principal</h3>
-                    <p class="value-description">Descubre nuestras prendas más exclusivas y elegantes, diseñadas para ocasiones especiales y eventos importantes.</p>
-                    <a href="Colecciones.html" class="cta-button" style="padding: 10px 20px; font-size: 1rem; margin-top: 15px;">Ver Colección</a>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">👚</div>
-                    <h3 class="value-title">Ropa Casual</h3>
-                    <p class="value-description">Estilo cómodo y moderno para el día a día. Perfecta para lucir elegante sin sacrificar la comodidad.</p>
-                    <a href="RopaCasual.html" class="cta-button" style="padding: 10px 20px; font-size: 1rem; margin-top: 15px;">Ver Casual</a>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">🩲</div>
-                    <h3 class="value-title">Ropa Íntima</h3>
-                    <p class="value-description">Comodidad y calidad en cada detalle. Diseños pensados para tu bienestar y confort diario.</p>
-                    <a href="RopaInt.html" class="cta-button" style="padding: 10px 20px; font-size: 1rem; margin-top: 15px;">Ver Íntima</a>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">🆕</div>
-                    <h3 class="value-title">Novedades</h3>
-                    <p class="value-description">Mantente a la vanguardia con nuestros lanzamientos más recientes y tendencias actuales.</p>
-                    <a href="nuevosprod.html" class="cta-button" style="padding: 10px 20px; font-size: 1rem; margin-top: 15px;">Ver Novedades</a>
-                </div>
-            </div>
-        </section>
     </main>
 
     <script>
-        // Menú Hamburguesa - MEJORADO PARA HORIZONTAL
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
-        const navOverlay = document.getElementById('navOverlay');
+        // FUNCIONALIDAD DEL MENÚ HAMBURGUESA (SOLO MÓVILES)
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
         const backToTop = document.getElementById('backToTop');
         const callButton = document.getElementById('callButton');
 
         function toggleMenu() {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            navOverlay.classList.toggle('active');
-            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+            sidebar.classList.toggle('active');
+            sidebarOverlay.classList.toggle('active');
+            menuToggle.classList.toggle('active');
         }
 
-        hamburger.addEventListener('click', toggleMenu);
-        navOverlay.addEventListener('click', toggleMenu);
+        function closeMenu() {
+            sidebar.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+            menuToggle.classList.remove('active');
+        }
 
-        // Cerrar menú al hacer clic en cualquier enlace (solo en móviles)
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
+        menuToggle.addEventListener('click', toggleMenu);
+        sidebarOverlay.addEventListener('click', closeMenu);
+
+        // Cerrar menú al hacer clic en cualquier enlace del menú (solo en móviles)
+        document.querySelectorAll('.sidebar a').forEach(link => {
             link.addEventListener('click', () => {
-                if (window.innerWidth <= 1024) {
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
-                    navOverlay.classList.remove('active');
-                    document.body.style.overflow = '';
+                if (window.innerWidth <= 768) {
+                    closeMenu();
                 }
             });
         });
 
-        // Cerrar menú al redimensionar la ventana (si se cambia a desktop)
-        window.addEventListener('resize', () => {
-            if (window.innerWidth <= 1024 && window.innerHeight <= 600) {
-                hamburger.style.display = 'flex';
-            } else if (window.innerWidth > 1024) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                navOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-                hamburger.style.display = 'none';
-            } else if (window.innerWidth <= 768) {
-                hamburger.style.display = 'flex';
-            }
-        });
-
-        // Inicializar visibilidad del hamburguesa
-        function initHamburgerVisibility() {
-            if (window.innerWidth <= 1024 && window.innerHeight <= 600) {
-                hamburger.style.display = 'flex';
-            } else if (window.innerWidth <= 768) {
-                hamburger.style.display = 'flex';
-            } else {
-                hamburger.style.display = 'none';
-            }
-        }
-
-        // Ejecutar al cargar y al redimensionar
-        initHamburgerVisibility();
-        window.addEventListener('resize', initHamburgerVisibility);
-
-        // FUNCIONALIDAD DEL BOTÓN "IR AL INICIO" CON SCROLL SUAVE
+        // FUNCIONALIDAD DEL BOTÓN "IR AL INICIO"
         backToTop.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
@@ -1099,6 +935,7 @@
 
             // Ocultar botones cuando se detecta scroll rápido
             if (Math.abs(scrollTop - lastScrollTop) > 10) {
+                menuToggle.classList.add('hidden');
                 callButton.classList.add('hidden');
             }
             
@@ -1109,11 +946,12 @@
             
             // Mostrar botones después de detener el scroll
             scrollTimeout = setTimeout(() => {
+                menuToggle.classList.remove('hidden');
                 callButton.classList.remove('hidden');
             }, 800);
         }
 
-        // Event listener para el scroll con throttling para mejor rendimiento
+        // Event listener para el scroll con throttling
         let scrollThrottleTimeout;
         window.addEventListener('scroll', () => {
             if (!scrollThrottleTimeout) {
@@ -1126,6 +964,11 @@
 
         // Inicialización
         window.addEventListener('load', () => {
+            // Solo mostrar el botón del menú en móviles
+            if (window.innerWidth <= 768) {
+                menuToggle.classList.remove('hidden');
+            }
+            
             callButton.classList.remove('hidden');
             
             if (window.scrollY > 300) {
@@ -1133,20 +976,21 @@
             }
         });
 
-        // Manejar cambios de orientación en dispositivos móviles
-        window.addEventListener('orientationchange', () => {
-            setTimeout(() => {
-                if (window.scrollY > 300) {
-                    backToTop.classList.add('show');
-                } else {
-                    backToTop.classList.remove('show');
-                }
-            }, 300);
+        // Manejar cambios de tamaño de ventana
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 768) {
+                menuToggle.style.display = 'flex';
+            } else {
+                menuToggle.style.display = 'none';
+                // Asegurarse de que el sidebar esté visible en escritorio
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+            }
         });
 
-        console.log('🚀 Página ÉLITE MODA completamente cargada y optimizada');
-        console.log('📱 Menú hamburguesa con todas las páginas incluido');
-        console.log('🎯 Navegación responsive lista para todos los dispositivos');
+        console.log('🚀 Página ÉLITE MODA con menú dual cargada');
+        console.log('💻 Sidebar visible en escritorio');
+        console.log('📱 Menú hamburguesa activo en móviles');
     </script>
 
 </body>
