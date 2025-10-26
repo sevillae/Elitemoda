@@ -9,10 +9,6 @@
     <!-- Font Awesome 6.5.1 que incluye el ícono de Threads -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- CSS -->
-    <link rel="stylesheet" href="js/Todo tipo de pantalla/Potentesinconfict.css">
-    <!-- Tus otros CSS aquí -->
-    
     <style>
         * {
             margin: 0;
@@ -24,6 +20,221 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             min-height: 100vh;
+        }
+
+        /* NAVEGACIÓN RESPONSIVE - MENÚ HAMBURGUESA */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1b0e 100%);
+            z-index: 1000;
+            padding: 0 20px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            color: #d4af37;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 2px;
+            z-index: 1002;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 10px 15px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #d4af37;
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #d4af37;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+
+        /* MENÚ HAMBURGUESA */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            width: 30px;
+            height: 25px;
+            position: relative;
+            z-index: 1002;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background: #d4af37;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+            transform-origin: center;
+        }
+
+        /* Animación del hamburguesa cuando está activo */
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Overlay para cerrar el menú */
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* RESPONSIVE PARA EL MENÚ */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: linear-gradient(135deg, #1a1a1a 0%, #2d1b0e 100%);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 100px 30px 30px;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 25px rgba(0,0,0,0.3);
+                gap: 0;
+                z-index: 1001;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-item {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .nav-link {
+                display: block;
+                padding: 15px 20px;
+                width: 100%;
+                font-size: 1.1rem;
+                border-radius: 8px;
+                border-left: 3px solid transparent;
+                transition: all 0.3s ease;
+            }
+
+            .nav-link:hover {
+                background: rgba(212, 175, 55, 0.15);
+                border-left-color: #d4af37;
+                transform: translateX(5px);
+            }
+        }
+
+        /* Para pantallas muy pequeñas */
+        @media (max-width: 480px) {
+            .nav-menu {
+                width: 100%;
+                right: -100%;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .nav-container {
+                padding: 0 15px;
+            }
+        }
+
+        /* Para orientación horizontal en móviles */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .nav-menu {
+                padding-top: 80px;
+                overflow-y: auto;
+            }
+
+            .nav-item {
+                margin: 5px 0;
+            }
+
+            .nav-link {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Ajustar el header principal para que no quede detrás del nav */
+        .page-header {
+            margin-top: 70px;
         }
 
         /* BOTÓN DE INICIO ELEGANTE - COMPORTAMIENTO DUAL */
@@ -546,11 +757,10 @@
             }
         }
 
-
         .legal-links a {
-            color: var(--secondary-color) !important; /* Color dorado */
+            color: #d4af37 !important;
             text-decoration: none;
-            transition: var(--transition);
+            transition: all 0.3s ease;
         }
         
         .legal-links a:hover {
@@ -562,6 +772,40 @@
 </head>
 
 <body>
+    <!-- Menú de Navegación Responsive -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="#" class="logo">ÉLITE MODA</a>
+            
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#coleccion" class="nav-link">Colección</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#novedades" class="nav-link">Novedades</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#ofertas" class="nav-link">Ofertas</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contacto" class="nav-link">Contacto</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Overlay para cerrar el menú en móviles -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
     <!-- Botón de Inicio Elegante - COMPORTAMIENTO DUAL -->
     <button class="btn-home" id="homeButton">
         <i class="fas fa-home"></i>
@@ -841,39 +1085,64 @@
             <h3>ÉLITE MODA</h3>
             <p>Moda exclusiva para clientes distinguidos</p>
             <div class="social-links">
-                <!-- En el <head> de tu HTML -->
                 <a href="https://www.instagram.com/yencava/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.threads.net/tu_usuario" class="social-link threads-btn" target="_blank"><i class="fa-brands fa-threads"></i><span class="tooltip"></span></a>
+                <a href="https://www.threads.net/tu_usuario" class="social-link threads-btn" target="_blank"><i class="fa-brands fa-threads"></i></a>
                 <a href="https://www.facebook.com/@yennibel.camino" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.pinterest.com/tu_usuario" class="social-link" target="_blank"><i class="fab fa-pinterest-p"></i></a>
                 <a href="https://wa.me/5804163034250" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                <a href="tel:+584163034250" class="social-link"><i class="fas fa-phone"></i></a></a>                        
+                <a href="tel:+584163034250" class="social-link"><i class="fas fa-phone"></i></a>
             </div>
 
-        <div class="copyright">
-            <p>&copy; 2023 ÉLITE MODA. Todos los derechos reservados.</p>
-            <div class="legal-links">
-            <a href="PoliticadePrivacidad.html">Política de Privacidad</a>
-            <span class="separator">|</span>
-            <a href="TerminosyCondiciones.html">Términos y Condiciones</a>
+            <div class="copyright">
+                <p>&copy; 2023 ÉLITE MODA. Todos los derechos reservados.</p>
+                <div class="legal-links">
+                    <a href="PoliticadePrivacidad.html">Política de Privacidad</a>
+                    <span class="separator">|</span>
+                    <a href="TerminosyCondiciones.html">Términos y Condiciones</a>
+                </div>
+            </div>
         </div>
-
-        </div>
-
-        
     </footer>
 
-    <body class="rps-reset"></body>
-    <!-- JavaScript -->
-    <script src="js/MenuMovilOpcional.js"></script>
-    <script src="js/Responsive.js"></script>
-    <script src="js/rps-animaciones.js"></script>
-    <script src="js/rps-component-iteractivos.js"></script>
-    <script src="js/rps-viewport.js"></script>
-    <!-- Tus otros JavaScript aquí -->
-
+    <!-- JavaScript para el menú hamburguesa -->
     <script>
-        // JavaScript para el comportamiento dual del botón de inicio
+        // Menú Hamburguesa
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        navOverlay.addEventListener('click', toggleMenu);
+
+        // Cerrar menú al hacer clic en un enlace
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                navOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Cerrar menú al redimensionar la ventana (si se cambia a desktop)
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                navOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Tu código existente para los botones flotantes
         let lastScrollTop = 0;
         const homeButton = document.getElementById('homeButton');
         const callButton = document.getElementById('callButton');
@@ -883,18 +1152,14 @@
         window.addEventListener('scroll', function() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
-            // Detectar si el usuario está haciendo scroll
             isScrolling = true;
             
-            // Ocultar los botones mientras se hace scroll
             homeButton.classList.add('hidden');
             callButton.classList.add('hidden');
             
-            // Detectar cuando el scroll se detiene completamente
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(function() {
                 isScrolling = false;
-                // Mostrar los botones cuando el scroll se detiene
                 homeButton.classList.remove('hidden');
                 callButton.classList.remove('hidden');
             }, 350);
@@ -902,15 +1167,12 @@
             lastScrollTop = scrollTop;
         });
         
-        // Botón con doble función
         homeButton.addEventListener('click', function() {
             const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
             
             if (currentScrollPosition === 0) {
-                // Si estamos en la parte superior, ir al index.html
                 window.location.href = 'index.html';
             } else {
-                // Si no, hacer scroll to top
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
@@ -919,6 +1181,5 @@
         });
     </script>
 
-    
 </body>
 </html>
