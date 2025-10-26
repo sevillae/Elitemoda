@@ -146,7 +146,68 @@
             visibility: visible;
         }
 
-        /* RESPONSIVE PARA EL MENÚ */
+        /* RESPONSIVE PARA EL MENÚ - CORREGIDO PARA HORIZONTAL */
+        @media (max-width: 1024px) {
+            .nav-menu {
+                gap: 20px;
+            }
+            
+            .nav-link {
+                padding: 10px 16px;
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Menú hamburguesa para tablets y móviles en horizontal */
+        @media (max-width: 1024px) and (max-height: 600px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 300px;
+                height: 100vh;
+                background: linear-gradient(135deg, #1a1a1a 0%, #2d1b0e 100%);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 100px 30px 30px;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 25px rgba(0,0,0,0.3);
+                gap: 0;
+                z-index: 1001;
+                overflow-y: auto;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-item {
+                width: 100%;
+                margin: 8px 0;
+            }
+
+            .nav-link {
+                display: block;
+                padding: 12px 20px;
+                width: 100%;
+                font-size: 1rem;
+                border-radius: 8px;
+                border-left: 3px solid transparent;
+                transition: all 0.3s ease;
+            }
+
+            .nav-link:hover {
+                background: rgba(212, 175, 55, 0.15);
+                border-left-color: #d4af37;
+                transform: translateX(5px);
+            }
+        }
+
         @media (max-width: 768px) {
             .hamburger {
                 display: flex;
@@ -215,20 +276,25 @@
             }
         }
 
-        /* Para orientación horizontal en móviles */
+        /* Para orientación horizontal en móviles - MEJORADO */
         @media (max-height: 500px) and (orientation: landscape) {
             .nav-menu {
-                padding-top: 80px;
+                padding-top: 70px;
                 overflow-y: auto;
+                max-height: 100vh;
             }
 
             .nav-item {
-                margin: 5px 0;
+                margin: 4px 0;
             }
 
             .nav-link {
-                padding: 12px 20px;
-                font-size: 1rem;
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .hamburger {
+                display: flex;
             }
         }
 
@@ -768,6 +834,21 @@
             text-decoration: underline;
         }
 
+        /* Ajustes específicos para orientación horizontal */
+        @media (max-width: 900px) and (max-height: 500px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+        }
+
     </style>
 </head>
 
@@ -1104,9 +1185,9 @@
         </div>
     </footer>
 
-    <!-- JavaScript para el menú hamburguesa -->
+    <!-- JavaScript para el menú hamburguesa - MEJORADO PARA HORIZONTAL -->
     <script>
-        // Menú Hamburguesa
+        // Menú Hamburguesa - MEJORADO PARA HORIZONTAL
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
         const navOverlay = document.getElementById('navOverlay');
@@ -1134,13 +1215,34 @@
 
         // Cerrar menú al redimensionar la ventana (si se cambia a desktop)
         window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
+            // Mostrar menú hamburguesa en orientación horizontal
+            if (window.innerWidth <= 1024 && window.innerHeight <= 600) {
+                hamburger.style.display = 'flex';
+            } else if (window.innerWidth > 1024) {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
                 navOverlay.classList.remove('active');
                 document.body.style.overflow = '';
+                hamburger.style.display = 'none';
+            } else if (window.innerWidth <= 768) {
+                hamburger.style.display = 'flex';
             }
         });
+
+        // Inicializar visibilidad del hamburguesa
+        function initHamburgerVisibility() {
+            if (window.innerWidth <= 1024 && window.innerHeight <= 600) {
+                hamburger.style.display = 'flex';
+            } else if (window.innerWidth <= 768) {
+                hamburger.style.display = 'flex';
+            } else {
+                hamburger.style.display = 'none';
+            }
+        }
+
+        // Ejecutar al cargar y al redimensionar
+        initHamburgerVisibility();
+        window.addEventListener('resize', initHamburgerVisibility);
 
         // Tu código existente para los botones flotantes
         let lastScrollTop = 0;
