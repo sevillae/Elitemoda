@@ -33,6 +33,7 @@
             color: var(--text-color);
             background-color: var(--light-color);
             line-height: 1.6;
+            padding-top: 80px; /* Espacio para el header fijo */
         }
 
         h1, h2, h3, h4, h5 {
@@ -47,59 +48,72 @@
             padding: 0 20px;
         }
 
-        /* Header Styles MEJORADO */
-        header {
+        /* ===== HEADER Y NAVEGACIÓN RESPONSIVE COMPLETA ===== */
+        .header {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
             color: white;
-            padding: 1rem 0;
-            position: relative;
+            padding: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
         }
 
-        .header-content {
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 3vw, 2rem);
+        }
+
+        .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            height: 70px;
         }
 
+        /* Logo */
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-size: clamp(1.3rem, 4vw, 2rem);
             font-weight: 700;
-            letter-spacing: 1px;
             display: flex;
             align-items: center;
+            text-decoration: none;
+            color: white;
+            z-index: 1001;
         }
 
         .logo i {
             margin-right: 10px;
             color: var(--secondary-color);
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
         }
 
-        .nav-links {
+        /* Menú Desktop - Visible en pantallas grandes */
+        .nav-menu {
             display: flex;
             list-style: none;
-            flex-wrap: wrap;
-            gap: 1rem;
+            gap: clamp(1rem, 2vw, 2rem);
+            align-items: center;
+            margin: 0;
         }
 
-        .nav-links li {
-            margin-left: 0;
-        }
-
-        .nav-links a {
+        .nav-link {
             color: white;
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
             position: relative;
-            padding: 5px 0;
-            font-size: clamp(0.875rem, 2vw, 1rem);
+            padding: 0.5rem 0;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            white-space: nowrap;
         }
 
-        .nav-links a:after {
+        .nav-link:after {
             content: '';
             position: absolute;
             width: 0;
@@ -110,123 +124,144 @@
             transition: var(--transition);
         }
 
-        .nav-links a:hover:after {
+        .nav-link:hover:after {
             width: 100%;
         }
 
-        .nav-links a:hover {
+        .nav-link:hover {
             color: var(--secondary-color);
+        }
+
+        /* MENÚ HAMBURGUESA CORREGIDO - AHORA FUNCIONA EN TODOS LOS DISPOSITIVOS MÓVILES */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background-color: white;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Overlay para móviles */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
         /* Home Button - RESPONSIVE MEJORADO */
         .btn-home {
             position: fixed;
-            bottom: clamp(1rem, 3vw, 2rem);
-            right: clamp(1rem, 3vw, 2rem);
             z-index: 1000;
-            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
             color: white;
-            padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 2.5vw, 1.25rem);
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: clamp(0.875rem, 2vw, 1rem);
-            box-shadow: 0 4px 20px rgba(193, 154, 107, 0.4);
-            transition: all 0.4s ease;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            border: 2px solid transparent;
-            backdrop-filter: blur(10px);
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            transition: var(--transition);
             opacity: 1;
-            transform: translateY(0);
-            pointer-events: all;
-            cursor: pointer;
-            min-height: 44px;
-            min-width: 44px;
+            visibility: visible;
+            border: 2px solid var(--secondary-color);
+            /* Tamaño y posición responsive */
+            width: clamp(45px, 10vw, 60px);
+            height: clamp(45px, 10vw, 60px);
+            bottom: clamp(1rem, 3vw, 2rem);
+            right: clamp(1rem, 3vw, 2rem);
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
         }
 
         .btn-home.hidden {
             opacity: 0;
-            transform: translateY(20px);
-            pointer-events: none;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.8);
         }
 
         .btn-home:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 6px 25px rgba(193, 154, 107, 0.6);
-            background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
-            border-color: rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #c19b2c 100%);
+            color: var(--text-color);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
         }
 
-        .btn-home i {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            transition: transform 0.3s ease;
-        }
-
-        .btn-home:hover i {
-            transform: scale(1.2);
-        }
-
-        /* Indicador de función dual */
-        .btn-home::after {
-            content: '2x';
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            width: clamp(16px, 4vw, 20px);
-            height: clamp(16px, 4vw, 20px);
-            background: #ff6b88;
-            color: white;
-            border-radius: 50%;
-            border: 2px solid white;
-            font-size: clamp(0.5rem, 2vw, 0.7rem);
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0.9;
-            transition: all 0.3s ease;
-        }
-
-        .btn-home:hover::after {
-            transform: scale(1.2);
-            opacity: 1;
-        }
-
-        /* Efecto de pulso sutil */
+        /* Efecto de pulso en el botón */
         @keyframes pulse-gentle {
-            0% { box-shadow: 0 4px 15px rgba(193, 154, 107, 0.4); }
-            50% { box-shadow: 0 4px 20px rgba(193, 154, 107, 0.6); }
-            100% { box-shadow: 0 4px 15px rgba(193, 154, 107, 0.4); }
+            0% { box-shadow: 0 6px 20px rgba(44, 62, 80, 0.4); }
+            50% { box-shadow: 0 6px 25px rgba(44, 62, 80, 0.6); }
+            100% { box-shadow: 0 6px 20px rgba(44, 62, 80, 0.4); }
         }
 
-        .btn-home:not(.hidden) {
+        .btn-home {
             animation: pulse-gentle 3s infinite;
         }
 
-        /* Tooltip para función dual */
-        .btn-home .tooltip {
-            position: absolute;
-            bottom: 100%;
-            right: 0;
-            background: rgba(0,0,0,0.8);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            white-space: nowrap;
-            margin-bottom: 10px;
-            pointer-events: none;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            z-index: 1001;
+        .btn-home:hover {
+            animation: none;
         }
 
-        .btn-home:hover .tooltip {
+        /* Tooltip para el botón */
+        .btn-home::after {
+            content: 'Inicio / Volver al inicio';
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: clamp(0.7rem, 2vw, 0.8rem);
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .btn-home:hover::after {
             opacity: 1;
-            transform: translateY(0);
+            visibility: visible;
         }
 
         /* Luxury Theme Styles */
@@ -786,15 +821,88 @@
             font-size: clamp(0.75rem, 2vw, 0.9rem);
         }
 
-        /* Responsive Styles MEJORADOS */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
+        /* ===== MEDIA QUERIES PARA EL MENÚ RESPONSIVE ===== */
+
+        /* CORRECCIÓN PRINCIPAL: Menú hamburguesa para todos los dispositivos móviles */
+        @media (max-width: 1024px) {
+            .hamburger {
+                display: flex;
             }
             
-            .nav-links {
-                justify-content: center;
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 80px 1.5rem 2rem;
+                gap: 0;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+                overflow-y: auto;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-item {
+                margin: 0 0 1rem 0;
+                width: 100%;
+                opacity: 0;
+                transform: translateX(30px);
+                transition: all 0.3s ease;
+            }
+            
+            .nav-menu.active .nav-item {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            
+            .nav-item:nth-child(1) { transition-delay: 0.1s; }
+            .nav-item:nth-child(2) { transition-delay: 0.15s; }
+            .nav-item:nth-child(3) { transition-delay: 0.2s; }
+            .nav-item:nth-child(4) { transition-delay: 0.25s; }
+            
+            .nav-link {
+                font-size: 0.95rem;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                width: 100%;
+            }
+            
+            .nav-link:after {
+                display: none;
+            }
+            
+            .nav-link:hover {
+                padding-left: 10px;
+                border-bottom-color: var(--secondary-color);
+            }
+        }
+
+        /* Móviles pequeños (576px y menos) */
+        @media (max-width: 576px) {
+            .nav-menu {
+                width: 250px;
+                padding: 70px 1rem 2rem;
+            }
+            
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .logo i {
+                font-size: 1.4rem;
+            }
+            
+            .header-container {
+                padding: 0 1rem;
             }
             
             .btn-home span {
@@ -804,29 +912,42 @@
             .btn-home i {
                 margin-right: 0;
             }
+            
+            .nav-link {
+                font-size: 0.9rem;
+                padding: 8px 0;
+            }
         }
 
-        @media (max-width: 576px) {
-            .btn-home {
-                padding: 12px;
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                justify-content: center;
+        /* Móviles muy pequeños */
+        @media (max-width: 400px) {
+            .nav-menu {
+                width: 220px;
+                padding: 60px 0.8rem 2rem;
             }
             
-            .btn-home span {
-                display: none;
-            }
-            
-            .btn-home i {
-                margin: 0;
-                font-size: 1.2rem;
+            .nav-link {
+                font-size: 0.85rem;
+                padding: 6px 0;
             }
         }
 
         /* Orientación horizontal en móviles */
         @media (max-height: 500px) and (orientation: landscape) {
+            .nav-menu {
+                padding-top: 60px;
+                overflow-y: auto;
+            }
+            
+            .nav-item {
+                margin-bottom: 0.6rem;
+            }
+            
+            .nav-link {
+                padding: 6px 0;
+                font-size: 0.85rem;
+            }
+            
             .hero-parallax {
                 height: auto;
                 min-height: 100vh;
@@ -842,25 +963,39 @@
             }
         }
 
-        .btn-home .tooltip {
-            transition: all 0.3s ease;
-        }
-
-        .legal-links a {
-            color: var(--secondary-color) !important;
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: clamp(0.75rem, 2vw, 0.9rem);
-        }
-        
-        .legal-links a:hover {
-            color: white !important;
-            text-decoration: underline;
-        }
-
-        .separator {
-            margin: 0 0.5rem;
-            color: #666;
+        /* Asegurar que el menú se cierre correctamente en desktop */
+        @media (min-width: 1025px) {
+            .nav-menu {
+                display: flex !important;
+                position: static !important;
+                width: auto !important;
+                height: auto !important;
+                background: transparent !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+                transform: none !important;
+            }
+            
+            .nav-item {
+                border-bottom: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            
+            .nav-link {
+                padding: 0.5rem 0 !important;
+                font-size: clamp(0.9rem, 1.5vw, 1rem) !important;
+                border-bottom: none !important;
+            }
+            
+            .nav-link:hover {
+                background: transparent !important;
+                padding-left: 0 !important;
+            }
+            
+            .overlay {
+                display: none !important;
+            }
         }
 
         /* Mejoras para tablets */
@@ -885,30 +1020,67 @@
                 text-align: left;
             }
         }
+
+        .legal-links a {
+            color: var(--secondary-color) !important;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: clamp(0.75rem, 2vw, 0.9rem);
+        }
+        
+        .legal-links a:hover {
+            color: white !important;
+            text-decoration: underline;
+        }
+
+        .separator {
+            margin: 0 0.5rem;
+            color: #666;
+        }
     </style>
 </head>
 <body class="rps-reset">
-    <!-- Header -->
-    <header class="rps-header-responsive">
-        <div class="container rps-header-content">
-            <div class="logo rps-logo-responsive">
-                <i class="fas fa-crown"></i>
-                ÉLITE MODA
-            </div>
-            <ul class="nav-links rps-nav-responsive">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="Colecciones.html">Colecciones</a></li>
-                <li><a href="dedicatoria.html">Nuestra Dedicatoria</a></li>
-                <li><a href="https://wa.me/5804163034250" target="_blank" onclick="closeMenu()"> Contacto WhatsApp</a></li>                
-            </ul>
+    <!-- Header y Navegación Responsive -->
+    <header class="header">
+        <div class="header-container">
+            <nav class="nav">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-crown"></i>
+                    ÉLITE MODA
+                </a>
+
+                <!-- Menú de Navegación -->
+                <ul class="nav-menu" id="navMenu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="Colecciones.html" class="nav-link">Colecciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="dedicatoria.html" class="nav-link">Nuestra Dedicatoria</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://wa.me/5804163034250" target="_blank" class="nav-link">Contacto WhatsApp</a>
+                    </li>
+                </ul>
+
+                <!-- Botón Hamburguesa CORREGIDO -->
+                <button class="hamburger" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
         </div>
     </header>
 
+    <!-- Overlay para móviles -->
+    <div class="overlay" id="overlay"></div>
+
     <!-- Botón de Inicio Elegante - COMPORTAMIENTO DUAL -->
-    <button href="index.html" class="btn-home rps-btn-home-responsive" id="homeButton">
+    <button class="btn-home" id="homeButton">
         <i class="fas fa-home"></i>
-        <span class="rps-d-mobile-none">Inicio</span>
-        <div class="tooltip">Clic: Ir arriba • Doble clic: Página principal</div>
     </button>
 
     <!-- Ropa Íntima Damas - Diseño Elegante -->
@@ -1186,183 +1358,138 @@
     <script src="js/rps-viewport.js"></script>
 
     <script>
-        // Control del botón de inicio - COMPORTAMIENTO MEJORADO
+        // Control del menú hamburguesa - VERSIÓN CORREGIDA
         document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+            const overlay = document.getElementById('overlay');
+            const body = document.body;
+
+            // Alternar menú
+            menuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                overlay.classList.toggle('active');
+                body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            // Cerrar menú al hacer clic en un enlace
+            navMenu.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                    body.style.overflow = '';
+                });
+            });
+
+            // Cerrar menú al hacer clic en el overlay
+            overlay.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                body.style.overflow = '';
+            });
+
+            // Cerrar menú con tecla Escape
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                    body.style.overflow = '';
+                }
+            });
+
+            // Control del botón de inicio - COMPORTAMIENTO MEJORADO
             const homeButton = document.getElementById('homeButton');
             let scrollTimeout;
-            let isRedirecting = false;
             
-            // Verificar si estamos en la parte superior
-            function checkIfAtTop() {
-                return window.pageYOffset === 0;
-            }
-            
-            // Función para hacer scroll al top
-            function scrollToTop() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
+            if (homeButton) {
+                window.addEventListener('scroll', function() {
+                    // Ocultar el botón mientras se hace scroll
+                    homeButton.classList.add('hidden');
+                    
+                    // Detectar cuando el scroll se detiene
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(function() {
+                        // Mostrar el botón cuando el scroll se detiene
+                        homeButton.classList.remove('hidden');
+                    }, 550);
+                });
+                
+                // Botón con doble función
+                homeButton.addEventListener('click', function() {
+                    const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    if (currentScrollPosition === 0) {
+                        // Si estamos en la parte superior, ir al index.html
+                        window.location.href = 'index.html';
+                    } else {
+                        // Si no, hacer scroll to top
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             }
-            
-            // Función para redirigir al index
-            function goToIndex() {
-                isRedirecting = true;
-                // Pequeño delay para asegurar que el botón se vea clickeado
+
+            // Detectar cambios de orientación y redimensionado
+            window.addEventListener('orientationchange', function() {
                 setTimeout(() => {
-                    window.location.href = 'index.html';
-                }, 100);
-            }
-            
-            // Manejar el clic del botón
-            homeButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                console.log('Botón clickeado, isRedirecting:', isRedirecting); // Debug
-                
-                // Si ya estamos redirigiendo, no hacer nada
-                if (isRedirecting) {
-                    console.log('Redirección en proceso, ignorando clic');
-                    return;
-                }
-                
-                // Verificar si estamos en la parte superior
-                const atTop = checkIfAtTop();
-                console.log('Estamos en top:', atTop);
-                
-                if (atTop) {
-                    // Si YA estamos en top, redirigir a index.html
-                    console.log('Redirigiendo a index.html');
-                    goToIndex();
-                } else {
-                    // Si NO estamos en top, hacer scroll al top
-                    console.log('Haciendo scroll al top');
-                    scrollToTop();
+                    if (window.innerWidth > 1024 && navMenu.classList.contains('active')) {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        overlay.classList.remove('active');
+                        body.style.overflow = '';
+                    }
+                }, 300);
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 1024 && navMenu.classList.contains('active')) {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                    body.style.overflow = '';
                 }
             });
-            
-            // Función para ocultar el botón
-            function hideButton() {
-                // No ocultar si estamos en proceso de redirección
-                if (!isRedirecting) {
-                    homeButton.classList.add('hidden');
-                }
-            }
-            
-            // Función para mostrar el botón
-            function showButton() {
-                homeButton.classList.remove('hidden');
-            }
-            
-            // Detectar scroll
+
+            // Efecto de aparición escalonada para productos
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeUp 0.6s ease forwards';
+                        entry.target.style.animationDelay = (Math.random() * 0.5) + 's';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                observer.observe(card);
+            });
+
+            // Animación para los botones de llamada a la acción
+            document.querySelectorAll('.cta-btn, .promo-btn, .add-to-cart-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+
+            // Efecto Parallax
             window.addEventListener('scroll', function() {
-                // No ocultar si estamos en proceso de redirección
-                if (isRedirecting) return;
-                
-                // Ocultar el botón inmediatamente al detectar scroll
-                if (!homeButton.classList.contains('hidden')) {
-                    hideButton();
-                }
-                
-                // Limpiar timeout anterior
-                window.clearTimeout(scrollTimeout);
-                
-                // Mostrar el botón después de que el scroll se detenga
-                scrollTimeout = setTimeout(function() {
-                    // No mostrar si estamos en proceso de redirección
-                    if (!isRedirecting) {
-                        showButton();
-                    }
-                }, 600);
-            }, false);
-            
-            // Mostrar el botón cuando el mouse está sobre él
-            homeButton.addEventListener('mouseenter', function() {
-                clearTimeout(scrollTimeout);
-                showButton();
-            });
-            
-            // Ocultar después de que el mouse salga (con delay)
-            homeButton.addEventListener('mouseleave', function() {
-                // No ocultar si estamos en proceso de redirección
-                if (!isRedirecting) {
-                    scrollTimeout = setTimeout(function() {
-                        showButton();
-                    }, 1000);
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelector('.parallax-bg');
+                if (parallax) {
+                    parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
                 }
             });
-            
-            // Resetear el estado cuando la página se carga completamente
-            window.addEventListener('load', function() {
-                console.log('Página cargada, reseteando isRedirecting');
-                isRedirecting = false;
-            });
-            
-            // También resetear cuando la página se vuelve visible (por si acaso)
-            document.addEventListener('visibilitychange', function() {
-                if (!document.hidden) {
-                    console.log('Página visible, reseteando isRedirecting');
-                    isRedirecting = false;
-                }
-            });
-            
-            // Resetear inmediatamente al cargar el DOM
-            console.log('DOM cargado, reseteando isRedirecting');
-            isRedirecting = false;
-            
-            // Mostrar el botón inicialmente
-            showButton();
-            
-            // Actualizar tooltip dinámicamente
-            function updateTooltip() {
-                const tooltip = homeButton.querySelector('.tooltip');
-                if (tooltip) {
-                    if (checkIfAtTop()) {
-                        tooltip.textContent = 'Clic: Ir a página principal';
-                    } else {
-                        tooltip.textContent = 'Clic: Ir arriba';
-                    }
-                }
-            }
-            
-            // Actualizar tooltip cuando cambie el scroll
-            window.addEventListener('scroll', updateTooltip);
-            updateTooltip(); // Actualizar inicialmente
-        });
-
-        // Efecto de aparición escalonada para productos
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeUp 0.6s ease forwards';
-                    entry.target.style.animationDelay = (Math.random() * 0.5) + 's';
-                }
-            });
-        });
-
-        document.querySelectorAll('.product-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            observer.observe(card);
-        });
-
-        // Animación para los botones de llamada a la acción
-        document.querySelectorAll('.cta-btn, .promo-btn, .add-to-cart-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 150);
-            });
-        });
-
-        // Efecto Parallax
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('.parallax-bg');
-            if (parallax) {
-                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
         });
     </script>
 </body>
