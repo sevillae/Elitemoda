@@ -130,7 +130,6 @@
             transform-origin: center;
         }
 
-        /* Animación del hamburguesa cuando está activo */
         .hamburger.active span:nth-child(1) {
             transform: rotate(45deg) translate(6px, 6px);
         }
@@ -163,68 +162,7 @@
             visibility: visible;
         }
 
-        /* RESPONSIVE PARA EL MENÚ - CORREGIDO PARA HORIZONTAL */
-        @media (max-width: 1024px) {
-            .nav-menu {
-                gap: 20px;
-            }
-            
-            .nav-link {
-                padding: 10px 16px;
-                font-size: 0.95rem;
-            }
-        }
-
-        /* Menú hamburguesa para tablets y móviles en horizontal */
-        @media (max-width: 1024px) and (max-height: 600px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 300px;
-                height: 100vh;
-                background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: flex-start;
-                padding: 100px 30px 30px;
-                transition: right 0.4s ease;
-                box-shadow: -5px 0 25px rgba(0,0,0,0.3);
-                gap: 0;
-                z-index: 1001;
-                overflow-y: auto;
-            }
-
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .nav-item {
-                width: 100%;
-                margin: 8px 0;
-            }
-
-            .nav-link {
-                display: block;
-                padding: 12px 20px;
-                width: 100%;
-                font-size: 1rem;
-                border-radius: 8px;
-                border-left: 3px solid transparent;
-                transition: all 0.3s ease;
-            }
-
-            .nav-link:hover {
-                background: rgba(255, 221, 89, 0.15);
-                border-left-color: #ffdd59;
-                transform: translateX(5px);
-            }
-        }
-
+        /* RESPONSIVE PARA EL MENÚ */
         @media (max-width: 768px) {
             .hamburger {
                 display: flex;
@@ -273,53 +211,6 @@
             }
         }
 
-        /* Para pantallas muy pequeñas */
-        @media (max-width: 480px) {
-            .nav-menu {
-                width: 100%;
-                right: -100%;
-            }
-
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .logo {
-                font-size: 1.5rem;
-            }
-
-            .nav-container {
-                padding: 0 15px;
-            }
-        }
-
-        /* Para orientación horizontal en móviles - MEJORADO */
-        @media (max-height: 500px) and (orientation: landscape) {
-            .nav-menu {
-                padding-top: 70px;
-                overflow-y: auto;
-                max-height: 100vh;
-            }
-
-            .nav-item {
-                margin: 4px 0;
-            }
-
-            .nav-link {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-        }
-
-        /* Ajustar el header principal para que no quede detrás del nav */
-        .page-header {
-            margin-top: 70px;
-        }
-
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
@@ -341,23 +232,6 @@
             font-size: 1.1rem;
             max-width: 700px;
             margin: 0 auto;
-        }
-        
-        /* Ajustes para horizontal en hero */
-        @media (max-height: 500px) and (orientation: landscape) {
-            .hero {
-                padding: 60px 20px;
-                margin-top: 70px;
-            }
-            
-            .hero h1 {
-                font-size: 1.8rem;
-                margin-bottom: 15px;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
         }
         
         /* FAQ Section */
@@ -655,7 +529,7 @@
         }
 
         .legal-links a {
-            color: #c19a6b !important; /* Color dorado */
+            color: #c19a6b !important;
             text-decoration: none;
             transition: all 0.3s ease;
         }
@@ -698,21 +572,6 @@
                 font-size: 0.8rem;
                 padding: 6px 12px;
             }
-            
-            @keyframes pulse-whatsapp {
-                0% {
-                    transform: scale(1);
-                    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-                }
-                50% {
-                    transform: scale(1.08);
-                    box-shadow: 0 4px 18px rgba(37, 211, 102, 0.7), 0 0 0 8px rgba(37, 211, 102, 0.2);
-                }
-                100% {
-                    transform: scale(1);
-                    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-                }
-            }
         }
 
         @media (max-width: 576px) {
@@ -735,47 +594,6 @@
             
             .logo i {
                 font-size: 1.7rem;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .container {
-                padding: 0 15px;
-            }
-            
-            .logo {
-                font-size: 1.3rem;
-            }
-            
-            .hero {
-                padding: 60px 15px;
-            }
-            
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-        }
-
-        /* Ajustes específicos para orientación horizontal */
-        @media (max-width: 900px) and (max-height: 500px) {
-            .hamburger {
-                display: flex;
-            }
-            
-            .nav-menu {
-                display: none;
-            }
-            
-            .nav-menu.active {
-                display: flex;
-            }
-            
-            .hero {
-                padding: 50px 20px;
-            }
-            
-            .faq-section {
-                padding: 30px 0;
             }
         }
     </style>
@@ -831,7 +649,6 @@
         <div class="container">
             <h2 class="section-title">Preguntas Frecuentes</h2>
             <div class="faq-container">
-                <!-- FAQ Items (se mantienen igual) -->
                 <div class="faq-item">
                     <div class="faq-question">
                         <span>¿Cómo puedo saber mi talla correcta?</span>
@@ -907,7 +724,7 @@
 
     <!-- Botones flotantes -->
     <div class="floating-buttons">
-        <a href="index.html" class="floating-button back-to-top visible" id="backToTop">
+        <a href="#" class="floating-button back-to-top visible" id="backToTop">
             <i class="fas fa-home"></i>
             <span>Ir al Inicio</span>
         </a>
@@ -940,7 +757,7 @@
                 <div class="footer-section">
                     <h3>Enlaces Rápidos</h3>
                     <a href="index.html">Inicio</a>
-                    <a href="nuevosprod.html">Productos</a>
+                    <a href="Colecciones.html">Productos</a>
                     <a href="nuevosprod.html">Novedades</a>
                     <a href="ofertas.html">Ofertas</a>
                     <a href="https://wa.me/5804163034250?" target="_blank">Contacto</a>
@@ -950,7 +767,7 @@
                     <a href="Nosotros.html">Sobre Nosotros</a>
                     <a href="PoliticadePrivacidad.html">Política de Privacidad</a>
                     <a href="TerminosyCondiciones.html">Términos y Condiciones</a>
-                    <a href="/EnviosyDevoluc.html">Política de Devoluciones</a>
+                    <a href="EnviosyDevoluc.html">Política de Devoluciones</a>
                     <a href="PregunFrec.html">Preguntas Frecuentes</a>
                 </div>
                 <div class="footer-section">
@@ -973,7 +790,7 @@
     </footer>
 
     <script>
-        // Menú Hamburguesa - MEJORADO PARA HORIZONTAL
+        // Menú Hamburguesa
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
         const navOverlay = document.getElementById('navOverlay');
@@ -999,36 +816,15 @@
             });
         });
 
-        // Cerrar menú al redimensionar la ventana (si se cambia a desktop)
+        // Cerrar menú al redimensionar la ventana
         window.addEventListener('resize', () => {
-            // Mostrar menú hamburguesa en orientación horizontal
-            if (window.innerWidth <= 1024 && window.innerHeight <= 600) {
-                hamburger.style.display = 'flex';
-            } else if (window.innerWidth > 1024) {
+            if (window.innerWidth > 768) {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
                 navOverlay.classList.remove('active');
                 document.body.style.overflow = '';
-                hamburger.style.display = 'none';
-            } else if (window.innerWidth <= 768) {
-                hamburger.style.display = 'flex';
             }
         });
-
-        // Inicializar visibilidad del hamburguesa
-        function initHamburgerVisibility() {
-            if (window.innerWidth <= 1024 && window.innerHeight <= 600) {
-                hamburger.style.display = 'flex';
-            } else if (window.innerWidth <= 768) {
-                hamburger.style.display = 'flex';
-            } else {
-                hamburger.style.display = 'none';
-            }
-        }
-
-        // Ejecutar al cargar y al redimensionar
-        initHamburgerVisibility();
-        window.addEventListener('resize', initHamburgerVisibility);
 
         // Funcionalidad para las preguntas frecuentes
         document.querySelectorAll('.faq-question').forEach(question => {
@@ -1047,8 +843,92 @@
             button.classList.add('visible');
         });
 
+        // FUNCIÓN DUAL CORREGIDA PARA EL BOTÓN DE INICIO
+        const backToTopButton = document.getElementById('backToTop');
+        
+        function handleHomeButton() {
+            // Verificar si estamos en la página principal (index.html)
+            const currentPage = window.location.pathname.split('/').pop();
+            const isHomePage = currentPage === 'index.html' || 
+                              currentPage === '' || 
+                              window.location.href === window.location.origin + '/' ||
+                              window.location.href === window.location.origin + '/index.html';
+            
+            if (window.scrollY > 0) {
+                // Si el scroll NO está en 0, hacer scroll al top
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            } else {
+                // Si el scroll está en 0
+                if (isHomePage) {
+                    // Si estamos en la página principal y scroll está en 0, hacer efecto refresh
+                    window.scrollTo({
+                        top: 10,
+                        behavior: 'smooth'
+                    });
+                    setTimeout(() => {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    }, 300);
+                } else {
+                    // Si NO estamos en la página principal y scroll está en 0, redirigir a index.html
+                    window.location.href = 'index.html';
+                }
+            }
+        }
+
+        // Actualizar el evento click del botón de inicio
+        backToTopButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            handleHomeButton();
+        });
+
+        // Actualizar el tooltip del botón según la página y posición del scroll
+        function updateHomeButtonTooltip() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const isHomePage = currentPage === 'index.html' || 
+                              currentPage === '' || 
+                              window.location.href === window.location.origin + '/' ||
+                              window.location.href === window.location.origin + '/index.html';
+            
+            const tooltip = backToTopButton.querySelector('span');
+            
+            if (window.scrollY > 0) {
+                // Si hay scroll, mostrar "Volver arriba"
+                tooltip.textContent = 'Volver arriba';
+                backToTopButton.querySelector('i').className = 'fas fa-arrow-up';
+            } else {
+                // Si no hay scroll, mostrar según la página
+                if (isHomePage) {
+                    tooltip.textContent = 'Volver arriba';
+                    backToTopButton.querySelector('i').className = 'fas fa-arrow-up';
+                } else {
+                    tooltip.textContent = 'Ir al Inicio';
+                    backToTopButton.querySelector('i').className = 'fas fa-home';
+                }
+            }
+        }
+
+        // Ejecutar al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            updateHomeButtonTooltip();
+            
+            // Inicializar visibilidad del hamburguesa
+            if (window.innerWidth <= 768) {
+                hamburger.style.display = 'flex';
+            } else {
+                hamburger.style.display = 'none';
+            }
+        });
+
+        // Actualizar tooltip cuando se hace scroll
         window.addEventListener('scroll', () => {
             isScrolling = true;
+            updateHomeButtonTooltip();
             
             floatingButtons.forEach(button => {
                 if (!button.matches(':hover')) {
