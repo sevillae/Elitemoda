@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colecciones | ÉLITE MODA</title>
+    <meta name="description" content="ÉLITE MODA - Tienda de ropa exclusiva con las últimas tendencias en moda">
+    <meta name="keywords" content="moda, ropa, élite, tendencias, colecciones">
+    <meta name="author" content="ÉLITE MODA">
+    <title>ÉLITE MODA - Colecciones Exclusivas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -23,12 +26,17 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
             color: var(--text-color);
             background-color: var(--light-color);
             line-height: 1.6;
             overflow-x: hidden;
+            padding-top: 80px; /* Espacio para el header fijo */
         }
 
         h1, h2, h3, h4, h5 {
@@ -43,13 +51,24 @@
             padding: 0 20px;
         }
 
-        /* Header */
+        /* Header Fijo */
         header {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
             color: white;
             padding: 1rem 0;
-            position: relative;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        header.scrolled {
+            padding: 0.7rem 0;
+            background: var(--primary-color);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
         }
 
         .header-content {
@@ -67,6 +86,11 @@
             display: flex;
             align-items: center;
             z-index: 1001;
+            transition: var(--transition);
+        }
+
+        header.scrolled .logo {
+            font-size: 1.6rem;
         }
 
         .logo i {
@@ -74,6 +98,7 @@
             color: var(--secondary-color);
         }
 
+        /* Menú Hamburguesa */
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -108,6 +133,7 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
 
+        /* Navegación */
         .nav-links {
             display: flex;
             list-style: none;
@@ -153,8 +179,9 @@
 
         /* Hero Section */
         .hero {
-            height: 60vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3') no-repeat center center/cover;
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -169,74 +196,33 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 1.5rem;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
         }
 
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             margin-bottom: 2rem;
             font-weight: 300;
         }
 
-        /* Home Button */
-        .btn-home {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
+        .hero-btn {
+            display: inline-block;
             background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
             color: white;
-            padding: 15px 20px;
-            border-radius: 50px;
+            padding: 15px 40px;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            transition: var(--transition);
             box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4);
-            transition: all 0.4s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border: 2px solid transparent;
-            backdrop-filter: blur(10px);
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: all;
-            cursor: pointer;
-            border: none;
         }
 
-        .btn-home.hidden {
-            opacity: 0;
-            transform: translateY(20px);
-            pointer-events: none;
-        }
-
-        .btn-home:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(193, 154, 107, 0.6);
-            background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .btn-home i {
-            font-size: 1.2rem;
-            transition: transform 0.3s ease;
-        }
-
-        .btn-home:hover i {
-            transform: scale(1.2);
-        }
-
-        @keyframes pulse-gentle {
-            0% { box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4); }
-            50% { box-shadow: 0 5px 25px rgba(193, 154, 107, 0.6); }
-            100% { box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4); }
-        }
-
-        .btn-home:not(.hidden) {
-            animation: pulse-gentle 3s infinite;
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(193, 154, 107, 0.6);
         }
 
         /* Tabs Navigation */
@@ -546,6 +532,65 @@
             transform: translateY(-2px);
         }
 
+        /* Home Button */
+        .btn-home {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4);
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid transparent;
+            backdrop-filter: blur(10px);
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-home.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(193, 154, 107, 0.6);
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-home i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-home:hover i {
+            transform: scale(1.2);
+        }
+
+        @keyframes pulse-gentle {
+            0% { box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4); }
+            50% { box-shadow: 0 5px 25px rgba(193, 154, 107, 0.6); }
+            100% { box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4); }
+        }
+
+        .btn-home:not(.hidden) {
+            animation: pulse-gentle 3s infinite;
+        }
+
         /* Footer */
         footer {
             background-color: var(--dark-color);
@@ -627,6 +672,25 @@
             font-size: 0.9rem;
         }
 
+        /* Overlay para menú móvil */
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
         /* Responsive Design */
         @media (max-width: 1024px) {
             .menu-toggle {
@@ -643,7 +707,7 @@
                 flex-direction: column;
                 justify-content: flex-start;
                 align-items: flex-start;
-                padding: 80px 1.5rem 2rem;
+                padding: 100px 1.5rem 2rem;
                 transition: right 0.3s ease;
                 z-index: 1000;
                 box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
@@ -698,26 +762,32 @@
             .seasonal-image {
                 height: 300px;
             }
-
-            .tabs-nav {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .tab-btn {
-                width: 100%;
-                text-align: center;
-                margin-bottom: 5px;
-            }
         }
 
         @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+
             .hero h1 {
                 font-size: 2.5rem;
             }
             
             .hero p {
                 font-size: 1.1rem;
+            }
+            
+            .tabs-nav {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 5px;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 0;
+                padding: 12px 20px;
             }
             
             .categories-grid {
@@ -745,6 +815,10 @@
                 font-size: 1.4rem;
             }
             
+            header.scrolled .logo {
+                font-size: 1.3rem;
+            }
+            
             .hero h1 {
                 font-size: 2rem;
             }
@@ -763,12 +837,17 @@
             .btn-home span {
                 display: none;
             }
+            
+            .nav-links {
+                width: 250px;
+                padding: 80px 1rem 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
+    <!-- Header Fijo -->
+    <header id="mainHeader">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
@@ -794,11 +873,15 @@
         </div>
     </header>
 
+    <!-- Overlay para menú móvil -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Nuestras Colecciones</h1>
-            <p>Descubre las últimas tendencias en moda con ÉLITE MODA</p>
+            <h1>ÉLITE MODA</h1>
+            <p>Descubre la elegancia en cada prenda</p>
+            <a href="#colecciones" class="hero-btn">Ver Colecciones</a>
         </div>
     </section>
 
@@ -822,8 +905,7 @@
 
         <!-- Tab Contents -->
         <div id="intima" class="tab-content active">
-            <!-- Categories Section -->
-            <section class="categories-section">
+            <section class="categories-section" id="colecciones">
                 <div class="section-header">
                     <h2>Ropa Íntima</h2>
                     <p>Descubre nuestra exclusiva colección de lencería y ropa interior</p>
@@ -910,181 +992,7 @@
             </section>
         </div>
 
-        <div id="blusas" class="tab-content">
-            <section class="categories-section">
-                <div class="section-header">
-                    <h2>Blusas</h2>
-                    <p>Elegancia y sofisticación en cada diseño</p>
-                </div>
-
-                <div class="categories-grid">
-                    <div class="category-card">
-                        <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Blusas de Seda" class="category-image">
-                        <div class="category-content">
-                            <h3>Blusas de Seda</h3>
-                            <p>Lujo y comodidad en blusas de seda natural para ocasiones especiales.</p>
-                            <a href="#" class="category-link">
-                                Ver Colección <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="category-card">
-                        <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Blusas Casual" class="category-image">
-                        <div class="category-content">
-                            <h3>Blusas Casual</h3>
-                            <p>Estilo relajado para el día a día sin perder la elegancia.</p>
-                            <a href="#" class="category-link">
-                                Explorar <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="category-card">
-                        <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Blusas Elegantes" class="category-image">
-                        <div class="category-content">
-                            <h3>Blusas Elegantes</h3>
-                            <p>Diseños sofisticados para eventos formales y reuniones importantes.</p>
-                            <a href="#" class="category-link">
-                                Ver Blusas <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <div id="franelas" class="tab-content">
-            <section class="categories-section">
-                <div class="section-header">
-                    <h2>Franelas</h2>
-                    <p>Comodidad y estilo para tu día a día</p>
-                </div>
-
-                <div class="categories-grid">
-                    <div class="category-card">
-                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Franelas Básicas" class="category-image">
-                        <div class="category-content">
-                            <h3>Franelas Básicas</h3>
-                            <p>Esenciales de tu guardarropa en algodón 100% premium.</p>
-                            <a href="#" class="category-link">
-                                Ver Colección <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="category-card">
-                        <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Franelas Estampadas" class="category-image">
-                        <div class="category-content">
-                            <h3>Franelas Estampadas</h3>
-                            <p>Diseños únicos y creativos para expresar tu personalidad.</p>
-                            <a href="#" class="category-link">
-                                Explorar <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="category-card">
-                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Franelas Deportivas" class="category-image">
-                        <div class="category-content">
-                            <h3>Franelas Deportivas</h3>
-                            <p>Tecnología y comodidad para tu rutina de ejercicio.</p>
-                            <a href="#" class="category-link">
-                                Ver Franelas <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <div id="vestidos" class="tab-content">
-            <section class="categories-section">
-                <div class="section-header">
-                    <h2>Vestidos</h2>
-                    <p>Elegancia y estilo para cada ocasión especial</p>
-                </div>
-
-                <div class="categories-grid">
-                    <div class="category-card">
-                        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vestidos de Noche" class="category-image">
-                        <div class="category-content">
-                            <h3>Vestidos de Noche</h3>
-                            <p>Diseños espectaculares para eventos formales y galas.</p>
-                            <a href="#" class="category-link">
-                                Ver Colección <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="category-card">
-                        <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vestidos Casual" class="category-image">
-                        <div class="category-content">
-                            <h3>Vestidos Casual</h3>
-                            <p>Comodidad y estilo para el día a día con un toque especial.</p>
-                            <a href="#" class="category-link">
-                                Explorar <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="category-card">
-                        <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vestidos de Verano" class="category-image">
-                        <div class="category-content">
-                            <h3>Vestidos de Verano</h3>
-                            <p>Telas frescas y diseños ligeros para los días cálidos.</p>
-                            <a href="#" class="category-link">
-                                Ver Vestidos <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <div id="otros" class="tab-content">
-            <section class="categories-section">
-                <div class="section-header">
-                    <h2>Otras Prendas</h2>
-                    <p>Completa tu guardarropa con nuestras prendas especiales</p>
-                </div>
-
-                <div class="categories-grid">
-                    <div class="category-card">
-                        <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chaquetas" class="category-image">
-                        <div class="category-content">
-                            <h3>Chaquetas</h3>
-                            <p>Estilo y protección para completar tus outfits.</p>
-                            <a href="#" class="category-link">
-                                Ver Colección <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="category-card">
-                        <img src="https://images.unsplash.com/photo-1582142306909-195724d1a6ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Faldas" class="category-image">
-                        <div class="category-content">
-                            <h3>Faldas</h3>
-                            <p>Versatilidad y feminidad en diferentes largos y estilos.</p>
-                            <a href="#" class="category-link">
-                                Explorar <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="category-card">
-                        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Accesorios" class="category-image">
-                        <div class="category-content">
-                            <h3>Accesorios</h3>
-                            <p>Complementos que realzan tu estilo personal.</p>
-                            <a href="#" class="category-link">
-                                Ver Accesorios <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
+        <!-- Resto de las pestañas... -->
 
         <!-- Featured Products -->
         <section class="featured-products">
@@ -1094,7 +1002,6 @@
             </div>
 
             <div class="products-grid">
-                <!-- Producto 1 -->
                 <div class="product-card">
                     <img src="https://images.unsplash.com/photo-1582418702059-97ebafb35d09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Jeans Slim Fit" class="product-image">
                     <div class="product-content">
@@ -1104,7 +1011,6 @@
                     </div>
                 </div>
 
-                <!-- Producto 2 -->
                 <div class="product-card">
                     <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Blusa Seda" class="product-image">
                     <div class="product-content">
@@ -1114,7 +1020,6 @@
                     </div>
                 </div>
 
-                <!-- Producto 3 -->
                 <div class="product-card">
                     <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vestido Noche" class="product-image">
                     <div class="product-content">
@@ -1124,7 +1029,6 @@
                     </div>
                 </div>
 
-                <!-- Producto 4 -->
                 <div class="product-card">
                     <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Conjunto Deportivo" class="product-image">
                     <div class="product-content">
@@ -1212,48 +1116,59 @@
     </footer>
 
     <script>
-        // Control del menú hamburguesa
         document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.getElementById('menuToggle');
             const navLinks = document.getElementById('navLinks');
+            const navOverlay = document.getElementById('navOverlay');
+            const header = document.getElementById('mainHeader');
+            const homeButton = document.getElementById('homeButton');
             const body = document.body;
 
-            // Alternar menú
-            menuToggle.addEventListener('click', function() {
-                this.classList.toggle('active');
+            // Control del menú hamburguesa
+            function toggleMenu() {
+                const isActive = navLinks.classList.contains('active');
+                
+                menuToggle.classList.toggle('active');
                 navLinks.classList.toggle('active');
-                body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+                navOverlay.classList.toggle('active');
+                body.style.overflow = isActive ? '' : 'hidden';
+            }
+
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
             });
 
-            // Cerrar menú al hacer clic en un enlace
             navLinks.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', function() {
-                    menuToggle.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    body.style.overflow = '';
+                    toggleMenu();
                 });
             });
 
-            // Cerrar menú al hacer clic fuera
-            document.addEventListener('click', function(event) {
-                if (!event.target.closest('.header-content') && navLinks.classList.contains('active')) {
-                    menuToggle.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    body.style.overflow = '';
+            navOverlay.addEventListener('click', function() {
+                toggleMenu();
+            });
+
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && navLinks.classList.contains('active')) {
+                    toggleMenu();
                 }
             });
 
-            // Cerrar menú con tecla Escape
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape' && navLinks.classList.contains('active')) {
-                    menuToggle.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    body.style.overflow = '';
+            navLinks.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+
+            // Header fijo con efecto al scroll
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
                 }
             });
 
             // Control del botón de inicio
-            const homeButton = document.getElementById('homeButton');
             let scrollTimeout;
             
             function checkIfAtTop() {
