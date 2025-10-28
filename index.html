@@ -18,7 +18,6 @@
             font-family: 'Arial', sans-serif;
             background: #f0f0f0;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
         /* BOTÓN DEL MENÚ HAMBURGUESA PARA MÓVILES */
@@ -213,7 +212,7 @@
             text-align: center;
         }
 
-        /* BOTÓN IR AL INICIO */
+        /* BOTÓN IR AL INICIO - MEJORADO CON SCROLL SUPER SUAVE */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -615,7 +614,7 @@
             }
 
             .main-content {
-                padding: 90px 15px 15px 15px;
+                padding: 70px 15px 15px 15px;
             }
 
             .promo-section {
@@ -880,6 +879,16 @@
     </main>
 
     <script>
+        // =============================================
+        // CONFIGURACIÓN DEL SCROLL - ¡EDITA ESTOS VALORES!
+        // =============================================
+        const scrollConfig = {
+            targetPosition: 0,      // Posición destino en píxeles (0 = top de la página)
+            duration: 1200,         // Duración en milisegundos (1000 = 1 segundo)
+            easing: 'easeInOutCubic' // Tipo de easing: 'linear', 'easeInOutCubic', 'easeOutCubic'
+        };
+        // =============================================
+
         // FUNCIONALIDAD DEL MENÚ HAMBURGUESA (SOLO MÓVILES)
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
@@ -911,12 +920,52 @@
             });
         });
 
-        // FUNCIONALIDAD DEL BOTÓN "IR AL INICIO"
+        // FUNCIÓN MEJORADA DE SCROLL SUPER SUAVE
+        function smoothScrollTo(targetPosition = scrollConfig.targetPosition) {
+            const startingY = window.pageYOffset;
+            const duration = scrollConfig.duration;
+            const start = performance.now();
+            
+            // Si ya estamos en la posición destino, no hacer nada
+            if (startingY === targetPosition) return;
+            
+            function step(currentTime) {
+                const elapsed = currentTime - start;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Función de easing seleccionada
+                let easingFunction;
+                switch(scrollConfig.easing) {
+                    case 'linear':
+                        easingFunction = progress;
+                        break;
+                    case 'easeOutCubic':
+                        easingFunction = 1 - Math.pow(1 - progress, 3);
+                        break;
+                    case 'easeInOutCubic':
+                    default:
+                        easingFunction = progress < 0.5 
+                            ? 4 * progress * progress * progress 
+                            : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+                }
+                
+                // Calcular la nueva posición
+                const newPosition = startingY + (targetPosition - startingY) * easingFunction;
+                window.scrollTo(0, newPosition);
+                
+                // Continuar animación si no ha terminado
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                }
+            }
+            
+            requestAnimationFrame(step);
+        }
+
+        // BOTÓN "IR AL INICIO" CON SCROLL SUPER SUAVE
         backToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            console.log('🚀 Iniciando scroll suave a posición:', scrollConfig.targetPosition);
+            smoothScrollTo(scrollConfig.targetPosition);
         });
 
         // COMPORTAMIENTO DE SCROLL MEJORADO
@@ -962,8 +1011,11 @@
             }
         });
 
-        // Inicialización
+        // INICIALIZACIÓN
         window.addEventListener('load', () => {
+            console.log('✨ Página ÉLITE MODA con scroll suave mejorado');
+            console.log('⚙️ Configuración del scroll:', scrollConfig);
+            
             // Solo mostrar el botón del menú en móviles
             if (window.innerWidth <= 768) {
                 menuToggle.classList.remove('hidden');
@@ -988,9 +1040,16 @@
             }
         });
 
-        console.log('🚀 Página ÉLITE MODA con menú dual cargada');
-        console.log('💻 Sidebar visible en escritorio');
-        console.log('📱 Menú hamburguesa activo en móviles');
+        // Manejar cambios de orientación en móviles
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            }, 300);
+        });
     </script>
 
 </body>
