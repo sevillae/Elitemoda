@@ -1,0 +1,21 @@
+Para reiniciar el Bot:
+
+Para reiniciarlo:
+cd /home/suberoe
+workon elitebot
+python bot_polling.py
+
+Para inciiar la termina server de python:
+
+python -m http.server
+
+4. Abre tu navegador
+
+•	Ve a: http://localhost:8000
+
+•	¡Verás tu página web funcionando!
+🎯 Ejemplo completo:
+cmd
+C:\Users\TuNombre>cd Desktop\mi-sitio-web
+C:\Users\TuNombre\Desktop\mi-sitio-web>python -m http.server
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
