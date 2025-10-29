@@ -2,10 +2,9 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="Iconos/conexion.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guía de Tallas | ÉLITE MODA</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -29,6 +28,7 @@
             color: var(--text-color);
             background-color: var(--light-color);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4, h5 {
@@ -48,15 +48,19 @@
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
             color: white;
             padding: 1.5rem 0;
-            position: relative;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
-      
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo {
@@ -66,6 +70,7 @@
             letter-spacing: 1px;
             display: flex;
             align-items: center;
+            z-index: 1001;
         }
 
         .logo i {
@@ -73,9 +78,11 @@
             color: var(--secondary-color);
         }
 
+        /* Navigation Styles */
         .nav-links {
             display: flex;
             list-style: none;
+            transition: var(--transition);
         }
 
         .nav-links li {
@@ -110,6 +117,121 @@
             color: var(--secondary-color);
         }
 
+        /* Hamburger Button Styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
+            transition: var(--transition);
+            transform-origin: center;
+        }
+
+        /* Hamburger Animation */
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 968px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 400px;
+                height: 100vh;
+                background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 2rem;
+                transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+                opacity: 0;
+                transform: translateX(50px);
+                transition: all 0.4s ease;
+            }
+
+            .nav-links.active li {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            /* Staggered animation for menu items */
+            .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
+            .nav-links.active li:nth-child(2) { transition-delay: 0.2s; }
+            .nav-links.active li:nth-child(3) { transition-delay: 0.3s; }
+            .nav-links.active li:nth-child(4) { transition-delay: 0.4s; }
+            .nav-links.active li:nth-child(5) { transition-delay: 0.5s; }
+            .nav-links.active li:nth-child(6) { transition-delay: 0.6s; }
+
+            .nav-links a {
+                font-size: 1.3rem;
+                padding: 10px 0;
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+
+            /* Overlay */
+            .nav-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(5px);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.4s ease;
+                z-index: 999;
+            }
+
+            .nav-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
         /* Hero Section */
         .hero {
             height: 60vh;
@@ -119,6 +241,7 @@
             justify-content: center;
             text-align: center;
             color: white;
+            margin-top: 80px;
             margin-bottom: 4rem;
         }
 
@@ -137,10 +260,8 @@
             font-size: 1.3rem;
             margin-bottom: 2rem;
             font-weight: 300;
-            
         }
 
-        
         /* BOTÓN DE INICIO MEJORADO */
         .btn-home {
             position: fixed;
@@ -165,6 +286,7 @@
             transform: translateY(0);
             pointer-events: all;
             cursor: pointer;
+            border: none;
         }
 
         .btn-home.hidden {
@@ -480,7 +602,17 @@
             font-size: 0.9rem;
         }
 
+        .legal-links a {
+            color: var(--secondary-color) !important;
+            text-decoration: none;
+            transition: var(--transition);
+        }
         
+        .legal-links a:hover {
+            color: white !important;
+            text-decoration: underline;
+        }
+
         /* Responsive Styles */
         @media (max-width: 1200px) {
             .hero h1 {
@@ -488,24 +620,18 @@
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
             .header-content {
-                flex-direction: column;
-                text-align: center;
+                padding: 0 15px;
             }
             
-            .nav-links {
-                margin-top: 1.5rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .nav-links li {
-                margin: 0 10px 10px;
+            .logo {
+                font-size: 1.8rem;
             }
             
             .hero {
                 height: 50vh;
+                margin-top: 80px;
             }
             
             .hero h1 {
@@ -574,17 +700,18 @@
             }
         }
 
-        .legal-links a {
-            color: var(--secondary-color) !important; /* Color dorado */
-            text-decoration: none;
-            transition: var(--transition);
+        /* Para dispositivos en orientación horizontal */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .nav-links {
+                padding-top: 80px;
+                justify-content: flex-start;
+                overflow-y: auto;
+            }
+            
+            .nav-links li {
+                margin: 0.8rem 0;
+            }
         }
-        
-        .legal-links a:hover {
-            color: white !important;
-            text-decoration: underline;
-        }
-        
     </style>
 </head>
 <body>
@@ -596,13 +723,25 @@
                     <i class="fas fa-crown"></i>
                     ÉLITE MODA
                 </div>
-                <ul class="nav-links">
+                
+                <!-- Botón Hamburguesa -->
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <!-- Overlay para el menú móvil -->
+                <div class="nav-overlay" id="navOverlay"></div>
+
+                <!-- Navegación -->
+                <ul class="nav-links" id="navLinks">
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="Colecciones.html">Colecciones</a></li>
                     <li><a href="RopaInt.html">Ropa Íntima</a></li>
                     <li><a href="RopaCasual.html">Ropa Casual</a></li>
                     <li><a href="Nosotros.html">Sobre Nosotros</a></li>
-                    <li><a href="https://wa.me/5804163034250" target="_blank"> Contacto WhatsApp</a></li>
+                    <li><a href="https://wa.me/5804163034250" target="_blank">Contacto WhatsApp</a></li>
                 </ul>
             </div>
         </div>
@@ -1076,32 +1215,71 @@
                 </div>
             </div>
             
-
-    <div class="copyright">
-        <p>&copy; 2023 ÉLITE MODA. Todos los derechos reservados.</p>
-        <div class="legal-links">
-        <a href="PoliticaPrivacidad.html">Política de Privacidad</a>
-        <span class="separator">|</span>
-        <a href="TerminosCondiciones.html">Términos y Condiciones</a>
-    </div>
-
-</div>
-
+            <div class="copyright">
+                <p>&copy; 2023 ÉLITE MODA. Todos los derechos reservados.</p>
+                <div class="legal-links">
+                    <a href="PoliticaPrivacidad.html">Política de Privacidad</a>
+                    <span class="separator">|</span>
+                    <a href="TerminosCondiciones.html">Términos y Condiciones</a>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Control del botón de inicio - FUNCIÓN DUAL
+        // Control del menú hamburguesa
         document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+            const navOverlay = document.getElementById('navOverlay');
+            const body = document.body;
+
+            function toggleMenu() {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                navOverlay.classList.toggle('active');
+                body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+            }
+
+            function closeMenu() {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                navOverlay.classList.remove('active');
+                body.style.overflow = '';
+            }
+
+            // Event listeners
+            hamburger.addEventListener('click', toggleMenu);
+            navOverlay.addEventListener('click', closeMenu);
+
+            // Cerrar menú al hacer clic en un enlace
+            const navItems = navLinks.querySelectorAll('a');
+            navItems.forEach(item => {
+                item.addEventListener('click', closeMenu);
+            });
+
+            // Cerrar menú con la tecla ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+
+            // Ajustar menú en redimensionamiento
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 968 && navLinks.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+
+            // Control del botón de inicio - FUNCIÓN DUAL
             const homeButton = document.getElementById('homeButton');
             let scrollTimeout;
             
-            // Función para verificar si estamos en la parte superior
             function checkIfAtTop() {
                 return window.pageYOffset === 0;
             }
             
-            // Función para hacer scroll al top
             function scrollToTop() {
                 window.scrollTo({
                     top: 0,
@@ -1109,64 +1287,50 @@
                 });
             }
             
-            // Manejar el clic del botón
             homeButton.addEventListener('click', function(e) {
                 e.preventDefault();
                 
                 if (checkIfAtTop()) {
-                    // Si YA estamos en top, redirigir a index.html
                     window.location.href = 'index.html';
                 } else {
-                    // Si NO estamos en top, hacer scroll al top
                     scrollToTop();
                 }
             });
             
-            // Función para ocultar el botón
             function hideButton() {
                 homeButton.classList.add('hidden');
             }
             
-            // Función para mostrar el botón
             function showButton() {
                 homeButton.classList.remove('hidden');
             }
             
-            // Detectar scroll
             window.addEventListener('scroll', function() {
-                // Ocultar el botón inmediatamente al detectar scroll
                 if (!homeButton.classList.contains('hidden')) {
                     hideButton();
                 }
                 
-                // Limpiar timeout anterior
                 window.clearTimeout(scrollTimeout);
                 
-                // Mostrar el botón después de que el scroll se detenga
                 scrollTimeout = setTimeout(function() {
                     showButton();
                 }, 600);
             }, false);
             
-            // Mostrar el botón cuando el mouse está sobre él
             homeButton.addEventListener('mouseenter', function() {
                 clearTimeout(scrollTimeout);
                 showButton();
             });
             
-            // Ocultar después de que el mouse salga (con delay)
             homeButton.addEventListener('mouseleave', function() {
                 scrollTimeout = setTimeout(function() {
                     showButton();
                 }, 1000);
             });
             
-            // Mostrar el botón inicialmente
             showButton();
-        });
 
-        // JavaScript para las pestañas
-        document.addEventListener('DOMContentLoaded', function() {
+            // JavaScript para las pestañas
             const tabBtns = document.querySelectorAll('.tab-btn');
             const tabContents = document.querySelectorAll('.tab-content');
             
