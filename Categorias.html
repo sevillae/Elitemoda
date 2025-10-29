@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ÉLITE MODA - Tienda de ropa exclusiva con las últimas tendencias en moda">
+    <meta name="keywords" content="moda, ropa, élite, tendencias, colecciones">
+    <meta name="author" content="ÉLITE MODA">
+    <title>ÉLITE MODA - Colecciones Exclusivas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #c19a6b;
+            --accent-color: #8b4513;
+            --light-color: #f8f9fa;
+            --dark-color: #1a1a1a;
+            --text-color: #333;
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 80px; /* Espacio para el header fijo */
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Fijo */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        header.scrolled {
+            padding: 0.7rem 0;
+            background: var(--primary-color);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            z-index: 1001;
+            transition: var(--transition);
+        }
+
+        header.scrolled .logo {
+            font-size: 1.6rem;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        /* Menú Hamburguesa */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background-color: white;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Navegación */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+            position: relative;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 8px 0;
+            display: block;
+            white-space: nowrap;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 4rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4);
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(193, 154, 107, 0.6);
+        }
+
+        /* Tabs Navigation */
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #e0e0e0;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            position: relative;
+            background: none;
+            border: none;
+            color: var(--text-color);
+        }
+
+        .tab-btn.active {
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .tab-btn:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Categories Section */
+        .categories-section {
+            padding: 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .category-card:hover .category-image {
+            transform: scale(1.05);
+        }
+
+        .category-content {
+            padding: 1.5rem;
+        }
+
+        .category-content h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .category-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .category-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .category-link i {
+            margin-left: 8px;
+            transition: var(--transition);
+        }
+
+        .category-link:hover {
+            color: var(--accent-color);
+        }
+
+        .category-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Featured Products */
+        .featured-products {
+            padding: 4rem 0;
+            background: #f8f9fa;
+            border-radius: 15px;
+            margin-bottom: 4rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-content h4 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-link {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .product-link:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Seasonal Collection */
+        .seasonal-collection {
+            padding: 4rem 0;
+            margin-bottom: 4rem;
+        }
+
+        .seasonal-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .seasonal-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .seasonal-text h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .seasonal-text p {
+            margin-bottom: 2rem;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .seasonal-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .seasonal-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(193, 154, 107, 0.4);
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 4rem 0;
+            border-radius: 15px;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 10px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .newsletter-btn {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* Home Button */
+        .btn-home {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4);
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid transparent;
+            backdrop-filter: blur(10px);
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-home.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(193, 154, 107, 0.6);
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-home i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-home:hover i {
+            transform: scale(1.2);
+        }
+
+        @keyframes pulse-gentle {
+            0% { box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4); }
+            50% { box-shadow: 0 5px 25px rgba(193, 154, 107, 0.6); }
+            100% { box-shadow: 0 5px 20px rgba(193, 154, 107, 0.4); }
+        }
+
+        .btn-home:not(.hidden) {
+            animation: pulse-gentle 3s infinite;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Overlay para menú móvil */
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 100px 1.5rem 2rem;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+                overflow-y: auto;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 0 0 1rem 0;
+                width: 100%;
+                opacity: 0;
+                transform: translateX(30px);
+                transition: all 0.3s ease;
+            }
+            
+            .nav-links.active li {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            
+            .nav-links li:nth-child(1) { transition-delay: 0.1s; }
+            .nav-links li:nth-child(2) { transition-delay: 0.15s; }
+            .nav-links li:nth-child(3) { transition-delay: 0.2s; }
+            .nav-links li:nth-child(4) { transition-delay: 0.25s; }
+            .nav-links li:nth-child(5) { transition-delay: 0.3s; }
+            .nav-links li:nth-child(6) { transition-delay: 0.35s; }
+            
+            .nav-links a {
+                font-size: 0.95rem;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                width: 100%;
+            }
+            
+            .nav-links a:after {
+                display: none;
+            }
+            
+            .nav-links a:hover {
+                padding-left: 10px;
+                border-bottom-color: var(--secondary-color);
+            }
+
+            .seasonal-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .seasonal-image {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .tabs-nav {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 5px;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 0;
+                padding: 12px 20px;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .btn-home {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo {
+                font-size: 1.4rem;
+            }
+            
+            header.scrolled .logo {
+                font-size: 1.3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .btn-home {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .btn-home span {
+                display: none;
+            }
+            
+            .nav-links {
+                width: 250px;
+                padding: 80px 1rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Fijo -->
+    <header id="mainHeader">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-crown"></i>
+                    ÉLITE MODA
+                </div>
+                
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="Colecciones.html" class="active">Colecciones</a></li>
+                    <li><a href="RopaInt.html">Ropa Íntima</a></li>
+                    <li><a href="RopaCasual.html">Ropa Casual</a></li>
+                    <li><a href="Nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="https://wa.me/5804163034250" target="_blank">Contacto WhatsApp</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Overlay para menú móvil -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>ÉLITE MODA</h1>
+            <p>Descubre la elegancia en cada prenda</p>
+            <a href="#colecciones" class="hero-btn">Ver Colecciones</a>
+        </div>
+    </section>
+
+    <!-- Home Button -->
+    <button class="btn-home" id="homeButton">
+        <i class="fas fa-home"></i>
+        <span>Inicio</span>
+    </button>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Tabs Navigation -->
+        <nav class="tabs-nav" aria-label="Categorías de tallas">
+            <button class="tab-btn active" data-tab="intima">Ropa Íntima</button>
+            <button class="tab-btn" data-tab="jeans">Jeans</button>
+            <button class="tab-btn" data-tab="blusas">Blusas</button>
+            <button class="tab-btn" data-tab="franelas">Franelas</button>
+            <button class="tab-btn" data-tab="vestidos">Vestidos</button>
+            <button class="tab-btn" data-tab="otros">Otros</button>
+        </nav>
+
+        <!-- Tab Contents -->
+        <div id="intima" class="tab-content active">
+            <section class="categories-section" id="colecciones">
+                <div class="section-header">
+                    <h2>Ropa Íntima</h2>
+                    <p>Descubre nuestra exclusiva colección de lencería y ropa interior</p>
+                </div>
+
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1585487000115-27d17871a9c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Brasieres" class="category-image">
+                        <div class="category-content">
+                            <h3>Brasieres</h3>
+                            <p>Encuentra el soporte perfecto con nuestra variedad de brasieres en diferentes tallas y estilos.</p>
+                            <a href="#" class="category-link">
+                                Ver Colección <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1586337018882-b98d93b6a0d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Panties" class="category-image">
+                        <div class="category-content">
+                            <h3>Panties</h3>
+                            <p>Comodidad y estilo en nuestra colección de panties para el día a día.</p>
+                            <a href="#" class="category-link">
+                                Explorar <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1586337018882-b98d93b6a0d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pijamas" class="category-image">
+                        <div class="category-content">
+                            <h3>Pijamas</h3>
+                            <p>Pijamas cómodos y elegantes para tus noches de descanso.</p>
+                            <a href="#" class="category-link">
+                                Ver Pijamas <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="jeans" class="tab-content">
+            <section class="categories-section">
+                <div class="section-header">
+                    <h2>Jeans</h2>
+                    <p>La combinación perfecta entre estilo y comodidad</p>
+                </div>
+
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Jeans Slim" class="category-image">
+                        <div class="category-content">
+                            <h3>Jeans Slim Fit</h3>
+                            <p>Ajuste perfecto que realza tu figura sin sacrificar la comodidad.</p>
+                            <a href="#" class="category-link">
+                                Ver Colección <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1582418702059-97ebafb35d09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Jeans Bootcut" class="category-image">
+                        <div class="category-content">
+                            <h3>Jeans Bootcut</h3>
+                            <p>Estilo clásico que nunca pasa de moda, perfecto para cualquier ocasión.</p>
+                            <a href="#" class="category-link">
+                                Explorar <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Jeans Mom" class="category-image">
+                        <div class="category-content">
+                            <h3>Jeans Mom</h3>
+                            <p>Tendencia retro con comodidad moderna para un look único.</p>
+                            <a href="#" class="category-link">
+                                Ver Jeans <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+         <div id="blusas" class="tab-content">
+            <section class="categories-section">
+                <div class="section-header">
+                    <h2>Blusas</h2>
+                    <p>Elegancia y sofisticación en cada diseño</p>
+                </div>
+
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Blusas de Seda" class="category-image">
+                        <div class="category-content">
+                            <h3>Blusas de Seda</h3>
+                            <p>Lujo y comodidad en blusas de seda natural para ocasiones especiales.</p>
+                            <a href="#" class="category-link">
+                                Ver Colección <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Blusas Casual" class="category-image">
+                        <div class="category-content">
+                            <h3>Blusas Casual</h3>
+                            <p>Estilo relajado para el día a día sin perder la elegancia.</p>
+                            <a href="#" class="category-link">
+                                Explorar <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Blusas Elegantes" class="category-image">
+                        <div class="category-content">
+                            <h3>Blusas Elegantes</h3>
+                            <p>Diseños sofisticados para eventos formales y reuniones importantes.</p>
+                            <a href="#" class="category-link">
+                                Ver Blusas <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="franelas" class="tab-content">
+            <section class="categories-section">
+                <div class="section-header">
+                    <h2>Franelas</h2>
+                    <p>Comodidad y estilo para tu día a día</p>
+                </div>
+
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Franelas Básicas" class="category-image">
+                        <div class="category-content">
+                            <h3>Franelas Básicas</h3>
+                            <p>Esenciales de tu guardarropa en algodón 100% premium.</p>
+                            <a href="#" class="category-link">
+                                Ver Colección <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Franelas Estampadas" class="category-image">
+                        <div class="category-content">
+                            <h3>Franelas Estampadas</h3>
+                            <p>Diseños únicos y creativos para expresar tu personalidad.</p>
+                            <a href="#" class="category-link">
+                                Explorar <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Franelas Deportivas" class="category-image">
+                        <div class="category-content">
+                            <h3>Franelas Deportivas</h3>
+                            <p>Tecnología y comodidad para tu rutina de ejercicio.</p>
+                            <a href="#" class="category-link">
+                                Ver Franelas <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="vestidos" class="tab-content">
+            <section class="categories-section">
+                <div class="section-header">
+                    <h2>Vestidos</h2>
+                    <p>Elegancia y estilo para cada ocasión especial</p>
+                </div>
+
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vestidos de Noche" class="category-image">
+                        <div class="category-content">
+                            <h3>Vestidos de Noche</h3>
+                            <p>Diseños espectaculares para eventos formales y galas.</p>
+                            <a href="#" class="category-link">
+                                Ver Colección <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vestidos Casual" class="category-image">
+                        <div class="category-content">
+                            <h3>Vestidos Casual</h3>
+                            <p>Comodidad y estilo para el día a día con un toque especial.</p>
+                            <a href="#" class="category-link">
+                                Explorar <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vestidos de Verano" class="category-image">
+                        <div class="category-content">
+                            <h3>Vestidos de Verano</h3>
+                            <p>Telas frescas y diseños ligeros para los días cálidos.</p>
+                            <a href="#" class="category-link">
+                                Ver Vestidos <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+         <div id="otros" class="tab-content">
+            <section class="categories-section">
+                <div class="section-header">
+                    <h2>Otras Prendas</h2>
+                    <p>Completa tu guardarropa con nuestras prendas especiales</p>
+                </div>
+
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chaquetas" class="category-image">
+                        <div class="category-content">
+                            <h3>Chaquetas</h3>
+                            <p>Estilo y protección para completar tus outfits.</p>
+                            <a href="#" class="category-link">
+                                Ver Colección <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="Imagenes/Imagen1.jpg" alt="Faldas" class="category-image">
+                        <!--<img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Faldas" class="category-image">-->
+                        <div class="category-content">
+                            <h3>Faldas</h3>
+                            <p>Versatilidad y feminidad en diferentes largos y estilos.</p>
+                            <a href="#" class="category-link">
+                                Explorar <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Accesorios" class="category-image">
+                        <div class="category-content">
+                            <h3>Accesorios</h3>
+                            <p>Complementos que realzan tu estilo personal.</p>
+                            <a href="#" class="category-link">
+                                Ver Accesorios <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        
+
+        <!-- Resto de las pestañas... -->
+
+        <!-- Featured Products -->
+        <section class="featured-products">
+            <div class="section-header">
+                <h2>Productos Destacados</h2>
+                <p>Descubre nuestras prendas más populares de la temporada</p>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1582418702059-97ebafb35d09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Jeans Slim Fit" class="product-image">
+                    <div class="product-content">
+                        <h4>Jeans Slim Fit</h4>
+                        <p class="product-price">$89.900</p>
+                        <a href="#" class="product-link">Ver Detalles</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Blusa Seda" class="product-image">
+                    <div class="product-content">
+                        <h4>Blusa de Seda Elegante</h4>
+                        <p class="product-price">$65.000</p>
+                        <a href="#" class="product-link">Ver Detalles</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vestido Noche" class="product-image">
+                    <div class="product-content">
+                        <h4>Vestido de Noche</h4>
+                        <p class="product-price">$120.000</p>
+                        <a href="#" class="product-link">Ver Detalles</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Conjunto Deportivo" class="product-image">
+                    <div class="product-content">
+                        <h4>Conjunto Deportivo</h4>
+                        <p class="product-price">$75.000</p>
+                        <a href="#" class="product-link">Ver Detalles</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seasonal Collection -->
+        <section class="seasonal-collection">
+            <div class="seasonal-content">
+                <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Colección de Verano" class="seasonal-image">
+                <div class="seasonal-text">
+                    <h2>Colección Verano 2024</h2>
+                    <p>Descubre nuestra nueva colección de verano con prendas frescas, coloridas y llenas de estilo. Diseños exclusivos que capturan la esencia del verano con telas ligeras y cómodas.</p>
+                    <p>Desde vestidos fluidos hasta conjuntos playeros, encuentra todo lo que necesitas para brillar esta temporada.</p>
+                    <a href="ColeccionExclusiva.html" class="seasonal-btn">Explorar Colección</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="newsletter">
+            <h2>Únete a Nuestra Comunidad</h2>
+            <p>Recibe las últimas novedades, promociones exclusivas y consejos de estilo directamente en tu email</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Tu correo electrónico" class="newsletter-input" required>
+                <button type="submit" class="newsletter-btn">Suscribirse</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ÉLITE MODA</h3>
+                    <p>Moda exclusiva para clientes distinguidos. Calidad, estilo y sofisticación en cada prenda.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/@yennible.camino" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/@yencava" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.pinterest.com" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.twiter.com" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="Colecciones.html">Colecciones</a></li>
+                        <li><a href="RopaInt.html">Ropa Íntima</a></li>
+                        <li><a href="RopaCasual.html">Ropa Casual</a></li>
+                        <li><a href="GuiaTallas.html">Guía de Tallas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Servicio al Cliente</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://wa.me/5804163034250" target="_blank">Contactarnos</a></li>
+                        <li><a href="PregunFrec.html">Preguntas Frecuentes</a></li>
+                        <li><a href="EnviosyDevoluc.html">Envíos y Entregas</a></li>
+                        <li><a href="EnviosyDevoluc.html">Devoluciones</a></li>
+                        <li><a href="guiadetallas.html">Guía de Tallas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Carrera 15 #88-64, Bogotá</li>
+                        <li><i class="fas fa-phone"></i> +57 1 744 8000</li>
+                        <li><i class="fas fa-envelope"></i> info@elitemoda.com</li>
+                        <li><i class="fas fa-clock"></i> Lun - Vie: 9:00 - 19:00</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 ÉLITE MODA. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            const navOverlay = document.getElementById('navOverlay');
+            const header = document.getElementById('mainHeader');
+            const homeButton = document.getElementById('homeButton');
+            const body = document.body;
+
+            // Control del menú hamburguesa
+            function toggleMenu() {
+                const isActive = navLinks.classList.contains('active');
+                
+                menuToggle.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                navOverlay.classList.toggle('active');
+                body.style.overflow = isActive ? '' : 'hidden';
+            }
+
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    toggleMenu();
+                });
+            });
+
+            navOverlay.addEventListener('click', function() {
+                toggleMenu();
+            });
+
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && navLinks.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+
+            navLinks.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+
+            // Header fijo con efecto al scroll
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Control del botón de inicio
+            let scrollTimeout;
+            
+            function checkIfAtTop() {
+                return window.pageYOffset === 0;
+            }
+            
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+            
+            homeButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (checkIfAtTop()) {
+                    window.location.href = 'index.html';
+                } else {
+                    scrollToTop();
+                }
+            });
+            
+            function hideButton() {
+                homeButton.classList.add('hidden');
+            }
+            
+            function showButton() {
+                homeButton.classList.remove('hidden');
+            }
+            
+            window.addEventListener('scroll', function() {
+                if (!homeButton.classList.contains('hidden')) {
+                    hideButton();
+                }
+                
+                window.clearTimeout(scrollTimeout);
+                
+                scrollTimeout = setTimeout(function() {
+                    showButton();
+                }, 600);
+            }, false);
+            
+            homeButton.addEventListener('mouseenter', function() {
+                clearTimeout(scrollTimeout);
+                showButton();
+            });
+            
+            homeButton.addEventListener('mouseleave', function() {
+                scrollTimeout = setTimeout(function() {
+                    showButton();
+                }, 1000);
+            });
+            
+            showButton();
+
+            // JavaScript para las pestañas
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remover clase active de todos los botones y contenidos
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Agregar clase active al botón y contenido seleccionados
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
