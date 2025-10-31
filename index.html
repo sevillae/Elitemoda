@@ -20,7 +20,7 @@
             overflow-x: hidden;
         }
 
-        /* BOTÓN DEL MENÚ HAMBURGUESA PARA MÓVILES */
+        /* BOTÓN DEL MENÚ HAMBURGUESA PARA MÓVILES - CORREGIDO */
         .menu-float {
             position: fixed;
             top: 20px;
@@ -31,7 +31,7 @@
             border: none;
             border-radius: 50%;
             cursor: pointer;
-            display: none;
+            display: none; /* Oculto por defecto */
             justify-content: center;
             align-items: center;
             width: 60px;
@@ -593,16 +593,17 @@
             padding-top: 20px;
         }
 
-        /* RESPONSIVE MEJORADO */
+        /* RESPONSIVE MEJORADO - CORREGIDO PARA HORIZONTAL */
         @media (max-width: 1024px) {
             .main-content {
                 padding-left: 340px;
             }
         }
 
+        /* CORRECCIÓN PRINCIPAL: Mostrar menú hamburguesa en móviles y horizontal */
         @media (max-width: 768px) {
             .menu-float {
-                display: flex;
+                display: flex; /* AHORA SE MUESTRA EN MÓVILES */
             }
 
             .sidebar {
@@ -664,6 +665,44 @@
             }
         }
 
+        /* NUEVA MEDIA QUERY PARA ORIENTACIÓN HORIZONTAL */
+        @media (max-width: 900px) and (orientation: landscape) {
+            .menu-float {
+                display: flex !important; /* FORZAR VISIBILIDAD EN HORIZONTAL */
+            }
+            
+            .sidebar-content {
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+            
+            .sidebar li {
+                margin-bottom: 8px;
+            }
+            
+            .sidebar a {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            /* Ajustes específicos para horizontal */
+            .main-content {
+                padding: 60px 15px 15px 15px;
+            }
+            
+            .promo-section {
+                padding: 30px 20px;
+            }
+            
+            .promo-title {
+                font-size: 2rem;
+            }
+            
+            .promo-image {
+                height: 250px;
+            }
+        }
+
         @media (max-width: 480px) {
             .promo-title {
                 font-size: 2rem;
@@ -721,23 +760,6 @@
                 width: 45px;
                 height: 45px;
                 font-size: 1.1rem;
-            }
-        }
-
-        /* Para orientación horizontal en móviles */
-        @media (max-height: 500px) and (orientation: landscape) {
-            .sidebar-content {
-                max-height: 80vh;
-                overflow-y: auto;
-            }
-            
-            .sidebar li {
-                margin-bottom: 8px;
-            }
-            
-            .sidebar a {
-                padding: 10px 15px;
-                font-size: 0.9rem;
             }
         }
     </style>
@@ -897,10 +919,18 @@
         const backToTop = document.getElementById('backToTop');
         const callButton = document.getElementById('callButton');
 
+        // Función para verificar si estamos en vista móvil (incluyendo horizontal)
+        function isMobileView() {
+            return window.innerWidth <= 768 || (window.innerWidth <= 900 && window.matchMedia("(orientation: landscape)").matches);
+        }
+
         function toggleMenu() {
-            sidebar.classList.toggle('active');
-            sidebarOverlay.classList.toggle('active');
-            menuToggle.classList.toggle('active');
+            // Solo activar el menú hamburguesa si estamos en vista móvil
+            if (isMobileView()) {
+                sidebar.classList.toggle('active');
+                sidebarOverlay.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            }
         }
 
         function closeMenu() {
@@ -915,7 +945,7 @@
         // Cerrar menú al hacer clic en cualquier enlace del menú (solo en móviles)
         document.querySelectorAll('.sidebar a').forEach(link => {
             link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
+                if (isMobileView()) {
                     closeMenu();
                 }
             });
@@ -1018,8 +1048,9 @@
             console.log('⚙️ Configuración del scroll:', scrollConfig);
             
             // Solo mostrar el botón del menú en móviles
-            if (window.innerWidth <= 768) {
+            if (isMobileView()) {
                 menuToggle.classList.remove('hidden');
+                menuToggle.style.display = 'flex';
             }
             
             callButton.classList.remove('hidden');
@@ -1031,8 +1062,9 @@
 
         // Manejar cambios de tamaño de ventana
         window.addEventListener('resize', () => {
-            if (window.innerWidth <= 768) {
+            if (isMobileView()) {
                 menuToggle.style.display = 'flex';
+                menuToggle.classList.remove('hidden');
             } else {
                 menuToggle.style.display = 'none';
                 // Asegurarse de que el sidebar esté visible en escritorio
@@ -1048,6 +1080,12 @@
                     backToTop.classList.add('show');
                 } else {
                     backToTop.classList.remove('show');
+                }
+                
+                // Asegurar que el menú hamburguesa se muestre en horizontal
+                if (isMobileView()) {
+                    menuToggle.style.display = 'flex';
+                    menuToggle.classList.remove('hidden');
                 }
             }, 300);
         });
