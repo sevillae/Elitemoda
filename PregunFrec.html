@@ -19,6 +19,7 @@
             background-color: #f9f9f9;
             color: #333;
             line-height: 1.6;
+            padding-top: 80px; /* Para compensar el header fijo */
         }
         
         .container {
@@ -33,8 +34,10 @@
             color: white;
             padding: 15px 0;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
             backdrop-filter: blur(10px);
         }
@@ -257,6 +260,7 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
         
         .floating-button::before {
@@ -473,7 +477,9 @@
             color: #666;
         }
 
-        /* RESPONSIVE MEJORADO */
+        /* MEJORAS RESPONSIVE */
+        
+        /* Tablets en horizontal y escritorio pequeño */
         @media (max-width: 1024px) {
             nav ul {
                 gap: 2px;
@@ -483,9 +489,22 @@
                 padding: 10px 16px;
                 font-size: 0.95rem;
             }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
         }
 
+        /* Tablets en vertical y móviles grandes */
         @media (max-width: 768px) {
+            body {
+                padding-top: 70px; /* Ajuste para header más compacto */
+            }
+            
             .header-content {
                 flex-wrap: wrap;
             }
@@ -551,6 +570,10 @@
                 display: none;
             }
             
+            .hero {
+                padding: 80px 20px;
+            }
+            
             .hero h1 {
                 font-size: 2rem;
             }
@@ -579,6 +602,11 @@
                 padding: 6px 12px;
             }
             
+            .footer-section {
+                flex: 0 0 50%;
+                margin-bottom: 30px;
+            }
+            
             @keyframes pulse-whatsapp {
                 0% {
                     transform: scale(1);
@@ -595,18 +623,14 @@
             }
         }
 
+        /* Móviles medianos y pequeños */
         @media (max-width: 576px) {
-            .copyright p {
-                margin-bottom: 0.5rem;
+            body {
+                padding-top: 65px; /* Ajuste adicional para header */
             }
             
-            .legal-links {
-                flex-direction: column;
-                gap: 5px;
-            }
-            
-            .separator {
-                display: none;
+            .container {
+                padding: 0 15px;
             }
             
             .logo {
@@ -621,23 +645,167 @@
                 padding: 8px 10px;
                 font-size: 1.1rem;
             }
+            
+            .hero {
+                padding: 60px 15px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 0.95rem;
+            }
+            
+            .faq-section {
+                padding: 30px 0;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 30px;
+            }
+            
+            .faq-question {
+                padding: 12px 15px;
+                font-size: 0.95rem;
+            }
+            
+            .faq-answer {
+                padding: 0 15px;
+                font-size: 0.9rem;
+            }
+            
+            .faq-item.active .faq-answer {
+                padding: 0 15px 15px;
+            }
+            
+            .floating-buttons {
+                bottom: 15px;
+                right: 15px;
+                gap: 10px;
+            }
+            
+            .floating-button {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .floating-button i {
+                font-size: 1.3rem;
+            }
+            
+            .floating-button span {
+                font-size: 0.75rem;
+                padding: 5px 10px;
+                right: 60px;
+            }
+            
+            .footer-section {
+                flex: 0 0 100%;
+                text-align: center;
+            }
+            
+            .footer-section h3:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .copyright p {
+                margin-bottom: 0.5rem;
+            }
+            
+            .legal-links {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .separator {
+                display: none;
+            }
         }
 
+        /* Móviles muy pequeños */
         @media (max-width: 400px) {
             .container {
-                padding: 0 15px;
+                padding: 0 10px;
             }
             
             .logo {
                 font-size: 1.3rem;
             }
             
+            .logo i {
+                font-size: 1.5rem;
+            }
+            
             .hero {
-                padding: 80px 15px;
+                padding: 50px 10px;
             }
             
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .faq-question {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .floating-buttons {
+                bottom: 10px;
+                right: 10px;
+            }
+            
+            .floating-button {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .floating-button i {
+                font-size: 1.2rem;
+            }
+            
+            .floating-button span {
+                font-size: 0.7rem;
+                padding: 4px 8px;
+                right: 50px;
+            }
+        }
+
+        /* Orientación horizontal en móviles */
+        @media (max-height: 500px) and (orientation: landscape) {
+            body {
+                padding-top: 60px; /* Header más compacto en landscape */
+            }
+            
+            header {
+                padding: 10px 0;
+            }
+            
+            .hero {
+                padding: 40px 20px;
+            }
+            
+            .faq-section {
+                padding: 20px 0;
+            }
+            
+            .faq-item {
+                margin-bottom: 10px;
+            }
+            
+            .faq-question {
+                padding: 12px 15px;
             }
         }
     </style>
@@ -756,9 +924,9 @@
 
     <!-- Botones flotantes -->
     <div class="floating-buttons">
-        <a href="index.html" class="floating-button back-to-top visible" id="backToTop">
+        <a href="#" class="floating-button back-to-top visible" id="backToTop">
             <i class="fas fa-home"></i>
-            <span>Ir al Inicio</span>
+            <span id="homeButtonText">Ir al Inicio</span>
         </a>
         
         <a href="https://wa.me/584163034250" class="floating-button whatsapp-button visible" target="_blank" id="whatsappButton">
@@ -861,6 +1029,40 @@
                 item.classList.toggle('active');
             });
         });
+
+        // Funcionalidad para el botón de inicio
+        const backToTopButton = document.getElementById('backToTop');
+        const homeButtonText = document.getElementById('homeButtonText');
+        
+        backToTopButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Si estamos en la parte superior (scroll 0), ir a index.html
+            if (window.scrollY === 0) {
+                window.location.href = 'index.html';
+            } else {
+                // Si estamos scrolleados, ir al inicio de la página actual
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        });
+        
+        // Actualizar el texto del botón según la posición del scroll
+        function updateHomeButtonText() {
+            if (window.scrollY === 0) {
+                homeButtonText.textContent = 'Ir al Inicio';
+            } else {
+                homeButtonText.textContent = 'Volver Arriba';
+            }
+        }
+        
+        // Actualizar el texto inicial
+        updateHomeButtonText();
+        
+        // Actualizar el texto cuando se hace scroll
+        window.addEventListener('scroll', updateHomeButtonText);
 
         // Funcionalidad para los botones flotantes
         const floatingButtons = document.querySelectorAll('.floating-button');
