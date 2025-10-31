@@ -27,190 +27,121 @@
             padding: 0 20px;
         }
         
-        /* NAVEGACIÓN RESPONSIVE - MENÚ HAMBURGUESA */
-        .main-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+        /* Header Mejorado */
+        header {
             background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
             z-index: 1000;
-            padding: 0 20px;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
         }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
+        
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
+            position: relative;
         }
-
+        
         .logo {
-            color: #ffdd59;
             font-size: 1.8rem;
             font-weight: 700;
-            text-decoration: none;
-            letter-spacing: 2px;
-            z-index: 1002;
             display: flex;
             align-items: center;
+            z-index: 1001;
         }
-
+        
         .logo i {
             margin-right: 12px;
+            color: #ffdd59;
             font-size: 2rem;
             transition: transform 0.3s ease;
         }
-
+        
         .logo:hover i {
             transform: rotate(-15deg);
         }
-
-        .nav-menu {
+        
+        /* Navegación Mejorada */
+        nav {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
-            align-items: center;
+            gap: 5px;
         }
-
-        .nav-link {
+        
+        nav ul li {
+            position: relative;
+        }
+        
+        nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: 500;
+            padding: 12px 20px;
+            border-radius: 25px;
             transition: all 0.3s ease;
-            padding: 10px 15px;
-            border-radius: 5px;
+            display: block;
             position: relative;
+            overflow: hidden;
         }
-
-        .nav-link:hover {
-            color: #ffdd59;
-            background: rgba(255, 221, 89, 0.1);
-        }
-
-        .nav-link::after {
+        
+        nav ul li a::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: #ffdd59;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .nav-link:hover::after {
-            width: 80%;
-        }
-
-        /* MENÚ HAMBURGUESA */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            background: transparent;
-            border: none;
-            width: 30px;
-            height: 25px;
-            position: relative;
-            z-index: 1002;
-        }
-
-        .hamburger span {
-            width: 100%;
-            height: 3px;
-            background: #ffdd59;
-            margin: 3px 0;
-            transition: all 0.3s ease;
-            border-radius: 2px;
-            transform-origin: center;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-            transform: translateX(-10px);
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-        }
-
-        /* Overlay para cerrar el menú */
-        .nav-overlay {
-            position: fixed;
             top: 0;
-            left: 0;
+            left: -100%;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 998;
-            opacity: 0;
-            visibility: hidden;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        nav ul li a:hover::before {
+            left: 100%;
+        }
+        
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        nav ul li a:active {
+            transform: translateY(0);
+        }
+        
+        /* Menú Mobile Mejorado */
+        .mobile-menu-btn {
+            display: none;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 10px 12px;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 1001;
         }
-
-        .nav-overlay.active {
-            opacity: 1;
-            visibility: visible;
+        
+        .mobile-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
         }
-
-        /* RESPONSIVE PARA EL MENÚ */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 280px;
-                height: 100vh;
-                background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: flex-start;
-                padding: 100px 30px 30px;
-                transition: right 0.4s ease;
-                box-shadow: -5px 0 25px rgba(0,0,0,0.3);
-                gap: 0;
-                z-index: 1001;
-            }
-
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .nav-item {
-                width: 100%;
-                margin: 10px 0;
-            }
-
-            .nav-link {
-                display: block;
-                padding: 15px 20px;
-                width: 100%;
-                font-size: 1.1rem;
-                border-radius: 8px;
-                border-left: 3px solid transparent;
-                transition: all 0.3s ease;
-            }
-
-            .nav-link:hover {
-                background: rgba(255, 221, 89, 0.15);
-                border-left-color: #ffdd59;
-                transform: translateX(5px);
-            }
+        
+        .mobile-menu-btn.active {
+            background: rgba(255, 255, 255, 0.25);
+            transform: rotate(90deg);
         }
-
+        
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
@@ -218,30 +149,29 @@
             background-position: center;
             color: white;
             text-align: center;
-            padding: 80px 20px;
+            padding: 100px 20px;
             margin-bottom: 50px;
-            margin-top: 70px;
         }
         
         .hero h1 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
         }
         
         .hero p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             max-width: 700px;
             margin: 0 auto;
         }
         
         /* FAQ Section */
         .faq-section {
-            padding: 40px 0;
+            padding: 50px 0;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             color: #333;
             position: relative;
         }
@@ -275,13 +205,13 @@
         }
         
         .faq-question {
-            padding: 18px;
+            padding: 20px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
         
         .faq-question i {
@@ -289,14 +219,14 @@
         }
         
         .faq-answer {
-            padding: 0 18px;
+            padding: 0 20px;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease, padding 0.3s ease;
         }
         
         .faq-item.active .faq-answer {
-            padding: 0 18px 18px;
+            padding: 0 20px 20px;
             max-height: 500px;
         }
         
@@ -307,17 +237,17 @@
         /* Botones flotantes */
         .floating-buttons {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 30px;
+            right: 30px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;
             z-index: 99;
         }
         
         .floating-button {
-            width: 55px;
-            height: 55px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -347,7 +277,7 @@
         }
         
         .floating-button i {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             color: white;
             z-index: 1;
             transition: transform 0.3s ease;
@@ -359,12 +289,12 @@
         
         .floating-button span {
             position: absolute;
-            right: 65px;
+            right: 70px;
             background: rgba(0, 0, 0, 0.8);
             color: white;
-            padding: 6px 12px;
+            padding: 8px 15px;
             border-radius: 25px;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             white-space: nowrap;
             opacity: 0;
             transform: translateX(10px);
@@ -443,7 +373,7 @@
         footer {
             background: #333;
             color: white;
-            padding: 40px 0 20px;
+            padding: 50px 0 20px;
             margin-top: 50px;
         }
         
@@ -529,7 +459,7 @@
         }
 
         .legal-links a {
-            color: #c19a6b !important;
+            color: #c19a6b !important; /* Color dorado */
             text-decoration: none;
             transition: all 0.3s ease;
         }
@@ -544,7 +474,83 @@
         }
 
         /* RESPONSIVE MEJORADO */
+        @media (max-width: 1024px) {
+            nav ul {
+                gap: 2px;
+            }
+            
+            nav ul li a {
+                padding: 10px 16px;
+                font-size: 0.95rem;
+            }
+        }
+
         @media (max-width: 768px) {
+            .header-content {
+                flex-wrap: wrap;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 50%;
+                right: 20px;
+                transform: translateY(-50%);
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-20px);
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+            
+            nav.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+                gap: 0;
+            }
+            
+            nav ul li {
+                margin: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+            
+            nav ul li a {
+                padding: 15px 20px;
+                border-radius: 10px;
+                margin: 2px 0;
+                display: flex;
+                align-items: center;
+                transition: all 0.3s ease;
+            }
+            
+            nav ul li a:hover {
+                background: rgba(255, 255, 255, 0.2);
+                transform: translateX(10px);
+            }
+            
+            nav ul li a::before {
+                display: none;
+            }
+            
             .hero h1 {
                 font-size: 2rem;
             }
@@ -559,18 +565,33 @@
             }
             
             .floating-buttons {
-                bottom: 15px;
-                right: 15px;
+                bottom: 20px;
+                right: 20px;
             }
             
             .floating-button {
-                width: 50px;
-                height: 50px;
+                width: 55px;
+                height: 55px;
             }
             
             .floating-button span {
                 font-size: 0.8rem;
                 padding: 6px 12px;
+            }
+            
+            @keyframes pulse-whatsapp {
+                0% {
+                    transform: scale(1);
+                    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+                }
+                50% {
+                    transform: scale(1.08);
+                    box-shadow: 0 4px 18px rgba(37, 211, 102, 0.7), 0 0 0 8px rgba(37, 211, 102, 0.2);
+                }
+                100% {
+                    transform: scale(1);
+                    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+                }
             }
         }
 
@@ -595,46 +616,56 @@
             .logo i {
                 font-size: 1.7rem;
             }
+            
+            .mobile-menu-btn {
+                padding: 8px 10px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .hero {
+                padding: 80px 15px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Menú de Navegación Responsive -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <i class="fas fa-crown"></i>
-                <span>ÉLITE MODA</span>
-            </a>
-            
-            <button class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <ul class="nav-menu" id="navMenu">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a href="Colecciones.html" class="nav-link"><i class="fas fa-shopping-bag"></i> Productos</a>
-                </li>
-                <li class="nav-item">
-                    <a href="nuevosprod.html" class="nav-link"><i class="fas fa-star"></i> Novedades</a>
-                </li>
-                <li class="nav-item">
-                    <a href="ofertas.html" class="nav-link"><i class="fas fa-tag"></i> Ofertas</a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://wa.me/5804163034250?" target="_blank" class="nav-link"><i class="fas fa-phone"></i> Contacto</a>
-                </li>
-            </ul>
+    <!-- Header Mejorado -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-crown"></i>
+                    <span>ÉLITE MODA</span>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                        <li><a href="Colecciones.html"><i class="fas fa-shopping-bag"></i> Productos</a></li>
+                        <li><a href="nuevosprod.html"><i class="fas fa-star"></i> Novedades</a></li>
+                        <li><a href="ofertas.html"><i class="fas fa-tag"></i> Ofertas</a></li>
+                        <li><a href="https://wa.me/5804163034250?" target="_blank"><i class="fas fa-phone"></i> Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-    </nav>
-
-    <!-- Overlay para cerrar el menú en móviles -->
-    <div class="nav-overlay" id="navOverlay"></div>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -649,6 +680,7 @@
         <div class="container">
             <h2 class="section-title">Preguntas Frecuentes</h2>
             <div class="faq-container">
+                <!-- FAQ Items (se mantienen igual) -->
                 <div class="faq-item">
                     <div class="faq-question">
                         <span>¿Cómo puedo saber mi talla correcta?</span>
@@ -724,7 +756,7 @@
 
     <!-- Botones flotantes -->
     <div class="floating-buttons">
-        <a href="#" class="floating-button back-to-top visible" id="backToTop">
+        <a href="index.html" class="floating-button back-to-top visible" id="backToTop">
             <i class="fas fa-home"></i>
             <span>Ir al Inicio</span>
         </a>
@@ -757,7 +789,7 @@
                 <div class="footer-section">
                     <h3>Enlaces Rápidos</h3>
                     <a href="index.html">Inicio</a>
-                    <a href="Colecciones.html">Productos</a>
+                    <a href="nuevosprod.html">Productos</a>
                     <a href="nuevosprod.html">Novedades</a>
                     <a href="ofertas.html">Ofertas</a>
                     <a href="https://wa.me/5804163034250?" target="_blank">Contacto</a>
@@ -767,7 +799,7 @@
                     <a href="Nosotros.html">Sobre Nosotros</a>
                     <a href="PoliticadePrivacidad.html">Política de Privacidad</a>
                     <a href="TerminosyCondiciones.html">Términos y Condiciones</a>
-                    <a href="EnviosyDevoluc.html">Política de Devoluciones</a>
+                    <a href="/EnviosyDevoluc.html">Política de Devoluciones</a>
                     <a href="PregunFrec.html">Preguntas Frecuentes</a>
                 </div>
                 <div class="footer-section">
@@ -790,40 +822,36 @@
     </footer>
 
     <script>
-        // Menú Hamburguesa
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
-        const navOverlay = document.getElementById('navOverlay');
-
-        function toggleMenu() {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            navOverlay.classList.toggle('active');
-            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-        }
-
-        hamburger.addEventListener('click', toggleMenu);
-        navOverlay.addEventListener('click', toggleMenu);
-
-        // Cerrar menú al hacer clic en un enlace
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                navOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
+        // Menú móvil mejorado
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+            
+            // Cambiar ícono
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mainNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         });
 
-        // Cerrar menú al redimensionar la ventana
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                navOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
+        // Cerrar menú al hacer clic en un enlace (en móvil)
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
         });
 
         // Funcionalidad para las preguntas frecuentes
@@ -843,92 +871,8 @@
             button.classList.add('visible');
         });
 
-        // FUNCIÓN DUAL CORREGIDA PARA EL BOTÓN DE INICIO
-        const backToTopButton = document.getElementById('backToTop');
-        
-        function handleHomeButton() {
-            // Verificar si estamos en la página principal (index.html)
-            const currentPage = window.location.pathname.split('/').pop();
-            const isHomePage = currentPage === 'index.html' || 
-                              currentPage === '' || 
-                              window.location.href === window.location.origin + '/' ||
-                              window.location.href === window.location.origin + '/index.html';
-            
-            if (window.scrollY > 0) {
-                // Si el scroll NO está en 0, hacer scroll al top
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            } else {
-                // Si el scroll está en 0
-                if (isHomePage) {
-                    // Si estamos en la página principal y scroll está en 0, hacer efecto refresh
-                    window.scrollTo({
-                        top: 10,
-                        behavior: 'smooth'
-                    });
-                    setTimeout(() => {
-                        window.scrollTo({
-                            top: 0,
-                            behavior: 'smooth'
-                        });
-                    }, 300);
-                } else {
-                    // Si NO estamos en la página principal y scroll está en 0, redirigir a index.html
-                    window.location.href = 'index.html';
-                }
-            }
-        }
-
-        // Actualizar el evento click del botón de inicio
-        backToTopButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            handleHomeButton();
-        });
-
-        // Actualizar el tooltip del botón según la página y posición del scroll
-        function updateHomeButtonTooltip() {
-            const currentPage = window.location.pathname.split('/').pop();
-            const isHomePage = currentPage === 'index.html' || 
-                              currentPage === '' || 
-                              window.location.href === window.location.origin + '/' ||
-                              window.location.href === window.location.origin + '/index.html';
-            
-            const tooltip = backToTopButton.querySelector('span');
-            
-            if (window.scrollY > 0) {
-                // Si hay scroll, mostrar "Volver arriba"
-                tooltip.textContent = 'Volver arriba';
-                backToTopButton.querySelector('i').className = 'fas fa-arrow-up';
-            } else {
-                // Si no hay scroll, mostrar según la página
-                if (isHomePage) {
-                    tooltip.textContent = 'Volver arriba';
-                    backToTopButton.querySelector('i').className = 'fas fa-arrow-up';
-                } else {
-                    tooltip.textContent = 'Ir al Inicio';
-                    backToTopButton.querySelector('i').className = 'fas fa-home';
-                }
-            }
-        }
-
-        // Ejecutar al cargar la página
-        document.addEventListener('DOMContentLoaded', function() {
-            updateHomeButtonTooltip();
-            
-            // Inicializar visibilidad del hamburguesa
-            if (window.innerWidth <= 768) {
-                hamburger.style.display = 'flex';
-            } else {
-                hamburger.style.display = 'none';
-            }
-        });
-
-        // Actualizar tooltip cuando se hace scroll
         window.addEventListener('scroll', () => {
             isScrolling = true;
-            updateHomeButtonTooltip();
             
             floatingButtons.forEach(button => {
                 if (!button.matches(':hover')) {
