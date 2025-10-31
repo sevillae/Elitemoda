@@ -20,7 +20,7 @@
             overflow-x: hidden;
         }
 
-        /* BOTÓN DEL MENÚ HAMBURGUESA PARA MÓVILES - CORREGIDO */
+        /* BOTÓN DEL MENÚ HAMBURGUESA PARA MÓVILES */
         .menu-float {
             position: fixed;
             top: 20px;
@@ -31,7 +31,7 @@
             border: none;
             border-radius: 50%;
             cursor: pointer;
-            display: none; /* Oculto por defecto */
+            display: none;
             justify-content: center;
             align-items: center;
             width: 60px;
@@ -77,7 +77,7 @@
             display: block;
         }
 
-        /* MENÚ LATERAL ELEGANTE (ORIGINAL - ESCRITORIO) */
+        /* MENÚ LATERAL ELEGANTE */
         .sidebar {
             position: fixed;
             top: 0;
@@ -95,13 +95,9 @@
             flex-direction: column;
         }
 
-        /* Versión móvil del sidebar */
-        .sidebar.mobile {
-            left: -320px;
-        }
-
-        .sidebar.mobile.active {
-            left: 0;
+        /* CORRECCIÓN: Sidebar visible en escritorio, oculto en móviles */
+        .sidebar {
+            left: 0; /* Visible por defecto en escritorio */
         }
 
         .sidebar-header {
@@ -212,7 +208,7 @@
             text-align: center;
         }
 
-        /* BOTÓN IR AL INICIO - MEJORADO CON SCROLL SUPER SUAVE */
+        /* BOTÓN IR AL INICIO */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -310,33 +306,9 @@
             }
         }
 
-        /* Tooltip para los botones */
-        .btn-call::after {
-            content: 'Llamar ahora';
-            position: absolute;
-            bottom: 70px;
-            left: 0;
-            background: #006400;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
-            pointer-events: none;
-            z-index: 1000;
-        }
-
-        .btn-call:hover::after {
-            opacity: 1;
-            visibility: visible;
-        }
-
         /* CONTENIDO PRINCIPAL */
         .main-content {
-            padding: 40px 20px 20px 340px; /* Espacio para el sidebar */
+            padding: 40px 20px 20px 340px;
             min-height: 100vh;
             max-width: 1400px;
             margin: 0 auto;
@@ -600,22 +572,22 @@
             }
         }
 
-        /* CORRECCIÓN PRINCIPAL: Mostrar menú hamburguesa en móviles y horizontal */
+        /* CORRECCIÓN PRINCIPAL: Mostrar menú hamburguesa y ocultar sidebar en móviles */
         @media (max-width: 768px) {
             .menu-float {
-                display: flex; /* AHORA SE MUESTRA EN MÓVILES */
+                display: flex; /* Mostrar botón hamburguesa */
             }
 
             .sidebar {
-                left: -320px;
+                left: -320px; /* Ocultar sidebar en móviles */
             }
 
             .sidebar.active {
-                left: 0;
+                left: 0; /* Mostrar sidebar cuando está activo */
             }
 
             .main-content {
-                padding: 70px 15px 15px 15px;
+                padding: 70px 15px 15px 15px; /* Quitar espacio del sidebar */
             }
 
             .promo-section {
@@ -665,12 +637,24 @@
             }
         }
 
-        /* NUEVA MEDIA QUERY PARA ORIENTACIÓN HORIZONTAL */
+        /* CORRECCIÓN ESPECÍFICA PARA ORIENTACIÓN HORIZONTAL */
         @media (max-width: 900px) and (orientation: landscape) {
             .menu-float {
-                display: flex !important; /* FORZAR VISIBILIDAD EN HORIZONTAL */
+                display: flex !important; /* Forzar visibilidad en horizontal */
             }
-            
+
+            .sidebar {
+                left: -320px; /* Ocultar sidebar en horizontal */
+            }
+
+            .sidebar.active {
+                left: 0; /* Mostrar cuando está activo */
+            }
+
+            .main-content {
+                padding: 60px 15px 15px 15px; /* Quitar espacio del sidebar */
+            }
+
             .sidebar-content {
                 max-height: 80vh;
                 overflow-y: auto;
@@ -683,11 +667,6 @@
             .sidebar a {
                 padding: 10px 15px;
                 font-size: 0.9rem;
-            }
-            
-            /* Ajustes específicos para horizontal */
-            .main-content {
-                padding: 60px 15px 15px 15px;
             }
             
             .promo-section {
@@ -903,33 +882,42 @@
 
     <script>
         // =============================================
-        // CONFIGURACIÓN DEL SCROLL - ¡EDITA ESTOS VALORES!
+        // CONFIGURACIÓN DEL SCROLL
         // =============================================
         const scrollConfig = {
-            targetPosition: 0,      // Posición destino en píxeles (0 = top de la página)
-            duration: 1200,         // Duración en milisegundos (1000 = 1 segundo)
-            easing: 'easeInOutCubic' // Tipo de easing: 'linear', 'easeInOutCubic', 'easeOutCubic'
+            targetPosition: 0,
+            duration: 1200,
+            easing: 'easeInOutCubic'
         };
-        // =============================================
 
-        // FUNCIONALIDAD DEL MENÚ HAMBURGUESA (SOLO MÓVILES)
+        // FUNCIONALIDAD DEL MENÚ HAMBURGUESA
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
         const backToTop = document.getElementById('backToTop');
         const callButton = document.getElementById('callButton');
+        const mainContent = document.querySelector('.main-content');
 
-        // Función para verificar si estamos en vista móvil (incluyendo horizontal)
+        // Función para verificar si estamos en vista móvil
         function isMobileView() {
             return window.innerWidth <= 768 || (window.innerWidth <= 900 && window.matchMedia("(orientation: landscape)").matches);
         }
 
         function toggleMenu() {
-            // Solo activar el menú hamburguesa si estamos en vista móvil
             if (isMobileView()) {
                 sidebar.classList.toggle('active');
                 sidebarOverlay.classList.toggle('active');
                 menuToggle.classList.toggle('active');
+                
+                // Cambiar ícono
+                const icon = menuToggle.querySelector('i');
+                if (sidebar.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
             }
         }
 
@@ -937,12 +925,17 @@
             sidebar.classList.remove('active');
             sidebarOverlay.classList.remove('active');
             menuToggle.classList.remove('active');
+            
+            // Restaurar ícono
+            const icon = menuToggle.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
         }
 
         menuToggle.addEventListener('click', toggleMenu);
         sidebarOverlay.addEventListener('click', closeMenu);
 
-        // Cerrar menú al hacer clic en cualquier enlace del menú (solo en móviles)
+        // Cerrar menú al hacer clic en cualquier enlace del menú
         document.querySelectorAll('.sidebar a').forEach(link => {
             link.addEventListener('click', () => {
                 if (isMobileView()) {
@@ -951,20 +944,18 @@
             });
         });
 
-        // FUNCIÓN MEJORADA DE SCROLL SUPER SUAVE
+        // FUNCIÓN DE SCROLL SUAVE
         function smoothScrollTo(targetPosition = scrollConfig.targetPosition) {
             const startingY = window.pageYOffset;
             const duration = scrollConfig.duration;
             const start = performance.now();
             
-            // Si ya estamos en la posición destino, no hacer nada
             if (startingY === targetPosition) return;
             
             function step(currentTime) {
                 const elapsed = currentTime - start;
                 const progress = Math.min(elapsed / duration, 1);
                 
-                // Función de easing seleccionada
                 let easingFunction;
                 switch(scrollConfig.easing) {
                     case 'linear':
@@ -980,11 +971,9 @@
                             : 1 - Math.pow(-2 * progress + 2, 3) / 2;
                 }
                 
-                // Calcular la nueva posición
                 const newPosition = startingY + (targetPosition - startingY) * easingFunction;
                 window.scrollTo(0, newPosition);
                 
-                // Continuar animación si no ha terminado
                 if (progress < 1) {
                     requestAnimationFrame(step);
                 }
@@ -993,27 +982,24 @@
             requestAnimationFrame(step);
         }
 
-        // BOTÓN "IR AL INICIO" CON SCROLL SUPER SUAVE
+        // BOTÓN "IR AL INICIO"
         backToTop.addEventListener('click', () => {
-            console.log('🚀 Iniciando scroll suave a posición:', scrollConfig.targetPosition);
             smoothScrollTo(scrollConfig.targetPosition);
         });
 
-        // COMPORTAMIENTO DE SCROLL MEJORADO
+        // COMPORTAMIENTO DE SCROLL
         let scrollTimeout;
         let lastScrollTop = 0;
 
         function handleScroll() {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
-            // Mostrar/ocultar botón "Ir al inicio" basado en la posición del scroll
             if (scrollTop > 300) {
                 backToTop.classList.add('show');
             } else {
                 backToTop.classList.remove('show');
             }
 
-            // Ocultar botones cuando se detecta scroll rápido
             if (Math.abs(scrollTop - lastScrollTop) > 10) {
                 menuToggle.classList.add('hidden');
                 callButton.classList.add('hidden');
@@ -1021,17 +1007,14 @@
             
             lastScrollTop = scrollTop;
             
-            // Limpiar timeout anterior
             clearTimeout(scrollTimeout);
             
-            // Mostrar botones después de detener el scroll
             scrollTimeout = setTimeout(() => {
                 menuToggle.classList.remove('hidden');
                 callButton.classList.remove('hidden');
             }, 800);
         }
 
-        // Event listener para el scroll con throttling
         let scrollThrottleTimeout;
         window.addEventListener('scroll', () => {
             if (!scrollThrottleTimeout) {
@@ -1044,13 +1027,14 @@
 
         // INICIALIZACIÓN
         window.addEventListener('load', () => {
-            console.log('✨ Página ÉLITE MODA con scroll suave mejorado');
-            console.log('⚙️ Configuración del scroll:', scrollConfig);
-            
-            // Solo mostrar el botón del menú en móviles
+            // Configurar visibilidad inicial del menú hamburguesa
             if (isMobileView()) {
-                menuToggle.classList.remove('hidden');
                 menuToggle.style.display = 'flex';
+                menuToggle.classList.remove('hidden');
+                sidebar.classList.remove('active'); // Asegurar que esté oculto en móviles
+            } else {
+                menuToggle.style.display = 'none';
+                sidebar.classList.remove('active'); // Asegurar que esté visible en escritorio
             }
             
             callButton.classList.remove('hidden');
@@ -1065,15 +1049,14 @@
             if (isMobileView()) {
                 menuToggle.style.display = 'flex';
                 menuToggle.classList.remove('hidden');
+                sidebar.classList.remove('active'); // Ocultar sidebar en móviles
             } else {
                 menuToggle.style.display = 'none';
-                // Asegurarse de que el sidebar esté visible en escritorio
-                sidebar.classList.remove('active');
-                sidebarOverlay.classList.remove('active');
+                sidebar.classList.remove('active'); // Mostrar sidebar en escritorio
             }
         });
 
-        // Manejar cambios de orientación en móviles
+        // Manejar cambios de orientación
         window.addEventListener('orientationchange', () => {
             setTimeout(() => {
                 if (window.scrollY > 300) {
@@ -1082,14 +1065,13 @@
                     backToTop.classList.remove('show');
                 }
                 
-                // Asegurar que el menú hamburguesa se muestre en horizontal
                 if (isMobileView()) {
                     menuToggle.style.display = 'flex';
                     menuToggle.classList.remove('hidden');
+                    sidebar.classList.remove('active'); // Ocultar en móviles/horizontal
                 }
             }, 300);
         });
     </script>
-
 </body>
 </html>
