@@ -5,6 +5,22 @@
     <link rel="icon" type="image/x-icon" href="Iconos/conexion.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colección Íntima | ÉLITE MODA</title>
+    
+    <!-- Meta Tags Mejorados -->
+    <meta name="description" content="ÉLITE MODA - Descubre nuestra exclusiva colección íntima femenina. Lencería de lujo, brasieres, panties y pijamas de la más alta calidad.">
+    <meta name="keywords" content="lencería femenina, ropa íntima, brasieres, panties, pijamas, moda íntima, ÉLITE MODA">
+    <meta name="theme-color" content="#2c3e50">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Colección Íntima | ÉLITE MODA">
+    <meta property="og:description" content="Descubre nuestra exclusiva colección íntima femenina. Lujo, confort y sensualidad en cada detalle.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tu-dominio.com/colecciones.html">
+    
+    <!-- Favicon Mejorado -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👕</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👕</text></svg>">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
@@ -185,6 +201,145 @@
         .overlay.active {
             opacity: 1;
             visibility: visible;
+        }
+
+        /* ===== BOTONES FLOTANTES MEJORADOS ===== */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 10000; /* Mayor que cualquier otro elemento */
+        }
+
+        .floating-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            z-index: 10001; /* Cada botón individual también */
+        }
+
+        .floating-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(0);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+
+        .floating-button:hover::before {
+            transform: scale(1);
+        }
+
+        .floating-button i {
+            font-size: 1.5rem;
+            color: white;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+
+        .floating-button:hover i {
+            transform: scale(1.2);
+        }
+
+        .floating-button span {
+            position: absolute;
+            right: 70px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 10002; /* Tooltip con mayor z-index */
+        }
+
+        .floating-button:hover span {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Botón de inicio mejorado */
+        .back-to-top {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            border: 2px solid var(--secondary-color);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-8px) rotate(5deg);
+            box-shadow: 0 12px 25px rgba(44, 62, 80, 0.4);
+        }
+
+        /* Botón de WhatsApp con efecto intermitente */
+        .whatsapp-button {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            animation: pulse-whatsapp 2s infinite;
+            position: relative;
+        }
+
+        @keyframes pulse-whatsapp {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 6px 25px rgba(37, 211, 102, 0.7), 0 0 0 10px rgba(37, 211, 102, 0.2);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            }
+        }
+
+        .whatsapp-button:hover {
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 12px 25px rgba(37, 211, 102, 0.6), 0 0 0 15px rgba(37, 211, 102, 0.1);
+            animation: none;
+        }
+
+        /* Botón de llamadas */
+        .call-button {
+            background: linear-gradient(135deg, #FF416C 0%, #FF4B2B 100%);
+        }
+
+        .call-button:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(255, 65, 108, 0.4);
+        }
+
+        /* Estados de visibilidad */
+        .floating-button.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+
+        .floating-button.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
 
         /* Home Button - RESPONSIVE MEJORADO */
@@ -884,6 +1039,25 @@
                 padding-left: 10px;
                 border-bottom-color: var(--secondary-color);
             }
+
+            /* Botones flotantes en móvil */
+            .floating-buttons {
+                bottom: 20px;
+                right: 20px;
+                z-index: 10000;
+            }
+            
+            .floating-button {
+                width: 55px;
+                height: 55px;
+                z-index: 10001;
+            }
+            
+            .floating-button span {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+                right: 65px;
+            }
         }
 
         /* Móviles pequeños (576px y menos) */
@@ -917,6 +1091,29 @@
                 font-size: 0.9rem;
                 padding: 8px 0;
             }
+
+            .floating-buttons {
+                bottom: 15px;
+                right: 15px;
+                gap: 10px;
+                z-index: 10000;
+            }
+            
+            .floating-button {
+                width: 50px;
+                height: 50px;
+                z-index: 10001;
+            }
+            
+            .floating-button i {
+                font-size: 1.3rem;
+            }
+            
+            .floating-button span {
+                font-size: 0.75rem;
+                padding: 5px 10px;
+                right: 60px;
+            }
         }
 
         /* Móviles muy pequeños */
@@ -929,6 +1126,28 @@
             .nav-link {
                 font-size: 0.85rem;
                 padding: 6px 0;
+            }
+
+            .floating-buttons {
+                bottom: 10px;
+                right: 10px;
+                z-index: 10000;
+            }
+            
+            .floating-button {
+                width: 45px;
+                height: 45px;
+                z-index: 10001;
+            }
+            
+            .floating-button i {
+                font-size: 1.2rem;
+            }
+            
+            .floating-button span {
+                font-size: 0.7rem;
+                padding: 4px 8px;
+                right: 50px;
             }
         }
 
@@ -1058,7 +1277,7 @@
                         <a href="Colecciones.html" class="nav-link">Colecciones</a>
                     </li>
                     <li class="nav-item">
-                        <a href="dedicatoria.html" class="nav-link">Nuestra Dedicatoria</a>
+                        <a href="Nosotros.html" class="nav-link">Nuestra Dedicatoria</a>
                     </li>
                     <li class="nav-item">
                         <a href="https://wa.me/5804163034250" target="_blank" class="nav-link">Contacto WhatsApp</a>
@@ -1078,10 +1297,23 @@
     <!-- Overlay para móviles -->
     <div class="overlay" id="overlay"></div>
 
-    <!-- Botón de Inicio Elegante - COMPORTAMIENTO DUAL -->
-    <button class="btn-home" id="homeButton">
-        <i class="fas fa-home"></i>
-    </button>
+    <!-- Botones Flotantes Mejorados -->
+    <div class="floating-buttons">
+        <a href="#" class="floating-button back-to-top visible" id="backToTop">
+            <i class="fas fa-home"></i>
+            <span>Ir al Inicio</span>
+        </a>
+        
+        <a href="https://wa.me/584163034250" class="floating-button whatsapp-button visible" target="_blank" id="whatsappButton">
+            <i class="fab fa-whatsapp"></i>
+            <span>Chatear por WhatsApp</span>
+        </a>
+        
+        <a href="tel:+584163034250" class="floating-button call-button visible">
+            <i class="fas fa-phone"></i>
+            <span>Llamar ahora</span>
+        </a>
+    </div>
 
     <!-- Ropa Íntima Damas - Diseño Elegante -->
     <section class="intimate-collection luxury-theme">
@@ -1096,8 +1328,8 @@
                 </h1>
                 <p class="hero-subtitle rps-hero-subtitle-responsive">Lujo, confort y sensualidad en cada detalle</p>
                 <div class="hero-cta">
-                    <button class="cta-btn primary">Descubrir Colección</button>
-                    <button class="cta-btn secondary">Ver Ofertas</button>
+                    <a href="#luxury"><button class="cta-btn primary">Descubrir Colección</button></a>  
+                    <a href="ofertas.html"><button class="cta-btn secondary">Ver Ofertas</button></a>
                 </div>
             </div>
             <div class="scroll-indicator">
@@ -1131,7 +1363,7 @@
         </div>
 
         <!-- Products Grid Mejorado -->
-        <div class="luxury-products-grid">
+        <div class="luxury-products-grid" id="luxury">
             <div class="section-header">
                 <h2 class="rps-text-responsive-2xl">Nuestros Productos Destacados</h2>
                 <p class="rps-text-responsive-base">Descubre la perfección en cada puntada</p>
@@ -1148,7 +1380,7 @@
                             <button class="wishlist-btn">❤</button>
                         </div>
                     </div>
-                    <div class="product-info">
+                    <div class="product-info" id="product-info">
                         <h3 class="product-title rps-text-responsive-lg">Bra de Encaje Delicado</h3>
                         <p class="product-description rps-text-responsive-sm">Encaje francés con ajuste perfecto y tiras ajustables para máximo confort</p>
                         <div class="product-price">
@@ -1269,7 +1501,7 @@
 
         <!-- Sección de Beneficios -->
         <div class="luxury-products-grid">
-            <div class="section-header">
+            <div class="section-header" id="section-header">
                 <h2 class="rps-text-responsive-2xl">¿Por Qué Elegir Nuestra Colección?</h2>
                 <p class="rps-text-responsive-base">Calidad y diseño en cada detalle</p>
             </div>
@@ -1306,16 +1538,15 @@
                     <div class="social-links">
                         <a href="https://www.facebook.com/@yennibel.camino/" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/yencava/" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.pinterest.com/@tu_usuario/" target="_blank"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.pinterest.com/yencava/" target="_blank"><i class="fab fa-pinterest-p"></i></a>
                         <a href="https://www.threads.net/tu_usuario" class="social-link threads-btn" target="_blank"><i class="fa-brands fa-threads"></i></a>
-                        <!--<a href="https://www.twitter.com/@tu_usuario/" target="_blank"><i class="fab fa-twitter"></i></a>-->
                         <a href="https://wa.me/5804163034250" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
                     <h3 class="rps-text-responsive-lg">Enlaces Rápidos</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Inicio</a></li>
+                        <li><a href="index.html">Inicio</a></li>
                         <li><a href="Colecciones.html">Colecciones</a></li>
                         <li><a href="Nosotros.html">Nuestra Dedicatoria</a></li>
                         <li><a href="https://wa.me/5804163034250" target="_blank">Contacto WhatsApp</a></li>
@@ -1403,25 +1634,67 @@
                 }
             });
 
-            // Control del botón de inicio - COMPORTAMIENTO MEJORADO
-            const homeButton = document.getElementById('homeButton');
+            // Control de botones flotantes
+            const floatingButtons = document.querySelectorAll('.floating-button');
             let scrollTimeout;
-            
-            if (homeButton) {
-                window.addEventListener('scroll', function() {
-                    // Ocultar el botón mientras se hace scroll
-                    homeButton.classList.add('hidden');
-                    
-                    // Detectar cuando el scroll se detiene
-                    clearTimeout(scrollTimeout);
-                    scrollTimeout = setTimeout(function() {
-                        // Mostrar el botón cuando el scroll se detiene
-                        homeButton.classList.remove('hidden');
-                    }, 550);
+            let isScrolling = false;
+
+            floatingButtons.forEach(button => {
+                button.classList.add('visible');
+            });
+
+            window.addEventListener('scroll', () => {
+                isScrolling = true;
+                
+                floatingButtons.forEach(button => {
+                    if (!button.matches(':hover')) {
+                        button.classList.remove('visible');
+                        button.classList.add('hidden');
+                    }
                 });
                 
-                // Botón con doble función
-                homeButton.addEventListener('click', function() {
+                clearTimeout(scrollTimeout);
+                
+                scrollTimeout = setTimeout(() => {
+                    isScrolling = false;
+                    floatingButtons.forEach(button => {
+                        if (!button.matches(':hover')) {
+                            button.classList.remove('hidden');
+                            button.classList.add('visible');
+                        }
+                    });
+                }, 800);
+            });
+
+            floatingButtons.forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    button.classList.remove('hidden');
+                    button.classList.add('visible');
+                    
+                    if (button.id === 'whatsappButton') {
+                        button.style.animationPlayState = 'paused';
+                    }
+                });
+
+                button.addEventListener('mouseleave', () => {
+                    if (isScrolling) {
+                        button.classList.remove('visible');
+                        button.classList.add('hidden');
+                    }
+                    
+                    if (button.id === 'whatsappButton') {
+                        button.style.animationPlayState = 'running';
+                    }
+                });
+            });
+
+            // Botón de inicio con doble función
+            const backToTopButton = document.getElementById('backToTop');
+            
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
                     const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
                     
                     if (currentScrollPosition === 0) {
@@ -1491,6 +1764,27 @@
                 if (parallax) {
                     parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
                 }
+            });
+
+            // Navegación suave para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('.header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
         });
     </script>
