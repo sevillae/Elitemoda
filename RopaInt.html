@@ -449,7 +449,8 @@
 
         .hero-content {
             text-align: center;
-            color: white;
+            /*color: white;*/
+            color: #ee078e;
             z-index: 2;
             position: relative;
             padding: 0 clamp(1rem, 3vw, 2rem);
@@ -504,13 +505,20 @@
             min-width: 120px;
         }
 
+        /*HOLA*/
+
+        .hero-content p {
+            color: #000;
+            font-style: italic;
+        }
+
         .cta-btn.primary {
             background: #ff6b88;
             color: white;
         }
 
         .cta-btn.secondary {
-            background: transparent;
+            background:lab(60.17% 54.46 1.76);
             color: white;
             border: 2px solid white;
         }
@@ -1326,7 +1334,7 @@
                     <span class="title-line accent">Íntima</span>
                     <span class="title-line">Femenina</span>
                 </h1>
-                <p class="hero-subtitle rps-hero-subtitle-responsive">Lujo, confort y sensualidad en cada detalle</p>
+                <p class="hero-subtitle rps-hero-subtitle-responsive" id="Subtite">Lujo, confort y sensualidad en cada detalle</p>
                 <div class="hero-cta">
                     <a href="#luxury"><button class="cta-btn primary">Descubrir Colección</button></a>  
                     <a href="ofertas.html"><button class="cta-btn secondary">Ver Ofertas</button></a>
