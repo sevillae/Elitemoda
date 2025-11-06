@@ -14,7 +14,7 @@
     <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👕</text></svg>">
     
-    <!-- Theme Color (SOLO UNO) -->
+    <!-- Theme Color -->
     <meta name="theme-color" content="#6a11cb">
     
     <!-- Open Graph para Redes Sociales -->
@@ -140,9 +140,9 @@
             transform: translateY(0);
         }
         
-        /* Menú Mobile Mejorado - AHORA VISIBLE EN HORIZONTAL */
+        /* Menú Mobile Mejorado */
         .mobile-menu-btn {
-            display: none; /* Oculto por defecto */
+            display: none;
             background: rgba(255, 255, 255, 0.1);
             border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 10px;
@@ -163,6 +163,70 @@
         .mobile-menu-btn.active {
             background: rgba(255, 255, 255, 0.25);
             transform: rotate(90deg);
+        }
+        
+        /* Navegación Interna */
+        .internal-nav {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 80px;
+            z-index: 999;
+            margin-bottom: 30px;
+        }
+        
+        .internal-nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .internal-nav-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            padding: 15px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            min-width: 100px;
+        }
+        
+        .internal-nav-link:hover {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
+        }
+        
+        .internal-nav-link i {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+        
+        .internal-nav-link span {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* Selector móvil para categorías */
+        .mobile-category-selector {
+            display: none;
+            margin: 20px 0;
+        }
+        
+        .mobile-category-selector select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #6a11cb;
+            border-radius: 10px;
+            background: white;
+            font-size: 1rem;
+            color: #333;
         }
         
         /* Hero Section */
@@ -221,6 +285,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             overflow: hidden;
             transition: all 0.3s ease;
+            scroll-margin-top: 100px; /* Para navegación suave */
         }
         
         .faq-item:hover {
@@ -484,7 +549,7 @@
         }
 
         .legal-links a {
-            color: #c19a6b !important; /* Color dorado */
+            color: #c19a6b !important;
             text-decoration: none;
             transition: all 0.3s ease;
         }
@@ -498,9 +563,7 @@
             color: #666;
         }
 
-        /* MEJORAS RESPONSIVE - CORREGIDO PARA HORIZONTAL */
-        
-        /* Tablets en horizontal y escritorio pequeño */
+        /* RESPONSIVE */
         @media (max-width: 1024px) {
             nav ul {
                 gap: 2px;
@@ -518,19 +581,26 @@
             .hero p {
                 font-size: 1.1rem;
             }
+            
+            .internal-nav-links {
+                gap: 10px;
+            }
+            
+            .internal-nav-link {
+                min-width: 90px;
+                padding: 12px 15px;
+            }
         }
 
-        /* Tablets en vertical y móviles grandes - CORREGIDO */
         @media (max-width: 768px) {
             body {
-                padding-top: 70px; /* Ajuste para header más compacto */
+                padding-top: 70px;
             }
             
             .header-content {
                 flex-wrap: wrap;
             }
             
-            /* BOTÓN HAMBURGUESA AHORA VISIBLE */
             .mobile-menu-btn {
                 display: block;
                 position: absolute;
@@ -592,6 +662,14 @@
                 display: none;
             }
             
+            .internal-nav {
+                display: none;
+            }
+            
+            .mobile-category-selector {
+                display: block;
+            }
+            
             .hero {
                 padding: 80px 20px;
             }
@@ -628,27 +706,11 @@
                 flex: 0 0 50%;
                 margin-bottom: 30px;
             }
-            
-            @keyframes pulse-whatsapp {
-                0% {
-                    transform: scale(1);
-                    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-                }
-                50% {
-                    transform: scale(1.08);
-                    box-shadow: 0 4px 18px rgba(37, 211, 102, 0.7), 0 0 0 8px rgba(37, 211, 102, 0.2);
-                }
-                100% {
-                    transform: scale(1);
-                    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-                }
-            }
         }
 
-        /* Móviles medianos y pequeños */
         @media (max-width: 576px) {
             body {
-                padding-top: 65px; /* Ajuste adicional para header */
+                padding-top: 65px;
             }
             
             .container {
@@ -752,59 +814,7 @@
             }
         }
 
-        /* Móviles muy pequeños */
-        @media (max-width: 400px) {
-            .container {
-                padding: 0 10px;
-            }
-            
-            .logo {
-                font-size: 1.3rem;
-            }
-            
-            .logo i {
-                font-size: 1.5rem;
-            }
-            
-            .hero {
-                padding: 50px 10px;
-            }
-            
-            .hero h1 {
-                font-size: 1.6rem;
-            }
-            
-            .hero p {
-                font-size: 0.9rem;
-            }
-            
-            .faq-question {
-                padding: 10px 12px;
-                font-size: 0.9rem;
-            }
-            
-            .floating-buttons {
-                bottom: 10px;
-                right: 10px;
-            }
-            
-            .floating-button {
-                width: 45px;
-                height: 45px;
-            }
-            
-            .floating-button i {
-                font-size: 1.2rem;
-            }
-            
-            .floating-button span {
-                font-size: 0.7rem;
-                padding: 4px 8px;
-                right: 50px;
-            }
-        }
-
-        /* ORIENTACIÓN HORIZONTAL - NUEVA MEDIA QUERY ESPECÍFICA */
+        /* ORIENTACIÓN HORIZONTAL */
         @media (max-width: 900px) and (orientation: landscape) {
             .mobile-menu-btn {
                 display: block !important;
@@ -864,7 +874,6 @@
                 transform: translateX(10px);
             }
             
-            /* Header más compacto en horizontal */
             header {
                 padding: 10px 0;
             }
@@ -880,17 +889,13 @@
             .logo i {
                 font-size: 1.6rem;
             }
-        }
-
-        /* Para tablets grandes en horizontal */
-        @media (max-width: 1024px) and (orientation: landscape) and (min-width: 769px) {
-            .mobile-menu-btn {
-                display: block !important;
+            
+            .internal-nav {
+                display: none;
             }
             
-            nav ul li a {
-                padding: 10px 15px;
-                font-size: 0.9rem;
+            .mobile-category-selector {
+                display: block;
             }
         }
     </style>
@@ -913,6 +918,7 @@
                         <li><a href="Colecciones.html"><i class="fas fa-shopping-bag"></i> Productos</a></li>
                         <li><a href="nuevosprod.html"><i class="fas fa-star"></i> Novedades</a></li>
                         <li><a href="ofertas.html"><i class="fas fa-tag"></i> Ofertas</a></li>
+                        <li><a href="#faq-section"><i class="fas fa-question-circle"></i> FAQ</a></li>
                         <li><a href="https://wa.me/5804163034250?" target="_blank"><i class="fas fa-phone"></i> Contacto</a></li>
                     </ul>
                 </nav>
@@ -928,13 +934,58 @@
         </div>
     </section>
 
+    <!-- Navegación Interna -->
+    <section class="internal-nav">
+        <div class="container">
+            <div class="internal-nav-links">
+                <a href="#talla-correcta" class="internal-nav-link">
+                    <i class="fas fa-ruler"></i>
+                    <span>Tallas</span>
+                </a>
+                <a href="#materiales-calidad" class="internal-nav-link">
+                    <i class="fas fa-tshirt"></i>
+                    <span>Materiales</span>
+                </a>
+                <a href="#tiempo-entrega" class="internal-nav-link">
+                    <i class="fas fa-shipping-fast"></i>
+                    <span>Envíos</span>
+                </a>
+                <a href="#devoluciones-cambios" class="internal-nav-link">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>Devoluciones</span>
+                </a>
+                <a href="#cuidado-ropa" class="internal-nav-link">
+                    <i class="fas fa-heart"></i>
+                    <span>Cuidado</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Selector móvil para categorías -->
+    <div class="mobile-category-selector">
+        <div class="container">
+            <select id="categoryJump">
+                <option value="">Ir a sección...</option>
+                <option value="#talla-correcta">📏 Guía de Tallas</option>
+                <option value="#materiales-calidad">🧵 Materiales y Calidad</option>
+                <option value="#tiempo-entrega">🚚 Tiempos de Entrega</option>
+                <option value="#devoluciones-cambios">🔄 Devoluciones</option>
+                <option value="#cuidado-ropa">❤️ Cuidado de Prendas</option>
+                <option value="#envio-gratuito">🎁 Envío Gratuito</option>
+                <option value="#colecciones-sostenibles">🌱 Sostenibilidad</option>
+            </select>
+        </div>
+    </div>
+
     <!-- FAQ Section -->
-    <section class="faq-section">
+    <section class="faq-section" id="faq-section">
         <div class="container">
             <h2 class="section-title">Preguntas Frecuentes</h2>
             <div class="faq-container">
-                <!-- FAQ Items (se mantienen igual) -->
-                <div class="faq-item">
+                
+                <!-- Talla Correcta -->
+                <div class="faq-item" id="talla-correcta">
                     <div class="faq-question">
                         <span>¿Cómo puedo saber mi talla correcta?</span>
                         <i class="fas fa-chevron-down"></i>
@@ -944,7 +995,8 @@
                     </div>
                 </div>
                 
-                <div class="faq-item">
+                <!-- Materiales y Calidad -->
+                <div class="faq-item" id="materiales-calidad">
                     <div class="faq-question">
                         <span>¿Qué materiales utilizan en su ropa íntima?</span>
                         <i class="fas fa-chevron-down"></i>
@@ -954,7 +1006,8 @@
                     </div>
                 </div>
                 
-                <div class="faq-item">
+                <!-- Tiempo de Entrega -->
+                <div class="faq-item" id="tiempo-entrega">
                     <div class="faq-question">
                         <span>¿Cuál es el tiempo de entrega?</span>
                         <i class="fas fa-chevron-down"></i>
@@ -964,7 +1017,8 @@
                     </div>
                 </div>
                 
-                <div class="faq-item">
+                <!-- Devoluciones y Cambios -->
+                <div class="faq-item" id="devoluciones-cambios">
                     <div class="faq-question">
                         <span>¿Aceptan devoluciones o cambios?</span>
                         <i class="fas fa-chevron-down"></i>
@@ -974,7 +1028,8 @@
                     </div>
                 </div>
                 
-                <div class="faq-item">
+                <!-- Cuidado de la Ropa -->
+                <div class="faq-item" id="cuidado-ropa">
                     <div class="faq-question">
                         <span>¿Cómo debo cuidar mi ropa para que dure más?</span>
                         <i class="fas fa-chevron-down"></i>
@@ -984,7 +1039,8 @@
                     </div>
                 </div>
                 
-                <div class="faq-item">
+                <!-- Envío Gratuito -->
+                <div class="faq-item" id="envio-gratuito">
                     <div class="faq-question">
                         <span>¿Ofrecen envío gratuito?</span>
                         <i class="fas fa-chevron-down"></i>
@@ -994,7 +1050,8 @@
                     </div>
                 </div>
                 
-                <div class="faq-item">
+                <!-- Colecciones Sostenibles -->
+                <div class="faq-item" id="colecciones-sostenibles">
                     <div class="faq-question">
                         <span>¿Tienen colecciones sostenibles?</span>
                         <i class="fas fa-chevron-down"></i>
@@ -1036,7 +1093,6 @@
                         <a href="https://www.facebook.com/@yennibel.camino" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/yencava/" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.threads.net/tu_usuario" class="social-link threads-btn" target="_blank"><i class="fa-brands fa-threads"></i></a>
-                        <!--<a href="#"><i class="fab fa-twitter"></i></a>-->
                         <a href="https://www.pinterest.com/yencava/" target="_blank"><i class="fab fa-pinterest"></i></a>
                         <a href="https://wa.me/5804163034250" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
                         <a href="tel:+584163034250" class="social-link"><i class="fas fa-phone"></i></a>
@@ -1049,7 +1105,7 @@
                     <a href="Colecciones.html">Productos</a>
                     <a href="nuevosprod.html">Novedades</a>
                     <a href="ofertas.html">Ofertas</a>
-                    <a href="faq.html">Preguntas Frecuentes</a>
+                    <a href="#faq-section">Preguntas Frecuentes</a>
                 </div>
                 
                 <div class="footer-section">
@@ -1075,7 +1131,7 @@
     </footer>
 
     <script>
-        // Menú móvil mejorado - AHORA FUNCIONA EN HORIZONTAL
+        // Menú móvil mejorado
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mainNav = document.getElementById('mainNav');
         
@@ -1125,6 +1181,61 @@
                 icon.classList.add('fa-bars');
             }
         });
+
+        // NAVEGACIÓN SUAVE PARA ANCLAS INTERNAS
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Calcula la posición considerando el header fijo
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Cierra el menú móvil si está abierto
+                    if (isMobileView()) {
+                        mainNav.classList.remove('active');
+                        mobileMenuBtn.classList.remove('active');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            });
+        });
+
+        // Navegación por selector móvil
+        const categoryJump = document.getElementById('categoryJump');
+        if (categoryJump) {
+            categoryJump.addEventListener('change', function() {
+                if (this.value) {
+                    const targetElement = document.querySelector(this.value);
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Resetea el selector después de un tiempo
+                        setTimeout(() => {
+                            this.value = '';
+                        }, 1000);
+                    }
+                }
+            });
+        }
 
         // Funcionalidad para las preguntas frecuentes
         document.querySelectorAll('.faq-question').forEach(question => {
