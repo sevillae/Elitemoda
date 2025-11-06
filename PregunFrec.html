@@ -323,78 +323,82 @@
         }
         
         /* Botones flotantes */
-        .floating-buttons {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 99;
-        }
-        
-        .floating-button {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        
-        .floating-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            transform: scale(0);
-            border-radius: 50%;
-            transition: transform 0.3s ease;
-        }
-        
-        .floating-button:hover::before {
-            transform: scale(1);
-        }
-        
-        .floating-button i {
-            font-size: 1.5rem;
-            color: white;
-            z-index: 1;
-            transition: transform 0.3s ease;
-        }
-        
-        .floating-button:hover i {
-            transform: scale(1.2);
-        }
-        
-        .floating-button span {
-            position: absolute;
-            right: 70px;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            opacity: 0;
-            transform: translateX(10px);
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-        
-        .floating-button:hover span {
-            opacity: 1;
-            transform: translateX(0);
-        }
+        /* Botones flotantes - Z-INDEX CORREGIDO */
+.floating-buttons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 10000; /* Mayor que cualquier otro elemento */
+}
+
+.floating-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 10001; /* Cada botón individual también */
+}
+
+.floating-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(0);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    z-index: -1;
+}
+
+.floating-button:hover::before {
+    transform: scale(1);
+}
+
+.floating-button i {
+    font-size: 1.5rem;
+    color: white;
+    z-index: 2; /* Ícono por encima */
+    transition: transform 0.3s ease;
+}
+
+.floating-button:hover i {
+    transform: scale(1.2);
+}
+
+.floating-button span {
+    position: absolute;
+    right: 70px;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 10002; /* Tooltip con mayor z-index */
+}
+
+.floating-button:hover span {
+    opacity: 1;
+    transform: translateX(0);
+}
         
         /* Botón de inicio mejorado */
         .back-to-top {
@@ -690,11 +694,13 @@
             .floating-buttons {
                 bottom: 20px;
                 right: 20px;
+                z-index: 10000; /* Mantener en móvil */
             }
             
             .floating-button {
                 width: 55px;
                 height: 55px;
+                z-index: 10001;
             }
             
             .floating-button span {
@@ -769,11 +775,13 @@
                 bottom: 15px;
                 right: 15px;
                 gap: 10px;
+                z-index: 10000;
             }
             
             .floating-button {
                 width: 50px;
                 height: 50px;
+                 z-index: 10001;
             }
             
             .floating-button i {
